@@ -48,9 +48,24 @@ SI:Segregation Index
 
 
 ### Import Libraries
-```{r message=FALSE, warning=FALSE}
-library(tidyverse)
-library(skimr)
+Let's begin!
+
+For the first time, you will need to install some of the packages. 
+Step by step: 
+  1. Go to Packages on the lower right display window and click install
+  2. write the library you want to install and click "install"
+Or... `install.packages("readxl","tidyverse")` etc...
+
+
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+library(readxl) #Library used to import excel files
+library(tidyverse) # Library used in data science to perform exploratory data analysis
+library(skimr) # Library used for providing a summary of the data
+library(DataExplorer) # Library used in data science to perform exploratory data analysis
+library(corrplot) # Library used for correlation plots
+library(car) # Library used for testing autocorrelation (Durbin Watson)
+library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
 ## GitHub Documents

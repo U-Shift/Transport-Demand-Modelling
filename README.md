@@ -1,6 +1,64 @@
 Multiple Linear Regression
 ================
 
+**INSTITUTO SUPERIOR TECNICO, UNIVERSITY OF LISBON**  
+**TRANSPORT DEMAND MODELLING COURSE, PROF. FILIPE MOURA**
+
+## Chicago example exercise
+
+Trip production of 57 Traffic Assignment Zones of Chicago in 1960’s
+
+> Your task: Estimate a linear regression model that predicts trips per
+> occupied dwelling unit.
+
+### Variables:
+
+  - `TODU`: Motorized Trips (private car or Public Transportation) per
+    occupied dwelling unit;
+  - ACO: Average car ownership (cars per dwelling);
+  - AHS: Average household size;
+  - SRI: Social Rank Index:  
+    1\. proportion of blue-collar workers (e.g., construction,
+    mining);  
+    2\. proportion of people with age higher than 25 years that have
+    completed at least 8 year of education;  
+    **Note:** The SRI has its maximum value when there are no
+    blue-collar workers and all adults have education of at least 8
+    years.
+
+> UI: Urbanization Index: 1. fertility rate, defined as the ratio of
+> children under 5 years of age to the female population of childbearing
+> age;  
+> 2\. female labor force participation rate, meaning the % of women who
+> are in the labor force;  
+> 3\. % of single family units to total dwelling units.
+
+``` 
+  ## The degree of urbanization index would be increased by
+    ### a) lower fertility rate,
+    ### b) higher female labor force participation rate, and
+    ### c) higher proportion of single dwelling units.
+
+  ## Note: High values for this index imply less attachment to the home
+```
+
+SI:Segregation Index \#\# It measures the proportion of an area to which
+minority groups \#\# (e.g: non-whites, foreign-born, Eastern Europeans)
+live in isolation.
+
+``` 
+  ## Note: High values for this index imply that those communities are less
+  ## prone to leaving their living areas and as such to having lower
+  ## levels of mobility.
+```
+
+### Import Libraries
+
+``` r
+library(tidyverse)
+library(skimr)
+```
+
 ## GitHub Documents
 
 This is an R Markdown format used for publishing markdown documents to

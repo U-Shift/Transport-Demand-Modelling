@@ -15,27 +15,25 @@ Candidate**
 
 ## Summary
 
-1.  [How to install R and RStudio](%220-InstallR.md%22)
-
-2.  [Multiple Linear Regression
+1.  [Multiple Linear Regression
     models](%221-MultipleLinearRegression.md%22)
 
-3.  Factor Analysis
+2.  Factor Analysis
 
-4.  Cluster Analysis
+3.  Cluster Analysis
 
-5.  Generalised linear models
+4.  Generalised linear models
 
-6.  Panel and spatial regression models
+5.  Panel and spatial regression models
 
-7.  Discrete Choice Models
+6.  Discrete Choice Models
 
     -   Multinomial
     -   Nested
 
-8.  Ordered Models
+7.  Ordered Models
 
-9.  Hazard-Based Duration Models
+8.  Hazard-Based Duration Models
 
 ### Files
 
@@ -43,7 +41,8 @@ In [Data](%22Data/%22) folder you may find all the files to use for the
 exercises.  
 The [Code](%22Code/%22) folder contains scripts to use with each topic.
 
-### Outputs
+## R stuff
 
-Check [some tips](RMarkdownReports.md) how to make your home assignments
-as static or dynamic outputs with R Markdown.
+-   [How to install R and RStudio](%220-InstallR.md%22)
+-   Check [some tips](RMarkdownReports.md) how to make your home
+    assignments as static or dynamic outputs with *R Markdown*.

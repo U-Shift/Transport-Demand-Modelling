@@ -16,9 +16,9 @@ Candidate**
 ## Summary
 
 1.  [Multiple Linear Regression
-    models](%221-MultipleLinearRegression.md%22)
+    models](%221-MultipleLinearRegression.md%22) (gabriel)
 
-2.  Factor Analysis
+2.  [Factor Analysis](%222-FactorAnalysis.md%22) (gabriel)
 
 3.  Cluster Analysis
 
@@ -26,10 +26,10 @@ Candidate**
 
 5.  Panel and spatial regression models
 
-6.  Discrete Choice Models
-
-    -   Multinomial
-    -   Nested
+6.  Discrete Choice Models (miguel)
+    
+      - Multinomial
+      - Nested
 
 7.  Ordered Models
 
@@ -43,6 +43,6 @@ The [Code](%22Code/%22) folder contains scripts to use with each topic.
 
 ## R stuff
 
--   [How to install R and RStudio](%220-InstallR.md%22)
--   Check [some tips](RMarkdownReports.md) how to make your home
+  - [How to install R and RStudio](%220-InstallR.md%22) (Rosa)
+  - Check [some tips](RMarkdownReports.md) how to make your home
     assignments as static or dynamic outputs with *R Markdown*.

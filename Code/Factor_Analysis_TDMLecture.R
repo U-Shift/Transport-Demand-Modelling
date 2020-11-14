@@ -6,7 +6,7 @@
 # EXAMPLE EXERCISE: 
 # "Residential location satisfaction in the Lisbon metropolitan area"
 
-# Reference: Martínez, L. G., de Abreu e Silva, J., & Viegas, J. M. (2010). 
+# Reference: Mart?nez, L. G., de Abreu e Silva, J., & Viegas, J. M. (2010). 
 # Assessment of residential location satisfaction in the Lisbon metropolitan 
 # area, TRB (No. 10-1161).
 
@@ -77,7 +77,7 @@ library(GPArotation)
 
 # Set working directory
 
-setwd("G:/Meu Drive/TDM - Lecture R/Factor Analysis")
+setwd("G:/O meu disco/TDM - Lecture R/Factor Analysis")
 
 
 # Import dataset
@@ -104,6 +104,9 @@ summary(df)
 #Take a look at the dataset
 head(df,10)
 summary(df)
+
+# Make ID as row names or case number
+df<-data.frame(df, row.names = 1)
 
 # Evaluating the assumptions for factoral analysis: 
 
@@ -183,7 +186,7 @@ df_factor_obl <- factanal(df, factors = 4, rotation = "oblimin", scores=c("regre
 
 # Let's print out the results of df_factor_obl, and take a look. 
 
-print(df_factor, digits=2, cutoff=.3, sort=TRUE)
+print(df_factor, digits=2, cutoff=0.3, sort=TRUE)
 
 ## Note: We used a cutoff of 0.3 due to the sample size is higher than 350 obs.
 
@@ -236,5 +239,5 @@ abline(h = 0, v = 0)
 #abline(h = 0, v = 0)
 
 
-
+knitr::spin(hair = "Factor_Analysis_TDMLecture.R")
 

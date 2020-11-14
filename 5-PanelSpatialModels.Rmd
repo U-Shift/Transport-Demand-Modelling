@@ -36,14 +36,19 @@ TABLEmoran<-TABLEmoran[TABLEmoran$Orig_Lat!=0,] #Remove cases with Lat/Lon equal
 ```
 
 ##### Distances matrix, from coordinates (Lat Long)
+To calculate Moran’s I, we will need to generate a matrix of inverse distance weights. In the matrix, entries for pairs of points that are close together are higher than for pairs of points that are far apart. 
+  
+We can first generate a distance matrix, then take inverse of the matrix values and replace the diagonal entries with zero:
 ```{r eval=F}
 ozone.dists <- as.matrix(dist(cbind(TABLEmoran$Orig_Long, TABLEmoran$Orig_Lat)))
 ozone.dists.inv <- 1/ozone.dists
-diag(ozone.dists.inv) <- 0
+diag(ozone.dists.inv) <- 0 #diagonal as zero
 ozone.dists.inv[is.infinite(ozone.dists.inv)] <- 0 #remove infinite distances
 ```
+We have created a matrix where each off-diagonal entry [ _i_, _j_] in the matrix is equal to 1/(distance between point _i_ and point _j_). Note that this is just one of several ways in which we can calculate an inverse distance matrix.  
 
-##### Result:
+##### Result
+We can now calculate Moran’s I using the command `Moran.I`.
 ```{r eval=F}
 #First attempt
 Moran.I(TABLEmoran$classfactor, ozone.dists.inv)

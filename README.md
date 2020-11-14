@@ -31,15 +31,16 @@ Candidate**
       - Multinomial
       - Nested
 
-7.  Ordered Models
+7.  [Ordered Models](7-OrderedModels.md)
 
-8.  Hazard-Based Duration Models
+8.  [Hazard-Based Duration Models](8-HazardBasedModels.md)
 
 ### Files
 
 In [Data](Data/) folder you may find all the files to use for the
 exercises.  
-The [Code](Code/) folder contains scripts to use with each topic.
+The [Code](Code/) folder contains scripts to use with each topic. obs:
+Adicionar slides
 
 ## R stuff
 

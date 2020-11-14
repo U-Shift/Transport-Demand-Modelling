@@ -18,7 +18,7 @@ Candidate**
 1.  [Multiple Linear Regression models](1-MultipleLinearRegression.md)
     (gabriel)
 
-2.  [Factor Analysis](%222-FactorAnalysis.md%22) (gabriel)
+2.  [Factor Analysis](2-FactorAnalysis.md) (gabriel)
 
 3.  Cluster Analysis
 
@@ -37,12 +37,12 @@ Candidate**
 
 ### Files
 
-In [Data](%22Data/%22) folder you may find all the files to use for the
+In [Data](Data/) folder you may find all the files to use for the
 exercises.  
-The [Code](%22Code/%22) folder contains scripts to use with each topic.
+The [Code](Code/) folder contains scripts to use with each topic.
 
 ## R stuff
 
-  - [How to install R and RStudio](%220-InstallR.md%22) (Rosa)
+  - [How to install R and RStudio](0-InstallR.md) (Rosa)
   - Check [some tips](RMarkdownReports.md) how to make your home
     assignments as static or dynamic outputs with *R Markdown*.

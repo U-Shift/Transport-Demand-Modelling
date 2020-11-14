@@ -1,4 +1,4 @@
-Transport Demand Modeling Course
+Transport Demand Modelling Course
 ================
 
 This repository intends to gather, and make available, the supporting
@@ -16,17 +16,19 @@ Candidate**
 ## Summary
 
 1.  [Multiple Linear Regression models](1-MultipleLinearRegression.md)
-    (gabriel)
+    (Gabriel Valença)
 
-2.  [Factor Analysis](2-FactorAnalysis.md) (gabriel)
+2.  [Factor Analysis](2-FactorAnalysis.md) (Gabriel Valença)
 
-3.  [Cluster Analysis](3-ClusterAnalysis.md)
+3.  [Cluster Analysis](3-ClusterAnalysis.md) (Gabriel Valença)
 
-4.  [Generalized linear models](4-GeneralizedLinearModels.md)
+4.  [Generalized linear models](4-GeneralizedLinearModels.md) (Gabriel
+    Valença)
 
-5.  [Panel and spatial regression models](5-PanelSpatialModels.md)
+5.  [Panel and spatial regression models](5-PanelSpatialModels.md) (Rosa
+    Félix)
 
-6.  Discrete Choice Models (miguel)
+6.  Discrete Choice Models (Miguel Costa)
     
       - Multinomial
       - Nested

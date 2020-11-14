@@ -3,7 +3,9 @@ How to install R and RStudio
 
 ## Installation
 
-You should install R before installing RStudio. \#\#\# Install R
+You should install R before installing RStudio.
+
+### Install R
 
 1.  Go to world wide CRAN mirror: <https://cloud.r-project.org/>
 2.  Select you OS
@@ -90,7 +92,7 @@ Step by step:
 Or you could just run
 
 ``` r
-setwd("D:/TDM/Multiple-Linear-Regression") #for instance
+setwd("D:/TDM/Transport-Demand-Modelling") #for instance
 ```
 
 ### Flavors

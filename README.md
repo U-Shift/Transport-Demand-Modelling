@@ -20,9 +20,9 @@ Candidate**
 
 2.  [Factor Analysis](2-FactorAnalysis.md) (gabriel)
 
-3.  Cluster Analysis
+3.  [Cluster Analysis](3-ClusterAnalysis.md)
 
-4.  Generalised linear models
+4.  \[Generalized linear models\]
 
 5.  Panel and spatial regression models
 

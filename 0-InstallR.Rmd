@@ -83,15 +83,18 @@ Or you could just run
 ```r
 setwd("D:/TDM/Transport-Demand-Modelling") #for instance
 ```
+#### Run a script
+
+### Environment
+And .RData
 
 ### Flavors
-`Tools > Global Oprions > Appearence > Editor Theme > ...  `
+`Tools > Global Options > Appearence > Editor Theme > ...  `
 
-Try to change to "Cobalt".
+Try to change to "Cobalt", or check others you may like. 
+![](README_files/0-Rstuff/Cobalt.PNG)
 
-
-  
-    
+You can also change font, font-size, and even the panels layout.
 
 <!-- > See [r.rosafelix.bike](http://r.rosafelix.bike/) for some R tips to use in Transport Demand Modeling ! (_em português_) -->
 

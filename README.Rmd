@@ -16,7 +16,7 @@ This repository intends to gather, and make available, the supporting materials 
 
 ## Summary
 
-  1. [Multiple Linear Regression models]("1-MultipleLinearRegression.md") (gabriel)
+  1. [Multiple Linear Regression models](1-MultipleLinearRegression.md) (gabriel)
   2. [Factor Analysis]("2-FactorAnalysis.md") (gabriel)
   3. Cluster Analysis
   4. Generalised linear models

@@ -15,8 +15,8 @@ Candidate**
 
 ## Summary
 
-1.  [Multiple Linear Regression
-    models](%221-MultipleLinearRegression.md%22) (gabriel)
+1.  [Multiple Linear Regression models](1-MultipleLinearRegression.md)
+    (gabriel)
 
 2.  [Factor Analysis](%222-FactorAnalysis.md%22) (gabriel)
 

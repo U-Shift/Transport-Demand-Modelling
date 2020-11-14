@@ -1,33 +1,58 @@
 Panel and Spatial Regression Models
 ================
 
-## GitHub Documents
+## Panel Regression Models
 
-This is an R Markdown format used for publishing markdown documents to
-GitHub. When you click the **Knit** button all R code chunks are run and
-a markdown file (.md) suitable for publishing to GitHub is generated.
+## Spatial Regression Models
 
-## Including Code
+### Moran’s I spatial autocorrelation
 
-You can include R code in the document as follows:
+Install and load ape package
 
 ``` r
-summary(cars)
+# install.packages("ape")
+library(ape)
 ```
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+It does not deal with ordered factors, zeros, or infinite distances.  
+So we need to clean data first.
 
-## Including Plots
+``` r
+str(TABLE)
+TABLE$classfactor<-as.numeric(TABLE$CLASS) #make ordered factors as numeric
+TABLE$classfactor<-factor(TABLE$classfactor)
+TABLEmoran<-TABLE
+TABLEmoran$geometry<-NULL #drop geometry
+TABLEmoran<-na.omit(TABLEmoran) #remove cases with NA
+TABLEmoran<-TABLEmoran[TABLEmoran$Orig_Lat!=0,] #Remove cases with Lat/Lon equals to zero
+```
 
-You can also embed plots, for example:
+##### Distances matrix, from coordinates (Lat Long)
 
-![](README_files/5-PanelSpatialmodels/pressure-1.png)<!-- -->
+``` r
+ozone.dists <- as.matrix(dist(cbind(TABLEmoran$Orig_Long, TABLEmoran$Orig_Lat)))
+ozone.dists.inv <- 1/ozone.dists
+diag(ozone.dists.inv) <- 0
+ozone.dists.inv[is.infinite(ozone.dists.inv)] <- 0 #remove infinite distances
+```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+##### Result:
+
+``` r
+#First attempt
+Moran.I(TABLEmoran$classfactor, ozone.dists.inv)
+#Remove distances over 15 km
+ozone.dists.bin <- (ozone.dists > 0 & ozone.dists <= 15000)
+
+#Second attempt
+Moran.I(TABLEmoran$classfactor, ozone.dists.bin) #Moran’s I =0.012, p = .001
+```
+
+> The result (observed) is the Moran’s I value, and if it is enough
+> close to zero, we can affirm (with p=…) that ther is not a spatial
+> pattern, suggesting an aleatory distribution in space. Tf the result
+> was close to 1 or -1, it would suggest a pattern in distribuition in
+> space.
+
+**See more
+[here](https://stats.idre.ucla.edu/r/faq/how-can-i-calculate-morans-i-in-r/)**

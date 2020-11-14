@@ -1,4 +1,4 @@
-Untitled
+Factor Analysis
 ================
 
 ## GitHub Documents
@@ -27,7 +27,7 @@ summary(cars)
 
 You can also embed plots, for example:
 
-![](2-FactorAnalysis_files/figure-gfm/pressure-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/pressure-1.png)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to
 prevent printing of the R code that generated the plot.

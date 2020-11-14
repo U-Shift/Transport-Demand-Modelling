@@ -1,10 +1,11 @@
 ---
-title: "Untitled"
+title: "Factor Analysis"
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.path = "README_files/2-FactorAnalysis/")
 ```
 
 ## GitHub Documents

@@ -22,9 +22,9 @@ Candidate**
 
 3.  [Cluster Analysis](3-ClusterAnalysis.md)
 
-4.  \[Generalized linear models\]
+4.  [Generalized linear models](4-GeneralizedLinearModels.md)
 
-5.  Panel and spatial regression models
+5.  [Panel and spatial regression models](5-PanelSpatialModels.md)
 
 6.  Discrete Choice Models (miguel)
     

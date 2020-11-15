@@ -431,6 +431,14 @@ plot(model)
 
 ![](README_files/1-MLR/unnamed-chunk-21-1.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-2.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-3.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-4.png)<!-- -->
 
+  - **Residuals vs Fitted:**
+
+  - **Normal Q-Q:**
+
+  - **Scale-Location:**
+
+  - **Residuals vs Leverage:**
+
 #### Execute the Durbin Watson test to evaluate autocorrelation of the residuals
 
 ``` r
@@ -438,7 +446,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747   0.078
+    ##    1       0.1416308      1.597747    0.05
     ##  Alternative hypothesis: rho != 0
 
 #### To calculate the VIF and TOL to test multicollinearity

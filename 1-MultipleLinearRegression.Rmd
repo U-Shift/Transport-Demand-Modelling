@@ -229,6 +229,14 @@ summary(model)
 plot(model)
 ```
 
+* **Residuals vs Fitted:**
+
+* **Normal Q-Q:**
+
+* **Scale-Location:**
+
+* **Residuals vs Leverage:**
+
 #### Execute the Durbin Watson test to evaluate autocorrelation of the residuals
 
 ```{r}

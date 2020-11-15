@@ -1,4 +1,4 @@
-Multiple Linear Regression
+Multiple Linear Regression models
 ================
 
 ## Chicago example exercise
@@ -226,6 +226,9 @@ plot_histogram(df)
 
 ![](README_files/1-MLR/unnamed-chunk-12-1.png)<!-- -->
 
+> **Note**: Take a special look at TODU, and see if the variable looks
+> like a normal distribution.
+
 #### Plot boxplots of each independent variable with TODU
 
 ``` r
@@ -234,10 +237,9 @@ plot_boxplot(df, by = "TODU")
 
 ![](README_files/1-MLR/unnamed-chunk-13-1.png)<!-- -->
 
-> **Note**: That if you increase the average car ownership (ACO) it will
-> tend to increase the number of trips per dwelling unit (TODU). This
-> makes sense. Try analyzing the other relations and check if it is
-> coherent.
+> **Note**: If you increase the average car ownership (ACO) it will tend
+> to increase the number of trips per dwelling unit (TODU). This makes
+> sense. Try analyzing the other relations and check if it is coherent.
 
 #### Plot correlation heatmaps
 
@@ -360,12 +362,12 @@ ks.test(df$TODU, "pnorm", mean=mean(df$TODU), sd = sd(df$TODU))
 
 > **Note:** the warning that appears in the Kolmogorov-Smirnov test:
 > “ties should not be present for the Kolmogorov-Smirnov test”. Most
-> likely what happened is that this test only works with continuous
-> variables. Although ´TODU´ is a countinuous variable, the small sample
-> size, makes it likely to have repeated values. Consequently, the test
-> considers TODU as categorical variable. Therefore, this is another
-> evidence, that for small samples it is more appropriate to use the
-> Shapiro Test.
+> likely what happened is that this test is only reliable with
+> continuous variables. Although TODU is a continuous variable, the
+> small sample size, makes it likely to have repeated values.
+> Consequently, the test considers TODU as a categorical variable.
+> Therefore, this is another evidence, that for small samples it is more
+> appropriate to use the Shapiro-Wilk Test.
 
 > **Note:** The null hypothesis of both tests is that the distribution
 > is normal. Therefore, for the distribution to be normal, the pvalue \>
@@ -431,13 +433,21 @@ plot(model)
 
 ![](README_files/1-MLR/unnamed-chunk-21-1.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-2.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-3.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-4.png)<!-- -->
 
-  - **Residuals vs Fitted:**
+  - **Residuals vs Fitted:** This plot is used to detect non-linearity,
+    heteroscedasticity, and outliers.
 
-  - **Normal Q-Q:**
+  - **Normal Q-Q:** The quantile-quantile (Q-Q) plot is used to check if
+    the dependent variable follow a normal distribution.
 
-  - **Scale-Location:**
+  - **Scale-Location:** This plot is used to verify if the residuals are
+    spread equally (homoscedasticity) or not (heteroscedasticity)
+    through the sample.
 
-  - **Residuals vs Leverage:**
+  - **Residuals vs Leverage:** Is used to detect if the impact of the
+    outliers in the model. If the outliers are outside the
+    Cook-distance, this may lead to serious problems in the model.
+
+Try analyzing the plots and check if the model meets the assumptions.
 
 #### Execute the Durbin Watson test to evaluate autocorrelation of the residuals
 
@@ -446,10 +456,14 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747    0.05
+    ##    1       0.1416308      1.597747   0.092
     ##  Alternative hypothesis: rho != 0
 
-#### To calculate the VIF and TOL to test multicollinearity
+> **Note:** In the Durbin-Watson test, values of the D-W Statistic vary
+> from 0 to 4. If the values are from 1.8 to 2.2 this means that there
+> is no autocorrelation in the model.
+
+#### Calculate the VIF and TOL to test multicollinearity
 
 ``` r
 ols_vif_tol(model)
@@ -462,7 +476,9 @@ ols_vif_tol(model)
     ## 4       SRI 0.5236950 1.909508
     ## 5        UI 0.3165801 3.158758
 
-#### To calculate the Condition Index to test multicollinearity
+> **Note:** Values of VIF \> 5, indicate multicollinearity problems.
+
+#### Calculate the Condition Index to test multicollinearity
 
 ``` r
 ols_eigen_cindex(model)
@@ -483,7 +499,11 @@ ols_eigen_cindex(model)
     ## 5 0.090809203 0.374832118 1.851308e-01
     ## 6 0.004433528 0.178935999 6.534183e-01
 
-#### To test both simultaneously
+> **Note:** Condition index values \> 15 indicate multicollinearity
+> problems, and values \> 30 indicate serious problems of
+> multicollinearity.
+
+#### To test both simultaneously, you can run the code below:
 
 ``` r
 ols_coll_diag(model)

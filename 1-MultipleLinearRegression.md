@@ -254,8 +254,8 @@ corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclu
 
 > **Note:** The pairwise correlations that are crossed are statistically
 > insignificant.The null hypothesis is that correlation is zero.This
-> means that you should reject the null hypothesis only when pvalue \<
-> 0.05.
+> means that the correlations are only significant when you reject the
+> null hypothesis (pvalue \< 0.05).
 
 Therefore, take a look at this example and check the pvalue of a crossed
 pair correlation:
@@ -438,7 +438,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747   0.072
+    ##    1       0.1416308      1.597747   0.078
     ##  Alternative hypothesis: rho != 0
 
 #### To calculate the VIF and TOL to test multicollinearity

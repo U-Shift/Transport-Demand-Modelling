@@ -10,42 +10,41 @@ Trip production of 57 Traffic Assignment Zones of Chicago in 1960’s
 
 ### Variables:
 
--   `TODU`: Motorized Trips (private car or Public Transportation) per
+  - `TODU`: Motorized Trips (private car or Public Transportation) per
     occupied dwelling unit;
 
--   `ACO`: Average car ownership (cars per dwelling);
+  - `ACO`: Average car ownership (cars per dwelling);
 
--   `AHS`: Average household size;
+  - `AHS`: Average household size;
 
--   `SRI`: Social Rank Index:  
-    1. proportion of blue-collar workers (e.g., construction, mining);  
+  - `SRI`: Social Rank Index:  
+    1\. proportion of blue-collar workers (e.g., construction, mining);
     2. proportion of people with age higher than 25 years that have
-    completed at least 8 year of education;  
-    (***Note:** The SRI has its maximum value when there are no
-    blue-collar workers and all adults have education of at least 8
-    years*)
+    completed at least 8 year of education; (***Note:** The SRI has its
+    maximum value when there are no blue-collar workers and all adults
+    have education of at least 8 years*)
 
--   `UI`: Urbanization Index: 1. fertility rate, defined as the ratio of
+  - `UI`: Urbanization Index: 1. fertility rate, defined as the ratio of
     children under 5 years of age to the female population of
     childbearing age;  
-    2. female labor force participation rate, meaning the % of women who
-    are in the labor force;  
-    3. % of single family units to total dwelling units.
-
+    2\. female labor force participation rate, meaning the % of women
+    who are in the labor force;  
+    3\. % of single family units to total dwelling units.
+    
     The degree of urbanization index would be increased by a) lower
-    fertility rate, b) higher female labor force participation rate,
-    and c) higher proportion of single dwelling units. (***Note:** High
+    fertility rate, b) higher female labor force participation rate, and
+    c) higher proportion of single dwelling units. (***Note:** High
     values for this index imply less attachment to the home*)
 
--   `SI`:Segregation Index It measures the proportion of an area to
+  - `SI`:Segregation Index It measures the proportion of an area to
     which minority groups (e.g: non-whites, foreign-born, Eastern
     Europeans) live in isolation. (***Note:** High values for this index
     imply that those communities are less prone to leaving their living
     areas and as such to having lower levels of mobility*)
 
-### Import Libraries
+#### Import Libraries
 
-Let’s begin!
+Let’s begin\!
 
 For the first time, you will need to install some of the packages. Step
 by step:
@@ -55,7 +54,8 @@ by step:
 
 Or… `install.packages("readxl","tidyverse")` etc…
 
-`DataExplorer` may need to be installed from source, such as
+Depending on the version of your R, `DataExplorer` may need to be
+installed from source, such as
 
 ``` r
 if (!require(devtools)) install.packages("devtools")
@@ -76,13 +76,13 @@ library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 
 ### EXPLORATORY DATA ANALYSIS (EDA)
 
-##### Import dataset
+#### Import dataset
 
 ``` r
 dataset <- read_excel("Data/TDM_Class3_MLR_Chicago_Example.xls") 
 ```
 
-##### Check the structure of the dataset
+#### Check the structure of the dataset
 
 ``` r
 str(dataset)
@@ -96,7 +96,7 @@ str(dataset)
     ##  $ SRI : num [1:57] 28.3 20.9 26 28.5 27.2 ...
     ##  $ UI  : num [1:57] 60.1 65.7 63.2 66.2 58.4 ...
 
-##### Take a first look at the dataset
+#### Take a first look at the dataset
 
 ``` r
 head(dataset, 10)
@@ -116,7 +116,7 @@ head(dataset, 10)
     ##  9  5.85 0.84   3.02  8.2   42.2  56.9
     ## 10  4.97 0.74   2.84  7.94  38.1  62.4
 
-##### Check the type and class of the dataset
+#### Check the type and class of the dataset
 
 ``` r
 #este apenas mostra o codigo, o seguinte apenas mostra os outputs
@@ -128,13 +128,13 @@ class(dataset)
 
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
-##### Transform dataset into dataframe
+#### Transform dataset into dataframe
 
 ``` r
 df <- data.frame(dataset)
 ```
 
-##### Compare the structure of the dataset with df
+#### Compare the structure of the dataset with df
 
 ``` r
 str(dataset)
@@ -163,7 +163,7 @@ str(df)
 > **Note:** The dataframe function transforms columns into variables and
 > rows into observations.
 
-##### Take a look at the dataframe
+#### Take a look at the dataframe
 
 ``` r
 head(df, 10)
@@ -181,14 +181,14 @@ head(df, 10)
     ## 9  5.85 0.84 3.02  8.20 42.15 56.86
     ## 10 4.97 0.74 2.84  7.94 38.14 62.44
 
-##### Show summary statistics
+#### Show summary statistics
 
 ``` r
 skim(df)
 ```
 
 |                                                  |      |
-|:-------------------------------------------------|:-----|
+| :----------------------------------------------- | :--- |
 | Name                                             | df   |
 | Number of rows                                   | 57   |
 | Number of columns                                | 6    |
@@ -203,7 +203,7 @@ Data summary
 **Variable type: numeric**
 
 | skim\_variable | n\_missing | complete\_rate |  mean |    sd |    p0 |   p25 |   p50 |   p75 |  p100 | hist  |
-|:---------------|-----------:|---------------:|------:|------:|------:|------:|------:|------:|------:|:------|
+| :------------- | ---------: | -------------: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | :---- |
 | TODU           |          0 |              1 |  5.37 |  1.33 |  3.02 |  4.54 |  5.10 |  6.13 |  9.14 | ▃▇▅▃▁ |
 | ACO            |          0 |              1 |  0.81 |  0.18 |  0.50 |  0.67 |  0.79 |  0.92 |  1.32 | ▆▇▇▃▁ |
 | AHS            |          0 |              1 |  3.19 |  0.39 |  1.83 |  3.00 |  3.19 |  3.37 |  4.50 | ▁▂▇▂▁ |
@@ -211,7 +211,7 @@ Data summary
 | SRI            |          0 |              1 | 49.56 | 15.84 | 20.89 | 38.14 | 49.37 | 60.85 | 87.38 | ▅▆▇▅▂ |
 | UI             |          0 |              1 | 52.62 | 13.46 | 24.08 | 44.80 | 55.51 | 61.09 | 83.66 | ▃▅▇▅▁ |
 
-##### Check missing data
+#### Check missing data
 
 ``` r
 plot_missing(df)
@@ -219,91 +219,254 @@ plot_missing(df)
 
 ![](README_files/1-MLR/unnamed-chunk-11-1.png)<!-- -->
 
-# Create a separate bar plot for each variable, demonstrating the distributions of all continuous variables
+#### Create a separate bar plot for each variable, demonstrating the distributions of all continuous variables
 
-plot\_histogram(df)
+``` r
+plot_histogram(df)
+```
 
-# Plot boxplots of each independent variable with TODU
+![](README_files/1-MLR/unnamed-chunk-12-1.png)<!-- -->
 
-plot\_boxplot(df, by = “TODU”)
+#### Plot boxplots of each independent variable with TODU
 
-# Plot correlation heatmaps
+``` r
+plot_boxplot(df, by = "TODU")
+```
 
-res1 &lt;- cor.mtest(df, conf.level = .95)
+![](README_files/1-MLR/unnamed-chunk-13-1.png)<!-- -->
 
-corrplot(cor(df), p.mat = res1$p, method = “number”, type = “upper”,
-order=“hclust”, sig.level = 0.05)
+#### Plot correlation heatmaps
 
-## Note: try putting into method “color” or “circle”, and see the diference.
+``` r
+res1 <- cor.mtest(df, conf.level = .95)
 
-## Note: The pairwise correlations that are crossed are statistically insignificant.
+corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
+```
 
-## This means that pvalue &gt; 0.05, and you should not reject the null hypothesis.
+![](README_files/1-MLR/unnamed-chunk-14-1.png)<!-- -->
 
-## The null hypothesis is that correlation is zero.
+> **Note:** try putting into method “color” or “circle”, and see the
+> diference.
 
-# Therefore, take a look at this example and see for yourself:
+> **Note:** The pairwise correlations that are crossed are statistically
+> insignificant.This means that pvalue \> 0.05, and you should not
+> reject the null hypothesis. The null hypothesis is that correlation is
+> zero.
 
-cor.test(df*A**H**S*, *d**f*SI)
+Therefore, take a look at this example and see for yourself:
 
-# MULTIPLE LINEAR REGRESSION
+``` r
+cor.test(df$AHS, df$SI)
+```
 
-# Task: Estimate a linear regression model that predicts trips per occupied dwelling unit.
+    ## 
+    ##  Pearson's product-moment correlation
+    ## 
+    ## data:  df$AHS and df$SI
+    ## t = 0.63199, df = 55, p-value = 0.53
+    ## alternative hypothesis: true correlation is not equal to 0
+    ## 95 percent confidence interval:
+    ##  -0.1796317  0.3379997
+    ## sample estimates:
+    ##        cor 
+    ## 0.08491026
 
-# y(TODU) = bo + b1*ACO + b2*AHS + b3*SI + b4*SRI +b5\*UI + Error
+### MULTIPLE LINEAR REGRESSION
 
-## Before running the model, you need to check if the requirements are met.
+> y(`TODU`) = bo + b1*`ACO` + b2*`AHS` + b3*`SI` + b4*`SRI` +b5\*`UI` +
+> Error
 
-## For instance, let’s take a look if the independent variables have linear relation with the dependent variables.
+#### Before running the model, you need to check if the requirements are met. For instance, let’s take a look if the independent variables have linear relation with the dependent variables.
 
-plot(x = df*T**O**D**U*, *y* = *d**f*ACO, xlab = “TODU”, ylab = “ACO”)
-plot(x = df*T**O**D**U*, *y* = *d**f*AHS, xlab = “TODU”, ylab = “AHS”)
-plot(x = df*T**O**D**U*, *y* = *d**f*SI, xlab = “TODU”, ylab = “SI”)
-plot(x = df*T**O**D**U*, *y* = *d**f*SRI, xlab = “TODU”, ylab = “SRI”)
-plot(x = df*T**O**D**U*, *y* = *d**f*UI, xlab = “TODU”, ylab = “UI”)
+``` r
+plot(x = df$TODU, y = df$ACO, xlab = "TODU", ylab = "ACO")  
+```
 
-# Or you could execute a pairwise scatterplot matrix, that compares every variable with each other:
+![](README_files/1-MLR/unnamed-chunk-16-1.png)<!-- -->
 
-pairs(df\[,1:6\], pch = 19, lower.panel = NULL)
+``` r
+plot(x = df$TODU, y = df$AHS, xlab = "TODU", ylab = "AHS")  
+```
 
-# Check if the Dependent variable is normally distributed
+![](README_files/1-MLR/unnamed-chunk-16-2.png)<!-- -->
 
-## If sample is smaller than 2000 observations, use Shapiro-Wilk test:
+``` r
+plot(x = df$TODU, y = df$SI, xlab = "TODU", ylab = "SI")  
+```
 
+![](README_files/1-MLR/unnamed-chunk-16-3.png)<!-- -->
+
+``` r
+plot(x = df$TODU, y = df$SRI, xlab = "TODU", ylab = "SRI")  
+```
+
+![](README_files/1-MLR/unnamed-chunk-16-4.png)<!-- -->
+
+``` r
+plot(x = df$TODU, y = df$UI, xlab = "TODU", ylab = "UI")
+```
+
+![](README_files/1-MLR/unnamed-chunk-16-5.png)<!-- -->
+
+Or you could execute a pairwise scatterplot matrix, that compares every
+variable with each other:
+
+``` r
+pairs(df[,1:6], pch = 19, lower.panel = NULL)
+```
+
+![](README_files/1-MLR/unnamed-chunk-17-1.png)<!-- -->
+
+#### Check if the Dependent variable is normally distributed
+
+If the sample is smaller than 2000 observations, use Shapiro-Wilk test:
+
+``` r
 shapiro.test(df$TODU)
+```
 
-# If not, use the Kolmogorov-Smirnov test
+    ## 
+    ##  Shapiro-Wilk normality test
+    ## 
+    ## data:  df$TODU
+    ## W = 0.96816, p-value = 0.1377
 
+If not, use the Kolmogorov-Smirnov test
+
+``` r
 ks.test(df$TODU, "pnorm", mean=mean(df$TODU), sd = sd(df$TODU))
+```
 
-# Note the warning that appears in the Kolmogorov-Smirnov test:
+    ## Warning in ks.test(df$TODU, "pnorm", mean = mean(df$TODU), sd = sd(df$TODU)):
+    ## ties should not be present for the Kolmogorov-Smirnov test
 
-# “ties should not be present for the Kolmogorov-Smirnov test”.
+    ## 
+    ##  One-sample Kolmogorov-Smirnov test
+    ## 
+    ## data:  df$TODU
+    ## D = 0.12231, p-value = 0.3612
+    ## alternative hypothesis: two-sided
 
-# Most likely what happened is that this test only works with continuous variables.
+> **Note:** the warning that appears in the Kolmogorov-Smirnov test:
+> “ties should not be present for the Kolmogorov-Smirnov test”. Most
+> likely what happened is that this test only works with continuous
+> variables. Although ´TODU´ is a countinuous variable, the small sample
+> size, makes it likely to have repeated values. Consequently, the test
+> considers TODU as categorical variable. Therefore, this is another
+> evidence, that for small samples it is more appropriate to use the
+> Shapiro Test.
 
-# Although TODU is a countinuous variable, the small sample size, makes it likely to have repeated values.
+#### Finally, let’s run the multiple linear regression model\!
 
-# Consequently, the test considers TODU as categorical variable. Therefore, this is another evidence,
+``` r
+model <- lm(TODU ~ ACO + AHS + SI + SRI + UI, data = df)
+summary(model)
+```
 
-# that for small samples it is more appropriate to use the Shapiro Test.
+    ## 
+    ## Call:
+    ## lm(formula = TODU ~ ACO + AHS + SI + SRI + UI, data = df)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -1.4771 -0.3842 -0.0262  0.4116  2.0806 
+    ## 
+    ## Coefficients:
+    ##              Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)  2.817367   2.208380   1.276 0.207820    
+    ## ACO          3.646707   0.956500   3.813 0.000372 ***
+    ## AHS          0.323673   0.412119   0.785 0.435860    
+    ## SI           0.005325   0.009279   0.574 0.568550    
+    ## SRI          0.008135   0.008804   0.924 0.359783    
+    ## UI          -0.036264   0.013330  -2.720 0.008894 ** 
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.7554 on 51 degrees of freedom
+    ## Multiple R-squared:  0.7042, Adjusted R-squared:  0.6752 
+    ## F-statistic: 24.28 on 5 and 51 DF,  p-value: 2.04e-12
 
-# Finally, let’s run the multiple linear regression model!
+``` r
+plot(model)
+```
 
-model &lt;- lm(TODU \~ ACO + AHS + SI + SRI + UI, data = df)
-summary(model) plot(model)
+![](README_files/1-MLR/unnamed-chunk-20-1.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-20-2.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-20-3.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-20-4.png)<!-- -->
 
-# Execute the Durbin Watson test to evaluate autocorrelation of the residuals
+#### Execute the Durbin Watson test to evaluate autocorrelation of the residuals
 
+``` r
 durbinWatsonTest(model)
+```
 
-# To calculate the VIF and TOL to test multicollinearity
+    ##  lag Autocorrelation D-W Statistic p-value
+    ##    1       0.1416308      1.597747   0.078
+    ##  Alternative hypothesis: rho != 0
 
-ols\_vif\_tol(model)
+#### To calculate the VIF and TOL to test multicollinearity
 
-To calculate the Condition Index to test multicollinearity
-ols\_eigen\_cindex(model)
+``` r
+ols_vif_tol(model)
+```
 
-To test both simultaneously ols\_coll\_diag(model)
+    ##   Variables Tolerance      VIF
+    ## 1       ACO 0.3528890 2.833752
+    ## 2       AHS 0.3963709 2.522889
+    ## 3        SI 0.7968916 1.254876
+    ## 4       SRI 0.5236950 1.909508
+    ## 5        UI 0.3165801 3.158758
+
+#### To calculate the Condition Index to test multicollinearity
+
+``` r
+ols_eigen_cindex(model)
+```
+
+    ##    Eigenvalue Condition Index    intercept          ACO          AHS
+    ## 1 5.386537577        1.000000 6.994331e-05 0.0005136938 0.0001916512
+    ## 2 0.444466338        3.481252 6.484243e-05 0.0026682253 0.0001278701
+    ## 3 0.084386209        7.989491 5.829055e-05 0.0478676279 0.0091615336
+    ## 4 0.073784878        8.544195 1.355679e-03 0.0031699136 0.0100934045
+    ## 5 0.009322827       24.037043 5.414145e-03 0.7943557055 0.2105218176
+    ## 6 0.001502171       59.881840 9.930371e-01 0.1514248340 0.7699037229
+    ##            SI         SRI           UI
+    ## 1 0.007888051 0.001515333 6.216297e-04
+    ## 2 0.693175876 0.006641788 7.488285e-07
+    ## 3 0.051400736 0.055585833 1.128114e-01
+    ## 4 0.152292605 0.382488929 4.801705e-02
+    ## 5 0.090809203 0.374832118 1.851308e-01
+    ## 6 0.004433528 0.178935999 6.534183e-01
+
+#### To test both simultaneously
+
+``` r
+ols_coll_diag(model)
+```
+
+    ## Tolerance and Variance Inflation Factor
+    ## ---------------------------------------
+    ##   Variables Tolerance      VIF
+    ## 1       ACO 0.3528890 2.833752
+    ## 2       AHS 0.3963709 2.522889
+    ## 3        SI 0.7968916 1.254876
+    ## 4       SRI 0.5236950 1.909508
+    ## 5        UI 0.3165801 3.158758
+    ## 
+    ## 
+    ## Eigenvalue and Condition Index
+    ## ------------------------------
+    ##    Eigenvalue Condition Index    intercept          ACO          AHS
+    ## 1 5.386537577        1.000000 6.994331e-05 0.0005136938 0.0001916512
+    ## 2 0.444466338        3.481252 6.484243e-05 0.0026682253 0.0001278701
+    ## 3 0.084386209        7.989491 5.829055e-05 0.0478676279 0.0091615336
+    ## 4 0.073784878        8.544195 1.355679e-03 0.0031699136 0.0100934045
+    ## 5 0.009322827       24.037043 5.414145e-03 0.7943557055 0.2105218176
+    ## 6 0.001502171       59.881840 9.930371e-01 0.1514248340 0.7699037229
+    ##            SI         SRI           UI
+    ## 1 0.007888051 0.001515333 6.216297e-04
+    ## 2 0.693175876 0.006641788 7.488285e-07
+    ## 3 0.051400736 0.055585833 1.128114e-01
+    ## 4 0.152292605 0.382488929 4.801705e-02
+    ## 5 0.090809203 0.374832118 1.851308e-01
+    ## 6 0.004433528 0.178935999 6.534183e-01
 
 <!-- knitr::purl("MultipleLinearRegression.Rmd", "Code/MultipleLinearRegression.R") -->

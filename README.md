@@ -13,8 +13,10 @@ This material was prepared by [Gabriel
 Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/) in
 collaboration with [Rosa
 Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/), [Miguel
-Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/) and [Carlos
-Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
+Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), [Carlos
+Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/), and
+[Prof. Filipe
+Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 
 ## Summary
 

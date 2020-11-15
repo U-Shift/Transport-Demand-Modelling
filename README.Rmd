@@ -38,5 +38,5 @@ This material was prepared by [Gabriel Valença](https://ushift.tecnico.ulisboa.
 ## R and Python stuff
 * [How to install R and RStudio](0-InstallR.md) (**Rosa Félix**)
 * Check [some tips](RMarkdownReports.md) how to make your home assignments as static or dynamic outputs with *R Markdown*. (**Rosa Félix**)
-* How to install Pandas Biogeme, Python (**Gabriel Valença**)
+* How to install Python and Pandas Biogeme (**Gabriel Valença**)
 

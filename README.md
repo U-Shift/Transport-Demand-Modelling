@@ -16,8 +16,8 @@ This material was prepared by [Gabriel
 Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/) in
 collaboration with [Rosa
 Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/), [Miguel
-Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), [Carlos
-Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
+Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), and
+[Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
 
 ## Summary
 
@@ -58,4 +58,4 @@ Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
   - Check [some tips](RMarkdownReports.md) how to make your home
     assignments as static or dynamic outputs with *R Markdown*. (**Rosa
     Félix**)
-  - How to install Pandas Biogeme, Python (**Gabriel Valença**)
+  - How to install Python and Pandas Biogeme (**Gabriel Valença**)

@@ -443,8 +443,8 @@ plot(model)
     spread equally (homoscedasticity) or not (heteroscedasticity)
     through the sample.
 
-  - **Residuals vs Leverage:** Is used to detect if the impact of the
-    outliers in the model. If the outliers are outside the
+  - **Residuals vs Leverage:** This plot is used to detect the impact of
+    the outliers in the model. If the outliers are outside the
     Cook-distance, this may lead to serious problems in the model.
 
 Try analyzing the plots and check if the model meets the assumptions.
@@ -456,7 +456,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747    0.08
+    ##    1       0.1416308      1.597747   0.068
     ##  Alternative hypothesis: rho != 0
 
 > **Note:** In the Durbin-Watson test, values of the D-W Statistic vary

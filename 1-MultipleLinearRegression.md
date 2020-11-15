@@ -437,7 +437,7 @@ plot(model)
     heteroscedasticity, and outliers.
 
   - **Normal Q-Q:** The quantile-quantile (Q-Q) plot is used to check if
-    the dependent variable follow a normal distribution.
+    the dependent variable follows a normal distribution.
 
   - **Scale-Location:** This plot is used to verify if the residuals are
     spread equally (homoscedasticity) or not (heteroscedasticity)
@@ -456,7 +456,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747   0.088
+    ##    1       0.1416308      1.597747    0.08
     ##  Alternative hypothesis: rho != 0
 
 > **Note:** In the Durbin-Watson test, values of the D-W Statistic vary

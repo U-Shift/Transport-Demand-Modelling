@@ -206,7 +206,7 @@ If not, use the Kolmogorov-Smirnov test
 ks.test(df$TODU, "pnorm", mean=mean(df$TODU), sd = sd(df$TODU))
 ```
 
-> **Note:** the warning that appears in the Kolmogorov-Smirnov test:
+> **Note:** The warning that appears in the Kolmogorov-Smirnov test:
 "ties should not be present for the Kolmogorov-Smirnov test".
 Most likely what happened is that this test is only reliable with continuous variables. Although TODU is a continuous variable, the small sample size, makes it likely to have repeated values. Consequently, the test considers TODU as a categorical variable. Therefore, this is another evidence, that for small samples it is more appropriate to use the Shapiro-Wilk Test.
 

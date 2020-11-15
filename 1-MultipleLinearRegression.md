@@ -360,7 +360,7 @@ ks.test(df$TODU, "pnorm", mean=mean(df$TODU), sd = sd(df$TODU))
     ## D = 0.12231, p-value = 0.3612
     ## alternative hypothesis: two-sided
 
-> **Note:** the warning that appears in the Kolmogorov-Smirnov test:
+> **Note:** The warning that appears in the Kolmogorov-Smirnov test:
 > “ties should not be present for the Kolmogorov-Smirnov test”. Most
 > likely what happened is that this test is only reliable with
 > continuous variables. Although TODU is a continuous variable, the
@@ -456,7 +456,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747   0.092
+    ##    1       0.1416308      1.597747   0.088
     ##  Alternative hypothesis: rho != 0
 
 > **Note:** In the Durbin-Watson test, values of the D-W Statistic vary

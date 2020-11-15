@@ -16,13 +16,72 @@ knitr::opts_chunk$set(echo = TRUE,
 ## Spatial Regression Models
 
 ### Moran's I spatial autocorrelation   
+#### For polygon geometry
 
+##### Import data
+```{r message=FALSE, warning=FALSE}
+library(sf)
+WIfinal = st_read("Data/Spatial/wi_final_census2_random4.shp") #it is a spatial feature dataset
+knitr::kable(head(WIfinal))
+```
+
+
+Let's look at the distribution of *Hispanic people* with a map, using a quantile classification.
+```{r warning=FALSE}
+library(tmap) #tmap package
+tm_shape(WIfinal) + 
+  tm_polygons(style = "quantile", col = "HISP_") +
+  tm_legend(outside = TRUE, text.size = .8) 
+```
+
+##### Neighbors
+The first step requires that we define “neighboring” polygons. This could refer to contiguous polygons, polygons within a certain distance band, or it could be non-spatial in nature and defined by social, political or cultural “neighbors”.
+
+Here, we’ll adopt a contiguous neighbor definition where we’ll accept any contiguous polygon that shares at least on vertex (this is the “queen” case and is defined by setting the parameter `queen=TRUE`). If we required that at least one edge be shared between polygons then we would set `queen=FALSE`.
+```{r}
+library(spdep)
+neighbors <- poly2nb(WIfinal, queen=TRUE)
+```
+
+
+##### Weights
+Next, we need to assign weights to each neighboring polygon. In this case, each neighboring polygon will be assigned equal weight (`style="W"`). Style can take values “**W**”, “**B**”, “**C**”, “**U**”, “**minmax**” and “**S**”.  
+See more details: use `?nb2listw`.
+```{r}
+weights = nb2listw(neighbors, style="W", zero.policy=TRUE)
+```
+
+##### Result
+To get the Moran’s I value, simply use the `moran.test` function.
+```{r}
+moran.test(WIfinal$HISP_, weights)
+```
+
+Note that the p-value computed from the `moran.test` function is not computed from an Monte Carlo simulation but analytically instead. This may not always prove to be the most accurate measure of significance.  
+To test for significance using the Monte Carlo simulation method instead, use the `moran.mc` function.
+```{r}
+#for a Monte Carlo simulation with 600 rounds
+moran.mc(WIfinal$HISP_, weights, nsim=599)
+```
+
+Plot the distribution (note that this is a density plot instead of a histogram).
+```{r}
+plot(moran.mc(WIfinal$HISP_, weights, nsim=599), main="", las=1) #density plot
+```
+
+  
+**See more [here](https://mgimond.github.io/Spatial/spatial-autocorrelation-in-r.html)**
+
+  
+
+#### For points
 Install and load ape package
 ```{r message=FALSE, warning=FALSE}
 # install.packages("ape")
 library(ape)
 ```
 
+##### Prepare data
 It does not deal with ordered factors, zeros, or infinite distances.  
 So we need to clean data first.
 ```{r eval=F}

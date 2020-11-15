@@ -119,7 +119,6 @@ head(dataset, 10)
 #### Check the type and class of the dataset
 
 ``` r
-#este apenas mostra o codigo, o seguinte apenas mostra os outputs
 typeof(dataset)
 class(dataset)
 ```
@@ -128,7 +127,7 @@ class(dataset)
 
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
-#### Transform dataset into dataframe
+#### Transform the dataset into a dataframe
 
 ``` r
 df <- data.frame(dataset)
@@ -219,7 +218,7 @@ plot_missing(df)
 
 ![](README_files/1-MLR/unnamed-chunk-11-1.png)<!-- -->
 
-#### Create a separate bar plot for each variable, demonstrating the distributions of all continuous variables
+#### Plot histograms of all the continuous variables
 
 ``` r
 plot_histogram(df)
@@ -235,6 +234,11 @@ plot_boxplot(df, by = "TODU")
 
 ![](README_files/1-MLR/unnamed-chunk-13-1.png)<!-- -->
 
+> **Note**: That if you increase the average car ownership (ACO) it will
+> tend to increase the number of trips per dwelling unit (TODU). This
+> makes sense. Try analyzing the other relations and check if it is
+> coherent.
+
 #### Plot correlation heatmaps
 
 ``` r
@@ -249,11 +253,12 @@ corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclu
 > diference.
 
 > **Note:** The pairwise correlations that are crossed are statistically
-> insignificant.This means that pvalue \> 0.05, and you should not
-> reject the null hypothesis. The null hypothesis is that correlation is
-> zero.
+> insignificant.The null hypothesis is that correlation is zero.This
+> means that you should reject the null hypothesis only when pvalue \<
+> 0.05.
 
-Therefore, take a look at this example and see for yourself:
+Therefore, take a look at this example and check the pvalue of a crossed
+pair correlation:
 
 ``` r
 cor.test(df$AHS, df$SI)
@@ -271,12 +276,15 @@ cor.test(df$AHS, df$SI)
     ##        cor 
     ## 0.08491026
 
+> **Note:** Correlation heatmaps only consider pairwise correlations and
+> does not demonstrate multicollinearity.
+
 ### MULTIPLE LINEAR REGRESSION
 
 > y(`TODU`) = bo + b1*`ACO` + b2*`AHS` + b3*`SI` + b4*`SRI` +b5\*`UI` +
 > Error
 
-#### Before running the model, you need to check if the requirements are met. For instance, let’s take a look if the independent variables have linear relation with the dependent variables.
+#### Before running the model, you need to check if the assumptions are met. For instance, let’s take a look if the independent variables have linear relation with the dependent variable.
 
 ``` r
 plot(x = df$TODU, y = df$ACO, xlab = "TODU", ylab = "ACO")  
@@ -317,6 +325,9 @@ pairs(df[,1:6], pch = 19, lower.panel = NULL)
 
 ![](README_files/1-MLR/unnamed-chunk-17-1.png)<!-- -->
 
+> **Note:** SRI and TODU do not have a linear relationship. This should
+> interfere on the model.
+
 #### Check if the Dependent variable is normally distributed
 
 If the sample is smaller than 2000 observations, use Shapiro-Wilk test:
@@ -356,6 +367,10 @@ ks.test(df$TODU, "pnorm", mean=mean(df$TODU), sd = sd(df$TODU))
 > evidence, that for small samples it is more appropriate to use the
 > Shapiro Test.
 
+> **Note:** The null hypothesis of both tests is that the distribution
+> is normal. Therefore, for the distribution to be normal, the pvalue \>
+> 0.05 and you should not reject the null hypothesis.
+
 #### Finally, let’s run the multiple linear regression model\!
 
 ``` r
@@ -386,11 +401,35 @@ summary(model)
     ## Multiple R-squared:  0.7042, Adjusted R-squared:  0.6752 
     ## F-statistic: 24.28 on 5 and 51 DF,  p-value: 2.04e-12
 
+> **Note**: First check the pvalue and the F statistics of the model to
+> see if there is any statistical relation between the Dependent
+> Variable and the Independent Variables. If pvalue \< 0.05 and the F
+> statistics \> Fcritical = 2,39, then the model is statistically
+> acceptable.
+
+> **Note**: The Rsquare and Adjusted Rsquare evaluate the amount of
+> variance that is explained by the model. The diference between one and
+> another is that the Rsquare does not consider the number of variables.
+> If you increase the number of variables in the model, the Rsquare will
+> tend to increase which can lead to overfitting. On the other hand, the
+> Adjusted Rsquare adjust to the number of independent variables.
+
+> **Note**: Take a look a the tvalue and the Pr(\>|t|). If the tvalue \>
+> 1,96 or Pr(\>|t|) \< 0,05, then the IV is statistically significant to
+> the model.
+
+> **Note**: To analyze the estimates of the variables, you should first
+> check the signal and evaluate if the independent variable has a direct
+> or inverse relationship with the dependent variable. It is only
+> possible to evaluate the magnitude of the estimate if all variables
+> are continuous and standarzized or by calculating the elasticities.
+> The elasticities are explained and demonstrated in chapter 4.
+
 ``` r
 plot(model)
 ```
 
-![](README_files/1-MLR/unnamed-chunk-20-1.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-20-2.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-20-3.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-20-4.png)<!-- -->
+![](README_files/1-MLR/unnamed-chunk-21-1.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-2.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-3.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-4.png)<!-- -->
 
 #### Execute the Durbin Watson test to evaluate autocorrelation of the residuals
 
@@ -399,7 +438,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747   0.078
+    ##    1       0.1416308      1.597747   0.072
     ##  Alternative hypothesis: rho != 0
 
 #### To calculate the VIF and TOL to test multicollinearity

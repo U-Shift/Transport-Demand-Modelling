@@ -38,7 +38,7 @@ tm_shape(WIfinal) +
 The first step requires that we define “neighboring” polygons. This could refer to contiguous polygons, polygons within a certain distance band, or it could be non-spatial in nature and defined by social, political or cultural “neighbors”.
 
 Here, we’ll adopt a contiguous neighbor definition where we’ll accept any contiguous polygon that shares at least on vertex (this is the “queen” case and is defined by setting the parameter `queen=TRUE`). If we required that at least one edge be shared between polygons then we would set `queen=FALSE`.
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(spdep)
 neighbors <- poly2nb(WIfinal, queen=TRUE)
 ```

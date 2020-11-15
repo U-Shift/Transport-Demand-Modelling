@@ -63,17 +63,6 @@ would set `queen=FALSE`.
 
 ``` r
 library(spdep)
-```
-
-    ## Loading required package: sp
-
-    ## Loading required package: spData
-
-    ## To access larger datasets in this package, install the spDataLarge
-    ## package with: `install.packages('spDataLarge',
-    ## repos='https://nowosad.github.io/drat/', type='source')`
-
-``` r
 neighbors <- poly2nb(WIfinal, queen=TRUE)
 ```
 

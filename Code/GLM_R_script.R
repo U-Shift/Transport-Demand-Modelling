@@ -187,6 +187,9 @@ Anova(model1, type = "III", test = "Wald")
 # Calculate the Type III test.  
  nagelkerke(model3)
 
+# Calculate elasticities 
+ 
+ 
 # Compare models:
  
 ## Calculate the Akaike’s Information Criteria (AIC) and the Bayesian Information Criteria (BIC) 

@@ -39,7 +39,7 @@ Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), and
       - Multinomial
       - Nested
 
-7.  [Ordered Models](7-OrderedModels.md) (Miguel ou Gabriel?)
+7.  Ordered Models (**Miguel Costa**)
 
 8.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
     Roque**)

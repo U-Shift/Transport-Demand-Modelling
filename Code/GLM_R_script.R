@@ -1,7 +1,7 @@
 # INSTITUTO SUPERIOR TECNICO, UNIVERSITY OF LISBON
 # TRANSPORT DEMAND MODELLING COURSE, PROF. FILIPE MOURA
 
-# GENERALISED LINEAR MODELS
+# GENERALIZED LINEAR MODELS
 
 # Example: Analyze the number o accidents
 # Accident data from California (1993 to 1998) and Michigan (1993 to 1997) 
@@ -92,12 +92,15 @@ plot(density(df$ACCIDENT), main="Density estimate of ACCIDENTS")
 # Poisson assumption: 
   # But first, take a look at the mean and the variance of the Dependent variable. 
   # Check if they are equal to each other. 
+
 mean(df$ACCIDENT)
+var(df$ACCIDENT)
 
 #Coefficient of variance:
 
 var(df$ACCIDENT)/mean(df$ACCIDENT)
 
+# Note: If the coefficient of variance > 1, then you have overdispersion.
 
 # Try estimating goodness of fit parameter for the PDF of ACCIDENT. Use the Maximum Likelihood method.
 gf<-goodfit(df$ACCIDENT,type= "poisson",method= "ML")
@@ -106,8 +109,11 @@ summary(gf)
 
 # Now let us run the many possible models
  
- model1 = glm(ACCIDENT ~ as.factor(STATE) + AADT1 + AADT2 + MEDIAN + DRIVE, family = poisson(link = "log"), data = df, method = "glm.fit")
- 
+ model1 = glm(ACCIDENT ~ as.factor(STATE) + AADT1 + AADT2 + MEDIAN + DRIVE, family = poisson(link = "log"), data = df, method = "glm.fit", offset = log(n))
+
+  ## Note: The method "glm.fit" uses iteratively reweighted least squares to fit the model. 
+  ## Try looking for other methods and see the difference. 
+  
 # There are many families and links that can be used, depending on the characteristics of your data.
  
 # Family                Link

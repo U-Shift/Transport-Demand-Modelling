@@ -35,10 +35,10 @@ Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), and
 5.  [Panel and spatial regression models](5-PanelSpatialModels.md)
     (**Rosa Félix**)
 
-6.  [Discrete Choice Models](6-Discrete Choice Models) (**Miguel Costa**)
-      6.1. [Multinomial Logit and Probit Models](6-Discrete Choice Models/6.1-Multinomial Logit and Probit Models)
-      6.2. [Nested Logit Models](6-Discrete Choice Models/6.2-Nested Logit Models)
-      6.3. [Ordered Logit Models](6-Discrete Choice Models/6.3-Ordered Logit Models)
+6.  [Discrete Choice Models](6-DiscreteChoiceModels) (**Miguel Costa**)
+      6.1. [Multinomial Logit and Probit Models](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels)
+      6.2. [Nested Logit Models](6-DiscreteChoiceModels/6.2-NestedLogitModels)
+      6.3. [Ordered Logit Models](6-DiscreteChoiceModels/6.3-OrderedLogitModels)
 
 7.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
     Roque**)

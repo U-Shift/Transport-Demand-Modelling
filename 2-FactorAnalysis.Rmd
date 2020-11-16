@@ -88,85 +88,130 @@ data <- read.spss("Data/example_fact.sav")
 str(data)
 ```
 
+#### Transform dataset into dataframe
 
-# Transform dataset into dataframe
-
+```{r}
 df <- data.frame(data)
+```
 
-#Check summary statistics of variables
+#### Check summary statistics of variables
 
+```{r}
 descriptive_stats <- dfSummary(df, style='grid', plain.ascii = FALSE, graph.col = TRUE)
 
 view(descriptive_stats)
 
 summary(df)
+```
 
-## Note: I used other functions for summary statistics in last exercise.
+> **Note:** I used other functions for summary statistics in last exercise.
 
-#Take a look at the dataset
+####Take a look at the dataset
+
+```{r}
 head(df,10)
 summary(df)
+```
 
-# Make ID as row names or case number
+#### Make ID as row names or case number
+
+```{r}
 df<-data.frame(df, row.names = 1)
+```
 
-# Evaluating the assumptions for factoral analysis: 
+#### Evaluating the assumptions for factoral analysis: 
 
-# Let's run a random regression model in order to evaluate some assumptions
+#### Let's run a random regression model in order to evaluate some assumptions
 
+```{r}
 random = rchisq(nrow(df), 32)
 fake = lm(random ~ ., data = df)
 standardized = rstudent(fake)
 fitted = scale(fake$fitted.values)
+```
 
-## Normality
+* **Normality**
+
+```{r}
 hist(standardized)
+```
 
-## Linearity 
+* **Linearity**
+
+```{r}
 qqnorm(standardized)
 abline(0,1)
+```
 
-## Homogeneity 
+* **Homogeneity** 
+
+```{r}
 plot(fitted, standardized)
 abline(0,0)
 abline(v=0)
+```
 
-# Examine correlations
+#### Examine correlations
+```{r}
 corr_matrix <- cor(df, method = "pearson")
 corr_matrix
+```
 
-# Check for correlation adequacy (pattern between variables) - Bartlett's Test
+
+#### Check for correlation adequacy (pattern between variables) - Bartlett's Test
+
+```{r}
 cortest.bartlett(corr_matrix, n = nrow(df))
+```
 
-# Check for sampling adequacy - KMO test
+#### Check for sampling adequacy - KMO test
+
+```{r}
 KMO(corr_matrix)
+```
 
-#Note: We want at least 0.7 of the overall Mean Sample Adequacy (MSA)
+> **Note:** We want at least 0.7 of the overall Mean Sample Adequacy (MSA)
 
-# Determine the number of factors to extract
+#### Determine the number of factors to extract
 
-  ## 1. Paralel Analysis
+**1._Parallel Analysis_**
+
+```{r}
 num_factors = fa.parallel(df, fm = "ml", fa = "fa")
+```
 
-    ## fm = factor math; ml = maximum likelihood; fa = factor analysis
+> **Note:** fm = factor math; ml = maximum likelihood; fa = factor analysis
 
-  ## 2. Kaiser Criterion - How many factors with eigenvalue > 1
+**2. _Kaiser Criterion_** 
+
+```{r}
 sum(num_factors$fa.values > 1)
+```
 
-  ## 3. Principal Component Analysis (PCA)
+> **Note:** Determines the number of factors with eigenvalue > 1
 
-    df_pca <- princomp(df, cor=TRUE)
+**3. _Principal Component Analysis_ (PCA)**
+
+```{r}
+df_pca <- princomp(df, cor=TRUE)
+```
     
-    ### Note: cor = TRUE, standardizes your dataset
-    ### print variance that explains the components
-    summary(df_pca) 
-    ### Principal components loadings
-    loadings(df_pca) 
-    ### Scree Plot
-    plot(df_pca,type="lines") 
-    fit$scores # the principal components
-    biplot(df_pca)
-    
+> **Note:** cor = TRUE, standardizes your dataset
+
+  # print variance that explains the components
+```{r}
+summary(df_pca)  
+loadings(df_pca) 
+```
+
+Scree Plot
+
+
+plot(df_pca,type="lines") 
+fit$scores 
+#biplot(df_pca)
+
+
 
 # EXPLORATORY FACTOR ANALYSIS
 

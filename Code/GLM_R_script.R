@@ -33,6 +33,8 @@ library(car)
 library(rcompanion)
 # Library used for the Vuong test
 library(pscl)
+# Library used for the Lagrange Multiplier test
+library(plm)
 
 # Set working directory
 
@@ -109,7 +111,7 @@ summary(gf)
 
 # Now let us run the many possible models
  
- model1 = glm(ACCIDENT ~ as.factor(STATE) + AADT1 + AADT2 + MEDIAN + DRIVE, family = poisson(link = "log"), data = df, method = "glm.fit", offset = log(n))
+ model1 = glm(ACCIDENT ~ as.factor(STATE) + MEDIAN + DRIVE + offset(log(AADT1/AADT2)), family = poisson(link = "log"), data = df, method = "glm.fit")
 
   ## Note: The method "glm.fit" uses iteratively reweighted least squares to fit the model. 
   ## Try looking for other methods and see the difference. 
@@ -124,7 +126,12 @@ summary(gf)
 # inverse.gaussian      1/mu^2
 
  summary(model1)
+
+# Lagrande Multiplier Test
  
+ plmtest(model1, effect = "twoways", type = "honda")
+
+
 # Note: If we obtain: 
  ## residuals > degrees of freedom (overdispersion); 
  ## residuals < degrees of freedom (underdispersion);
@@ -139,6 +146,10 @@ with(model1, cbind(res.deviance = deviance, df = df.residual, p= pchisq(deviance
 nagelkerke(model1)
 
 #Note: Ho: The model fits the data. Therefore, we want to not reject the null hypothesis (pvalue > 0.05).
+
+
+
+
 
 # Let us correct the standard errors with an overdispersed poisson 
  

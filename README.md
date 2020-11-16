@@ -24,7 +24,8 @@ Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), and
 1.  [Multiple Linear Regression models](1-MultipleLinearRegression.md)
     (**Gabriel Valença**)
 
-2.  [Factor Analysis](2-FactorAnalysis.md) (**Gabriel Valença**)
+2.  [Exploratory Factor Analysis](2-FactorAnalysis.md) (**Gabriel
+    Valença**)
 
 3.  [Cluster Analysis](3-ClusterAnalysis.md) (**Gabriel Valença**)
 

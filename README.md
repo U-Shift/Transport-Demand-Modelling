@@ -7,7 +7,7 @@ course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/
 lectured by [Prof. Filipe
 Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/). This
 material is also an open source tutorial for applying R programming
-(chapters 1,2,3,4,5, and 8) and Python Biogeme (chapters 6 and 7) in
+(chapters 1,2,3,4,5, and 7) and Python Biogeme (chapter 6) in
 transport demand modelling.
 
 ![](README_files/ISTlogo.png)
@@ -35,14 +35,12 @@ Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), and
 5.  [Panel and spatial regression models](5-PanelSpatialModels.md)
     (**Rosa Félix**)
 
-6.  Discrete Choice Models (**Miguel Costa**)
-    
-      - Multinomial
-      - Nested
+6.  [Discrete Choice Models](6-Discrete Choice Models) (**Miguel Costa**)
+      6.1. [Multinomial Logit and Probit Models](6-Discrete Choice Models/6.1-Multinomial Logit and Probit Models)
+      6.2. [Nested Logit Models](6-Discrete Choice Models/6.2-Nested Logit Models)
+      6.3. [Ordered Logit Models](6-Discrete Choice Models/6.3-Ordered Logit Models)
 
-7.  Ordered Models (**Miguel Costa**)
-
-8.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
+7.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
     Roque**)
 
 ### Files

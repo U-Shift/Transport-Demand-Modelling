@@ -34,3 +34,9 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+
+
+6-Discrete Choice Models/*/.ipynb_checkpoints
+6-Discrete Choice Models/*/*.html
+6-Discrete Choice Models/*/*.pickle
+6-Discrete Choice Models/*/*.log

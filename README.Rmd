@@ -22,7 +22,7 @@ This material was prepared by [Gabriel Valença](https://ushift.tecnico.ulisboa.
   3. [Cluster Analysis](3-ClusterAnalysis.md) (**Gabriel Valença**)
   4. [Generalized linear models](4-GeneralizedLinearModels.md) (**Gabriel Valença**)
   5. [Panel and spatial regression models](5-PanelSpatialModels.md) (**Rosa Félix**)
-  6. Discrete Choice Models (**Miguel Costa**)
+  6. [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
   
      * Multinomial
      * Nested

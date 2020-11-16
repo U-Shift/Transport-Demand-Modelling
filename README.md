@@ -35,7 +35,7 @@ Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
 5.  [Panel and spatial regression models](5-PanelSpatialModels.md)
     (**Rosa Félix**)
 
-6.  Discrete Choice Models (**Miguel Costa**)
+6.  [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
     
       - Multinomial
       - Nested

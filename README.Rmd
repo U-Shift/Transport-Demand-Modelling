@@ -12,7 +12,7 @@ This material is also an open source tutorial for applying R programming (chapte
 
 ![](README_files/ISTlogo.png)
 
-This material was prepared by [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/) and [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/) in collaboration with [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), and [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/). 
+This material was prepared by [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/), [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/), [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), and [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/). 
 
 
 ## Summary
@@ -38,5 +38,5 @@ This material was prepared by [Gabriel Valença](https://ushift.tecnico.ulisboa.
 ## R and Python stuff
 * [How to install R and RStudio](0-InstallR.md) (**Rosa Félix**)
 * Check [some tips](RMarkdownReports.md) how to make your home assignments as static or dynamic outputs with *R Markdown*. (**Rosa Félix**)
-* How to install Python and Pandas Biogeme (**Gabriel Valença**)
+* How to install Python and Pandas Biogeme (**Miguel Costa**)
 

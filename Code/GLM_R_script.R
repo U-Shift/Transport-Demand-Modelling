@@ -102,16 +102,19 @@ var(df$ACCIDENT)
 
 var(df$ACCIDENT)/mean(df$ACCIDENT)
 
-# Note: If the coefficient of variance > 1, then you have overdispersion.
+  ## Note: If the coefficient of variance > 1, then you have overdispersion.
 
 # Try estimating goodness of fit parameter for the PDF of ACCIDENT. Use the Maximum Likelihood method.
-gf<-goodfit(df$ACCIDENT,type= "poisson",method= "ML")
+gf<-goodfit(df$ACCIDENT,type= "poisson", method= "ML")
 summary(gf)
 
+  ## Note: The null hypothesis is that it is a Poisson distribution. 
+  ## Therefore, for it to be a poisson distribution, the pvalue > 0.05.
 
 # Now let us run the many possible models
+# Begin with a Poisson model:
  
- model1 = glm(ACCIDENT ~ as.factor(STATE) + MEDIAN + DRIVE + offset(log(AADT1/AADT2)), family = poisson(link = "log"), data = df, method = "glm.fit")
+ model1 = glm(ACCIDENT ~ as.factor(STATE) + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)), family = poisson(link = "log"), data = df, method = "glm.fit")
 
   ## Note: The method "glm.fit" uses iteratively reweighted least squares to fit the model. 
   ## Try looking for other methods and see the difference. 
@@ -125,12 +128,7 @@ summary(gf)
 # gamma                 inverse, identity, log
 # inverse.gaussian      1/mu^2
 
- summary(model1)
-
-# Lagrande Multiplier Test
- 
- plmtest(model1, effect = "twoways", type = "honda")
-
+summary(model1)
 
 # Note: If we obtain: 
  ## residuals > degrees of freedom (overdispersion); 
@@ -139,46 +137,65 @@ summary(gf)
  
 # In overdispersion, the estimates are reliable but the standard errors tend to be smaller. 
  
-with(model1, cbind(res.deviance = deviance, df = df.residual, p= pchisq(deviance, df.residual, lower.tail = FALSE)))
-#botar o lagrange
-# Anova(model1, type = "II", test = "LR") 
 
+#botar o lagrange
+
+
+# Calculate the pseudo-Rsquare and perform an Omnibus test
 nagelkerke(model1)
+
+  ## Note: The likelihood ratio test (Omnibus test) compares the fitted model ("Model") with 
+  ## the only-intercept model ("Null"). This test verifies if the explained variance is higher
+  ## than the the unexplained variance.
 
 #Note: Ho: The model fits the data. Therefore, we want to not reject the null hypothesis (pvalue > 0.05).
 
+# Calculate the Type III test.
+Anova(model1, type = "III", test = "Wald")
 
-
+  ## Note: Type III tests examine the significance of each partial effect. 
+  ## Thus, it considers the significance of an effect with all the other effects in the model. The Chisq tests
+  ## the significance of the effect added to the model by having all of the other effects.
 
 
 # Let us correct the standard errors with an overdispersed poisson 
  
- model2 = glm(ACCIDENT ~ STATE + AADT1 + AADT2 + MEDIAN + DRIVE, family = quasipoisson(link = "log"), data = df)
+ model2 = glm(ACCIDENT ~ as.factor(STATE) + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)), family = quasipoisson(link = "log"), data = df, method = "glm.fit")
  
  summary(model2)
- 
- with(model2, cbind(res.deviance = deviance, df = df.residual, p= pchisq(deviance, df.residual, lower.tail = FALSE)))
- 
- Anova(model2, type = "II", test = "LR") 
+
+# Calculate the pseudo-Rsquare and perform an Omnibus test 
  
  nagelkerke(model2)
+
+# Calculate the Type III test. 
+ 
+ Anova(model2, type = "III", test = "Wald") 
  
  # Note: The estimates are the same, but the standard errors have increased because they are 
- # adjusted by the scale parameter  
+ # adjusted by the scale parameter
 
 # Let us try the negative binomial distribution
  
- model3 = glm(as.factor(ACCIDENT) ~ STATE + AADT1 + AADT2 + MEDIAN + DRIVE, family = binomial(link = logit), data = df)
+ model3 = glm.nb(ACCIDENT ~ as.factor(STATE) + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)), data = df)
  
- #pq tem que colocar como fator?
  summary(model3)
-  
- with(model3, cbind(res.deviance = deviance, df = df.residual, p= pchisq(deviance, df.residual, lower.tail = FALSE)))
 
- Anova(model3, type = "II", test = "LR") 
- 
+# Calculate the pseudo-Rsquare and perform an Omnibus test   
+ Anova(model3, type = "III", test = "Wald") 
+
+# Calculate the Type III test.  
  nagelkerke(model3)
 
+# Compare models:
+ 
+## Calculate the Akaike’s Information Criteria (AIC) and the Bayesian Information Criteria (BIC) 
+AIC(model1, model2, model3)
+BIC(model1, model2, model3) 
 
- 
- 
+  ## Note: AIC and BIC evaluates the quality of a finite set of models.
+  
+  ## Note: AIC and BIC consider the maximum likelihood and the number of parameters in assessing the quality of the models.
+  ## Nonetheless, the diference between both methods is that the BIC takes into account the number of observations of dataset. 
+  
+  ## Note: The smaller the values of AIC and BIC, the better the model 

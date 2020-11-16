@@ -24,8 +24,8 @@ This material was prepared by [Gabriel Valença](https://ushift.tecnico.ulisboa.
   5. [Panel and spatial regression models](5-PanelSpatialModels.md) (**Rosa Félix**)
   6. [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
   
-     * Multinomial
-     * Nested
+     * [Multinomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/) 
+     * [Nested](6-DiscreteChoiceModels/6.2-NestedLogitModels/)
     
   7. Ordered Models (**Miguel Costa**)
   8. [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos Roque**)

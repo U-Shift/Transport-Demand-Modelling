@@ -37,8 +37,8 @@ Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
 
 6.  [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
     
-      - Multinomial
-      - Nested
+      - [Multinomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/)
+      - [Nested](6-DiscreteChoiceModels/6.2-NestedLogitModels/)
 
 7.  Ordered Models (**Miguel Costa**)
 

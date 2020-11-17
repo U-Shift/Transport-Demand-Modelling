@@ -32,15 +32,16 @@ Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
 4.  [Generalized linear models](4-GeneralizedLinearModels.md) (**Gabriel
     Valença**)
 
-5.  [Panel and spatial regression models](5-PanelSpatialModels.md)
-    (**Rosa Félix**)
+5.  [Spatial regression models](5-PanelSpatialModels.md) (**Rosa
+    Félix**)
 
 6.  [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
     
       - [Multinomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/)
       - [Nested](6-DiscreteChoiceModels/6.2-NestedLogitModels/)
+      - Ordered Models(**Miguel Costa**)
 
-7.  Ordered Models (**Miguel Costa**)
+7.  Panel Data Models (**Gabriel Valença**)
 
 8.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
     Roque**)

@@ -97,20 +97,18 @@ df <- data.frame(data)
 #### Check summary statistics of variables
 
 ```{r}
-descriptive_stats <- dfSummary(df, style='grid', plain.ascii = FALSE, graph.col = TRUE)
+
+descriptive_stats <- dfSummary(df, style = "grid", method = 'browser', graph.magnif = 0.75, valid.col = FALSE, tmp.img.dir = "/tmp" )
 
 view(descriptive_stats)
-
-summary(df)
 ```
 
-> **Note:** I used other functions for summary statistics in last exercise.
+> **Note:** I used other functions for summary statistics than in the MLR chapter. R allows you to do the same or similar tasks with different packages. 
 
-####Take a look at the dataset
+#### Take a look at the dataset
 
 ```{r}
 head(df,10)
-summary(df)
 ```
 
 #### Make ID as row names or case number
@@ -121,7 +119,7 @@ df<-data.frame(df, row.names = 1)
 
 #### Evaluating the assumptions for factoral analysis: 
 
-#### Let's run a random regression model in order to evaluate some assumptions
+Let's run a random regression model in order to evaluate some assumptions
 
 ```{r}
 random = rchisq(nrow(df), 32)
@@ -151,18 +149,20 @@ abline(0,0)
 abline(v=0)
 ```
 
-#### Examine correlations
+#### Calculate the correlation matrix
 ```{r}
 corr_matrix <- cor(df, method = "pearson")
-corr_matrix
 ```
 
 
-#### Check for correlation adequacy (pattern between variables) - Bartlett's Test
+#### Check for correlation adequacy - Bartlett's Test.
 
 ```{r}
 cortest.bartlett(corr_matrix, n = nrow(df))
 ```
+
+> **Note:** The Bartlett test examines if there are equal variance (homogeneity) between variables. Thus, it evaluates if there is any pattern between variables.  
+> **Note:** The null hypothesis is that there is no difference in variance between variables. 
 
 #### Check for sampling adequacy - KMO test
 
@@ -170,7 +170,7 @@ cortest.bartlett(corr_matrix, n = nrow(df))
 KMO(corr_matrix)
 ```
 
-> **Note:** We want at least 0.7 of the overall Mean Sample Adequacy (MSA)
+> **Note:** We want at least 0.7 of the overall Mean Sample Adequacy (MSA). If, 0.6 < MSA < 0.7, it is not a good value, but acceptable in some cases.
 
 #### Determine the number of factors to extract
 

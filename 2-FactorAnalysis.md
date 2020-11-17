@@ -18,49 +18,49 @@ metropolitan area, TRB (No. 10-1161).**
 
 ### Variables:
 
--   `DWELCLAS`: Classification of the dwelling;
--   `INCOME`: Income of the household;
--   `CHILD13`: Number of children under 13 years old;
--   `H18`: Number of household members above 18 years old;
--   `HEMPLOY`: Number of household members employed;
--   `HSIZE`: Household size;
--   `IAGE`: Age of the respondent;
--   `ISEX`: Sex of the respondent;
--   `NCARS`: Number of cars in the household;
--   `AREA`: Area of the dwelling;
--   `BEDROOM`: Number of bedrooms in the dwelling;
--   `PARK`: Number of parking spaces in the dwelling;
--   `BEDSIZE`: BEDROOM/HSIZE;
--   `PARKSIZE`: PARK/NCARS;
--   `RAGE10`: 1 if Dwelling age &lt;= 10;
--   `TCBD`: Private car distance in time to CBD;
--   `DISTTC`: Euclidean distance to heavy public transport system stops;
--   `TWCBD`: Private car distance in time of workplace to CBD;
--   `TDWWK`: Private car distance in time of dwelling to work place;
--   `HEADH`: 1 if Head of the Household;
--   `POPDENS`: Population density per hectare;
--   `EQUINDEX`: Number of undergraduate students/Population over 20
+  - `DWELCLAS`: Classification of the dwelling;
+  - `INCOME`: Income of the household;
+  - `CHILD13`: Number of children under 13 years old;
+  - `H18`: Number of household members above 18 years old;
+  - `HEMPLOY`: Number of household members employed;
+  - `HSIZE`: Household size;
+  - `IAGE`: Age of the respondent;
+  - `ISEX`: Sex of the respondent;
+  - `NCARS`: Number of cars in the household;
+  - `AREA`: Area of the dwelling;
+  - `BEDROOM`: Number of bedrooms in the dwelling;
+  - `PARK`: Number of parking spaces in the dwelling;
+  - `BEDSIZE`: BEDROOM/HSIZE;
+  - `PARKSIZE`: PARK/NCARS;
+  - `RAGE10`: 1 if Dwelling age \<= 10;
+  - `TCBD`: Private car distance in time to CBD;
+  - `DISTTC`: Euclidean distance to heavy public transport system stops;
+  - `TWCBD`: Private car distance in time of workplace to CBD;
+  - `TDWWK`: Private car distance in time of dwelling to work place;
+  - `HEADH`: 1 if Head of the Household;
+  - `POPDENS`: Population density per hectare;
+  - `EQUINDEX`: Number of undergraduate students/Population over 20
     years old (500m)
 
 ### Rules of thumb:
 
--   At least 10 variables
--   n &lt; 50 (Unacceptable); n &gt; 200 (recommended)
--   It is recommended to use continuous variables. If your data contains
+  - At least 10 variables
+  - n \< 50 (Unacceptable); n \> 200 (recommended)
+  - It is recommended to use continuous variables. If your data contains
     categorical variables, you should transform them to dummy variables.
 
 ### Assumptions:
 
--   Normality;
--   linearity;
--   Homogeneity;
--   Homoscedasticity (some multicollinearity is desirable);
--   Correlations between variables &lt; 0.3 (not appropriate to use
-    Factor Analysis)
+  - Normality;
+  - linearity;
+  - Homogeneity;
+  - Homoscedasticity (some multicollinearity is desirable);
+  - Correlations between variables \< 0.3 (not appropriate to use Factor
+    Analysis)
 
 #### Import Libraries
 
-Let’s start!
+Let’s start\!
 
 ``` r
 library(foreign) # Library used to read SPSS files
@@ -71,6 +71,12 @@ library(psych) # Library used for factor analysis
 library(GPArotation) # Library used for factor analysis
 ```
 
+#### Set working directory
+
+``` r
+setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling/")
+```
+
 #### Import dataset
 
 ``` r
@@ -78,12 +84,6 @@ data <- read.spss("Data/example_fact.sav")
 ```
 
 #### Take a look at the main characteristics of the dataset
-
-``` r
-class(data) #type of data
-```
-
-    ## [1] "list"
 
 ``` r
 str(data)
@@ -168,659 +168,16 @@ df <- data.frame(data)
 #### Check summary statistics of variables
 
 ``` r
-descriptive_stats <- dfSummary(df)
-```
+descriptive_stats <- dfSummary(df, style='grid', plain.ascii = FALSE, graph.col = TRUE)
 
-``` r
 view(descriptive_stats)
 ```
 
-<style type="text/css">
- img {   background-color: transparent;   border: 0; }  .st-table td, .st-table th {   padding: 8px; }  .st-table > thead > tr {    background-color: #eeeeee; }  .st-cross-table td {   text-align: center; }  .st-descr-table td {   text-align: right; }  table.st-table th {   text-align: center; }  table.st-table > thead > tr {    background-color: #eeeeee; }  table.st-table td span {   display: block; }  table.st-table > tfoot > tr > td {   border:none; }  .st-container {   width: 100%;   padding-right: 15px;   padding-left: 15px;   margin-right: auto;   margin-left: auto;   margin-top: 15px; }  .st-multiline {   white-space: pre; }  .st-table {     width: auto;     table-layout: auto;     margin-top: 20px;     margin-bottom: 20px;     max-width: 100%;     background-color: transparent;     border-collapse: collapse; }  .st-table > thead > tr > th, .st-table > tbody > tr > th, .st-table > tfoot > tr > th, .st-table > thead > tr > td, .st-table > tbody > tr > td, .st-table > tfoot > tr > td {   vertical-align: middle; }  .st-table-bordered {   border: 1px solid #bbbbbb; }  .st-table-bordered > thead > tr > th, .st-table-bordered > tbody > tr > th, .st-table-bordered > thead > tr > td, .st-table-bordered > tbody > tr > td {   border: 1px solid #cccccc; }  .st-table-bordered > thead > tr > th, .st-table-bordered > thead > tr > td, .st-table thead > tr > th {   border-bottom: none; }  .st-freq-table > thead > tr > th, .st-freq-table > tbody > tr > th, .st-freq-table > tfoot > tr > th, .st-freq-table > thead > tr > td, .st-freq-table > tbody > tr > td, .st-freq-table > tfoot > tr > td, .st-freq-table-nomiss > thead > tr > th, .st-freq-table-nomiss > tbody > tr > th, .st-freq-table-nomiss > tfoot > tr > th, .st-freq-table-nomiss > thead > tr > td, .st-freq-table-nomiss > tbody > tr > td, .st-freq-table-nomiss > tfoot > tr > td, .st-cross-table > thead > tr > th, .st-cross-table > tbody > tr > th, .st-cross-table > tfoot > tr > th, .st-cross-table > thead > tr > td, .st-cross-table > tbody > tr > td, .st-cross-table > tfoot > tr > td {   padding-left: 20px;   padding-right: 20px; }  .st-table-bordered > thead > tr > th, .st-table-bordered > tbody > tr > th, .st-table-bordered > thead > tr > td, .st-table-bordered > tbody > tr > td {   border: 1px solid #cccccc; }  .st-table-striped > tbody > tr:nth-of-type(odd) {   background-color: #ffffff; }  .st-table-striped > tbody > tr:nth-of-type(even) {   background-color: #f9f9f9; }  .st-descr-table > thead > tr > th, .st-descr-table > tbody > tr > th, .st-descr-table > thead > tr > td, .st-descr-table > tbody > tr > td {   padding-left: 24px;   padding-right: 24px;   word-wrap: break-word; }  .st-freq-table, .st-freq-table-nomiss, .st-cross-table {   border: medium none; }  .st-freq-table > thead > tr:nth-child(1) > th:nth-child(1), .st-cross-table > thead > tr:nth-child(1) > th:nth-child(1), .st-cross-table > thead > tr:nth-child(1) > th:nth-child(3) {   border: none;   background-color: #ffffff;   text-align: center; }  .st-protect-top-border {   border-top: 1px solid #cccccc !important; }  .st-ws-char {   display: inline;   color: #999999;   letter-spacing: 0.2em; }  /* Optionnal classes */ .st-small {   font-size: 13px; }  .st-small td, .st-small th {   padding: 8px; }  .st-small > thead > tr > th, .st-small > tbody > tr > th, .st-small > thead > tr > td, .st-small > tbody > tr > td {   padding-left: 12px;   padding-right: 12px; } </style>
+    ## text graphs are displayed; set 'tmp.img.dir' parameter to activate png graphs
 
-### Data Frame Summary
+    ## Switching method to 'browser'
 
-**df**  
-**Dimensions:** 470 x 32  
-**Duplicates:** 0
-
-<table style="width:100%;">
-<colgroup>
-<col style="width: 4%" />
-<col style="width: 13%" />
-<col style="width: 31%" />
-<col style="width: 18%" />
-<col style="width: 23%" />
-<col style="width: 8%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">No</th>
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Stats / Values</th>
-<th style="text-align: left;">Freqs (% of Valid)</th>
-<th style="text-align: left;">Graph</th>
-<th style="text-align: left;">Missing</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">RespondentID<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 784082877.9 (8627500.7)<br />
-min &lt; med &lt; max:<br />
-773001005 &lt; 780248282.5 &lt; 808234671<br />
-IQR (CV) : 16634784.8 (0)</td>
-<td style="text-align: left;">470 distinct values</td>
-<td style="text-align: left;"><br />
-  :<br />
-  :     :<br />
-  :     :<br />
-: :     :<br />
-: : : : : :</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">DWELCLAS<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 5.1 (1.3)<br />
-min &lt; med &lt; max:<br />
-1 &lt; 5 &lt; 7<br />
-IQR (CV) : 2 (0.2)</td>
-<td style="text-align: left;">1 : 5 ( 1.1%)<br />
-2 : 14 ( 3.0%)<br />
-3 : 31 ( 6.6%)<br />
-4 : 75 (16.0%)<br />
-5 : 130 (27.7%)<br />
-6 : 162 (34.5%)<br />
-7 : 53 (11.3%)</td>
-<td style="text-align: left;"><br />
-<br />
-I<br />
-III<br />
-IIIII<br />
-IIIIII<br />
-II</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">INCOME<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 4259.6 (3001.8)<br />
-min &lt; med &lt; max:<br />
-700 &lt; 2750 &lt; 12500<br />
-IQR (CV) : 2000 (0.7)</td>
-<td style="text-align: left;">700 : 20 ( 4.3%)<br />
-1500 : 96 (20.4%)<br />
-2750 : 142 (30.2%)<br />
-4750 : 106 (22.6%)<br />
-7500 : 75 (16.0%)<br />
-12500 : 31 ( 6.6%)</td>
-<td style="text-align: left;"><br />
-IIII<br />
-IIIIII<br />
-IIII<br />
-III<br />
-I</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">CHILD13<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 0.4 (0.8)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 0 &lt; 4<br />
-IQR (CV) : 0 (2)</td>
-<td style="text-align: left;">0 : 353 (75.1%)<br />
-1 : 62 (13.2%)<br />
-2 : 41 ( 8.7%)<br />
-3 : 13 ( 2.8%)<br />
-4 : 1 ( 0.2%)</td>
-<td style="text-align: left;">IIIIIIIIIIIIIII<br />
-II<br />
-I<br />
-<br />
-</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">H18<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 2.1 (0.9)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 2 &lt; 6<br />
-IQR (CV) : 0.8 (0.4)</td>
-<td style="text-align: left;">0 : 1 ( 0.2%)<br />
-1 : 112 (23.8%)<br />
-2 : 239 (50.8%)<br />
-3 : 77 (16.4%)<br />
-4 : 35 ( 7.4%)<br />
-5 : 3 ( 0.6%)<br />
-6 : 3 ( 0.6%)</td>
-<td style="text-align: left;"><br />
-IIII<br />
-IIIIIIIIII<br />
-III<br />
-I<br />
-<br />
-</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: left;">HEMPLOY<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 1.5 (0.7)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 2 &lt; 5<br />
-IQR (CV) : 1 (0.5)</td>
-<td style="text-align: left;">0 : 39 ( 8.3%)<br />
-1 : 171 (36.4%)<br />
-2 : 237 (50.4%)<br />
-3 : 21 ( 4.5%)<br />
-4 : 1 ( 0.2%)<br />
-5 : 1 ( 0.2%)</td>
-<td style="text-align: left;">I<br />
-IIIIIII<br />
-IIIIIIIIII<br />
-<br />
-<br />
-</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">7</td>
-<td style="text-align: left;">HSIZE<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 2.6 (1.3)<br />
-min &lt; med &lt; max:<br />
-1 &lt; 2 &lt; 7<br />
-IQR (CV) : 2 (0.5)</td>
-<td style="text-align: left;">1 : 104 (22.1%)<br />
-2 : 147 (31.3%)<br />
-3 : 96 (20.4%)<br />
-4 : 96 (20.4%)<br />
-5 : 20 ( 4.3%)<br />
-6 : 5 ( 1.1%)<br />
-7 : 2 ( 0.4%)</td>
-<td style="text-align: left;">IIII<br />
-IIIIII<br />
-IIII<br />
-IIII<br />
-<br />
-<br />
-</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">AVADUAGE<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 37.8 (9.9)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 36 &lt; 78<br />
-IQR (CV) : 12.7 (0.3)</td>
-<td style="text-align: left;">126 distinct values</td>
-<td style="text-align: left;"><br />
-      :<br />
-      :<br />
-    : : :<br />
-    : : :<br />
-    : : : : .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">9</td>
-<td style="text-align: left;">IAGE<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 36.9 (11.6)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 34 &lt; 78<br />
-IQR (CV) : 15 (0.3)</td>
-<td style="text-align: left;">53 distinct values</td>
-<td style="text-align: left;"><br />
-    : :<br />
-    : :<br />
-    : : .<br />
-    : : : .<br />
-    : : : : .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10</td>
-<td style="text-align: left;">ISEX<br />
-[numeric]</td>
-<td style="text-align: left;">Min : 0<br />
-Mean : 0.5<br />
-Max : 1</td>
-<td style="text-align: left;">0 : 214 (45.5%)<br />
-1 : 256 (54.5%)</td>
-<td style="text-align: left;">IIIIIIIII<br />
-IIIIIIIIII</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">11</td>
-<td style="text-align: left;">NCARS<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 1.7 (0.9)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 2 &lt; 5<br />
-IQR (CV) : 1 (0.5)</td>
-<td style="text-align: left;">0 : 23 ( 4.9%)<br />
-1 : 182 (38.7%)<br />
-2 : 193 (41.1%)<br />
-3 : 56 (11.9%)<br />
-4 : 13 ( 2.8%)<br />
-5 : 3 ( 0.6%)</td>
-<td style="text-align: left;"><br />
-IIIIIII<br />
-IIIIIIII<br />
-II<br />
-<br />
-</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">12</td>
-<td style="text-align: left;">AREA<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 133 (121.5)<br />
-min &lt; med &lt; max:<br />
-30 &lt; 110 &lt; 2250<br />
-IQR (CV) : 60 (0.9)</td>
-<td style="text-align: left;">76 distinct values</td>
-<td style="text-align: left;"><br />
-:<br />
-:<br />
-:<br />
-:<br />
-:</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">13</td>
-<td style="text-align: left;">BEDROOM<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 2.9 (1.1)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 3 &lt; 7<br />
-IQR (CV) : 1 (0.4)</td>
-<td style="text-align: left;">0 : 1 ( 0.2%)<br />
-1 : 28 ( 6.0%)<br />
-2 : 153 (32.6%)<br />
-3 : 180 (38.3%)<br />
-4 : 73 (15.5%)<br />
-5 : 26 ( 5.5%)<br />
-6 : 7 ( 1.5%)<br />
-7 : 2 ( 0.4%)</td>
-<td style="text-align: left;"><br />
-I<br />
-IIIIII<br />
-IIIIIII<br />
-III<br />
-I<br />
-<br />
-</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">14</td>
-<td style="text-align: left;">PARK<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 0.8 (1)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 1 &lt; 4<br />
-IQR (CV) : 1 (1.2)</td>
-<td style="text-align: left;">0 : 224 (47.7%)<br />
-1 : 136 (28.9%)<br />
-2 : 84 (17.9%)<br />
-3 : 18 ( 3.8%)<br />
-4 : 8 ( 1.7%)</td>
-<td style="text-align: left;">IIIIIIIII<br />
-IIIII<br />
-III<br />
-<br />
-</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">15</td>
-<td style="text-align: left;">BEDSIZE<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 1.4 (0.8)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 1 &lt; 5<br />
-IQR (CV) : 0.7 (0.6)</td>
-<td style="text-align: left;">22 distinct values</td>
-<td style="text-align: left;"><br />
-  :<br />
-  :<br />
-  :<br />
-  : . .<br />
-. : : :   .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">16</td>
-<td style="text-align: left;">PARKSIZE<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 0.5 (0.6)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 0.2 &lt; 3<br />
-IQR (CV) : 1 (1.2)</td>
-<td style="text-align: left;">13 distinct values</td>
-<td style="text-align: left;"><br />
-:<br />
-:<br />
-:<br />
-: :<br />
-: :   .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">17</td>
-<td style="text-align: left;">RAGE10<br />
-[numeric]</td>
-<td style="text-align: left;">Min : 0<br />
-Mean : 0.2<br />
-Max : 1</td>
-<td style="text-align: left;">0 : 356 (75.7%)<br />
-1 : 114 (24.3%)</td>
-<td style="text-align: left;">IIIIIIIIIIIIIII<br />
-IIII</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">18</td>
-<td style="text-align: left;">TCBD<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 24.7 (16.2)<br />
-min &lt; med &lt; max:<br />
-0.8 &lt; 23.8 &lt; 73.3<br />
-IQR (CV) : 25.7 (0.7)</td>
-<td style="text-align: left;">434 distinct values</td>
-<td style="text-align: left;"><br />
-:<br />
-: : . :<br />
-: : : :<br />
-: : : : . .<br />
-: : : : : : .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">19</td>
-<td style="text-align: left;">DISTHTC<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 1347 (1815.8)<br />
-min &lt; med &lt; max:<br />
-49 &lt; 719 &lt; 17732.7<br />
-IQR (CV) : 1125 (1.3)</td>
-<td style="text-align: left;">434 distinct values</td>
-<td style="text-align: left;"><br />
-:<br />
-:<br />
-:<br />
-:<br />
-: .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">20</td>
-<td style="text-align: left;">TWCBD<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 17 (16.2)<br />
-min &lt; med &lt; max:<br />
-0.3 &lt; 9.9 &lt; 67.8<br />
-IQR (CV) : 20 (1)</td>
-<td style="text-align: left;">439 distinct values</td>
-<td style="text-align: left;"><br />
-:<br />
-:<br />
-: .<br />
-: :   .<br />
-: : : : . : .   .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">21</td>
-<td style="text-align: left;">TDWWK<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 23.5 (17.1)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 22.2 &lt; 80.7<br />
-IQR (CV) : 23.6 (0.7)</td>
-<td style="text-align: left;">414 distinct values</td>
-<td style="text-align: left;"><br />
-: .<br />
-: : : :<br />
-: : : :<br />
-: : : : .<br />
-: : : : : . .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">22</td>
-<td style="text-align: left;">HEADH<br />
-[numeric]</td>
-<td style="text-align: left;">Min : 0<br />
-Mean : 0.9<br />
-Max : 1</td>
-<td style="text-align: left;">0 : 64 (13.6%)<br />
-1 : 406 (86.4%)</td>
-<td style="text-align: left;">II<br />
-IIIIIIIIIIIIIIIII</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">23</td>
-<td style="text-align: left;">POPDENS<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 92 (58.2)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 83.2 &lt; 255.6<br />
-IQR (CV) : 89.2 (0.6)</td>
-<td style="text-align: left;">431 distinct values</td>
-<td style="text-align: left;"><br />
-    . :<br />
-: : : :<br />
-: : : : : . .<br />
-: : : : : : : .<br />
-: : : : : : : : :</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">24</td>
-<td style="text-align: left;">EDUINDEX<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 0.2 (0.1)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 0.2 &lt; 0.7<br />
-IQR (CV) : 0.2 (0.6)</td>
-<td style="text-align: left;">434 distinct values</td>
-<td style="text-align: left;"><br />
-  :<br />
-  : .<br />
-  : : :<br />
-: : : : : .<br />
-: : : : : : : . .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">25</td>
-<td style="text-align: left;">GRAVCPC<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 0.3 (0.1)<br />
-min &lt; med &lt; max:<br />
-0.1 &lt; 0.3 &lt; 0.4<br />
-IQR (CV) : 0.1 (0.2)</td>
-<td style="text-align: left;">433 distinct values</td>
-<td style="text-align: left;"><br />
-          :<br />
-          :<br />
-        . : .<br />
-      . : : :<br />
-  . : : : : :</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">26</td>
-<td style="text-align: left;">GRAVCPT<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 0.3 (0.1)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 0.3 &lt; 0.4<br />
-IQR (CV) : 0.1 (0.2)</td>
-<td style="text-align: left;">434 distinct values</td>
-<td style="text-align: left;"><br />
-            :<br />
-          : :<br />
-        : : :<br />
-      : : : :<br />
-    . : : : :</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">27</td>
-<td style="text-align: left;">GRAVPCPT<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 1.2 (0.3)<br />
-min &lt; med &lt; max:<br />
-0.5 &lt; 1.1 &lt; 2.9<br />
-IQR (CV) : 0.2 (0.3)</td>
-<td style="text-align: left;">434 distinct values</td>
-<td style="text-align: left;"><br />
-    :<br />
-    :<br />
-    :<br />
-    : .<br />
-. : : : . .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">28</td>
-<td style="text-align: left;">NSTRTC<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 22.2 (12.6)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 22 &lt; 84<br />
-IQR (CV) : 16 (0.6)</td>
-<td style="text-align: left;">59 distinct values</td>
-<td style="text-align: left;"><br />
-  : .<br />
-  : :<br />
-: : : :<br />
-: : : :<br />
-: : : : .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">29</td>
-<td style="text-align: left;">DISTHW<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 1883.4 (1748.3)<br />
-min &lt; med &lt; max:<br />
-74.7 &lt; 1338.7 &lt; 16590.1<br />
-IQR (CV) : 1820.5 (0.9)</td>
-<td style="text-align: left;">434 distinct values</td>
-<td style="text-align: left;"><br />
-:<br />
-:<br />
-:<br />
-: :<br />
-: : . .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">30</td>
-<td style="text-align: left;">DIVIDX<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 0.4 (0.1)<br />
-min &lt; med &lt; max:<br />
-0.3 &lt; 0.4 &lt; 0.6<br />
-IQR (CV) : 0.1 (0.2)</td>
-<td style="text-align: left;">144 distinct values</td>
-<td style="text-align: left;"><br />
-  :<br />
-  : :<br />
-  : :<br />
-  : :<br />
-: : : : : . . .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">31</td>
-<td style="text-align: left;">ACTDENS<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 5.8 (8.5)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 2.5 &lt; 63.2<br />
-IQR (CV) : 3.5 (1.5)</td>
-<td style="text-align: left;">144 distinct values</td>
-<td style="text-align: left;"><br />
-:<br />
-:<br />
-:<br />
-:<br />
-: . .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">32</td>
-<td style="text-align: left;">DISTCBD<br />
-[numeric]</td>
-<td style="text-align: left;">Mean (sd) : 7967.4 (7442.9)<br />
-min &lt; med &lt; max:<br />
-148.9 &lt; 5542.3 &lt; 44004.6<br />
-IQR (CV) : 9777.9 (0.9)</td>
-<td style="text-align: left;">434 distinct values</td>
-<td style="text-align: left;"><br />
-:<br />
-:<br />
-:<br />
-: : .<br />
-: : : : .</td>
-<td style="text-align: left;">0<br />
-(0%)</td>
-</tr>
-</tbody>
-</table>
+    ## Output file written: C:\Users\gabri\AppData\Local\Temp\RtmpyAXZES\file18f0337341ec.html
 
 ``` r
 summary(df)
@@ -886,10 +243,10 @@ summary(df)
 > **Note:** I used other functions for summary statistics in last
 > exercise.
 
-#### Take a look at the dataset
+\#\#\#\#Take a look at the dataset
 
 ``` r
-head(df,10, style="rmarkdown")
+head(df,10)
 ```
 
     ##    RespondentID DWELCLAS INCOME CHILD13 H18 HEMPLOY HSIZE AVADUAGE IAGE ISEX
@@ -1015,24 +372,30 @@ standardized = rstudent(fake)
 fitted = scale(fake$fitted.values)
 ```
 
--   **Normality**
+  - **Normality**
+
+<!-- end list -->
 
 ``` r
 hist(standardized)
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-11-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/unnamed-chunk-10-1.png)<!-- -->
 
--   **Linearity**
+  - **Linearity**
+
+<!-- end list -->
 
 ``` r
 qqnorm(standardized)
 abline(0,1)
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-12-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/unnamed-chunk-11-1.png)<!-- -->
 
--   **Homogeneity**
+  - **Homogeneity**
+
+<!-- end list -->
 
 ``` r
 plot(fitted, standardized)
@@ -1040,7 +403,7 @@ abline(0,0)
 abline(v=0)
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/unnamed-chunk-12-1.png)<!-- -->
 
 #### Examine correlations
 
@@ -1319,7 +682,7 @@ KMO(corr_matrix)
 num_factors = fa.parallel(df, fm = "ml", fa = "fa")
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/unnamed-chunk-16-1.png)<!-- -->
 
     ## Parallel analysis suggests that the number of factors =  8  and the number of components =  NA
 
@@ -1334,7 +697,7 @@ sum(num_factors$fa.values > 1)
 
     ## [1] 4
 
-> **Note:** Determines the number of factors with eigenvalue &gt; 1
+> **Note:** Determines the number of factors with eigenvalue \> 1
 
 **3. *Principal Component Analysis* (PCA)**
 
@@ -1540,17 +903,17 @@ plot(df\_pca,type=“lines”) fit$scores \#biplot(df\_pca)
 
 ## Model 1: No rotation
 
-df\_factor &lt;- factanal(df, factors = 4, rotation = “none”,
+df\_factor \<- factanal(df, factors = 4, rotation = “none”,
 scores=c(“regression”), fm = “ml”)
 
 ## Model 2: Rotation Varimax
 
-df\_factor\_var &lt;- factanal(df, factors = 4, rotation = “varimax”,
+df\_factor\_var \<- factanal(df, factors = 4, rotation = “varimax”,
 scores=c(“regression”), fm = “ml”)
 
 ## Model 3: Rotation Oblimin
 
-df\_factor\_obl &lt;- factanal(df, factors = 4, rotation = “oblimin”,
+df\_factor\_obl \<- factanal(df, factors = 4, rotation = “oblimin”,
 scores=c(“regression”), fm = “ml”)
 
 # Let’s print out the results of df\_factor\_obl, and take a look.
@@ -1570,26 +933,26 @@ rotations
 
 ## No Rotation
 
-plot(df\_factor*l**o**a**d**i**n**g**s*\[,1\], *d**f*<sub>*f*</sub>*a**c**t**o**r*loadings\[,2\],
-xlab = “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1),
-main = “No rotation”) abline(h = 0, v = 0) load &lt;-
+plot(df\_factor\(loadings[,1],  df_factor\)loadings\[,2\], xlab =
+“Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
+“No rotation”) abline(h = 0, v = 0) load \<-
 df\_factor$loadings\[,1:2\] text(text(load,labels=names(df),cex=.7,
 col=“blue”)) abline(h = 0, v = 0)
 
 ## Varimax rotation
 
-plot(df\_factor\_var*l**o**a**d**i**n**g**s*\[,1\], *d**f*<sub>*f*</sub>*a**c**t**o**r*<sub>*v*</sub>*a**r*loadings\[,2\],
-xlab = “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1),
-main = “Varimax rotation”) abline(h = 0, v = 0) \#Note: If you also want
-to put the variable label here, just take out the \#. \#load &lt;-
+plot(df\_factor\_var\(loadings[,1],  df_factor_var\)loadings\[,2\], xlab
+= “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
+“Varimax rotation”) abline(h = 0, v = 0) \#Note: If you also want to
+put the variable label here, just take out the \#. \#load \<-
 df\_factor\_var$loadings\[,1:2\]
 \#text(text(load,labels=names(df),cex=.7, col=“red”))
 
 # Oblimin Rotation
 
-plot(df\_factor\_obl*l**o**a**d**i**n**g**s*\[,1\], *d**f*<sub>*f*</sub>*a**c**t**o**r*<sub>*o*</sub>*b**l*loadings\[,2\],
-xlab = “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1),
-main = “Oblimin rotation”) abline(h = 0, v = 0) \#load &lt;-
+plot(df\_factor\_obl\(loadings[,1],  df_factor_obl\)loadings\[,2\], xlab
+= “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
+“Oblimin rotation”) abline(h = 0, v = 0) \#load \<-
 df\_factor\_obl$loadings\[,1:2\]
 \#text(text(load,labels=names(df),cex=.7, col=“yellow”)) \#abline(h = 0,
 v = 0)

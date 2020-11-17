@@ -18,49 +18,49 @@ metropolitan area, TRB (No. 10-1161).**
 
 ### Variables:
 
--   `DWELCLAS`: Classification of the dwelling;
--   `INCOME`: Income of the household;
--   `CHILD13`: Number of children under 13 years old;
--   `H18`: Number of household members above 18 years old;
--   `HEMPLOY`: Number of household members employed;
--   `HSIZE`: Household size;
--   `IAGE`: Age of the respondent;
--   `ISEX`: Sex of the respondent;
--   `NCARS`: Number of cars in the household;
--   `AREA`: Area of the dwelling;
--   `BEDROOM`: Number of bedrooms in the dwelling;
--   `PARK`: Number of parking spaces in the dwelling;
--   `BEDSIZE`: BEDROOM/HSIZE;
--   `PARKSIZE`: PARK/NCARS;
--   `RAGE10`: 1 if Dwelling age &lt;= 10;
--   `TCBD`: Private car distance in time to CBD;
--   `DISTTC`: Euclidean distance to heavy public transport system stops;
--   `TWCBD`: Private car distance in time of workplace to CBD;
--   `TDWWK`: Private car distance in time of dwelling to work place;
--   `HEADH`: 1 if Head of the Household;
--   `POPDENS`: Population density per hectare;
--   `EQUINDEX`: Number of undergraduate students/Population over 20
+  - `DWELCLAS`: Classification of the dwelling;
+  - `INCOME`: Income of the household;
+  - `CHILD13`: Number of children under 13 years old;
+  - `H18`: Number of household members above 18 years old;
+  - `HEMPLOY`: Number of household members employed;
+  - `HSIZE`: Household size;
+  - `IAGE`: Age of the respondent;
+  - `ISEX`: Sex of the respondent;
+  - `NCARS`: Number of cars in the household;
+  - `AREA`: Area of the dwelling;
+  - `BEDROOM`: Number of bedrooms in the dwelling;
+  - `PARK`: Number of parking spaces in the dwelling;
+  - `BEDSIZE`: BEDROOM/HSIZE;
+  - `PARKSIZE`: PARK/NCARS;
+  - `RAGE10`: 1 if Dwelling age \<= 10;
+  - `TCBD`: Private car distance in time to CBD;
+  - `DISTTC`: Euclidean distance to heavy public transport system stops;
+  - `TWCBD`: Private car distance in time of workplace to CBD;
+  - `TDWWK`: Private car distance in time of dwelling to work place;
+  - `HEADH`: 1 if Head of the Household;
+  - `POPDENS`: Population density per hectare;
+  - `EQUINDEX`: Number of undergraduate students/Population over 20
     years old (500m)
 
 ### Rules of thumb:
 
--   At least 10 variables
--   n &lt; 50 (Unacceptable); n &gt; 200 (recommended)
--   It is recommended to use continuous variables. If your data contains
+  - At least 10 variables
+  - n \< 50 (Unacceptable); n \> 200 (recommended)
+  - It is recommended to use continuous variables. If your data contains
     categorical variables, you should transform them to dummy variables.
 
 ### Assumptions:
 
--   Normality;
--   linearity;
--   Homogeneity;
--   Homoscedasticity (some multicollinearity is desirable);
--   Correlations between variables &lt; 0.3 (not appropriate to use
-    Factor Analysis)
+  - Normality;
+  - linearity;
+  - Homogeneity;
+  - Homoscedasticity (some multicollinearity is desirable);
+  - Correlations between variables \< 0.3 (not appropriate to use Factor
+    Analysis)
 
 #### Import Libraries
 
-Let’s start!
+Let’s start\!
 
 ``` r
 library(foreign) # Library used to read SPSS files
@@ -883,11 +883,11 @@ summary(df)
     ##  3rd Qu.: 2533.30   3rd Qu.:0.3970   3rd Qu.: 4.85162   3rd Qu.:11803.2  
     ##  Max.   :16590.06   Max.   :0.6500   Max.   :63.18205   Max.   :44004.6
 
-> **Note:** I used other functions for summary statistics than in the
-> MLR chapter. R allows you to do the same or similar tasks with
+> **Note:** I used other functions for summary statistics compared to
+> the MLR chapter. R allows you to do the same or similar tasks with
 > different packages.
 
-#### Take a look at the dataset
+#### Take a look at the first values of the dataset
 
 ``` r
 head(df,10)
@@ -956,7 +956,9 @@ standardized = rstudent(fake)
 fitted = scale(fake$fitted.values)
 ```
 
--   **Normality**
+  - **Normality**
+
+<!-- end list -->
 
 ``` r
 hist(standardized)
@@ -964,7 +966,9 @@ hist(standardized)
 
 ![](README_files/2-FactorAnalysis/unnamed-chunk-11-1.png)<!-- -->
 
--   **Linearity**
+  - **Linearity**
+
+<!-- end list -->
 
 ``` r
 qqnorm(standardized)
@@ -973,7 +977,9 @@ abline(0,1)
 
 ![](README_files/2-FactorAnalysis/unnamed-chunk-12-1.png)<!-- -->
 
--   **Homogeneity**
+  - **Homogeneity**
+
+<!-- end list -->
 
 ``` r
 plot(fitted, standardized)
@@ -1004,11 +1010,12 @@ cortest.bartlett(corr_matrix, n = nrow(df))
     ## $df
     ## [1] 465
 
-> **Note:** The Bartlett test examines if there are equal variance
+> **Note:** The Bartlett test examines if there is equal variance
 > (homogeneity) between variables. Thus, it evaluates if there is any
 > pattern between variables.  
-> **Note:** The null hypothesis is that there is no difference in
-> variance between variables.
+> **Note:** The null hypothesis is that there is no correlation between
+> variables. Therefore, in factor analysis you want to reject the null
+> hypothesis.
 
 #### Check for sampling adequacy - KMO test
 
@@ -1030,8 +1037,8 @@ KMO(corr_matrix)
     ##     0.71     0.31     0.83     0.76     0.63     0.70     0.86
 
 > **Note:** We want at least 0.7 of the overall Mean Sample Adequacy
-> (MSA). If, 0.6 &lt; MSA &lt; 0.7, it is not a good value, but
-> acceptable in some cases.
+> (MSA). If, 0.6 \< MSA \< 0.7, it is not a good value, but acceptable
+> in some cases.
 
 #### Determine the number of factors to extract
 
@@ -1048,6 +1055,14 @@ num_factors = fa.parallel(df, fm = "ml", fa = "fa")
 > **Note:** fm = factor math; ml = maximum likelihood; fa = factor
 > analysis
 
+The selection of the number of factors in the Parallel analysis can be
+threefold:
+
+  - Detect where there is an “elbow” in the graph;
+  - Detect the intersection between the “FA Actual Data” and the “FA
+    Simulated Data”;
+  - Consider the number of factors with eigenvalue \> 1.
+
 **2. *Kaiser Criterion***
 
 ``` r
@@ -1056,7 +1071,11 @@ sum(num_factors$fa.values > 1)
 
     ## [1] 4
 
-> **Note:** Determines the number of factors with eigenvalue &gt; 1
+> **Note:** Determines the number of factors with eigenvalue \> 1.
+
+> **Note:** You can also consider factors with eigenvalue \> 0.7, since
+> some of the literature indicate that this value does not overestimate
+> the number of factors as much as considering an eigenvalue = 1.
 
 **3. *Principal Component Analysis* (PCA)**
 
@@ -1064,7 +1083,7 @@ sum(num_factors$fa.values > 1)
 df_pca <- princomp(df, cor=TRUE)
 ```
 
-> **Note:** cor = TRUE, standardizes your dataset
+> **Note:** cor = TRUE, standardizes your dataset before running a PCA.
 
 \# print variance that explains the components
 
@@ -1102,177 +1121,36 @@ summary(df_pca)
     ## Proportion of Variance 0.0009458774 0.0007524438
     ## Cumulative Proportion  0.9992475562 1.0000000000
 
-``` r
-loadings(df_pca) 
-```
-
-    ## 
-    ## Loadings:
-    ##          Comp.1 Comp.2 Comp.3 Comp.4 Comp.5 Comp.6 Comp.7 Comp.8 Comp.9 Comp.10
-    ## DWELCLAS                0.279         0.169  0.102         0.147         0.462 
-    ## INCOME           0.308        -0.122                       0.237         0.270 
-    ## CHILD13          0.186  0.129               -0.336  0.362 -0.428 -0.235        
-    ## H18              0.396 -0.218                0.107         0.116  0.125        
-    ## HEMPLOY   0.101  0.292         0.256                                     0.245 
-    ## HSIZE            0.436                      -0.131  0.177 -0.182               
-    ## AVADUAGE                      -0.504 -0.212                             -0.303 
-    ## IAGE                          -0.584 -0.229         0.113                      
-    ## ISEX                          -0.226                       0.158  0.636  0.175 
-    ## NCARS     0.124  0.333                                     0.253         0.142 
-    ## AREA      0.104  0.131  0.113         0.402  0.141 -0.157 -0.263 -0.108 -0.115 
-    ## BEDROOM          0.227        -0.280  0.410  0.120        -0.248         0.173 
-    ## PARK      0.167  0.150  0.398         0.138 -0.163                0.178 -0.274 
-    ## BEDSIZE         -0.277  0.171 -0.211  0.328  0.219 -0.182                0.194 
-    ## PARKSIZE  0.129         0.446               -0.223                0.240 -0.270 
-    ## RAGE10    0.139         0.288  0.179        -0.159  0.107  0.235  0.101 -0.137 
-    ## TCBD      0.356 -0.102 -0.129                                                  
-    ## DISTHTC   0.274                              0.266  0.186                      
-    ## TWCBD     0.159        -0.111 -0.121  0.152 -0.183  0.130  0.209 -0.208        
-    ## TDWWK     0.219                0.169                      -0.234  0.182        
-    ## HEADH           -0.199  0.236 -0.157 -0.164 -0.255  0.298                0.350 
-    ## POPDENS  -0.234        -0.216               -0.183        -0.193  0.303        
-    ## EDUINDEX -0.178  0.157  0.219                0.138 -0.110        -0.229        
-    ## GRAVCPC  -0.343  0.128  0.166        -0.156        -0.120                      
-    ## GRAVCPT  -0.331                       0.210 -0.214         0.176 -0.111        
-    ## GRAVPCPT                0.249        -0.407  0.366        -0.270  0.122        
-    ## NSTRTC   -0.205        -0.121                             -0.312  0.358        
-    ## DISTHW    0.176 -0.152 -0.176         0.222         0.292  0.155               
-    ## DIVIDX   -0.189         0.116                0.381  0.449               -0.214 
-    ## ACTDENS  -0.233                       0.165  0.253  0.486         0.118 -0.193 
-    ## DISTCBD   0.334                              0.127                             
-    ##          Comp.11 Comp.12 Comp.13 Comp.14 Comp.15 Comp.16 Comp.17 Comp.18
-    ## DWELCLAS  0.152   0.556   0.203   0.206   0.246   0.216           0.173 
-    ## INCOME   -0.296   0.101  -0.127  -0.181          -0.188   0.164  -0.516 
-    ## CHILD13                   0.121   0.164  -0.171   0.200   0.112  -0.232 
-    ## H18                                       0.130          -0.185   0.277 
-    ## HEMPLOY                  -0.122  -0.278  -0.110  -0.181   0.115   0.359 
-    ## HSIZE                     0.151                   0.108                 
-    ## AVADUAGE          0.298   0.134          -0.101   0.162   0.262         
-    ## IAGE              0.132          -0.172   0.201                   0.269 
-    ## ISEX      0.173  -0.476           0.335   0.143   0.118   0.119  -0.114 
-    ## NCARS                    -0.233          -0.175   0.122  -0.105  -0.242 
-    ## AREA                                      0.600  -0.280          -0.247 
-    ## BEDROOM          -0.160   0.113  -0.166  -0.254   0.201  -0.116   0.179 
-    ## PARK                                             -0.247                 
-    ## BEDSIZE          -0.117          -0.148  -0.365   0.143                 
-    ## PARKSIZE                                 -0.242  -0.176           0.156 
-    ## RAGE10    0.143           0.113  -0.413   0.178   0.405          -0.189 
-    ## TCBD                     -0.192   0.103                                 
-    ## DISTHTC                   0.119                          -0.532         
-    ## TWCBD     0.589          -0.281          -0.101  -0.136   0.230   0.121 
-    ## TDWWK    -0.498          -0.176   0.158           0.187   0.367   0.204 
-    ## HEADH    -0.128  -0.123  -0.208  -0.179   0.174  -0.188  -0.240         
-    ## POPDENS           0.253          -0.119  -0.124  -0.300          -0.100 
-    ## EDUINDEX                 -0.134   0.550          -0.105  -0.245         
-    ## GRAVCPC                   0.102                                         
-    ## GRAVCPT  -0.178                           0.103   0.144                 
-    ## GRAVPCPT  0.314           0.182                  -0.184   0.151         
-    ## NSTRTC    0.143   0.403  -0.368                   0.123  -0.322  -0.139 
-    ## DISTHW   -0.151   0.109   0.459   0.132  -0.157  -0.307          -0.124 
-    ## DIVIDX                   -0.222                           0.113         
-    ## ACTDENS                                          -0.124   0.137         
-    ## DISTCBD                  -0.307                                         
-    ##          Comp.19 Comp.20 Comp.21 Comp.22 Comp.23 Comp.24 Comp.25 Comp.26
-    ## DWELCLAS  0.160           0.121           0.152                         
-    ## INCOME    0.172   0.170  -0.298  -0.314                                 
-    ## CHILD13                   0.117           0.126                  -0.154 
-    ## H18       0.159  -0.113  -0.264          -0.128                         
-    ## HEMPLOY  -0.461   0.438   0.256                                         
-    ## HSIZE     0.127          -0.119                                         
-    ## AVADUAGE -0.241           0.187                           0.229   0.403 
-    ## IAGE                                             -0.130  -0.257  -0.521 
-    ## ISEX              0.118                                                 
-    ## NCARS            -0.465   0.433   0.359                                 
-    ## AREA     -0.193           0.195                                         
-    ## BEDROOM                  -0.160                   0.116   0.141   0.215 
-    ## PARK                      0.178                                         
-    ## BEDSIZE                                                  -0.119  -0.242 
-    ## PARKSIZE  0.105                                                         
-    ## RAGE10   -0.399          -0.311   0.119  -0.155                         
-    ## TCBD              0.157  -0.146   0.245          -0.129  -0.122   0.152 
-    ## DISTHTC  -0.125                  -0.394   0.541                         
-    ## TWCBD            -0.305  -0.117  -0.371                                 
-    ## TDWWK    -0.189  -0.431  -0.118  -0.226                                 
-    ## HEADH            -0.172                                   0.235   0.412 
-    ## POPDENS  -0.192  -0.138  -0.316   0.296   0.476  -0.149                 
-    ## EDUINDEX -0.513          -0.271          -0.107          -0.136         
-    ## GRAVCPC          -0.118          -0.139           0.223   0.293  -0.214 
-    ## GRAVCPT                                   0.141   0.171   0.323  -0.173 
-    ## GRAVPCPT         -0.138                  -0.148           0.147         
-    ## NSTRTC                    0.161  -0.261  -0.375                         
-    ## DISTHW   -0.192  -0.130   0.135          -0.397           0.297  -0.158 
-    ## DIVIDX                            0.103          -0.581   0.300         
-    ## ACTDENS                           0.187           0.570  -0.362         
-    ## DISTCBD           0.276  -0.162   0.281           0.382   0.447  -0.330 
-    ##          Comp.27 Comp.28 Comp.29 Comp.30 Comp.31
-    ## DWELCLAS                                        
-    ## INCOME                                          
-    ## CHILD13           0.132                   0.438 
-    ## H18               0.420                   0.522 
-    ## HEMPLOY                                         
-    ## HSIZE             0.275                  -0.723 
-    ## AVADUAGE          0.166                         
-    ## IAGE             -0.162                         
-    ## ISEX                                            
-    ## NCARS     0.197  -0.110                         
-    ## AREA      0.195                                 
-    ## BEDROOM  -0.116  -0.480                         
-    ## PARK     -0.666   0.142  -0.100                 
-    ## BEDSIZE           0.558                         
-    ## PARKSIZE  0.633  -0.127                         
-    ## RAGE10                                          
-    ## TCBD      0.114   0.137  -0.757                 
-    ## DISTHTC                  -0.121                 
-    ## TWCBD                                           
-    ## TDWWK                                           
-    ## HEADH             0.214                         
-    ## POPDENS                                         
-    ## EDUINDEX                                        
-    ## GRAVCPC                  -0.470   0.566         
-    ## GRAVCPT           0.103  -0.242  -0.638         
-    ## GRAVPCPT                         -0.493         
-    ## NSTRTC                                          
-    ## DISTHW                                          
-    ## DIVIDX                                          
-    ## ACTDENS   0.109                                 
-    ## DISTCBD                   0.244   0.109         
-    ## 
-    ##                Comp.1 Comp.2 Comp.3 Comp.4 Comp.5 Comp.6 Comp.7 Comp.8 Comp.9
-    ## SS loadings     1.000  1.000  1.000  1.000  1.000  1.000  1.000  1.000  1.000
-    ## Proportion Var  0.032  0.032  0.032  0.032  0.032  0.032  0.032  0.032  0.032
-    ## Cumulative Var  0.032  0.065  0.097  0.129  0.161  0.194  0.226  0.258  0.290
-    ##                Comp.10 Comp.11 Comp.12 Comp.13 Comp.14 Comp.15 Comp.16 Comp.17
-    ## SS loadings      1.000   1.000   1.000   1.000   1.000   1.000   1.000   1.000
-    ## Proportion Var   0.032   0.032   0.032   0.032   0.032   0.032   0.032   0.032
-    ## Cumulative Var   0.323   0.355   0.387   0.419   0.452   0.484   0.516   0.548
-    ##                Comp.18 Comp.19 Comp.20 Comp.21 Comp.22 Comp.23 Comp.24 Comp.25
-    ## SS loadings      1.000   1.000   1.000   1.000   1.000   1.000   1.000   1.000
-    ## Proportion Var   0.032   0.032   0.032   0.032   0.032   0.032   0.032   0.032
-    ## Cumulative Var   0.581   0.613   0.645   0.677   0.710   0.742   0.774   0.806
-    ##                Comp.26 Comp.27 Comp.28 Comp.29 Comp.30 Comp.31
-    ## SS loadings      1.000   1.000   1.000   1.000   1.000   1.000
-    ## Proportion Var   0.032   0.032   0.032   0.032   0.032   0.032
-    ## Cumulative Var   0.839   0.871   0.903   0.935   0.968   1.000
-
 Scree Plot
 
-plot(df\_pca,type=“lines”) fit$scores \#biplot(df\_pca)
+``` r
+require(graphics)
+screeplot(df_pca,type="lines", npcs = 31) 
+```
+
+![](README_files/2-FactorAnalysis/unnamed-chunk-21-1.png)<!-- -->
+
+``` r
+biplot(df_pca)
+```
+
+![](README_files/2-FactorAnalysis/unnamed-chunk-22-1.png)<!-- -->
 
 # EXPLORATORY FACTOR ANALYSIS
 
 ## Model 1: No rotation
 
-df\_factor &lt;- factanal(df, factors = 4, rotation = “none”,
+df\_factor \<- factanal(df, factors = 4, rotation = “none”,
 scores=c(“regression”), fm = “ml”)
 
 ## Model 2: Rotation Varimax
 
-df\_factor\_var &lt;- factanal(df, factors = 4, rotation = “varimax”,
+df\_factor\_var \<- factanal(df, factors = 4, rotation = “varimax”,
 scores=c(“regression”), fm = “ml”)
 
 ## Model 3: Rotation Oblimin
 
-df\_factor\_obl &lt;- factanal(df, factors = 4, rotation = “oblimin”,
+df\_factor\_obl \<- factanal(df, factors = 4, rotation = “oblimin”,
 scores=c(“regression”), fm = “ml”)
 
 # Let’s print out the results of df\_factor\_obl, and take a look.
@@ -1292,26 +1170,26 @@ rotations
 
 ## No Rotation
 
-plot(df\_factor*l**o**a**d**i**n**g**s*\[,1\], *d**f*<sub>*f*</sub>*a**c**t**o**r*loadings\[,2\],
-xlab = “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1),
-main = “No rotation”) abline(h = 0, v = 0) load &lt;-
+plot(df\_factor\(loadings[,1],  df_factor\)loadings\[,2\], xlab =
+“Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
+“No rotation”) abline(h = 0, v = 0) load \<-
 df\_factor$loadings\[,1:2\] text(text(load,labels=names(df),cex=.7,
 col=“blue”)) abline(h = 0, v = 0)
 
 ## Varimax rotation
 
-plot(df\_factor\_var*l**o**a**d**i**n**g**s*\[,1\], *d**f*<sub>*f*</sub>*a**c**t**o**r*<sub>*v*</sub>*a**r*loadings\[,2\],
-xlab = “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1),
-main = “Varimax rotation”) abline(h = 0, v = 0) \#Note: If you also want
-to put the variable label here, just take out the \#. \#load &lt;-
+plot(df\_factor\_var\(loadings[,1],  df_factor_var\)loadings\[,2\], xlab
+= “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
+“Varimax rotation”) abline(h = 0, v = 0) \#Note: If you also want to
+put the variable label here, just take out the \#. \#load \<-
 df\_factor\_var$loadings\[,1:2\]
 \#text(text(load,labels=names(df),cex=.7, col=“red”))
 
 # Oblimin Rotation
 
-plot(df\_factor\_obl*l**o**a**d**i**n**g**s*\[,1\], *d**f*<sub>*f*</sub>*a**c**t**o**r*<sub>*o*</sub>*b**l*loadings\[,2\],
-xlab = “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1),
-main = “Oblimin rotation”) abline(h = 0, v = 0) \#load &lt;-
+plot(df\_factor\_obl\(loadings[,1],  df_factor_obl\)loadings\[,2\], xlab
+= “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
+“Oblimin rotation”) abline(h = 0, v = 0) \#load \<-
 df\_factor\_obl$loadings\[,1:2\]
 \#text(text(load,labels=names(df),cex=.7, col=“yellow”)) \#abline(h = 0,
 v = 0)

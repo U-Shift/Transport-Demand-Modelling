@@ -1121,7 +1121,9 @@ summary(df_pca)
     ## Proportion of Variance 0.0009458774 0.0007524438
     ## Cumulative Proportion  0.9992475562 1.0000000000
 
-Scree Plot
+  - Scree Plot
+
+<!-- end list -->
 
 ``` r
 require(graphics)
@@ -1130,23 +1132,23 @@ screeplot(df_pca,type="lines", npcs = 31)
 
 ![](README_files/2-FactorAnalysis/unnamed-chunk-21-1.png)<!-- -->
 
+> **Note:** Check the cummulative variance of first components and the
+> scree plot, and see if the PCA is good approach to detect the number
+> of factors in this case.
+
+## EXPLORATORY FACTOR ANALYSIS
+
+#### Model 1: No rotation
+
 ``` r
-biplot(df_pca)
+df_factor <- factanal(df, factors = 4, rotation = "none", scores=c("regression"), fm = "ml")
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-22-1.png)<!-- -->
+#### Model 2: Rotation Varimax
 
-# EXPLORATORY FACTOR ANALYSIS
-
-## Model 1: No rotation
-
-df\_factor \<- factanal(df, factors = 4, rotation = “none”,
-scores=c(“regression”), fm = “ml”)
-
-## Model 2: Rotation Varimax
-
-df\_factor\_var \<- factanal(df, factors = 4, rotation = “varimax”,
-scores=c(“regression”), fm = “ml”)
+``` r
+df_factor_var <- factanal(df, factors = 4, rotation = "varimax", scores=c("regression"), fm = "ml")
+```
 
 ## Model 3: Rotation Oblimin
 

@@ -224,31 +224,29 @@ df_pca <- princomp(df, cor=TRUE)
 summary(df_pca)  
 ```
 
-Scree Plot
+* Scree Plot
 
 ```{r}
 require(graphics)
 screeplot(df_pca,type="lines", npcs = 31) 
 ```
 
+> **Note:** Check the cummulative variance of first components and the scree plot, and see if the PCA is good approach to detect the number of factors in this case. 
+
+## EXPLORATORY FACTOR ANALYSIS
+
+#### Model 1: No rotation
+
 ```{r}
-biplot(df_pca)
+df_factor <- factanal(df, factors = 4, rotation = "none", scores=c("regression"), fm = "ml")
 ```
 
 
+#### Model 2: Rotation Varimax
 
-
-
-# EXPLORATORY FACTOR ANALYSIS
-
-## Model 1: No rotation
-
-df_factor <- factanal(df, factors = 4, rotation = "none", scores=c("regression"), fm = "ml")
-
-
-## Model 2: Rotation Varimax
-
+```{r}
 df_factor_var <- factanal(df, factors = 4, rotation = "varimax", scores=c("regression"), fm = "ml")
+```
 
 
 ## Model 3: Rotation Oblimin

@@ -59,4 +59,4 @@ Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), and
   - Check [some tips](RMarkdownReports.md) how to make your home
     assignments as static or dynamic outputs with *R Markdown*. (**Rosa
     Félix**)
-  - [How to install Python and Biogeme on Windows](0-InstallR/python_and_biogeme_windows.md) (**Miguel Costa**)
+  - [How to install Python and Biogeme on Windows](0-Install/python_and_biogeme_windows.md) (**Miguel Costa**)

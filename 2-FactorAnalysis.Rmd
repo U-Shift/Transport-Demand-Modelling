@@ -277,7 +277,7 @@ plot(df_factor$loadings[,1],
      main = "No rotation")
      abline(h = 0, v = 0)
      load <- df_factor$loadings[,1:2]
-     text(text(load,labels=names(df),cex=.7, col="blue"))
+     text(text(load,labels = names(df), cex=.7, col="blue"))
      abline(h = 0, v = 0)
 ```
 

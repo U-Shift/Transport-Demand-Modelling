@@ -68,16 +68,6 @@ library(summarytools) # Library used for checking the summary of the dataset
 library(psych) # Library used for factor analysis
 library(GPArotation) # Library used for factor analysis
 ```
-```{r summary tools settings, echo = FALSE, results='hide'}
-st_options(bootstrap.css     = FALSE,       # Already part of the theme so no need for it
-           plain.ascii       = FALSE,       # One of the essential settings
-           style             = "rmarkdown", # Idem.
-           dfSummary.silent  = TRUE,        # Suppresses messages about temporary files
-           footnote          = NA,          # Keeping the results minimalistic
-           subtitle.emphasis = FALSE,       # For the vignette theme, this gives much better results
-           tmp.img.dir       = "tmp"        # store graph images
-           )       
-```
 
 #### Import dataset
 
@@ -99,16 +89,12 @@ df <- data.frame(data)
 ```
 
 #### Check summary statistics of variables
-
-```{r}
-descriptive_stats <- dfSummary(df)
-```
 ```{r eval=F}
+descriptive_stats <- dfSummary(df)
 view(descriptive_stats)
 ```
 ```{r summary tables show, results='asis', echo=FALSE, message=FALSE, warning=FALSE}
-st_css() #pelos vistos isto tem de ser metido aqui antes, no markdown, apesar de já estar lá em cima..
-print(descriptive_stats, valid.col=F) # method = "render"
+dfSummary(df, valid.col = F, plain.ascii = FALSE, style = "grid", tmp.img.dir = "/tmp")
 ```
 
 > **Note:** I used a different library of the MLR chapter for perfoming the summary statistics. "R" allows you to do the same or similar tasks with different packages. 

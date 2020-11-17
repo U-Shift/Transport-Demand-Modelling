@@ -37,7 +37,8 @@ library(rcompanion)
 library(pscl)
 # Library used for the Lagrange Multiplier test
 library(plm)
-
+# Library used to calculate elasticities
+library(popbio)
 
 # Set working directory
 
@@ -210,4 +211,18 @@ knitr::kable(bic, align = "l")
   
   ## Note: The smaller the values of AIC and BIC, the better the model 
 
-vuong.test(model1, model2, model3, type=c("None","AIC", "BIC"), digits = getOption("digits"))
+# Calculate the elasticities of the negative binomial model (model 3)
+
+el1 <- as.numeric(model3$coefficients["AADT1"] * mean(df$AADT1)/mean(df$ACCIDENT))
+el2 <- as.numeric(model3$coefficients["AADT2"] * mean(df$AADT2)/mean(df$ACCIDENT))
+el3 <- as.numeric(model3$coefficients["MEDIAN"] * mean(df$MEDIAN)/mean(df$ACCIDENT))
+el4 <- as.numeric(model3$coefficients["DRIVE"] * mean(df$DRIVE)/mean(df$ACCIDENT))
+el5 <- as.numeric(model3$coefficients["STATE"] * mean(df$STATE)/mean(df$ACCIDENT))
+
+variable <-c ("AADT1", "AADT2", "MEDIAN", "DRIVE", "STATE")
+elasticity <-c (el2, el3, el4)
+elas_table <- data.frame(variable,elasticity)
+knitr::kable(elas_table, align = "l")
+
+
+

@@ -7,17 +7,16 @@ course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/
 lectured by [Prof. Filipe
 Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/). This
 material is also an open source tutorial for applying R programming
-(chapters 1,2,3,4,5, and 8) and Python Biogeme (chapters 6 and 7) in
+(chapters 1,2,3,4,5, and 7) and Python Biogeme (chapter 6) in
 transport demand modelling.
 
 ![](README_files/ISTlogo.png)
 
 This material was prepared by [Gabriel
-Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/),
-[Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/),
-[Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/),
-and [Carlos
-Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
+Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/) and
+[Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/), [Miguel
+Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), and
+[Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
 
 ## Summary
 
@@ -32,18 +31,18 @@ Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
 4.  [Generalized linear models](4-GeneralizedLinearModels.md) (**Gabriel
     Valença**)
 
-5.  [Spatial regression models](5-PanelSpatialModels.md) (**Rosa
-    Félix**)
+5.  [Panel and spatial regression models](5-PanelSpatialModels.md)
+    (**Rosa Félix**)
 
-6.  [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
-    
-      - [Multinomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/)
-      - [Nested](6-DiscreteChoiceModels/6.2-NestedLogitModels/)
-      - Ordered Models(**Miguel Costa**)
+6.  [Discrete Choice Models](6-DiscreteChoiceModels) (**Miguel Costa**)
 
-7.  Panel Data Models (**Gabriel Valença**)
+      6.1. [Multinomial Logit and Probit Models](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels)
+      
+      6.2. [Nested Logit Models](6-DiscreteChoiceModels/6.2-NestedLogitModels)
+      
+      6.3. [Ordered Logit Models](6-DiscreteChoiceModels/6.3-OrderedLogitModels)
 
-8.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
+7.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
     Roque**)
 
 ### Files
@@ -60,4 +59,4 @@ Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/).
   - Check [some tips](RMarkdownReports.md) how to make your home
     assignments as static or dynamic outputs with *R Markdown*. (**Rosa
     Félix**)
-  - How to install Python and Pandas Biogeme (**Miguel Costa**)
+  - How to install Python and Pandas Biogeme (**Gabriel Valença**)

@@ -115,9 +115,9 @@ print(descriptive_stats, valid.col=F) # method = "render"
 summary(df)
 ```
 
-> **Note:** I used other functions for summary statistics than in the MLR chapter. R allows you to do the same or similar tasks with different packages. 
+> **Note:** I used other functions for summary statistics compared to the MLR chapter. R allows you to do the same or similar tasks with different packages. 
 
-#### Take a look at the dataset
+#### Take a look at the first values of the dataset
 
 ```{r}
 head(df,10)
@@ -173,8 +173,8 @@ corr_matrix <- cor(df, method = "pearson")
 cortest.bartlett(corr_matrix, n = nrow(df))
 ```
 
-> **Note:** The Bartlett test examines if there are equal variance (homogeneity) between variables. Thus, it evaluates if there is any pattern between variables.  
-> **Note:** The null hypothesis is that there is no difference in variance between variables. 
+> **Note:** The Bartlett test examines if there is equal variance (homogeneity) between variables. Thus, it evaluates if there is any pattern between variables.  
+> **Note:** The null hypothesis is that there is no correlation between variables. Therefore, in factor analysis you want to reject the null hypothesis.   
 
 #### Check for sampling adequacy - KMO test
 
@@ -194,13 +194,22 @@ num_factors = fa.parallel(df, fm = "ml", fa = "fa")
 
 > **Note:** fm = factor math; ml = maximum likelihood; fa = factor analysis
 
+The selection of the number of factors in the Parallel analysis can be threefold:  
+
+* Detect where there is an "elbow" in the graph;
+* Detect the intersection between the "FA Actual Data" and the "FA Simulated Data";
+* Consider the number of factors with eigenvalue > 1.
+
+
 **2. _Kaiser Criterion_** 
 
 ```{r}
 sum(num_factors$fa.values > 1)
 ```
 
-> **Note:** Determines the number of factors with eigenvalue > 1
+> **Note:** Determines the number of factors with eigenvalue > 1.  
+
+> **Note:** You can also consider factors with eigenvalue > 0.7, since some of the literature indicate that this value does not overestimate the number of factors as much as considering an eigenvalue = 1. 
 
 **3. _Principal Component Analysis_ (PCA)**
 
@@ -208,33 +217,36 @@ sum(num_factors$fa.values > 1)
 df_pca <- princomp(df, cor=TRUE)
 ```
     
-> **Note:** cor = TRUE, standardizes your dataset
+> **Note:** cor = TRUE, standardizes your dataset before running a PCA. 
 
   # print variance that explains the components
 ```{r}
 summary(df_pca)  
-loadings(df_pca) 
 ```
 
-Scree Plot
+* Scree Plot
 
+```{r}
+require(graphics)
+screeplot(df_pca,type="lines", npcs = 31) 
+```
 
-plot(df_pca,type="lines") 
-fit$scores 
-#biplot(df_pca)
+> **Note:** Check the cummulative variance of first components and the scree plot, and see if the PCA is good approach to detect the number of factors in this case. 
 
+## EXPLORATORY FACTOR ANALYSIS
 
+#### Model 1: No rotation
 
-# EXPLORATORY FACTOR ANALYSIS
-
-## Model 1: No rotation
-
+```{r}
 df_factor <- factanal(df, factors = 4, rotation = "none", scores=c("regression"), fm = "ml")
+```
 
 
-## Model 2: Rotation Varimax
+#### Model 2: Rotation Varimax
 
+```{r}
 df_factor_var <- factanal(df, factors = 4, rotation = "varimax", scores=c("regression"), fm = "ml")
+```
 
 
 ## Model 3: Rotation Oblimin

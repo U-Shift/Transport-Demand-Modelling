@@ -822,70 +822,9 @@ IQR (CV) : 9777.9 (0.9)</td>
 </tbody>
 </table>
 
-``` r
-summary(df)
-```
-
-    ##   RespondentID          DWELCLAS         INCOME         CHILD13      
-    ##  Min.   :773001005   Min.   :1.000   Min.   :  700   Min.   :0.0000  
-    ##  1st Qu.:776363273   1st Qu.:4.000   1st Qu.: 2750   1st Qu.:0.0000  
-    ##  Median :780248282   Median :5.000   Median : 2750   Median :0.0000  
-    ##  Mean   :784082878   Mean   :5.147   Mean   : 4260   Mean   :0.3979  
-    ##  3rd Qu.:792998058   3rd Qu.:6.000   3rd Qu.: 4750   3rd Qu.:0.0000  
-    ##  Max.   :808234671   Max.   :7.000   Max.   :12500   Max.   :4.0000  
-    ##       H18           HEMPLOY          HSIZE          AVADUAGE    
-    ##  Min.   :0.000   Min.   :0.000   Min.   :1.000   Min.   : 0.00  
-    ##  1st Qu.:2.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:30.33  
-    ##  Median :2.000   Median :2.000   Median :2.000   Median :36.00  
-    ##  Mean   :2.115   Mean   :1.526   Mean   :2.583   Mean   :37.79  
-    ##  3rd Qu.:2.750   3rd Qu.:2.000   3rd Qu.:4.000   3rd Qu.:43.00  
-    ##  Max.   :6.000   Max.   :5.000   Max.   :7.000   Max.   :78.00  
-    ##       IAGE            ISEX            NCARS            AREA     
-    ##  Min.   : 0.00   Min.   :0.0000   Min.   :0.000   Min.   :  30  
-    ##  1st Qu.:28.00   1st Qu.:0.0000   1st Qu.:1.000   1st Qu.:  90  
-    ##  Median :34.00   Median :1.0000   Median :2.000   Median : 110  
-    ##  Mean   :36.89   Mean   :0.5447   Mean   :1.709   Mean   : 133  
-    ##  3rd Qu.:43.00   3rd Qu.:1.0000   3rd Qu.:2.000   3rd Qu.: 150  
-    ##  Max.   :78.00   Max.   :1.0000   Max.   :5.000   Max.   :2250  
-    ##     BEDROOM           PARK           BEDSIZE        PARKSIZE     
-    ##  Min.   :0.000   Min.   :0.0000   Min.   :0.00   Min.   :0.0000  
-    ##  1st Qu.:2.000   1st Qu.:0.0000   1st Qu.:0.80   1st Qu.:0.0000  
-    ##  Median :3.000   Median :1.0000   Median :1.00   Median :0.2500  
-    ##  Mean   :2.877   Mean   :0.8298   Mean   :1.35   Mean   :0.4662  
-    ##  3rd Qu.:3.000   3rd Qu.:1.0000   3rd Qu.:1.50   3rd Qu.:1.0000  
-    ##  Max.   :7.000   Max.   :4.0000   Max.   :5.00   Max.   :3.0000  
-    ##      RAGE10            TCBD            DISTHTC             TWCBD        
-    ##  Min.   :0.0000   Min.   : 0.7817   Min.   :   49.05   Min.   : 0.3116  
-    ##  1st Qu.:0.0000   1st Qu.: 9.9509   1st Qu.:  400.47   1st Qu.: 5.2482  
-    ##  Median :0.0000   Median :23.8093   Median :  719.04   Median : 9.8600  
-    ##  Mean   :0.2426   Mean   :24.7046   Mean   : 1346.98   Mean   :16.9986  
-    ##  3rd Qu.:0.0000   3rd Qu.:35.6981   3rd Qu.: 1525.45   3rd Qu.:25.2658  
-    ##  Max.   :1.0000   Max.   :73.2820   Max.   :17732.68   Max.   :67.8190  
-    ##      TDWWK           HEADH           POPDENS          EDUINDEX      
-    ##  Min.   : 0.00   Min.   :0.0000   Min.   :  0.00   Min.   :0.00000  
-    ##  1st Qu.:10.14   1st Qu.:1.0000   1st Qu.: 45.86   1st Qu.:0.09601  
-    ##  Median :22.18   Median :1.0000   Median : 83.17   Median :0.17319  
-    ##  Mean   :23.53   Mean   :0.8638   Mean   : 92.00   Mean   :0.19880  
-    ##  3rd Qu.:33.72   3rd Qu.:1.0000   3rd Qu.:135.01   3rd Qu.:0.27699  
-    ##  Max.   :80.72   Max.   :1.0000   Max.   :255.55   Max.   :0.65966  
-    ##     GRAVCPC           GRAVCPT           GRAVPCPT          NSTRTC     
-    ##  Min.   :0.06528   Min.   :0.02569   Min.   :0.4534   Min.   : 0.00  
-    ##  1st Qu.:0.25301   1st Qu.:0.22117   1st Qu.:0.9985   1st Qu.:14.00  
-    ##  Median :0.30924   Median :0.28129   Median :1.0911   Median :22.00  
-    ##  Mean   :0.28980   Mean   :0.26186   Mean   :1.1517   Mean   :22.22  
-    ##  3rd Qu.:0.34041   3rd Qu.:0.31036   3rd Qu.:1.2224   3rd Qu.:30.00  
-    ##  Max.   :0.39395   Max.   :0.36508   Max.   :2.8799   Max.   :84.00  
-    ##      DISTHW             DIVIDX          ACTDENS            DISTCBD       
-    ##  Min.   :   74.67   Min.   :0.2634   Min.   : 0.02199   Min.   :  148.9  
-    ##  1st Qu.:  712.79   1st Qu.:0.3239   1st Qu.: 1.31611   1st Qu.: 2025.3  
-    ##  Median : 1338.74   Median :0.3548   Median : 2.49377   Median : 5542.3  
-    ##  Mean   : 1883.41   Mean   :0.3777   Mean   : 5.77963   Mean   : 7967.4  
-    ##  3rd Qu.: 2533.30   3rd Qu.:0.3970   3rd Qu.: 4.85162   3rd Qu.:11803.2  
-    ##  Max.   :16590.06   Max.   :0.6500   Max.   :63.18205   Max.   :44004.6
-
-> **Note:** I used other functions for summary statistics compared to
-> the MLR chapter. R allows you to do the same or similar tasks with
-> different packages.
+> **Note:** I used a different library of the MLR chapter for perfoming
+> the summary statistics. “R” allows you to do the same or similar tasks
+> with different packages.
 
 #### Take a look at the first values of the dataset
 
@@ -964,7 +903,7 @@ fitted = scale(fake$fitted.values)
 hist(standardized)
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-11-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/unnamed-chunk-10-1.png)<!-- -->
 
   - **Linearity**
 
@@ -975,7 +914,7 @@ qqnorm(standardized)
 abline(0,1)
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-12-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/unnamed-chunk-11-1.png)<!-- -->
 
   - **Homogeneity**
 
@@ -987,7 +926,7 @@ abline(0,0)
 abline(v=0)
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/unnamed-chunk-12-1.png)<!-- -->
 
 #### Calculate the correlation matrix
 
@@ -1048,7 +987,7 @@ KMO(corr_matrix)
 num_factors = fa.parallel(df, fm = "ml", fa = "fa")
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/unnamed-chunk-16-1.png)<!-- -->
 
     ## Parallel analysis suggests that the number of factors =  8  and the number of components =  NA
 
@@ -1130,11 +1069,11 @@ require(graphics)
 screeplot(df_pca,type="lines", npcs = 31) 
 ```
 
-![](README_files/2-FactorAnalysis/unnamed-chunk-21-1.png)<!-- -->
+![](README_files/2-FactorAnalysis/unnamed-chunk-20-1.png)<!-- -->
 
-> **Note:** Check the cummulative variance of first components and the
-> scree plot, and see if the PCA is good approach to detect the number
-> of factors in this case.
+> **Note:** Check the cummulative variance of the first components and
+> the scree plot, and see if the PCA is a good approach to detect the
+> number of factors in this case.
 
 ## EXPLORATORY FACTOR ANALYSIS
 
@@ -1150,25 +1089,85 @@ df_factor <- factanal(df, factors = 4, rotation = "none", scores=c("regression")
 df_factor_var <- factanal(df, factors = 4, rotation = "varimax", scores=c("regression"), fm = "ml")
 ```
 
-## Model 3: Rotation Oblimin
+#### Model 3: Rotation Oblimin
 
-df\_factor\_obl \<- factanal(df, factors = 4, rotation = “oblimin”,
-scores=c(“regression”), fm = “ml”)
+``` r
+df_factor_obl <- factanal(df, factors = 4, rotation = "oblimin", scores=c("regression"), fm = "ml")
+```
 
-# Let’s print out the results of df\_factor\_obl, and take a look.
+#### Let’s print out the results of df\_factor\_obl, and take a look.
 
-print(df\_factor, digits=2, cutoff=0.3, sort=TRUE)
+``` r
+print(df_factor, digits=2, cutoff=0.3, sort=TRUE)
+```
 
-## Note: We used a cutoff of 0.3 due to the sample size is higher than 350 obs.
+    ## 
+    ## Call:
+    ## factanal(x = df, factors = 4, scores = c("regression"), rotation = "none",     fm = "ml")
+    ## 
+    ## Uniquenesses:
+    ## DWELCLAS   INCOME  CHILD13      H18  HEMPLOY    HSIZE AVADUAGE     IAGE 
+    ##     0.98     0.82     0.09     0.01     0.73     0.01     0.98     0.99 
+    ##     ISEX    NCARS     AREA  BEDROOM     PARK  BEDSIZE PARKSIZE   RAGE10 
+    ##     0.98     0.64     0.93     0.79     0.89     0.62     0.92     0.91 
+    ##     TCBD  DISTHTC    TWCBD    TDWWK    HEADH  POPDENS EDUINDEX  GRAVCPC 
+    ##     0.14     0.54     0.80     0.74     0.67     0.78     0.71     0.04 
+    ##  GRAVCPT GRAVPCPT   NSTRTC   DISTHW   DIVIDX  ACTDENS  DISTCBD 
+    ##     0.05     0.01     0.85     0.66     0.84     0.80     0.31 
+    ## 
+    ## Loadings:
+    ##          Factor1 Factor2 Factor3 Factor4
+    ## TCBD      0.92                          
+    ## DISTHTC   0.60            0.31          
+    ## EDUINDEX -0.53                          
+    ## GRAVCPC  -0.97                          
+    ## GRAVCPT  -0.70           -0.67          
+    ## DISTHW    0.56                          
+    ## DISTCBD   0.79                          
+    ## H18               0.93           -0.36  
+    ## HEMPLOY           0.51                  
+    ## HSIZE             0.93            0.35  
+    ## NCARS             0.58                  
+    ## BEDSIZE          -0.61                  
+    ## GRAVPCPT                  0.98          
+    ## CHILD13           0.31            0.90  
+    ## DWELCLAS                                
+    ## INCOME            0.40                  
+    ## AVADUAGE                                
+    ## IAGE                                    
+    ## ISEX                                    
+    ## AREA                                    
+    ## BEDROOM           0.44                  
+    ## PARK                                    
+    ## PARKSIZE                                
+    ## RAGE10                                  
+    ## TWCBD     0.43                          
+    ## TDWWK     0.47                          
+    ## HEADH            -0.45            0.35  
+    ## POPDENS  -0.39                          
+    ## NSTRTC   -0.36                          
+    ## DIVIDX   -0.40                          
+    ## ACTDENS  -0.41                          
+    ## 
+    ##                Factor1 Factor2 Factor3 Factor4
+    ## SS loadings       5.04    3.54    1.90    1.32
+    ## Proportion Var    0.16    0.11    0.06    0.04
+    ## Cumulative Var    0.16    0.28    0.34    0.38
+    ## 
+    ## Test of the hypothesis that 4 factors are sufficient.
+    ## The chi square statistic is 3628.43 on 347 degrees of freedom.
+    ## The p-value is 0
 
-## Note: Variability contained in the factors = Communality + Uniqueness
+> **Note:** We used a cutoff of 0.3 due to the sample size is higher
+> than 350 observations.
 
-## Note: Varimax assigns orthogonal rotation,
+> **Note:** The variability contained in the factors = Communality +
+> Uniqueness.
 
-## and oblimin assigns oblique rotation.
+> **Note:** Varimax assigns orthogonal rotation, and oblimin assigns
+> oblique rotation.
 
-\#Plot factor 1 against factor 2, and compare the results of different
-rotations
+#### Plot factor 1 against factor 2, and compare the results of different rotations
 
 ## No Rotation
 
@@ -1182,18 +1181,23 @@ col=“blue”)) abline(h = 0, v = 0)
 
 plot(df\_factor\_var\(loadings[,1],  df_factor_var\)loadings\[,2\], xlab
 = “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
-“Varimax rotation”) abline(h = 0, v = 0) \#Note: If you also want to
-put the variable label here, just take out the \#. \#load \<-
-df\_factor\_var$loadings\[,1:2\]
-\#text(text(load,labels=names(df),cex=.7, col=“red”))
+“Varimax rotation”) abline(h = 0, v = 0) load \<-
+df\_factor\_var$loadings\[,1:2\] text(text(load,labels=names(df),cex=.7,
+col=“red”))
 
 # Oblimin Rotation
 
 plot(df\_factor\_obl\(loadings[,1],  df_factor_obl\)loadings\[,2\], xlab
 = “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
-“Oblimin rotation”) abline(h = 0, v = 0) \#load \<-
-df\_factor\_obl$loadings\[,1:2\]
-\#text(text(load,labels=names(df),cex=.7, col=“yellow”)) \#abline(h = 0,
-v = 0)
+“Oblimin rotation”) abline(h = 0, v = 0) load \<-
+df\_factor\_obl$loadings\[,1:2\] text(text(load,labels=names(df),cex=.7,
+col=“yellow”)) abline(h = 0, v = 0)
+
+> **Note:** When you have more than two factors it is difficult to
+> analyse the factors by the plots. Variables that have low explaining
+> variance in the two factors analyzed, can have a be highly explained
+> by the other factors not present in the graph. However, try comparing
+> the plots with the factor loadings and plot the other graphs to get
+> more familiar with exploratory factor analysis.
 
 knitr::spin(hair = “Factor\_Analysis\_TDMLecture.R”)

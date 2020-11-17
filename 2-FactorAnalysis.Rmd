@@ -111,11 +111,7 @@ st_css() #pelos vistos isto tem de ser metido aqui antes, no markdown, apesar de
 print(descriptive_stats, valid.col=F) # method = "render"
 ```
 
-```{r}
-summary(df)
-```
-
-> **Note:** I used other functions for summary statistics compared to the MLR chapter. R allows you to do the same or similar tasks with different packages. 
+> **Note:** I used a different library of the MLR chapter for perfoming the summary statistics. "R" allows you to do the same or similar tasks with different packages. 
 
 #### Take a look at the first values of the dataset
 
@@ -231,7 +227,7 @@ require(graphics)
 screeplot(df_pca,type="lines", npcs = 31) 
 ```
 
-> **Note:** Check the cummulative variance of first components and the scree plot, and see if the PCA is good approach to detect the number of factors in this case. 
+> **Note:** Check the cummulative variance of the first components and the scree plot, and see if the PCA is a good approach to detect the number of factors in this case. 
 
 ## EXPLORATORY FACTOR ANALYSIS
 
@@ -249,27 +245,29 @@ df_factor_var <- factanal(df, factors = 4, rotation = "varimax", scores=c("regre
 ```
 
 
-## Model 3: Rotation Oblimin
+#### Model 3: Rotation Oblimin
 
+```{r}
 df_factor_obl <- factanal(df, factors = 4, rotation = "oblimin", scores=c("regression"), fm = "ml")
+```
 
+#### Let's print out the results of df_factor_obl, and take a look. 
 
-
-# Let's print out the results of df_factor_obl, and take a look. 
-
+```{r}
 print(df_factor, digits=2, cutoff=0.3, sort=TRUE)
+```
 
-## Note: We used a cutoff of 0.3 due to the sample size is higher than 350 obs.
+> **Note:** We used a cutoff of 0.3 due to the sample size is higher than 350 observations.  
 
-## Note: Variability contained in the factors = Communality + Uniqueness
+> **Note:** The variability contained in the factors = Communality + Uniqueness.  
 
-## Note: Varimax assigns orthogonal rotation, 
-## and oblimin assigns oblique rotation.
+> **Note:** Varimax assigns orthogonal rotation, and oblimin assigns oblique rotation.
 
 
-#Plot factor 1 against factor 2, and compare the results of different rotations
+#### Plot factor 1 against factor 2, and compare the results of different rotations
 
-## No Rotation
+* **No Rotation**
+```{r}
 plot(df_factor$loadings[,1], 
      df_factor$loadings[,2],
      xlab = "Factor 1", 
@@ -277,12 +275,15 @@ plot(df_factor$loadings[,1],
      ylim = c(-1,1),
      xlim = c(-1,1),
      main = "No rotation")
-abline(h = 0, v = 0)
-load <- df_factor$loadings[,1:2]
-text(text(load,labels=names(df),cex=.7, col="blue"))
-abline(h = 0, v = 0)
+     abline(h = 0, v = 0)
+     load <- df_factor$loadings[,1:2]
+     text(text(load,labels=names(df),cex=.7, col="blue"))
+     abline(h = 0, v = 0)
+```
 
-## Varimax rotation
+* **Varimax rotation**
+
+```{r}
 plot(df_factor_var$loadings[,1], 
      df_factor_var$loadings[,2],
      xlab = "Factor 1", 
@@ -291,12 +292,14 @@ plot(df_factor_var$loadings[,1],
      xlim = c(-1,1),
      main = "Varimax rotation")
      abline(h = 0, v = 0)
-#Note: If you also want to put the variable label here, just take out the #.
-#load <- df_factor_var$loadings[,1:2]
-#text(text(load,labels=names(df),cex=.7, col="red"))
+     load <- df_factor_var$loadings[,1:2]
+     text(text(load,labels=names(df),cex=.7, col="red"))
+```
 
 
-# Oblimin Rotation
+* **Oblimin Rotation**
+
+```{r}
 plot(df_factor_obl$loadings[,1], 
      df_factor_obl$loadings[,2],
      xlab = "Factor 1", 
@@ -304,11 +307,13 @@ plot(df_factor_obl$loadings[,1],
      ylim = c(-1,1),
      xlim = c(-1,1),
      main = "Oblimin rotation")
-abline(h = 0, v = 0)
-#load <- df_factor_obl$loadings[,1:2]
-#text(text(load,labels=names(df),cex=.7, col="yellow"))
-#abline(h = 0, v = 0)
+     abline(h = 0, v = 0)
+     load <- df_factor_obl$loadings[,1:2]
+     text(text(load,labels=names(df),cex=.7, col="yellow"))
+     abline(h = 0, v = 0)
+```
 
+> **Note:** When you have more than two factors it is difficult to analyse the factors by the plots. Variables that have low explaining variance in the two factors analyzed, can have a be highly explained by the other factors not present in the graph. However, try comparing the plots with the factor loadings and plot the other graphs to get more familiar with exploratory factor analysis.  
 
 knitr::spin(hair = "Factor_Analysis_TDMLecture.R")
 

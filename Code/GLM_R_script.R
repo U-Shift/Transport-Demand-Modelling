@@ -220,9 +220,7 @@ el4 <- as.numeric(model3$coefficients["DRIVE"] * mean(df$DRIVE)/mean(df$ACCIDENT
 el5 <- as.numeric(model3$coefficients["STATE"] * mean(df$STATE)/mean(df$ACCIDENT))
 
 variable <-c ("AADT1", "AADT2", "MEDIAN", "DRIVE", "STATE")
-elasticity <-c (el2, el3, el4)
+elasticity <-c (el1, el2, el3, el4, el5)
 elas_table <- data.frame(variable,elasticity)
 knitr::kable(elas_table, align = "l")
-
-
 

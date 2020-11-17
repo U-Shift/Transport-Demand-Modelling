@@ -25,6 +25,8 @@ library(readxl)
 library(skimr)
 # Library used in data science to perform exploratory data analysis
 library(tidyverse) 
+# Library used for negative binomial regression
+library(MASS)
 # Library used for goodness of fit parameters
 library(vcd)
 # Library used for goodness of fit
@@ -35,6 +37,7 @@ library(rcompanion)
 library(pscl)
 # Library used for the Lagrange Multiplier test
 library(plm)
+
 
 # Set working directory
 
@@ -193,12 +196,18 @@ Anova(model1, type = "III", test = "Wald")
 # Compare models:
  
 ## Calculate the Akaike’s Information Criteria (AIC) and the Bayesian Information Criteria (BIC) 
-AIC(model1, model2, model3)
-BIC(model1, model2, model3) 
+
+aic <- data.frame(model1 = AIC(model1), model2 = AIC(model2), model3 = AIC(model3))
+knitr::kable(aic, align = "l")
+
+bic <- data.frame(model1 = BIC(model1), model2 = BIC(model2), model3 = BIC(model3))
+knitr::kable(bic, align = "l")
 
   ## Note: AIC and BIC evaluates the quality of a finite set of models.
   
   ## Note: AIC and BIC consider the maximum likelihood and the number of parameters in assessing the quality of the models.
-  ## Nonetheless, the diference between both methods is that the BIC takes into account the number of observations of dataset. 
+  ## Nonetheless, the difference between both methods is that the BIC takes into account the number of observations of dataset. 
   
   ## Note: The smaller the values of AIC and BIC, the better the model 
+
+vuong.test(model1, model2, model3, type=c("None","AIC", "BIC"), digits = getOption("digits"))

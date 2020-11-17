@@ -68,12 +68,15 @@ library(summarytools) # Library used for checking the summary of the dataset
 library(psych) # Library used for factor analysis
 library(GPArotation) # Library used for factor analysis
 ```
-
-
-#### Set working directory
-
-```{r}
-setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling/")
+```{r summary tools settings, echo = FALSE, results='hide'}
+st_options(bootstrap.css     = FALSE,       # Already part of the theme so no need for it
+           plain.ascii       = FALSE,       # One of the essential settings
+           style             = "rmarkdown", # Idem.
+           dfSummary.silent  = TRUE,        # Suppresses messages about temporary files
+           footnote          = NA,          # Keeping the results minimalistic
+           subtitle.emphasis = FALSE,       # For the vignette theme, this gives much better results
+           tmp.img.dir       = "tmp"        # store graph images
+           )       
 ```
 
 #### Import dataset
@@ -85,6 +88,7 @@ data <- read.spss("Data/example_fact.sav")
 #### Take a look at the main characteristics of the dataset
 
 ```{r}
+class(data) #type of data
 str(data)
 ```
 
@@ -97,20 +101,26 @@ df <- data.frame(data)
 #### Check summary statistics of variables
 
 ```{r}
-descriptive_stats <- dfSummary(df, style='grid', plain.ascii = FALSE, graph.col = TRUE)
-
+descriptive_stats <- dfSummary(df)
+```
+```{r eval=F}
 view(descriptive_stats)
+```
+```{r summary tables show, results='asis', echo=FALSE, message=FALSE, warning=FALSE}
+st_css() #pelos vistos isto tem de ser metido aqui antes, no markdown, apesar de já estar lá em cima..
+print(descriptive_stats, valid.col=F) # method = "render"
+```
 
+```{r}
 summary(df)
 ```
 
-> **Note:** I used other functions for summary statistics in last exercise.
+> **Note:** I used other functions for summary statistics than in the MLR chapter. R allows you to do the same or similar tasks with different packages. 
 
-####Take a look at the dataset
+#### Take a look at the dataset
 
 ```{r}
 head(df,10)
-summary(df)
 ```
 
 #### Make ID as row names or case number
@@ -121,7 +131,7 @@ df<-data.frame(df, row.names = 1)
 
 #### Evaluating the assumptions for factoral analysis: 
 
-#### Let's run a random regression model in order to evaluate some assumptions
+Let's run a random regression model in order to evaluate some assumptions
 
 ```{r}
 random = rchisq(nrow(df), 32)
@@ -151,18 +161,20 @@ abline(0,0)
 abline(v=0)
 ```
 
-#### Examine correlations
+#### Calculate the correlation matrix
 ```{r}
 corr_matrix <- cor(df, method = "pearson")
-corr_matrix
 ```
 
 
-#### Check for correlation adequacy (pattern between variables) - Bartlett's Test
+#### Check for correlation adequacy - Bartlett's Test.
 
 ```{r}
 cortest.bartlett(corr_matrix, n = nrow(df))
 ```
+
+> **Note:** The Bartlett test examines if there are equal variance (homogeneity) between variables. Thus, it evaluates if there is any pattern between variables.  
+> **Note:** The null hypothesis is that there is no difference in variance between variables. 
 
 #### Check for sampling adequacy - KMO test
 
@@ -170,7 +182,7 @@ cortest.bartlett(corr_matrix, n = nrow(df))
 KMO(corr_matrix)
 ```
 
-> **Note:** We want at least 0.7 of the overall Mean Sample Adequacy (MSA)
+> **Note:** We want at least 0.7 of the overall Mean Sample Adequacy (MSA). If, 0.6 < MSA < 0.7, it is not a good value, but acceptable in some cases.
 
 #### Determine the number of factors to extract
 

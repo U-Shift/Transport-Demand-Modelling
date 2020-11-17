@@ -68,12 +68,15 @@ library(summarytools) # Library used for checking the summary of the dataset
 library(psych) # Library used for factor analysis
 library(GPArotation) # Library used for factor analysis
 ```
-
-
-#### Set working directory
-
-```{r}
-setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling/")
+```{r summary tools settings, echo = FALSE, results='hide'}
+st_options(bootstrap.css     = FALSE,       # Already part of the theme so no need for it
+           plain.ascii       = FALSE,       # One of the essential settings
+           style             = "rmarkdown", # Idem.
+           dfSummary.silent  = TRUE,        # Suppresses messages about temporary files
+           footnote          = NA,          # Keeping the results minimalistic
+           subtitle.emphasis = FALSE,       # For the vignette theme, this gives much better results
+           tmp.img.dir       = "tmp"        # store graph images
+           )       
 ```
 
 #### Import dataset
@@ -85,6 +88,7 @@ data <- read.spss("Data/example_fact.sav")
 #### Take a look at the main characteristics of the dataset
 
 ```{r}
+class(data) #type of data
 str(data)
 ```
 
@@ -97,19 +101,27 @@ df <- data.frame(data)
 #### Check summary statistics of variables
 
 ```{r}
-descriptive_stats <- dfSummary(df, style='grid', plain.ascii = FALSE, graph.col = TRUE)
-
+descriptive_stats <- dfSummary(df)
+```
+```{r eval=F}
 view(descriptive_stats)
+```
 
+```{r summary tables show, results='asis', echo=FALSE, message=FALSE, warning=FALSE}
+st_css() #pelos vistos isto tem de ser metido aqui antes, no markdown, apesar de já estar lá em cima..
+print(descriptive_stats, valid.col=F) # method = "render"
+```
+
+```{r}
 summary(df)
 ```
 
 > **Note:** I used other functions for summary statistics in last exercise.
 
-####Take a look at the dataset
+#### Take a look at the dataset
 
 ```{r}
-head(df,10)
+head(df,10, style="rmarkdown")
 summary(df)
 ```
 

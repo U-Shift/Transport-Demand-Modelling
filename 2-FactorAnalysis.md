@@ -1169,29 +1169,69 @@ print(df_factor, digits=2, cutoff=0.3, sort=TRUE)
 
 #### Plot factor 1 against factor 2, and compare the results of different rotations
 
-## No Rotation
+  - **No Rotation**
 
-plot(df\_factor\(loadings[,1],  df_factor\)loadings\[,2\], xlab =
-“Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
-“No rotation”) abline(h = 0, v = 0) load \<-
-df\_factor$loadings\[,1:2\] text(text(load,labels=names(df),cex=.7,
-col=“blue”)) abline(h = 0, v = 0)
+<!-- end list -->
 
-## Varimax rotation
+``` r
+plot(df_factor$loadings[,1], 
+     df_factor$loadings[,2],
+     xlab = "Factor 1", 
+     ylab = "Factor 2", 
+     ylim = c(-1,1),
+     xlim = c(-1,1),
+     main = "No rotation")
+     abline(h = 0, v = 0)
+```
 
-plot(df\_factor\_var\(loadings[,1],  df_factor_var\)loadings\[,2\], xlab
-= “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
-“Varimax rotation”) abline(h = 0, v = 0) load \<-
-df\_factor\_var$loadings\[,1:2\] text(text(load,labels=names(df),cex=.7,
-col=“red”))
+![](README_files/2-FactorAnalysis/unnamed-chunk-25-1.png)<!-- -->
 
-# Oblimin Rotation
+``` r
+     load <- df_factor$loadings[,1:2]
+    #text(text(load,labels = names(df), cex=.7, col="blue")) 
+```
 
-plot(df\_factor\_obl\(loadings[,1],  df_factor_obl\)loadings\[,2\], xlab
-= “Factor 1”, ylab = “Factor 2”, ylim = c(-1,1), xlim = c(-1,1), main =
-“Oblimin rotation”) abline(h = 0, v = 0) load \<-
-df\_factor\_obl$loadings\[,1:2\] text(text(load,labels=names(df),cex=.7,
-col=“yellow”)) abline(h = 0, v = 0)
+  - **Varimax rotation**
+
+<!-- end list -->
+
+``` r
+plot(df_factor_var$loadings[,1], 
+     df_factor_var$loadings[,2],
+     xlab = "Factor 1", 
+     ylab = "Factor 2", 
+     ylim = c(-1,1),
+     xlim = c(-1,1),
+     main = "Varimax rotation")
+     abline(h = 0, v = 0)
+```
+
+![](README_files/2-FactorAnalysis/unnamed-chunk-26-1.png)<!-- -->
+
+``` r
+     load <- df_factor_var$loadings[,1:2]
+     #text(text(load,labels=names(df),cex=.7, col="red"))
+```
+
+  - **Oblimin Rotation**
+
+<!-- end list -->
+
+``` r
+plot(df_factor_obl$loadings[,1], 
+     df_factor_obl$loadings[,2],
+     xlab = "Factor 1", 
+     ylab = "Factor 2",
+     ylim = c(-1,1),
+     xlim = c(-1,1),
+     main = "Oblimin rotation")
+     abline(h = 0, v = 0)
+     load <- df_factor_obl$loadings[,1:2]
+     #text(text(load,labels=names(df),cex=.7, col="yellow"))
+     abline(h = 0, v = 0)
+```
+
+![](README_files/2-FactorAnalysis/unnamed-chunk-27-1.png)<!-- -->
 
 > **Note:** When you have more than two factors it is difficult to
 > analyse the factors by the plots. Variables that have low explaining

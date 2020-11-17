@@ -277,8 +277,8 @@ plot(df_factor$loadings[,1],
      main = "No rotation")
      abline(h = 0, v = 0)
      load <- df_factor$loadings[,1:2]
-     text(text(load,labels = names(df), cex=.7, col="blue"))
-     abline(h = 0, v = 0)
+    #text(text(load,labels = names(df), cex=.7, col="blue")) 
+     
 ```
 
 * **Varimax rotation**
@@ -293,7 +293,7 @@ plot(df_factor_var$loadings[,1],
      main = "Varimax rotation")
      abline(h = 0, v = 0)
      load <- df_factor_var$loadings[,1:2]
-     text(text(load,labels=names(df),cex=.7, col="red"))
+     #text(text(load,labels=names(df),cex=.7, col="red"))
 ```
 
 
@@ -309,7 +309,7 @@ plot(df_factor_obl$loadings[,1],
      main = "Oblimin rotation")
      abline(h = 0, v = 0)
      load <- df_factor_obl$loadings[,1:2]
-     text(text(load,labels=names(df),cex=.7, col="yellow"))
+     #text(text(load,labels=names(df),cex=.7, col="yellow"))
      abline(h = 0, v = 0)
 ```
 

@@ -34,9 +34,7 @@ library(car)
 # Library used for goodness of fit
 library(rcompanion)
 # Library used for the Vuong test
-library(pscl)
-# Library used for the Lagrange Multiplier test
-library(plm)
+#library(pscl)
 # Library used to calculate elasticities
 library(popbio)
 
@@ -142,9 +140,6 @@ summary(model1)
 # In overdispersion, the estimates are reliable but the standard errors tend to be smaller. 
  
 
-#botar o lagrange
-
-
 # Calculate the pseudo-Rsquare and perform an Omnibus test
 nagelkerke(model1)
 
@@ -170,11 +165,11 @@ Anova(model1, type = "III", test = "Wald")
 
 # Calculate the pseudo-Rsquare and perform an Omnibus test 
  
- nagelkerke(model2)
+#nagelkerke(model2)
 
 # Calculate the Type III test. 
  
- Anova(model2, type = "III", test = "Wald") 
+ # Anova(model2, type = "III", test = "Wald") 
  
  # Note: The estimates are the same, but the standard errors have increased because they are 
  # adjusted by the scale parameter
@@ -191,9 +186,7 @@ Anova(model1, type = "III", test = "Wald")
 # Calculate the Type III test.  
  nagelkerke(model3)
 
-# Calculate elasticities 
- 
- 
+
 # Compare models:
  
 ## Calculate the Akaike’s Information Criteria (AIC) and the Bayesian Information Criteria (BIC) 

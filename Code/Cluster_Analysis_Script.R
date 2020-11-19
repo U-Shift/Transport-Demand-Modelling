@@ -195,8 +195,28 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
   
   plot(1:10, betSS_totSS, type = "b", ylab = "Between SS / Total SS", xlab = "Number of clusters")
 
+# Let us try to take out the outliers and see the diference in the k-means clustering
+ 
+## Examine the boxplots
+  
+  par(mar=c(15,2,1,1)) # Make labels fit in the boxplot
+  boxplot(df_scaled, las = 2)
+
+
+
+
+
+outliers <- boxplot.stats(df_scaled)$out
+   
+extract_outliers <- which(df_scaled %in% c(outliers)) 
+
+extract_outliers
+  
+  
 # Finally, try plotting each variable with each other and analyze if the clusters make sense.
 # Let us go back to first example and take a look. 
 
   plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
   with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
+
+  

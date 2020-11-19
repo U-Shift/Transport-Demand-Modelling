@@ -106,7 +106,7 @@ head(df_reduced)
   df_scaled <- scale(df_reduced, mean, sd)
 ```
   
-## HIERARCHICAL CLUSTERING
+### HIERARCHICAL CLUSTERING
 
 #### Measuring Similarity through Euclidean distances
 
@@ -140,88 +140,120 @@ rect.hclust(modelc, 4, border = "blue")
 ```
 
 **2. Average linkage between groups** 
-  ## The distance between clusters is the average of the distances between 
-  ## observations in one cluster to all the members in the other cluster. 
 
-  modela <- hclust(distance, "average")
-  plot(modela, labels = df$Airport, xlab = "Distance - Average linkage", hang = -1)
-  rect.hclust(modelc, 4, border = "red")
+The distance between clusters is the average of the distances between observations in one cluster to all the members in the other cluster. 
 
-# 3. Ward`s method
-  ## The measures of similarity are the sum of squares within the cluster summed
-  ## over all variables. 
 
-  modelw <- hclust(distance, "ward.D2")
-  plot(modelw, labels = df$Airport, xlab = "Distance - Ward method", hang = -1)
-  # Visualize where to cut on the tree (choose number of clusters)
-  rect.hclust(modelw, 4, border = "orange")
+```{r}
+modela <- hclust(distance, "average")
+plot(modela, labels = df$Airport, xlab = "Distance - Average linkage", hang = -1)
+rect.hclust(modelc, 4, border = "red")
+```
 
-# 4. Centroid method
-  ## The similarity between two clusters is the distance between its centroids.
+**3. Ward`s method**
   
-  modelcen <- hclust(distance, "centroid")
-  plot(modelcen, labels = df$Airport, xlab = "Distance - Centroid method", hang = -1)
-  rect.hclust(modelcen, 4, border = "green")
-
-# Now lets evaluate the membership of each observation with the cutree function for each method.
-
-  member_com <- cutree(modelc, 4)
-  member_av <- cutree(modela, 4)
-  member_ward <- cutree(modelw, 4)
-  member_cen <- cutree(modelcen, 4)
-
-# Plot table to compare the how common each method is to each other.
-# Lets compare the complete linkage with the average linkage
-  table(member_com, member_av)
+The measures of similarity are the sum of squares within the cluster summed over all variables. 
 
 
-# Silhouette Plot 
-## Analyzes how similiar an observation is to its own cluster compared to other clusters.
-## The clustering configuration is appropriate when most objects have high values. 
-## Low or negative values indicate that the clustering does not have an appropriate number of clusters.
+```{r}
+modelw <- hclust(distance, "ward.D2")
+plot(modelw, labels = df$Airport, xlab = "Distance - Ward method", hang = -1)
+# Visualize where to cut on the tree (choose number of clusters)
+rect.hclust(modelw, 4, border = "orange")
+```
 
+**4. Centroid method**
+
+The similarity between two clusters is the distance between its centroids.
+  
+```{r}
+modelcen <- hclust(distance, "centroid")
+plot(modelcen, labels = df$Airport, xlab = "Distance - Centroid method", hang = -1)
+rect.hclust(modelcen, 4, border = "green")
+```
+
+#### Now lets evaluate the membership of each observation with the cutree function for each method.
+
+```{r}
+member_com <- cutree(modelc, 4)
+member_av <- cutree(modela, 4)
+member_ward <- cutree(modelw, 4)
+member_cen <- cutree(modelcen, 4)
+```
+  
+
+#### Plot table to compare how common each method is to each other.
+
+Let us compare the complete linkage with the average linkage
+
+```{r}
+table(member_com, member_av)
+```
+  
+  
+#### Silhouette Plot 
 
   plot(silhouette(member_com, distance))
   plot(silhouette(member_av, distance))
   plot(silhouette(member_ward, distance))
   plot(silhouette(member_cen, distance))
 
+>**Note:** Analyzes how similiar an observation is to its own cluster compared to other clusters. The clustering configuration is appropriate when most objects have high values. Low or negative values indicate that the clustering does not have an appropriate number of clusters.
 
-# NON-HiERARCHICAL CLUSTERING 
+### NON-HiERARCHICAL CLUSTERING 
 
-# K-means clustering
+#### K-means clustering
 
-  km_clust <- kmeans(df_scaled, 3)
+```{r}
+km_clust <- kmeans(df_scaled, 3)
+```
 
-  # Print out the results
-  km_clust 
+Print out the results
 
-  str(km_clust)
+```{r}
+km_clust 
+
+str(km_clust)
+
+```
 
 
-# Choosing K 
+#### Choosing K 
 
-# This algorithm will detect how many clusters from 1 to 10 explains more variance
+#### This algorithm will detect how many clusters from 1 to 10 explains more variance
+  
+```{r}
   k <- list()
   for(i in 1:10){
     k[[i]] <- kmeans(df_scaled, i)
   }
-
-#Print the k value and take a look at the ratio (between_SS / total_SS)
-  k
-
-# Now lets try to plot (between_SS / total_SS) in to a scree plot
-
-  betSS_totSS <- list()
-  for(i in 1:10){
-    betSS_totSS[[i]] <- k[[i]]$betweenss/k[[i]]$totss
-  }
+```
   
-  plot(1:10, betSS_totSS, type = "b", ylab = "Between SS / Total SS", xlab = "Number of clusters")
+#### Print the k value and take a look at the ratio (between_SS / total_SS)
 
-# Finally, try plotting each variable with each other and analyze if the clusters make sense.
-# Let us go back to first example and take a look. 
+```{r}
+k
+```
 
-  plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
-  with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
+#### Now lets try to plot (between_SS / total_SS) in to a scree plot
+
+```{r}
+betSS_totSS <- list()
+for(i in 1:10){
+betSS_totSS[[i]] <- k[[i]]$betweenss/k[[i]]$totss
+}
+plot(1:10, betSS_totSS, type = "b", ylab = "Between SS / Total SS", xlab = "Number of clusters")
+```
+
+
+#### Finally, try plotting each variable with each other and analyze if the clusters make sense.  
+
+Let us go back to first example and take a look. 
+
+```{r}
+plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
+with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
+```
+
+
 

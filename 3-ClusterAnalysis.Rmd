@@ -12,17 +12,29 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ### Variables: 
 
-`Code`
-`Airport`
-`Ordem`
-`Passengers`
-`Movements`
-`Number of airlines`
-`Main air line flights percentage`
-`Maximum percentage of traffic per country`
-# Number of Low Cost Airlines
-# Low Cost Airlines percentage
-# Destinations
+`Code`: Code of the airport;  
+
+`Airport`: Name of the airport;  
+
+`Ordem`: ID of the observations;  
+
+`Passengers`: Number of passengers;  
+
+`Movements`: Number of flights;  
+
+`Numberofairlines`: Number of airlines in each airport;  
+
+`Mainairlineflightspercentage`: percentage of flights of the main airline of each airport;  
+
+`Maximumpercentageoftrafficpercountry`: Maximum percentage of flights per country;  
+
+`NumberofLCCflightsweekly`: Number of weekly low cost flights`;   
+
+`NumberofLowCostAirlines`: Number of low cost airlines of each airport;  
+
+`LowCostAirlinespercentage`: percentage of the number of low cost airlines in each airport;  
+
+`Destinations`: 
 # Average_route_Distance
 # Distance to closest Similar Airport
 # Airport Regional Relevance

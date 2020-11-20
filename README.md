@@ -22,29 +22,31 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 
 ## Summary
 
-1.  [Multiple Linear Regression models](1-MultipleLinearRegression.md)
+1.  [Exploratory Data Analysis]()
+
+2.  [Multiple Linear Regression models](1-MultipleLinearRegression.md)
     (**Gabriel Valença**)
 
-2.  [Exploratory Factor Analysis](2-FactorAnalysis.md) (**Gabriel
+3.  [Exploratory Factor Analysis](2-FactorAnalysis.md) (**Gabriel
     Valença**)
 
-3.  [Cluster Analysis](3-ClusterAnalysis.md) (**Gabriel Valença**)
+4.  [Cluster Analysis](3-ClusterAnalysis.md) (**Gabriel Valença**)
 
-4.  [Generalized linear models](4-GeneralizedLinearModels.md) (**Gabriel
+5.  [Generalized linear models](4-GeneralizedLinearModels.md) (**Gabriel
     Valença**)
 
-5.  [Spatial regression models](5-PanelSpatialModels.md) (**Rosa
+6.  [Spatial regression models](5-PanelSpatialModels.md) (**Rosa
     Félix**)
 
-6.  [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
+7.  Panel Data Models (**Gabriel Valença**)
+
+8.  [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
     
       - [Multinomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/)
       - [Nested](6-DiscreteChoiceModels/6.2-NestedLogitModels/)
       - Ordered Models(**Miguel Costa**)
 
-7.  Panel Data Models (**Gabriel Valença**)
-
-8.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
+9.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
     Roque**)
 
 ### Files

@@ -164,7 +164,6 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
 > **Note**: The listwise deletion removes the whole observation that has
 > a missing value from the analysis. This may be appropriate only in
 > some cases. There are many other forms of treating missing values.
-> Take a look for yourselves.
 
   - Leave only continuous variables, and take out “Ordem”
 
@@ -257,7 +256,22 @@ head(df_reduced)
 
 #### Let us execute the many types of hierarchical clustering
 
-**1. Complete linkage (Farthest neighbor) clustering algorithm**
+**1. Single linkage (nearest neighbor) clustering algorithm**
+
+Used a bottom-up approach, by linking two clusters that have the closest
+distance between each other.
+
+``` r
+models <- hclust(distance, "single")
+plot(models, labels = df$Airport, xlab = "Distance - Single linkage", hang = -1)
+
+# Visualize the cut on the tree 
+rect.hclust(models, 4, border = "purple") 
+```
+
+![](README_files/3-ClusterAnalysis/unnamed-chunk-13-1.png)<!-- -->
+
+**2. Complete linkage (Farthest neighbor) clustering algorithm**
 
 Based on the maximum distance between observations in each cluster.
 
@@ -269,9 +283,9 @@ plot(modelc, labels = df$Airport, xlab = "Distance - Complete linkage", hang = -
 rect.hclust(modelc, 4, border = "blue") 
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/3-ClusterAnalysis/unnamed-chunk-14-1.png)<!-- -->
 
-**2. Average linkage between groups**
+**3. Average linkage between groups**
 
 The distance between clusters is the average of the distances between
 observations in one cluster to all the members in the other cluster.
@@ -282,9 +296,9 @@ plot(modela, labels = df$Airport, xlab = "Distance - Average linkage", hang = -1
 rect.hclust(modelc, 4, border = "red")
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/3-ClusterAnalysis/unnamed-chunk-15-1.png)<!-- -->
 
-**3. Ward\`s method**
+**4. Ward\`s method**
 
 The measures of similarity are the sum of squares within the cluster
 summed over all variables.
@@ -296,9 +310,9 @@ plot(modelw, labels = df$Airport, xlab = "Distance - Ward method", hang = -1)
 rect.hclust(modelw, 4, border = "orange")
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-15-1.png)<!-- -->
+![](README_files/3-ClusterAnalysis/unnamed-chunk-16-1.png)<!-- -->
 
-**4. Centroid method**
+**5. Centroid method**
 
 The similarity between two clusters is the distance between its
 centroids.
@@ -309,11 +323,12 @@ plot(modelcen, labels = df$Airport, xlab = "Distance - Centroid method", hang = 
 rect.hclust(modelcen, 4, border = "green")
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-16-1.png)<!-- -->
+![](README_files/3-ClusterAnalysis/unnamed-chunk-17-1.png)<!-- -->
 
 #### Now lets evaluate the membership of each observation with the cutree function for each method.
 
 ``` r
+member_single <- cutree(models, 4)
 member_com <- cutree(modelc, 4)
 member_av <- cutree(modela, 4)
 member_ward <- cutree(modelw, 4)
@@ -335,17 +350,46 @@ table(member_com, member_av)
     ##          3  0  3  0  0
     ##          4  0  0  3  1
 
+> **Note:** Try comparing other methods, and evaluate how common they
+> are.
+
 #### Silhouette Plot
 
-plot(silhouette(member\_com, distance)) plot(silhouette(member\_av,
-distance)) plot(silhouette(member\_ward, distance))
-plot(silhouette(member\_cen, distance))
+``` r
+plot(silhouette(member_single, distance))
+```
 
-> **Note:** Analyzes how similiar an observation is to its own cluster
-> compared to other clusters. The clustering configuration is
-> appropriate when most objects have high values. Low or negative values
-> indicate that the clustering does not have an appropriate number of
-> clusters.
+![](README_files/3-ClusterAnalysis/unnamed-chunk-20-1.png)<!-- -->
+
+``` r
+plot(silhouette(member_com, distance))
+```
+
+![](README_files/3-ClusterAnalysis/unnamed-chunk-20-2.png)<!-- -->
+
+``` r
+plot(silhouette(member_av, distance))
+```
+
+![](README_files/3-ClusterAnalysis/unnamed-chunk-20-3.png)<!-- -->
+
+``` r
+plot(silhouette(member_ward, distance))
+```
+
+![](README_files/3-ClusterAnalysis/unnamed-chunk-20-4.png)<!-- -->
+
+``` r
+plot(silhouette(member_cen, distance))
+```
+
+![](README_files/3-ClusterAnalysis/unnamed-chunk-20-5.png)<!-- -->
+
+> **Note:** The silhouette plot evaluates how similiar an observation is
+> to its own cluster compared to other clusters. The clustering
+> configuration is appropriate when most objects have high values. Low
+> or negative values indicate that the clustering method is not
+> appropriate or the number of clusters is not ideal.
 
 ### NON-HiERARCHICAL CLUSTERING
 
@@ -449,7 +493,7 @@ betSS_totSS[[i]] <- k[[i]]$betweenss/k[[i]]$totss
 plot(1:10, betSS_totSS, type = "b", ylab = "Between SS / Total SS", xlab = "Number of clusters")
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-22-1.png)<!-- -->
+![](README_files/3-ClusterAnalysis/unnamed-chunk-24-1.png)<!-- -->
 
 #### Let us try to take out the outliers and see the diference in the k-means clustering
 
@@ -462,9 +506,11 @@ par(mar=c(15,2,1,1)) # Make labels fit in the boxplot
 boxplot(df_scaled, las = 2)
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-23-1.png)<!-- -->
+![](README_files/3-ClusterAnalysis/unnamed-chunk-25-1.png)<!-- -->
 
-Detect the outliers
+  - **Detect the outliers**
+
+<!-- end list -->
 
 ``` r
 outliers <- boxplot.stats(df_scaled)$out
@@ -475,7 +521,9 @@ outliers
     ##  [1] 2.630622 2.772024 2.772024 3.611626 2.916185 2.523102 2.732030 2.515406
     ##  [9] 3.308457 3.285459
 
-remove rows with outliers
+  - **Remove rows with outliers**
+
+<!-- end list -->
 
 ``` r
 df_no_outliers <- which(df_scaled %in% outliers,) 
@@ -493,20 +541,20 @@ km_no_outliers <- kmeans(df_no_outliers, 3)
 km_no_outliers
 ```
 
-    ## K-means clustering with 3 clusters of sizes 3, 1, 6
+    ## K-means clustering with 3 clusters of sizes 4, 3, 3
     ## 
     ## Cluster means:
     ##        [,1]
-    ## 1  89.66667
-    ## 2 306.00000
-    ## 3 507.16667
+    ## 1 539.00000
+    ## 2  89.66667
+    ## 3 397.66667
     ## 
     ## Clustering vector:
-    ##  [1] 1 1 1 2 3 3 3 3 3 3
+    ##  [1] 2 2 2 3 3 3 1 1 1 1
     ## 
     ## Within cluster sum of squares by cluster:
-    ## [1]  7708.667     0.000 15042.833
-    ##  (between_SS / total_SS =  93.9 %)
+    ## [1]  2882.000  7708.667 12604.667
+    ##  (between_SS / total_SS =  93.8 %)
     ## 
     ## Available components:
     ## 
@@ -526,7 +574,7 @@ plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-27-1.png)<!-- -->
+![](README_files/3-ClusterAnalysis/unnamed-chunk-29-1.png)<!-- -->
 
   - **K-means without outliers**
 
@@ -537,4 +585,4 @@ plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster)
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-28-1.png)<!-- -->
+![](README_files/3-ClusterAnalysis/unnamed-chunk-30-1.png)<!-- -->

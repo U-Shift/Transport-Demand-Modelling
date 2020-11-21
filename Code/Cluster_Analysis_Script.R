@@ -106,7 +106,17 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
   ## Manhattan distance; 
   ## Mahanalobis distance.
 
-# 1. Complete linkage (Farthest neighbor) clustering algorithm 
+# 1. Single linkage (nearest neighbor) clustering algorithm**
+    
+# Used a bottom-up approach, by linking two clusters that have the closest distance between each other. 
+
+  models <- hclust(distance, "single")
+  plot(models, labels = df$Airport, xlab = "Distance - Single linkage", hang = -1)
+  
+  # Visualize the cut on the tree 
+  rect.hclust(models, 4, border = "purple")   
+  
+# 2. Complete linkage (Farthest neighbor) clustering algorithm 
   ## Based on the maximum distance between observations in each cluster.
 
   modelc <- hclust(distance, "complete")
@@ -115,7 +125,7 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
   # Visualize the cut on the tree 
   rect.hclust(modelc, 4, border = "blue")
 
-# 2. Average linkage between groups 
+# 3. Average linkage between groups 
   ## The distance between clusters is the average of the distances between 
   ## observations in one cluster to all the members in the other cluster. 
 
@@ -123,7 +133,7 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
   plot(modela, labels = df$Airport, xlab = "Distance - Average linkage", hang = -1)
   rect.hclust(modelc, 4, border = "red")
 
-# 3. Ward`s method
+# 4. Ward`s method
   ## The measures of similarity are the sum of squares within the cluster summed
   ## over all variables. 
 
@@ -132,7 +142,7 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
   # Visualize where to cut on the tree (choose number of clusters)
   rect.hclust(modelw, 4, border = "orange")
 
-# 4. Centroid method
+# 5. Centroid method
   ## The similarity between two clusters is the distance between its centroids.
   
   modelcen <- hclust(distance, "centroid")
@@ -141,6 +151,7 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
 
 # Now lets evaluate the membership of each observation with the cutree function for each method.
 
+  member_single <- cutree(models, 4)
   member_com <- cutree(modelc, 4)
   member_av <- cutree(modela, 4)
   member_ward <- cutree(modelw, 4)
@@ -156,7 +167,7 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
 ## The clustering configuration is appropriate when most objects have high values. 
 ## Low or negative values indicate that the clustering does not have an appropriate number of clusters.
 
-
+  plot(silhouette(member_single, distance))
   plot(silhouette(member_com, distance))
   plot(silhouette(member_av, distance))
   plot(silhouette(member_ward, distance))

@@ -153,7 +153,7 @@ head(df_reduced)
   fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"), order = FALSE)
 ```
 
-#### Let us execute the many types of hierarchical clustering
+#### Now, let us perform the many types of hierarchical clustering
 
 **1. Single linkage (nearest neighbor) clustering algorithm**
 
@@ -234,7 +234,7 @@ table(member_com, member_av)
 
 > **Note:** Try comparing other methods, and evaluate how common they are.   
   
-#### Silhouette Plot 
+#### Execute Silhouette Plots in order to evaluate which method is more appropriate.  
 
 ```{r}
 plot(silhouette(member_single, distance))
@@ -278,7 +278,7 @@ str(km_clust)
   
 > **Note**: Try printing the k value and take a look at the ratio "between_SS / total_SS". Evaluate how it varies when you add clusters. 
 
-#### Now lets try to plot (between_SS / total_SS) in to a scree plot
+#### Now, let us try to plot (between_SS / total_SS) into a scree plot
 
 ```{r}
 betSS_totSS <- list()

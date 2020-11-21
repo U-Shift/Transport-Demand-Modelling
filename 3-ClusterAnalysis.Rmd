@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ## Example Airports
 
+> Your task: Create and evaluate the many types of clustering methods. 
+
 ### Variables: 
 
 `Code`: Code of the airport;  
@@ -24,7 +26,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 `Numberofairlines`: Number of airlines in each airport;  
 
-`Mainairlineflightspercentage`: percentage of flights of the main airline of each airport;  
+`Mainairlineflightspercentage`: Percentage of flights of the main airline of each airport;  
 
 `Maximumpercentageoftrafficpercountry`: Maximum percentage of flights per country;  
 
@@ -32,22 +34,32 @@ knitr::opts_chunk$set(echo = TRUE,
 
 `NumberofLowCostAirlines`: Number of low cost airlines of each airport;  
 
-`LowCostAirlinespercentage`: percentage of the number of low cost airlines in each airport;  
+`LowCostAirlinespercentage`: Percentage of the number of low cost airlines in each airport;  
 
-`Destinations`: 
-# Average_route_Distance
-# Distance to closest Similar Airport
-# Airport Regional Relevance
-# Distance to city km
-# Inhabitants corrected
-# Number of visitors corrected
-# GDP corrected
-# Cargoton
+`Destinations`: Number of flights arriving at each airport;  
+
+`Average_route_Distance`: Average route distance in km;  
+
+`DistancetoclosestAirport`: Distance to closest airport in km
+
+`DistancetoclosestSimilarAirport`: Distance to closest similar airport in km;  
+
+`AirportRegionalRelevance`: Relevance of the airport in a regional scale (0 - 1);  
+
+`Distancetocitykm`: Distance between the airport and the city in km;  
+
+`Inhabitantscorrected`: Population of the city;  
+
+`numberofvisitorscorrected`: Number of vistors that arrived in the airport;  
+
+`GDP corrected`: Corrected value of the Gross Domestic Product;  
+
+`Cargoton`: Cargo ton. The total number of cargo transported in a certain period multiplied by the number o flights.
 
 
 #### Import Libraries
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 library(readxl) # Library used for reading excel files
 library(skimr) # Library used for summary statistics
 library(tidyverse) # Library used in data science to perform exploratory data analysis
@@ -87,7 +99,7 @@ plot(Numberofairlines ~ Destinations, df)
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0.6))
 ```
 
-> **Note:** You can already guess the number of clusters by visualizing the two variables. However, this is not clear and it does not consider the other variables. 
+> **Note:** You can already guess the number of clusters by visualizing the two variables. However, this is not clear and it does not consider the other variables in the analysis. 
 
 #### Treat the data before performing a cluster analysis
 
@@ -97,6 +109,8 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
  df <- na.omit(df)
 ```
 
+> **Note**: The listwise deletion removes the whole observation that has a missing value from the analysis. This may be appropriate only in some cases. There are many other forms of treating missing values. Take a look for yourselves. 
+
 * Leave only continuous variables, and take out "Ordem"
 
 ```{r}
@@ -104,13 +118,15 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
   df_reduced = df[,!(names(df) %in% drop)]
 ```
 
-Analyze how the scale of the values of the variables are different 
+> **Note:** We took out "Ordem" because it is an ID variable, and therefore it does not give value to the analysis.  
+
+#### Take a look at the scale of the variables. See how they are different!
   
 ```{r}
 head(df_reduced)
 ```
 
-* Standardization (Z-score) - (xi - xmean / standard deviation)
+#### Z-score standardization - (xi - xmean / standard deviation)
 
 ```{r}
   mean <- apply(df_reduced, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
@@ -124,8 +140,12 @@ head(df_reduced)
 
 ```{r}
   distance <- dist(df_scaled, method = "euclidean")
-  print(distance, digits = 3)
 ```
+
+> **Note:** There are other forms distance measures that can be used such as: 
+  i) Minkowski distance; 
+  ii) Manhattan distance; 
+  iii) Mahanalobis distance.
   
 #### Visualize distances in heatmap
 
@@ -133,11 +153,7 @@ head(df_reduced)
   fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"), order = FALSE)
 ```
 
-> **Note:** There are other forms distance measures that can be used such as: 
-  i) Minkowski distance; 
-  ii) Manhattan distance; 
-  iii) Mahanalobis distance.
-
+#### Let us execute the many types of hierarchical clustering
 
 **1. Complete linkage (Farthest neighbor) clustering algorithm**
 
@@ -241,11 +257,7 @@ str(km_clust)
   }
 ```
   
-#### Print the k value and take a look at the ratio (between_SS / total_SS)
-
-```{r}
-k
-```
+> **Note**: Try printing the k value and take a look at the ratio "between_SS / total_SS". Evaluate how it varies when you add clusters. 
 
 #### Now lets try to plot (between_SS / total_SS) in to a scree plot
 
@@ -258,14 +270,57 @@ plot(1:10, betSS_totSS, type = "b", ylab = "Between SS / Total SS", xlab = "Numb
 ```
 
 
+#### Let us try to take out the outliers and see the diference in the k-means clustering
+ 
+* Examine the boxplots
+  
+```{r}
+par(mar=c(15,2,1,1)) # Make labels fit in the boxplot
+boxplot(df_scaled, las = 2)
+```
+
+Detect the outliers
+
+```{r}
+outliers <- boxplot.stats(df_scaled)$out
+
+outliers
+```
+
+remove rows with outliers 
+
+```{r}
+df_no_outliers <- which(df_scaled %in% outliers,) 
+```
+
+> **Note:** There are many methods to treat outliers. This is just one of them. Not an ideal one, since it removes many observations that are relevant for the analysis, since the dataset is small.  
+
+
+#### Execute a k-means clustering with the dataset without the outliers and see the diference. 
+
+```{r}
+km_no_outliers <- kmeans(df_no_outliers, 3)
+
+km_no_outliers
+```
+
+
 #### Finally, try plotting each variable with each other and analyze if the clusters make sense.  
 
 Let us go back to first example and take a look. 
+
+* **K-means with outliers**
 
 ```{r}
 plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 
+* **K-means without outliers**
+
+```{r}
+plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster)
+with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
+```
 
 

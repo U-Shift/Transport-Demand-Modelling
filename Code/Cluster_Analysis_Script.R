@@ -202,21 +202,28 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0
   par(mar=c(15,2,1,1)) # Make labels fit in the boxplot
   boxplot(df_scaled, las = 2)
 
-
-
-
-
+  # Detect outliers
 outliers <- boxplot.stats(df_scaled)$out
-   
-extract_outliers <- which(df_scaled %in% c(outliers)) 
 
-extract_outliers
+  # remove rows with outliers 
+df_no_outliers <- which(df_scaled %in% outliers,) 
+
+# Execute a k-means clustering with the dataset without the outliers and see the diference. 
+
+km_no_outliers <- kmeans(df_no_outliers, 3)
+
+km_no_outliers
   
   
 # Finally, try plotting each variable with each other and analyze if the clusters make sense.
 # Let us go back to first example and take a look. 
 
+# K-means with outliers
+
   plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
   with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 
+# k-means without outliers
   
+  plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster)
+  with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))

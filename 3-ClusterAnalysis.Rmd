@@ -312,7 +312,7 @@ outliers
 df_no_outliers <- which(df_scaled %in% outliers,) 
 ```
 
-> **Note:** There are many methods to treat outliers. This is just one of them. Not an ideal one, since it removes many observations that are relevant for the analysis, since the dataset is small.  
+> **Note:** There are many methods to treat outliers. This is just one of them. Note that it is not very appropriate, since it removes many observations that are relevant for the analysis. Try using other methods and evaluate the difference.  
 
 
 #### Execute a k-means clustering with the dataset without the outliers and see the diference. 

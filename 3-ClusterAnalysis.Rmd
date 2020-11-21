@@ -142,7 +142,7 @@ head(df_reduced)
   distance <- dist(df_scaled, method = "euclidean")
 ```
 
-> **Note:** There are other forms distance measures that can be used such as: 
+> **Note:** There are other forms of distance measures that can be used such as: 
   i) Minkowski distance; 
   ii) Manhattan distance; 
   iii) Mahanalobis distance.
@@ -157,7 +157,7 @@ head(df_reduced)
 
 **1. Single linkage (nearest neighbor) clustering algorithm**
 
-Used a bottom-up approach, by linking two clusters that have the closest distance between each other. 
+Based on a bottom-up approach, by linking two clusters that have the closest distance between each other. 
 
 ```{r}
 models <- hclust(distance, "single")
@@ -245,7 +245,7 @@ plot(silhouette(member_cen, distance))
 ```
 
 
->**Note:** The silhouette plot evaluates how similiar an observation is to its own cluster compared to other clusters. The clustering configuration is appropriate when most objects have high values. Low or negative values indicate that the clustering method is not appropriate or the number of clusters is not ideal.
+>**Note:** The silhouette plot evaluates how similiar an observation is to its own cluster compared to other clusters. The clustering configuration is appropriate when most objects have high values. Low or negative values indicate that the clustering method is not appropriate or the number of clusters is not ideal. 
 
 ### NON-HiERARCHICAL CLUSTERING 
 

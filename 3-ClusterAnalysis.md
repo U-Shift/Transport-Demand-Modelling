@@ -242,7 +242,7 @@ head(df_reduced)
   distance <- dist(df_scaled, method = "euclidean")
 ```
 
-> **Note:** There are other forms distance measures that can be used
+> **Note:** There are other forms of distance measures that can be used
 > such as: i) Minkowski distance; ii) Manhattan distance; iii)
 > Mahanalobis distance.
 
@@ -258,8 +258,8 @@ head(df_reduced)
 
 **1. Single linkage (nearest neighbor) clustering algorithm**
 
-Used a bottom-up approach, by linking two clusters that have the closest
-distance between each other.
+Based on a bottom-up approach, by linking two clusters that have the
+closest distance between each other.
 
 ``` r
 models <- hclust(distance, "single")
@@ -405,43 +405,43 @@ Print out the results
 km_clust 
 ```
 
-    ## K-means clustering with 3 clusters of sizes 7, 18, 7
+    ## K-means clustering with 3 clusters of sizes 11, 16, 5
     ## 
     ## Cluster means:
     ##   Passengers  Movements Numberofairlines Mainairlineflightspercentage
-    ## 1  1.5805700  1.5672811      1.252280245                   -0.4493699
-    ## 2 -0.2469314 -0.2011272     -0.004982515                   -0.3699491
-    ## 3 -0.9456035 -1.0500969     -1.239468064                    1.4006677
+    ## 1 -0.6095999 -0.6567742       -0.5981361                   -0.1917995
+    ## 2  0.7166133  0.7916255        0.8241767                   -0.4910120
+    ## 3 -0.9520429 -1.0882984       -1.3214660                    1.9931973
     ##   Maximumpercentageoftrafficpercountry NumberofLCCflightsweekly
-    ## 1                           -0.5723298               1.09794424
-    ## 2                           -0.1629508               0.04370786
-    ## 3                            0.9913460              -1.21033588
+    ## 1                            0.5577814               -0.5451081
+    ## 2                           -0.5857676                0.7739065
+    ## 3                            0.6473374               -1.2772631
     ##   NumberofLowCostAirlines LowCostAirlinespercentage Destinations
-    ## 1               0.3787531                -0.7808392   1.12432250
-    ## 2               0.3305562                -0.2689855   0.07609389
-    ## 3              -1.2287547                 1.4725164  -1.31999250
+    ## 1              0.07256111                 0.1215978   -0.4548142
+    ## 2              0.38513206                -0.6868110    0.7534855
+    ## 3             -1.39205703                 1.9302799   -1.4105623
     ##   Average_Route_Distance DistancetoclosestAirport
-    ## 1              1.1638144              -0.37683045
-    ## 2             -0.1062034               0.06631895
-    ## 3             -0.8907198               0.20629602
+    ## 1             -0.4759152                0.4952267
+    ## 2              0.6283075               -0.4268811
+    ## 3             -0.9635706                0.2765206
     ##   DistancetoclosestSimilarAirport AirportRegionalrelevance Distancetocitykm
-    ## 1                      0.87493166                0.5998030       -0.2060176
-    ## 2                     -0.07737412                0.1407640       -0.3136475
-    ## 3                     -0.67596963               -0.9617675        1.0125397
+    ## 1                      0.04572232                 0.230860       -0.4143005
+    ## 2                      0.19264710                 0.227674       -0.2456769
+    ## 3                     -0.71705981                -1.236449        1.6976272
     ##   Inhanbitantscorrected numberofvisitorscorrected GDPcorrected   Cargoton
-    ## 1            1.09082987                 1.3272381    0.8042615  1.2446104
-    ## 2           -0.06258292                -0.2290652   -0.1117858 -0.3186842
-    ## 3           -0.92990235                -0.7382133   -0.5168124 -0.4251367
+    ## 1            -0.4802512                -0.5070902   -0.6566693 -0.4356553
+    ## 2             0.6365147                 0.5857249    0.5626763  0.4289738
+    ## 3            -0.9802943                -0.7587213   -0.3558915 -0.4142745
     ## 
     ## Clustering vector:
     ##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
-    ##  2  2  2  2  3  2  2  3  2  2  2  2  2  2  2  2  2  1  1  1  1  1  1  1  2  2 
+    ##  1  1  1  1  3  1  1  1  1  2  2  2  1  2  2  2  1  2  2  2  2  2  2  2  2  2 
     ## 27 28 29 30 31 32 
-    ##  3  3  2  3  3  3 
+    ##  3  3  2  1  3  3 
     ## 
     ## Within cluster sum of squares by cluster:
-    ## [1]  70.90186 150.32291  67.16167
-    ##  (between_SS / total_SS =  48.3 %)
+    ## [1]  81.96037 166.93358  41.82151
+    ##  (between_SS / total_SS =  47.9 %)
     ## 
     ## Available components:
     ## 
@@ -453,17 +453,17 @@ str(km_clust)
 ```
 
     ## List of 9
-    ##  $ cluster     : Named int [1:32] 2 2 2 2 3 2 2 3 2 2 ...
+    ##  $ cluster     : Named int [1:32] 1 1 1 1 3 1 1 1 1 2 ...
     ##   ..- attr(*, "names")= chr [1:32] "1" "2" "3" "4" ...
-    ##  $ centers     : num [1:3, 1:18] 1.581 -0.247 -0.946 1.567 -0.201 ...
+    ##  $ centers     : num [1:3, 1:18] -0.61 0.717 -0.952 -0.657 0.792 ...
     ##   ..- attr(*, "dimnames")=List of 2
     ##   .. ..$ : chr [1:3] "1" "2" "3"
     ##   .. ..$ : chr [1:18] "Passengers" "Movements" "Numberofairlines" "Mainairlineflightspercentage" ...
     ##  $ totss       : num 558
-    ##  $ withinss    : num [1:3] 70.9 150.3 67.2
-    ##  $ tot.withinss: num 288
-    ##  $ betweenss   : num 270
-    ##  $ size        : int [1:3] 7 18 7
+    ##  $ withinss    : num [1:3] 82 166.9 41.8
+    ##  $ tot.withinss: num 291
+    ##  $ betweenss   : num 267
+    ##  $ size        : int [1:3] 11 16 5
     ##  $ iter        : int 2
     ##  $ ifault      : int 0
     ##  - attr(*, "class")= chr "kmeans"
@@ -541,20 +541,20 @@ km_no_outliers <- kmeans(df_no_outliers, 3)
 km_no_outliers
 ```
 
-    ## K-means clustering with 3 clusters of sizes 4, 3, 3
+    ## K-means clustering with 3 clusters of sizes 6, 1, 3
     ## 
     ## Cluster means:
     ##        [,1]
-    ## 1 539.00000
-    ## 2  89.66667
-    ## 3 397.66667
+    ## 1 507.16667
+    ## 2 306.00000
+    ## 3  89.66667
     ## 
     ## Clustering vector:
-    ##  [1] 2 2 2 3 3 3 1 1 1 1
+    ##  [1] 3 3 3 2 1 1 1 1 1 1
     ## 
     ## Within cluster sum of squares by cluster:
-    ## [1]  2882.000  7708.667 12604.667
-    ##  (between_SS / total_SS =  93.8 %)
+    ## [1] 15042.833     0.000  7708.667
+    ##  (between_SS / total_SS =  93.9 %)
     ## 
     ## Available components:
     ## 

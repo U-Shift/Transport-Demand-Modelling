@@ -42,7 +42,9 @@ This chapter explores how to estimate and analyze Discrete Choice Models, their 
 
 #### [6.3. Ordered Logit Models](6.3-OrderedLogitModels)
 
->TODO
+|File   | Topic  | Description  |
+|---|---|---|
+|[01-biogeme-ordered.ipynb](6.3-6.3-OrderedLogitModels/01-biogeme-ordered.ipynb)   |Ordered Logit Basics   | How to estimate a simple ordered logit model.  |
 
 
 

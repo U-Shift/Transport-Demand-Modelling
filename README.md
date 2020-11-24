@@ -42,9 +42,9 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 
 8.  [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
     
-      - [Multinomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/)
+      - [Multinomial/Binomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/)
       - [Nested](6-DiscreteChoiceModels/6.2-NestedLogitModels/)
-      - Ordered Models(**Miguel Costa**)
+      - [Ordered](6-DiscreteChoiceModels/6.3-OrderedLogitModels/)
 
 9.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
     Roque**)

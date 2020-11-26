@@ -8,24 +8,180 @@ knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/8-HazardBasedModels/")
 ```
 
-## GitHub Documents
-
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
-
-## Including Code
-
-You can include R code in the document as follows:
-
-```{r cars}
-summary(cars)
+```{r}
+library(readxl)
+library(skimr)
+library(survival)
+library(coxme)
+library(survminer)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+data.delay <- read_excel("Data/ExerciseHBDM.xlsx")
+
+
+data.delay <- data.frame(data.delay)
+
+head(data.delay)
+```
+
+```{r}
+data.delay["minutes"] <- NA
+
+data.delay$minutes <-  data.delay$X1
+
+data.delay["activity"] <- NA
+
+data.delay$activity <-  data.delay$X2
+
+data.delay["number_of_times"] <- NA
+
+data.delay$number_of_times <-  data.delay$X3
+
+data.delay["mode"] <- NA
+
+data.delay$mode <-  data.delay$X4
+
+data.delay["route"] <- NA
+
+data.delay$route <-  data.delay$X5
+
+data.delay["congested"] <- NA
+
+data.delay$congested <-  data.delay$X6
+
+data.delay["age"] <- NA
+
+data.delay$age <-  data.delay$X7
+
+data.delay["gender"] <- NA
+
+data.delay$gender <-  data.delay$X8
+
+data.delay["number_cars"] <- NA
+
+data.delay$number_cars <-  data.delay$X9
+
+data.delay["number_children"] <- NA
+
+data.delay$number_children <-  data.delay$X10
+
+data.delay["income"] <- NA
+
+data.delay$income <-  data.delay$X11
+
+data.delay["flexible"] <- NA
+
+data.delay$flexible <-  data.delay$X12
+
+data.delay["distance"] <- NA
+
+data.delay$distance <-  data.delay$X13
+
+data.delay["LOSD"] <- NA
+
+data.delay$LOSD <-  data.delay$X14
+
+data.delay["rate_of_travel"] <- NA
+
+data.delay$rate_of_travel <-  data.delay$X15
+
+data.delay["population"] <- NA
+
+data.delay$population <-  data.delay$X16
+
+data.delay["retail"] <- NA
+
+data.delay$retail <-  data.delay$X17
+
+data.delay["service"] <- NA
+
+data.delay$service <-  data.delay$X18
+
+data.delay["size"] <- NA
+
+data.delay$size <-  data.delay$X19    
+```
+
+```{r}
+
+str(data.delay)
+```
+
+```{r}
+drop <- c("X1","X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9", "X10", "X11", "X12", "X13", "X14", "X15", "X16", "X17", "X18", "X19")
+df = data.delay[,!(names(data.delay) %in% drop)]
+```
+
+```{r}
+skim(df)
+```
+
+
+#### Sort the data by time
+```{r}
+df <- df[order(df$minutes),]
+print(df)
+
+```
+
+#### Create graph
+```{r}
+with(df, plot(minutes, type="h"))
+```
+
+#### Create the life table survival object for df
+
+```{r}
+data.delay2 <-subset(df, minutes>0)
+df.survfit = survfit(Surv(minutes) ~ 1, data= data.delay2)
+summary(df.survfit)
+```
+
+>**Note:** The functions survfit() and Surv() create a life table survival object.
+
+#### Plot the Kaplan-Meier curve
+
+```{r}
+plot(df.survfit, xlab = "Time (minutes)", ylab="Survival
+probability", conf.int=TRUE)
+ggsurvplot(df.survfit, xlab = "Time (minutes)", xlim =
+range(0:250) , conf.int = TRUE, color = "red", ggtheme =
+theme_minimal())
+```
+
+#### Cox Proportional Hazard Model Estimates of the Duration of Commuter Work-To-Home Delay to Avoid Congestion
+
+```{r}
+result.cox <- coxph(Surv(minutes) ~ gender + rate_of_travel + distance + population, data= data.delay2)
+summary(result.cox)
+```
+
+#### Testing proportional Hazards assumption
+
+```{r}
+test.ph <- cox.zph(result.cox)
+plot(test.ph)
+ggcoxzph(test.ph)
+```
+
+> **Note:** Include an interaction between the covariate and a function of time (or distance). Log time often used but could be any function. If significant then assumption violated.
+
+> **Note:** Test the proportional hazards assumption on the basis of partial residuals. Type of residual known as Schoenfeld residuals.
+
+> **Note:** For each covariate, the function cox.zph() correlates the corresponding set of scaled Schoenfeld residuals with time, to test for independence between residuals and time. Additionally, it performs a global test for the model as a whole.
+
+> **Note:** In principle, the Schoenfeld residuals are independent of time. A plot that shows a non-random pattern against time is evidence of violation of the PH assumption.
+
+#### Plot the baseline survival function
+
+```{r}
+#  slide 56
+```
+
+

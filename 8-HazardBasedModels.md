@@ -1,6 +1,24 @@
 Hazard-Based Duration Models
 ================
 
+## Example: Work-to-home departure delay
+
+A survey of 204 Seattle-area commuters was conducted to examine the
+duration of time that commuters delay their work-to-home trips in an
+effort to avoid peak period traffic congestion. Of the 204 commuters
+surveyed, 96 indicated that they sometimes delayed their work-to-home
+trip to avoid traffic congestion. These commuters provided their average
+time delay. Thus, each commuter has a completed delay duration so that
+neither left nor right censoring is present in the data.
+
+> **Your task:** i) Plot the Kaplan-Meier estimate of the duration of
+> time that commuters delay their work-to-home trips; ii) Determine the
+> significant factors that affect the duration of commuters’ delay using
+> a Cox model; iii) Examine the work-to-home departure delay using
+> exponential, Weibull, and log-logistic proportional-hazards models.
+
+#### Import Libraries
+
 ``` r
 library(readxl)
 library(skimr)
@@ -25,13 +43,16 @@ library(survminer)
 
     ## Loading required package: ggpubr
 
+#### Set working directory
+
 ``` r
 setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling")
 ```
 
+# Import dataset, tranform in dataframe, and take a first look.
+
 ``` r
 data.delay <- read_excel("Data/ExerciseHBDM.xlsx")
-
 
 data.delay <- data.frame(data.delay)
 
@@ -45,6 +66,11 @@ head(data.delay)
     ## 4 1003  0  0  0  1  5  1  4  1  1   0   2   0   5   1 1.3 24410 6430 3206 1997
     ## 5 1004  0  0  0  2  2  1  2  1  1   0   3   0   3   0 1.2  5079 1024  899 4092
     ## 6 1005 38  1  3  1  2  1  7  1  2   0   5   0  14   1 1.8 24410 6430 3206 1997
+
+> **Note:** The variables do not have names. Use the algorithm below to
+> create new columns with the assigned variables.
+
+#### Create new variables and assign the values to each one respectively.
 
 ``` r
 data.delay["minutes"] <- NA
@@ -124,6 +150,8 @@ data.delay["size"] <- NA
 data.delay$size <-  data.delay$X19    
 ```
 
+#### Take a look at the structure
+
 ``` r
 str(data.delay)
 ```
@@ -168,6 +196,11 @@ str(data.delay)
     ##  $ retail         : num  1024 6430 6430 6430 1024 ...
     ##  $ service        : num  1295 3206 3206 3206 899 ...
     ##  $ size           : num  5610 1997 1997 1997 4092 ...
+
+> **Note:** We have repeated variables. Let us exclude the original ones
+> without labels.
+
+#### Exclude original variables
 
 ``` r
 drop <- c("X1","X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9", "X10", "X11", "X12", "X13", "X14", "X15", "X16", "X17", "X18", "X19")

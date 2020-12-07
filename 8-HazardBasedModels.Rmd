@@ -19,12 +19,13 @@ log-logistic proportional-hazards models.
 
 #### Import Libraries
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 library(readxl)
 library(skimr)
 library(survival)
 library(coxme)
 library(survminer)
+library(ggplot2)
 ```
 
 #### Set working directory
@@ -33,7 +34,7 @@ library(survminer)
 setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling")
 ```
 
-# Import dataset, tranform in dataframe, and take a first look.
+#### Import dataset, tranform in dataframe, and take a first look.
 
 ```{r}
 data.delay <- read_excel("Data/ExerciseHBDM.xlsx")
@@ -148,7 +149,6 @@ skim(df)
 #### Sort the data by time
 ```{r}
 df <- df[order(df$minutes),]
-print(df)
 
 ```
 
@@ -173,9 +173,13 @@ summary(df.survfit)
 plot(df.survfit, xlab = "Time (minutes)", ylab="Survival
 probability", conf.int=TRUE)
 ggsurvplot(df.survfit, xlab = "Time (minutes)", xlim =
-range(0:250) , conf.int = TRUE, color = "red", ggtheme =
+range(0:250) , conf.int = TRUE, pallete = "red", ggtheme =
 theme_minimal())
 ```
+
+> **Note:** It is the most widely applied nonparametric method in survival analysis.The Kaplan–Meier method provides useful estimates of survival probabilities and a graphical presentation of the survival distribution.
+
+> **Note:** The Kaplan–Meier method assumes that censoring is independent of survival times. If this is false, the Kaplan–Meier method is inappropriate.
 
 #### Cox Proportional Hazard Model Estimates of the Duration of Commuter Work-To-Home Delay to Avoid Congestion
 
@@ -183,6 +187,10 @@ theme_minimal())
 result.cox <- coxph(Surv(minutes) ~ gender + rate_of_travel + distance + population, data= data.delay2)
 summary(result.cox)
 ```
+
+> **Note:** The Cox proportional-hazards model is semiparametric method that produces estimated hazard ratios (sometimes called rate ratios or risk ratios).
+
+> **Note:** Regression coefficients are on a log scale.
 
 #### Testing proportional Hazards assumption
 
@@ -192,7 +200,7 @@ plot(test.ph)
 ggcoxzph(test.ph)
 ```
 
-> **Note:** Include an interaction between the covariate and a function of time (or distance). Log time often used but could be any function. If significant then assumption violated.
+> **Note:** It includes an interaction between the covariate and a function of time (or distance). Log time is often used but it could be any function. If significant then the assumption is violated.
 
 > **Note:** Test the proportional hazards assumption on the basis of partial residuals. Type of residual known as Schoenfeld residuals.
 
@@ -203,7 +211,11 @@ ggcoxzph(test.ph)
 #### Plot the baseline survival function
 
 ```{r}
-#  slide 56
+ggsurvplot(survfit(result.cox), color = "#2E9FDF", ggtheme = theme_minimal())
 ```
 
+```{r}
+ggsurvplot(survfit(result.cox), conf.int = TRUE, palette = c("#FF9E29",
+"#86AA00"), risk.table = TRUE, risk.table.col = "strata", fun = "event")
+```
 

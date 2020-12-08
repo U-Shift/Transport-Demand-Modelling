@@ -22,7 +22,8 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 
 ## Summary
 
-1.  [Exploratory Data Analysis]()
+1.  [Exploratory Data Analysis](ExploratoryDataAnalysis.md) (**Gabriel
+    Valença**)
 
 2.  [Multiple Linear Regression models](1-MultipleLinearRegression.md)
     (**Gabriel Valença**)
@@ -42,9 +43,9 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 
 8.  [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
     
-      - [Multinomial/Binomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/)
+      - [Multinomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/)
       - [Nested](6-DiscreteChoiceModels/6.2-NestedLogitModels/)
-      - [Ordered](6-DiscreteChoiceModels/6.3-OrderedLogitModels/)
+      - Ordered Models(**Miguel Costa**)
 
 9.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
     Roque**)
@@ -54,8 +55,8 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
   - In [Data](Data/) folder you may find all the files to use for the
     exercises.  
   - The [Code](Code/) folder contains scripts to use with each topic.
-  - In Slides folder you can find all the slides of the lectures given
-    by Prof. Filipe Moura.
+  - In [Slides](Slides/) folder you can find all the slides of the
+    lectures given by Prof. Filipe Moura.
 
 ## R and Python stuff
 

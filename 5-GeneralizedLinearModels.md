@@ -352,8 +352,9 @@ nagelkerke(model1)
 > verifies if the explained variance is higher than the the unexplained
 > variance.
 
-> **Note**: Ho: The model fits the data. Therefore, we want to not
-> reject the null hypothesis (pvalue \> 0.05).
+> **Note**: Ho: There is no overdispersion in the model. Therefore, if
+> pvalue \< 0.05, there is overdispersion, and we should choose a
+> Negative Binomial model.
 
 #### Calculate the Type III test.
 

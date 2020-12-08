@@ -34,7 +34,7 @@ tm_shape(WIfinal) +
   tm_legend(outside = TRUE, text.size = .8) 
 ```
 
-##### Neighbors
+#### Neighbors
 The first step requires that we define “neighboring” polygons. This could refer to contiguous polygons, polygons within a certain distance band, or it could be non-spatial in nature and defined by social, political or cultural “neighbors”.
 
 Here, we’ll adopt a contiguous neighbor definition where we’ll accept any contiguous polygon that shares at least on vertex (this is the “queen” case and is defined by setting the parameter `queen=TRUE`). If we required that at least one edge be shared between polygons then we would set `queen=FALSE`.
@@ -44,14 +44,14 @@ neighbors <- poly2nb(WIfinal, queen=TRUE)
 ```
 
 
-##### Weights
+#### Weights
 Next, we need to assign weights to each neighboring polygon. In this case, each neighboring polygon will be assigned equal weight (`style="W"`). Style can take values “**W**”, “**B**”, “**C**”, “**U**”, “**minmax**” and “**S**”.  
 See more details: use `?nb2listw`.
 ```{r}
 weights = nb2listw(neighbors, style="W", zero.policy=TRUE)
 ```
 
-##### Result
+#### Result
 To get the Moran’s I value, simply use the `moran.test` function.
 ```{r}
 moran.test(WIfinal$HISP_, weights)
@@ -81,7 +81,7 @@ Install and load ape package
 library(ape)
 ```
 
-##### Prepare data
+#### Prepare data
 It does not deal with ordered factors, zeros, or infinite distances.  
 So we need to clean data first.
 ```{r eval=F}
@@ -94,7 +94,7 @@ TABLEmoran<-na.omit(TABLEmoran) #remove cases with NA
 TABLEmoran<-TABLEmoran[TABLEmoran$Orig_Lat!=0,] #Remove cases with Lat/Lon equals to zero
 ```
 
-##### Distances matrix, from coordinates (Lat Long)
+#### Distances matrix, from coordinates (Lat Long)
 To calculate Moran’s I, we will need to generate a matrix of inverse distance weights. In the matrix, entries for pairs of points that are close together are higher than for pairs of points that are far apart. 
   
 We can first generate a distance matrix, then take inverse of the matrix values and replace the diagonal entries with zero:
@@ -106,7 +106,7 @@ ozone.dists.inv[is.infinite(ozone.dists.inv)] <- 0 #remove infinite distances
 ```
 We have created a matrix where each off-diagonal entry [ _i_, _j_] in the matrix is equal to 1/(distance between point _i_ and point _j_). Note that this is just one of several ways in which we can calculate an inverse distance matrix.  
 
-##### Result
+#### Result
 We can now calculate Moran’s I using the command `Moran.I`.
 ```{r eval=F}
 #First attempt
@@ -118,7 +118,7 @@ ozone.dists.bin <- (ozone.dists > 0 & ozone.dists <= 15000)
 Moran.I(TABLEmoran$classfactor, ozone.dists.bin) #Moran’s I =0.012, p = .001
 ```
 
->The result (observed) is the Moran's I value, and if it is enough close to zero, we can affirm (with p=...) that ther is not a spatial pattern, suggesting an aleatory distribution in space.
+> **Note:** The result (observed) is the Moran's I value, and if it is enough close to zero, we can affirm (with p=...) that ther is not a spatial pattern, suggesting an aleatory distribution in space.
 Tf the result was close to 1 or -1, it would suggest a pattern in distribuition in space.
 
 

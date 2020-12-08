@@ -149,6 +149,10 @@ plot_missing(df)
 
 #### Treat missing data
 
+* Delete observation with incomplete information. Listwise deletion
+```{r}
+na.omit(df)
+```
 
 
 #### Detect Outliers

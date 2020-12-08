@@ -278,13 +278,96 @@ is.na(df)
     ## [56,] FALSE FALSE FALSE FALSE FALSE FALSE
     ## [57,] FALSE FALSE FALSE FALSE FALSE FALSE
 
+Check the number of missing data
+
+``` r
+sum(is.na(df))
+```
+
+    ## [1] 0
+
 Plot the percentage of missing data
 
 ``` r
 plot_missing(df)
 ```
 
-![](README_files/EDA/unnamed-chunk-12-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-13-1.png)<!-- -->
+
+> **Note:** We do not have any missing data in the dataset. However,
+> here are some functions that you can use in other dataset to treat
+> missing data.
+
+#### Treat missing data
+
+  - Delete observation with incomplete information. Listwise deletion
+
+<!-- end list -->
+
+``` r
+na.omit(df)
+```
+
+    ##    TODU  ACO  AHS    SI   SRI    UI
+    ## 1  3.18 0.59 3.26 21.01 28.32 60.10
+    ## 2  3.89 0.57 3.13 21.61 20.89 65.71
+    ## 3  3.98 0.61 3.02 12.57 25.99 63.19
+    ## 4  4.16 0.61 3.14 17.61 28.52 66.24
+    ## 5  3.60 0.63 3.75 35.32 27.18 58.36
+    ## 6  4.10 0.66 3.24 14.73 27.95 59.58
+    ## 7  4.36 0.71 2.77 11.61 39.91 64.64
+    ## 8  4.87 0.77 2.74 10.71 48.36 67.88
+    ## 9  5.85 0.84 3.02  8.20 42.15 56.86
+    ## 10 4.97 0.74 2.84  7.94 38.14 62.44
+    ## 11 3.54 0.67 2.93 12.72 51.30 68.67
+    ## 12 4.31 0.64 3.87 27.33 43.90 59.49
+    ## 13 4.54 0.73 3.16 18.70 30.27 57.76
+    ## 14 4.82 0.86 3.42 14.52 32.18 63.06
+    ## 15 4.04 0.66 3.54  3.82 34.45 47.73
+    ## 16 4.60 0.64 3.49  8.73 43.32 59.36
+    ## 17 3.40 0.50 2.76 11.40 75.32 75.81
+    ## 18 4.65 0.58 2.91 58.43 62.20 75.26
+    ## 19 3.02 0.53 1.83  8.32 82.53 83.66
+    ## 20 9.14 1.11 3.00 11.49 67.31 38.21
+    ## 21 4.30 0.70 2.94 17.95 64.01 55.51
+    ## 22 4.24 0.80 3.19  8.10 51.16 52.44
+    ## 23 5.00 0.77 2.61  4.67 59.15 59.38
+    ## 24 5.93 0.96 3.24  6.82 48.51 46.51
+    ## 25 5.11 0.86 2.95 10.43 47.44 51.17
+    ## 26 5.84 0.92 2.95  6.53 57.34 58.60
+    ## 27 4.70 0.80 3.00  3.37 62.60 62.40
+    ## 28 4.54 0.79 2.71 10.10 73.00 67.23
+    ## 29 5.51 0.91 3.46 14.36 33.96 41.29
+    ## 30 5.10 0.75 3.38 17.94 43.67 56.64
+    ## 31 4.70 0.83 3.11  9.38 52.74 54.02
+    ## 32 5.17 0.76 3.20  3.02 52.29 58.35
+    ## 33 5.41 0.87 3.24 12.75 43.42 47.78
+    ## 34 6.46 1.16 3.60 16.49 45.94 51.21
+    ## 35 6.03 0.90 3.02  2.80 61.53 54.92
+    ## 36 4.79 0.53 3.09 62.53 49.37 58.63
+    ## 37 4.83 0.75 2.46  6.92 87.38 65.67
+    ## 38 6.30 0.78 3.36 16.34 55.85 59.00
+    ## 39 4.94 0.69 2.94  9.51 50.15 61.09
+    ## 40 6.01 0.96 3.27  4.25 67.01 48.39
+    ## 41 6.39 0.86 3.32  3.85 62.18 50.04
+    ## 42 5.82 1.09 3.29  7.54 45.58 46.47
+    ## 43 6.25 1.15 3.58  3.41 60.85 26.36
+    ## 44 6.13 0.90 3.09  3.62 55.59 43.58
+    ## 45 6.70 1.02 3.02  2.17 75.73 35.89
+    ## 46 7.10 1.00 3.33  3.78 57.84 28.28
+    ## 47 7.89 1.32 3.58  2.42 79.69 25.37
+    ## 48 7.80 1.06 3.17  7.20 57.01 31.97
+    ## 49 8.02 1.02 3.35  9.17 50.93 38.17
+    ## 50 7.20 0.98 3.43  9.86 49.75 34.69
+    ## 51 5.14 0.82 3.31  7.61 36.36 46.98
+    ## 52 5.56 0.94 3.21 47.73 62.27 36.27
+    ## 53 5.74 0.90 3.52  4.17 42.64 26.15
+    ## 54 6.77 0.62 3.92 11.36 21.66 24.08
+    ## 55 4.94 0.77 3.02  8.73 49.18 51.39
+    ## 56 7.64 0.93 3.37 15.08 34.74 44.54
+    ## 57 7.25 0.75 4.50 16.44 26.21 44.80
+
+#### Detect Outliers
 
   - Examine the boxplots
 
@@ -295,7 +378,7 @@ par(mar=c(15,2,1,1)) # Make labels fit in the boxplot
 boxplot(df, las = 2)
 ```
 
-![](README_files/EDA/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-15-1.png)<!-- -->
 
   - **Detect the outliers**
 
@@ -326,7 +409,7 @@ boxplot(df, las = 2)
 plot_histogram(df)
 ```
 
-![](README_files/EDA/unnamed-chunk-16-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-18-1.png)<!-- -->
 
 > **Note**: Take a special look at TODU, and see if the variable looks
 > like a normal distribution.
@@ -337,7 +420,7 @@ plot_histogram(df)
 plot_boxplot(df, by = "TODU")
 ```
 
-![](README_files/EDA/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-19-1.png)<!-- -->
 
 > **Note**: If you increase the average car ownership (ACO) it will tend
 > to increase the number of trips per dwelling unit (TODU). This makes
@@ -351,7 +434,7 @@ res1 <- cor.mtest(df, conf.level = .95)
 corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
 ```
 
-![](README_files/EDA/unnamed-chunk-18-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-20-1.png)<!-- -->
 
 > **Note:** try putting into method “color” or “circle”, and see the
 > diference.

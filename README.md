@@ -7,7 +7,7 @@ course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/
 lectured by [Prof. Filipe
 Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/). This
 material is also an open source tutorial for applying R programming
-(chapters 1,2,3,4,5, and 8) and Python Biogeme (chapters 6 and 7) in
+(chapters 1,2,3,4,5,6,7 and 9) and Python Biogeme (chapter 8) in
 transport demand modelling.
 
 ![](README_files/ISTlogo.png)
@@ -28,12 +28,12 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 2.  [Multiple Linear Regression models](2-MultipleLinearRegression.md)
     (**Gabriel Valença**)
 
-3.  [Exploratory Factor Analysis](2-FactorAnalysis.md) (**Gabriel
+3.  [Exploratory Factor Analysis](3-FactorAnalysis.md) (**Gabriel
     Valença**)
 
-4.  [Cluster Analysis](3-ClusterAnalysis.md) (**Gabriel Valença**)
+4.  [Cluster Analysis](4-ClusterAnalysis.md) (**Gabriel Valença**)
 
-5.  [Generalized linear models](4-GeneralizedLinearModels.md) (**Gabriel
+5.  [Generalized linear models](5-GeneralizedLinearModels.md) (**Gabriel
     Valença**)
 
 6.  [Spatial regression models](5-PanelSpatialModels.md) (**Rosa
@@ -41,13 +41,13 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 
 7.  Panel Data Models (**Gabriel Valença**)
 
-8.  [Discrete Choice Models](6-DiscreteChoiceModels/) (**Miguel Costa**)
+8.  [Discrete Choice Models](8-DiscreteChoiceModels/) (**Miguel Costa**)
     
-      - [Multinomial](6-DiscreteChoiceModels/6.1-MultinomialLogitAndProbitModels/)
-      - [Nested](6-DiscreteChoiceModels/6.2-NestedLogitModels/)
-      - Ordered Models(**Miguel Costa**)
+      - [Multinomial](8-DiscreteChoiceModels/8.1-MultinomialLogitAndProbitModels/)
+      - [Nested](8-DiscreteChoiceModels/8.2-NestedLogitModels/)
+      - [Ordered Models](8-DiscreteChoiceModels/8.3-OrderedLogitModels/)
 
-9.  [Hazard-Based Duration Models](8-HazardBasedModels.md) (**Carlos
+9.  [Hazard-Based Duration Models](9-HazardBasedModels.md) (**Carlos
     Roque**)
 
 ### Files

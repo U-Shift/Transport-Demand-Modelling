@@ -1,19 +1,12 @@
 ---
-title: "Panel and Spatial Regression Models"
+title: "Spatial Regression Models"
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "README_files/5-PanelSpatialmodels/")
+                      fig.path = "README_files/Spatialmodels/")
 ```
-
-## Panel Regression Models
-
-
-
-
-## Spatial Regression Models
 
 ### Moran's I spatial autocorrelation   
 #### For polygon geometry

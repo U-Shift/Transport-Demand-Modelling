@@ -1,9 +1,5 @@
-Panel and Spatial Regression Models
+Spatial Regression Models
 ================
-
-## Panel Regression Models
-
-## Spatial Regression Models
 
 ### Moran’s I spatial autocorrelation
 
@@ -46,7 +42,7 @@ tm_shape(WIfinal) +
   tm_legend(outside = TRUE, text.size = .8) 
 ```
 
-![](README_files/5-PanelSpatialmodels/unnamed-chunk-2-1.png)<!-- -->
+![](README_files/Spatialmodels/unnamed-chunk-2-1.png)<!-- -->
 
 #### Neighbors
 
@@ -126,7 +122,7 @@ histogram).
 plot(moran.mc(WIfinal$HISP_, weights, nsim=599), main="", las=1) #density plot
 ```
 
-![](README_files/5-PanelSpatialmodels/unnamed-chunk-7-1.png)<!-- -->
+![](README_files/Spatialmodels/unnamed-chunk-7-1.png)<!-- -->
 
 **See more
 [here](https://mgimond.github.io/Spatial/spatial-autocorrelation-in-r.html)**

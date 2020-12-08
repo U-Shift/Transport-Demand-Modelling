@@ -353,7 +353,7 @@ nagelkerke(model1)
 > variance.
 
 > **Note**: Ho: There is no overdispersion in the model. Therefore, if
-> pvalue \< 0.05, there is overdispersion, and we should choose a
+> pvalue \< 0.05, there is overdispersion, and we should choose to use a
 > Negative Binomial model.
 
 #### Calculate the Type III test.

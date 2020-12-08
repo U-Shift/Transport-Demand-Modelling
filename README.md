@@ -22,10 +22,10 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 
 ## Summary
 
-1.  [Exploratory Data Analysis](ExploratoryDataAnalysis.md) (**Gabriel
+1.  [Exploratory Data Analysis](1-ExploratoryDataAnalysis.md) (**Gabriel
     Valença**)
 
-2.  [Multiple Linear Regression models](1-MultipleLinearRegression.md)
+2.  [Multiple Linear Regression models](2-MultipleLinearRegression.md)
     (**Gabriel Valença**)
 
 3.  [Exploratory Factor Analysis](2-FactorAnalysis.md) (**Gabriel

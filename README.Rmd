@@ -17,8 +17,8 @@ This material was prepared by [Gabriel Valença](https://ushift.tecnico.ulisboa.
 
 ## Summary
 
-  1. [Exploratory Data Analysis](ExploratoryDataAnalysis.md) (**Gabriel Valença**)
-  2. [Multiple Linear Regression models](1-MultipleLinearRegression.md) (**Gabriel Valença**)
+  1. [Exploratory Data Analysis](1-ExploratoryDataAnalysis.md) (**Gabriel Valença**)
+  2. [Multiple Linear Regression models](2-MultipleLinearRegression.md) (**Gabriel Valença**)
   3. [Exploratory Factor Analysis](2-FactorAnalysis.md) (**Gabriel Valença**)
   4. [Cluster Analysis](3-ClusterAnalysis.md) (**Gabriel Valença**)
   5. [Generalized linear models](4-GeneralizedLinearModels.md) (**Gabriel Valença**)

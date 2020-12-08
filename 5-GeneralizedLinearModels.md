@@ -563,3 +563,8 @@ knitr::kable(elas_table, align = "l")
 | MEDIAN   | \-0.0918089 |
 | DRIVE    | 0.0706501   |
 | STATE    | NA          |
+
+> **Note:** AADT1 does not have a value because it is the offset of the
+> model. Additionally, the variable STATE also does not have a value
+> because it is a categorical variable. In this case, it would be
+> necessary to calculate the pseudo-elasticity.

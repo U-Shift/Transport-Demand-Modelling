@@ -263,9 +263,7 @@ elasticity <-c (el1, el2, el3, el4, el5)
 elas_table <- data.frame(variable,elasticity)
 knitr::kable(elas_table, align = "l")
 ```
-
-> **Note:** AADT1 does not have a value because it is the offset of the model. Additionally, the variable STATE also does not have a value because it is a categorical variable. In this case it would be needed to calculate the pseudo-elasticity. 
-
-
-
+  
+  
+> **Note:** AADT1 does not have a value because it is the offset of the model. Additionally, the variable STATE also does not have a value because it is a categorical variable. In this case, it would be necessary to calculate the pseudo-elasticity. 
 

@@ -1,6 +1,6 @@
 # Slides
 
-1.[What is a model? Application limits and interpretation](TDM class_1.pdf)
+1.[What is a model? Application limits and interpretation](class_1.pdf)
 
 2.[Basic statistics and Sampling](TDM class_2.pdf)
 

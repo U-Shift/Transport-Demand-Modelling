@@ -145,41 +145,93 @@ Plot the percentage of missing data
 plot_missing(df)
 ```
 
-> **Note:** We do not have any missing data in the dataset. However, here are some functions that you can use in other dataset to treat missing data. 
+> **Note:** We do not have any missing data in the dataset. However, here are some functions that you can use in other datasets to treat missing data. 
 
 #### Treat missing data
 
-* Delete observation with incomplete information. Listwise deletion
-```{r}
-na.omit(df)
+Let us create a new variable to demonstrate this example.
+
+```{r echo=TRUE}
+df_md <- data.frame(df)
 ```
 
 
-#### Detect Outliers
+* **Listwise deletion**. Delete observation (row) with incomplete information. 
+```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+na.omit(df_md)
+```
+
+* **Pairwise deletion**. Delete only the row of missing value if the variable is used. Consider that the variable "TODU" has missing values.  
+
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+df_md[!is.na(df_md$TODU),]
+```
+
+> **Note:** Listwise deletion may lose a lot of information, while pairwise deletion considers diferent sizes of variables in the analysis, which may be a problem. Choosing one method or the other depends on the number of missing data, sample size and characteristics of your data.
+
+* **Replace missing value with mean or median**
+
+Let us suppose that the variable "TODU" has missing values and you want to replace it by the mean or median. 
+
+```{r}
+df_md$TODU[is.na(df_md$TODU)] <- mean(df_md$TODU, na.rm = T)
+
+df_md$TODU[is.na(df_md$TODU)] <- median(df_md$TODU, na.rm = T)
+```
+
+> **Note**: Here are just some examples of how to treat missing data. Take a look at other methods such as the prediction model or K-nearest neighbor imputation. 
+
+#### Detect Outliers  
+
 * Examine the boxplots
   
 ```{r}
-par(mar=c(15,2,1,1)) # Make labels fit in the boxplot
-boxplot(df, las = 2)
+par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
+boxplot(df_md, las = 2)
 ```
 
-* **Detect the outliers** 
+Take the out the outliers from the variable SI
 
 ```{r}
-#outliers <- boxplot.stats(df)$out
+outlier <- function(x){
+  quant <- quantile(x, probs=c(0.25, 0.75))
+  caps <- quantile(x, probs=c(0.05, 0.95))
+  H <- 1.5* IQR(x, na.rm = TRUE)
+  x[x < (quant[1] - H)] <- caps[1]
+  x[x > (quant[2] + H)] <- caps[2]
+  return(x)
+}
 
-#outliers
+df_md$SI=outlier(df_md$SI)
 ```
 
-* **Remove rows with outliers** 
+* Take a look again at the boxplots
 
 ```{r}
-#df_no_outliers <- which(df %in% outliers,) 
+par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
+boxplot(df_md, las = 2)
 ```
 
-> **Note:** There are many methods to treat outliers. This is just one of them. Note that it is not very appropriate, since it removes many observations that are relevant for the analysis. Try using other methods and evaluate the difference.  
+* Compare results of the dataset with and without the outliers
+
+**Data with outliers**
+```{r}
+mean(df$SI)
+median(df$SI)
+var(df$SI)
+```
+
+**Data without outliers**
+```{r}
+#Without outliers
+
+mean(df_md$SI)
+median(df_md$SI)
+var(df_md$SI)
+```
 
 
+> **Note:** There are many methods to treat outliers. This is just one of them. Try using other methods and evaluate the difference. In the next chapter we will demonstrate other methods of detecting outliers through the cook distance and QQ plot.    
 
 
 #### Plot histograms of all the continuous variables

@@ -223,8 +223,6 @@ var(df$SI)
 
 **Data without outliers**
 ```{r}
-#Without outliers
-
 mean(df_md$SI)
 median(df_md$SI)
 var(df_md$SI)

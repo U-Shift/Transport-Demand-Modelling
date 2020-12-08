@@ -47,24 +47,6 @@ Trip production of 57 Traffic Assignment Zones of Chicago in 1960’s
 
 Let’s begin\!
 
-For the first time, you will need to install some of the packages. Step
-by step:
-
-1.  Go to Packages on the lower right display window and click install
-2.  Write the library you want to install and click “install”
-
-Or… `install.packages("readxl","tidyverse")` etc…
-
-Depending on the version of your R, `DataExplorer` may need to be
-installed from source, such as
-
-``` r
-if (!require(devtools)) install.packages("devtools")
-devtools::install_github("boxuancui/DataExplorer")
-```
-
-Now, import these libraries:
-
 ``` r
 library(readxl) #Library used to import excel files
 library(tidyverse) # Library used in data science to perform exploratory data analysis
@@ -292,7 +274,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747   0.084
+    ##    1       0.1416308      1.597747   0.076
     ##  Alternative hypothesis: rho != 0
 
 > **Note:** In the Durbin-Watson test, values of the D-W Statistic vary
@@ -371,5 +353,3 @@ ols_coll_diag(model)
     ## 4 0.152292605 0.382488929 4.801705e-02
     ## 5 0.090809203 0.374832118 1.851308e-01
     ## 6 0.004433528 0.178935999 6.534183e-01
-
-<!-- knitr::purl("1-MultipleLinearRegression.Rmd", "Code/1-MultipleLinearRegression.R", documentation = 2) -->

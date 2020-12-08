@@ -32,8 +32,11 @@
       # (Note: High values for this index imply less attachment to the home_)
 
 # `SI`:Segregation Index
-   # It measures the proportion of an area to which minority groups (e.g: non-whites, foreign-born, Eastern Europeans) live in isolation.
-## Note: High values for this index imply that those communities are less prone to leaving their living areas and as such to having lower levels of mobility)
+   # It measures the proportion of an area to which minority groups live in isolation.
+   # (e.g: non-whites, foreign-born, Eastern Europeans) 
+
+## Note: High values for this index imply that those communities are less prone to 
+## leaving their living areas and as such to having lower levels of mobility)
 
 
 #### Import Libraries
@@ -116,7 +119,8 @@ sum(is.na(df))
 plot_missing(df)
 
 
-  #Note: We do not have any missing data in the dataset. However, here are some functions that you can use in other datasets to treat missing data. 
+  # Note: We do not have any missing data in the dataset. However, here are some functions that 
+  # you can use in other datasets to treat missing data. 
 
 #### Treat missing data
 
@@ -128,11 +132,14 @@ df_md <- data.frame(df)
 
 na.omit(df_md)
 
-# Pairwise deletion. Delete only the row of missing value if the variable is used. Consider that the variable "TODU" has missing values.  
+# Pairwise deletion. Delete only the row of missing value if the variable is used. 
+# Consider that the variable "TODU" has missing values.  
 
 df_md[!is.na(df_md$TODU),]
 
-  # Note: Listwise deletion may lose a lot of information, while pairwise deletion considers diferent sizes of variables in the analysis, which may be a problem. Choosing one method or the other depends on the number of missing data, sample size and characteristics of your data.
+  # Note: Listwise deletion may lose a lot of information, while pairwise deletion considers 
+  # different sizes of variables in the analysis, which may be a problem. 
+  # Choosing one method or the other depends on the number of missing data, sample size and characteristics of your data.
 
 # Replace missing value with mean or median
   
@@ -142,7 +149,8 @@ df_md$TODU[is.na(df_md$TODU)] <- mean(df_md$TODU, na.rm = T)
 
 df_md$TODU[is.na(df_md$TODU)] <- median(df_md$TODU, na.rm = T)
 
-# Note: Here are just some examples of how to treat missing data. Take a look at other methods such as the prediction model or K-nearest neighbor imputation. 
+  # Note: Here are just some examples of how to treat missing data. Take a look at other methods such as the prediction model
+  # or K-nearest neighbor imputation. 
 
 #### Detect Outliers  
 
@@ -185,7 +193,8 @@ mean(df_md$SI)
 median(df_md$SI)
 var(df_md$SI)
 
-  # Note: There are many methods to treat outliers. This is just one of them. Try using other methods and evaluate the difference. In the next chapter we will demonstrate other methods of detecting outliers through the cook distance and QQ plot.    
+  # Note: There are many methods to treat outliers. This is just one of them. 
+  # Try using other methods and evaluate the difference. In the next chapter we will demonstrate other methods of detecting outliers through the cook distance and QQ plot.    
 
 
 #### Plot histograms of all the continuous variables
@@ -198,7 +207,8 @@ plot_histogram(df)
 
 plot_boxplot(df, by = "TODU")
 
-# Note: If you increase the average car ownership (ACO) it will tend to increase the number of trips per dwelling unit (TODU). This makes sense. Try analyzing the other relations and check if it is coherent. 
+# Note: If you increase the average car ownership (ACO) it will tend to increase the number of trips 
+# per dwelling unit (TODU). This makes sense. Try analyzing the other relations and check if it is coherent. 
 
 #### Plot correlation heatmaps
 
@@ -208,7 +218,9 @@ corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclu
 
 # Note: try putting into method "color" or "circle", and see the diference.
 
-# Note: The pairwise correlations that are crossed are statistically insignificant.The null hypothesis is that correlation is zero.This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05). 
+  # Note: The pairwise correlations that are crossed are statistically insignificant.The null hypothesis
+  # is that correlation is zero.This means that the correlations are only significant when you reject the null 
+  # hypothesis (pvalue < 0.05). 
 
 # Therefore, take a look at this example and check the pvalue of a crossed pair correlation: 
   
@@ -216,4 +228,5 @@ cor.test(df$AHS, df$SI)
 
   #Note: Correlation heatmaps only consider pairwise correlations and does not demonstrate multicollinearity.  
 
-#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will see how to perform a Multiple Linear Regression model!
+# Now that you have done some descriptive analysis of the data, go to the next chapter. 
+# There you will see how to perform a Multiple Linear Regression model!

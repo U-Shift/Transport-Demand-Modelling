@@ -528,8 +528,6 @@ var(df$SI)
 **Data without outliers**
 
 ``` r
-#Without outliers
-
 mean(df_md$SI)
 ```
 
@@ -616,7 +614,3 @@ cor.test(df$AHS, df$SI)
 > does not demonstrate multicollinearity.
 
 #### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will see how to perform a Multiple Linear Regression model\!
-
-<!-- knitr::spin(hair = "Factor_Analysis_TDMLecture.R") -->
-
-<!-- knitr::purl("ExploratoryDataAnalysis.Rmd", "Code/ExploratoryDataAnalysis.R", documentation = 2) -->

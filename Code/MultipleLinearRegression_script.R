@@ -52,10 +52,6 @@
 #Let's begin!
 
 # Import libraries
-## For the first time, you will need to install some of the packages. 
-## Step by step: 
-  # 1 - Go to Packages on the lower right display window and click install
-  # 2 - write the library you want to install and click "install"
 
 # Library used to import excel files
 library(readxl) 

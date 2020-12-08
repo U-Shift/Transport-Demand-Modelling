@@ -40,25 +40,9 @@ Trip production of 57 Traffic Assignment Zones of Chicago in 1960's
      (_**Note:** High values for this index imply that those communities are less prone to leaving their living areas and as such to having lower levels of mobility_)
 
 
-
 #### Import Libraries
 Let's begin!
 
-For the first time, you will need to install some of the packages. 
-Step by step: 
-
-  1. Go to Packages on the lower right display window and click install
-  2. Write the library you want to install and click "install"
-  
-Or... `install.packages("readxl","tidyverse")` etc...
-
-Depending on the version of your R, `DataExplorer` may need to be installed from source, such as
-```r
-if (!require(devtools)) install.packages("devtools")
-devtools::install_github("boxuancui/DataExplorer")
-```
-
-Now, import these libraries:
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 library(readxl) #Library used to import excel files
 library(tidyverse) # Library used in data science to perform exploratory data analysis
@@ -187,7 +171,4 @@ ols_eigen_cindex(model)
 ```{r}
 ols_coll_diag(model)
 ```
-
-
-<!-- knitr::purl("1-MultipleLinearRegression.Rmd", "Code/1-MultipleLinearRegression.R", documentation = 2) -->
 

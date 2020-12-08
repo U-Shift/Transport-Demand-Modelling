@@ -10,8 +10,6 @@ material is also an open source tutorial for applying R programming
 (chapters 1,2,3,4,5,6,7 and 9) and Python Biogeme (chapter 8) in
 transport demand modelling.
 
-![](README_files/ISTlogo.png)
-
 This material was prepared by [Gabriel
 Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/),
 [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/),
@@ -19,6 +17,8 @@ Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/),
 [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/),
 and [Filipe
 Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
+
+![](README_files/IST.png) ![](README_files/ushift.png)
 
 ## Summary
 

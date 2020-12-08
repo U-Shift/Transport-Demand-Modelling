@@ -6,14 +6,17 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
 This repository intends to gather, and make available, the supporting materials for the [Transport Demand Modeling course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/materiais-de-apoio), lectured by [Prof. Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 This material is also an open source tutorial for applying R programming (chapters 1,2,3,4,5,6,7 and 9) and Python Biogeme (chapter 8) in transport demand modelling.     
 
 
-![](README_files/ISTlogo.png)
 
 This material was prepared by [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/), [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/), [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/), [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/), and [Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/). 
 
+![](README_files/IST.png)
+![](README_files/ushift.png) 
 
 ## Summary
 

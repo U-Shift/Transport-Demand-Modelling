@@ -162,37 +162,37 @@ Data summary
 hist(df$ACCIDENT, xlab = "ACCIDENT", main = "Histogram of ACCIDENT") 
 ```
 
-![](README_files/1-MLR/unnamed-chunk-9-1.png)<!-- -->
+![](README_files/GLM/unnamed-chunk-9-1.png)<!-- -->
 
 ``` r
 hist(df$STATE, xlab = "STATE", main = "Histogram of STATE")
 ```
 
-![](README_files/1-MLR/unnamed-chunk-9-2.png)<!-- -->
+![](README_files/GLM/unnamed-chunk-9-2.png)<!-- -->
 
 ``` r
 hist(df$AADT1, xlab = "AADT1", main = "Histogram of AADT1")
 ```
 
-![](README_files/1-MLR/unnamed-chunk-9-3.png)<!-- -->
+![](README_files/GLM/unnamed-chunk-9-3.png)<!-- -->
 
 ``` r
 hist(df$AADT2, xlab = "AADT2", main = "Histogram of AADT2")
 ```
 
-![](README_files/1-MLR/unnamed-chunk-9-4.png)<!-- -->
+![](README_files/GLM/unnamed-chunk-9-4.png)<!-- -->
 
 ``` r
 hist(df$MEDIAN, xlab = "MEDIAN", main = "Histogram of MEDIAN")
 ```
 
-![](README_files/1-MLR/unnamed-chunk-9-5.png)<!-- -->
+![](README_files/GLM/unnamed-chunk-9-5.png)<!-- -->
 
 ``` r
 hist(df$DRIVE, xlab = "DRIVE", main = "Histogram of DRIVE")
 ```
 
-![](README_files/1-MLR/unnamed-chunk-9-6.png)<!-- -->
+![](README_files/GLM/unnamed-chunk-9-6.png)<!-- -->
 
 #### Plot the density function of the variable ACCIDENTS
 
@@ -200,7 +200,7 @@ hist(df$DRIVE, xlab = "DRIVE", main = "Histogram of DRIVE")
 plot(density(df$ACCIDENT), main="Density estimate of ACCIDENTS")
 ```
 
-![](README_files/1-MLR/unnamed-chunk-10-1.png)<!-- -->
+![](README_files/GLM/unnamed-chunk-10-1.png)<!-- -->
 
 > **Note**: As the dependent variable is “count data”, as has discrete
 > values, then a poisson distribution should be more adequate.

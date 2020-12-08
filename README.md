@@ -36,10 +36,9 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 5.  [Generalized linear models](5-GeneralizedLinearModels.md) (**Gabriel
     Valença**)
 
-6.  [Spatial regression models](5-PanelSpatialModels.md) (**Rosa
-    Félix**)
+6.  [Spatial regression models](6-SpatialModels.md) (**Rosa Félix**)
 
-7.  Panel Data Models (**Gabriel Valença**)
+7.  [Panel Data Models](7-PanelModels.md) (**Gabriel Valença**)
 
 8.  [Discrete Choice Models](8-DiscreteChoiceModels/) (**Miguel Costa**)
     

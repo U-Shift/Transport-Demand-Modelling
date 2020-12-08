@@ -22,8 +22,8 @@ This material was prepared by [Gabriel Valença](https://ushift.tecnico.ulisboa.
   3. [Exploratory Factor Analysis](3-FactorAnalysis.md) (**Gabriel Valença**)
   4. [Cluster Analysis](4-ClusterAnalysis.md) (**Gabriel Valença**)
   5. [Generalized linear models](5-GeneralizedLinearModels.md) (**Gabriel Valença**)
-  6. [Spatial regression models](5-PanelSpatialModels.md) (**Rosa Félix**)
-  7. Panel Data Models (**Gabriel Valença**)
+  6. [Spatial regression models](6-SpatialModels.md) (**Rosa Félix**)
+  7. [Panel Data Models](7-PanelModels.md) (**Gabriel Valença**)
   8. [Discrete Choice Models](8-DiscreteChoiceModels/) (**Miguel Costa**)
   
      * [Multinomial](8-DiscreteChoiceModels/8.1-MultinomialLogitAndProbitModels/) 

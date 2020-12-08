@@ -1,0 +1,97 @@
+---
+title: "Panel Data Models"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.path = "README_files/7-PanelModels/")
+```
+
+```{r}
+library(readxl)
+library(skimr)
+library(foreign)
+library(plm)
+```
+
+```{r}
+data <- read_excel("Data/Grunfeld_data.xlsx")
+```
+
+```{r}
+df <- data.frame(data)
+```
+
+```{r}
+head(df)
+```
+
+```{r}
+skim(df)
+```
+
+```{r}
+drop <- c("firmcod")
+df = df[,!(names(df) %in% drop)]
+```
+
+#### Ordinary least square model
+
+```{r}
+mlr = lm(invest ~ value + capital, data = df)
+summary(mlr)
+```
+
+
+#### One way fixed effects model
+```{r}
+fixed = plm(invest ~ value + capital, data = df, index = c("firm", "year"), model = "within")
+summary(fixed)
+```
+
+#### One way random effects model
+
+```{r}
+random = plm(invest ~ value + capital, data = df, index = c("firm", "year"), model = "random")
+summary(random)
+```
+
+You can also try other types of model estimation: 
+
+```{r}
+model <-c ("Fixed effects", "Pooling model", "First-diference model", "Between model", "Random effects")
+code <-c("within", "pooling", "fd", "between", "random")
+table <- data.frame(model,code)
+knitr::kable(table, align = "l")
+```
+
+
+#### Use the Hausman test to evaluate when to use fixed or random effects
+
+```{r}
+phtest(random, fixed)
+```
+
+> **Note:** The null hypothesis is that random effect model is more appropriate than the fixed effect model. 
+
+
+#### Two-way Fixed effects model
+
+```{r}
+fixed_tw <- plm(invest ~ value + capital, data = df, effect = "twoways", model = "within", index = c("firm", "year"))
+summary(fixed_tw)
+```
+
+#### Two-way Random effects model
+
+```{r}
+random_tw <- plm(invest ~ value + capital, data = df, effect = "twoways", model = "random", index = c("firm", "year"), random.method = "amemiya")
+summary(random_tw)
+```
+
+#### Langrage Multiplier Test
+
+```{r}
+plmtest(random_tw)
+```

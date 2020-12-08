@@ -18,7 +18,7 @@ Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/),
 and [Filipe
 Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 
-![](README_files/IST.png) ![](README_files/ushift.png)
+![](README_files/ist.PNG) ![](README_files/ushift.PNG)
 
 ## Summary
 

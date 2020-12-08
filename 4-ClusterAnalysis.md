@@ -143,7 +143,7 @@ plot(Numberofairlines ~ Destinations, df)
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0.6))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-6-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-6-1.png)<!-- -->
 
 > **Note:** You can already guess the number of clusters by visualizing
 > the two variables. However, this is not clear and it does not consider
@@ -252,7 +252,7 @@ head(df_reduced)
   fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"), order = FALSE)
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-12-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-12-1.png)<!-- -->
 
 #### Now, let us perform the many types of hierarchical clustering
 
@@ -269,7 +269,7 @@ plot(models, labels = df$Airport, xlab = "Distance - Single linkage", hang = -1)
 rect.hclust(models, 4, border = "purple") 
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-13-1.png)<!-- -->
 
 **2. Complete linkage (Farthest neighbor) clustering algorithm**
 
@@ -283,7 +283,7 @@ plot(modelc, labels = df$Airport, xlab = "Distance - Complete linkage", hang = -
 rect.hclust(modelc, 4, border = "blue") 
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-14-1.png)<!-- -->
 
 **3. Average linkage between groups**
 
@@ -296,7 +296,7 @@ plot(modela, labels = df$Airport, xlab = "Distance - Average linkage", hang = -1
 rect.hclust(modelc, 4, border = "red")
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-15-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-15-1.png)<!-- -->
 
 **4. Ward\`s method**
 
@@ -310,7 +310,7 @@ plot(modelw, labels = df$Airport, xlab = "Distance - Ward method", hang = -1)
 rect.hclust(modelw, 4, border = "orange")
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-16-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-16-1.png)<!-- -->
 
 **5. Centroid method**
 
@@ -323,7 +323,7 @@ plot(modelcen, labels = df$Airport, xlab = "Distance - Centroid method", hang = 
 rect.hclust(modelcen, 4, border = "green")
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-17-1.png)<!-- -->
 
 #### Now lets evaluate the membership of each observation with the cutree function for each method.
 
@@ -359,31 +359,31 @@ table(member_com, member_av)
 plot(silhouette(member_single, distance))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-20-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-20-1.png)<!-- -->
 
 ``` r
 plot(silhouette(member_com, distance))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-20-2.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-20-2.png)<!-- -->
 
 ``` r
 plot(silhouette(member_av, distance))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-20-3.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-20-3.png)<!-- -->
 
 ``` r
 plot(silhouette(member_ward, distance))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-20-4.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-20-4.png)<!-- -->
 
 ``` r
 plot(silhouette(member_cen, distance))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-20-5.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-20-5.png)<!-- -->
 
 > **Note:** The silhouette plot evaluates how similiar an observation is
 > to its own cluster compared to other clusters. The clustering
@@ -405,42 +405,42 @@ Print out the results
 km_clust 
 ```
 
-    ## K-means clustering with 3 clusters of sizes 5, 16, 11
+    ## K-means clustering with 3 clusters of sizes 16, 5, 11
     ## 
     ## Cluster means:
     ##   Passengers  Movements Numberofairlines Mainairlineflightspercentage
-    ## 1 -0.9520429 -1.0882984       -1.3214660                    1.9931973
-    ## 2  0.7166133  0.7916255        0.8241767                   -0.4910120
+    ## 1  0.7166133  0.7916255        0.8241767                   -0.4910120
+    ## 2 -0.9520429 -1.0882984       -1.3214660                    1.9931973
     ## 3 -0.6095999 -0.6567742       -0.5981361                   -0.1917995
     ##   Maximumpercentageoftrafficpercountry NumberofLCCflightsweekly
-    ## 1                            0.6473374               -1.2772631
-    ## 2                           -0.5857676                0.7739065
+    ## 1                           -0.5857676                0.7739065
+    ## 2                            0.6473374               -1.2772631
     ## 3                            0.5577814               -0.5451081
     ##   NumberofLowCostAirlines LowCostAirlinespercentage Destinations
-    ## 1             -1.39205703                 1.9302799   -1.4105623
-    ## 2              0.38513206                -0.6868110    0.7534855
+    ## 1              0.38513206                -0.6868110    0.7534855
+    ## 2             -1.39205703                 1.9302799   -1.4105623
     ## 3              0.07256111                 0.1215978   -0.4548142
     ##   Average_Route_Distance DistancetoclosestAirport
-    ## 1             -0.9635706                0.2765206
-    ## 2              0.6283075               -0.4268811
+    ## 1              0.6283075               -0.4268811
+    ## 2             -0.9635706                0.2765206
     ## 3             -0.4759152                0.4952267
     ##   DistancetoclosestSimilarAirport AirportRegionalrelevance Distancetocitykm
-    ## 1                     -0.71705981                -1.236449        1.6976272
-    ## 2                      0.19264710                 0.227674       -0.2456769
+    ## 1                      0.19264710                 0.227674       -0.2456769
+    ## 2                     -0.71705981                -1.236449        1.6976272
     ## 3                      0.04572232                 0.230860       -0.4143005
     ##   Inhanbitantscorrected numberofvisitorscorrected GDPcorrected   Cargoton
-    ## 1            -0.9802943                -0.7587213   -0.3558915 -0.4142745
-    ## 2             0.6365147                 0.5857249    0.5626763  0.4289738
+    ## 1             0.6365147                 0.5857249    0.5626763  0.4289738
+    ## 2            -0.9802943                -0.7587213   -0.3558915 -0.4142745
     ## 3            -0.4802512                -0.5070902   -0.6566693 -0.4356553
     ## 
     ## Clustering vector:
     ##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
-    ##  3  3  3  3  1  3  3  3  3  2  2  2  3  2  2  2  3  2  2  2  2  2  2  2  2  2 
+    ##  3  3  3  3  2  3  3  3  3  1  1  1  3  1  1  1  3  1  1  1  1  1  1  1  1  1 
     ## 27 28 29 30 31 32 
-    ##  1  1  2  3  1  1 
+    ##  2  2  1  3  2  2 
     ## 
     ## Within cluster sum of squares by cluster:
-    ## [1]  41.82151 166.93358  81.96037
+    ## [1] 166.93358  41.82151  81.96037
     ##  (between_SS / total_SS =  47.9 %)
     ## 
     ## Available components:
@@ -453,18 +453,18 @@ str(km_clust)
 ```
 
     ## List of 9
-    ##  $ cluster     : Named int [1:32] 3 3 3 3 1 3 3 3 3 2 ...
+    ##  $ cluster     : Named int [1:32] 3 3 3 3 2 3 3 3 3 1 ...
     ##   ..- attr(*, "names")= chr [1:32] "1" "2" "3" "4" ...
-    ##  $ centers     : num [1:3, 1:18] -0.952 0.717 -0.61 -1.088 0.792 ...
+    ##  $ centers     : num [1:3, 1:18] 0.717 -0.952 -0.61 0.792 -1.088 ...
     ##   ..- attr(*, "dimnames")=List of 2
     ##   .. ..$ : chr [1:3] "1" "2" "3"
     ##   .. ..$ : chr [1:18] "Passengers" "Movements" "Numberofairlines" "Mainairlineflightspercentage" ...
     ##  $ totss       : num 558
-    ##  $ withinss    : num [1:3] 41.8 166.9 82
+    ##  $ withinss    : num [1:3] 166.9 41.8 82
     ##  $ tot.withinss: num 291
     ##  $ betweenss   : num 267
-    ##  $ size        : int [1:3] 5 16 11
-    ##  $ iter        : int 3
+    ##  $ size        : int [1:3] 16 5 11
+    ##  $ iter        : int 2
     ##  $ ifault      : int 0
     ##  - attr(*, "class")= chr "kmeans"
 
@@ -493,7 +493,7 @@ betSS_totSS[[i]] <- k[[i]]$betweenss/k[[i]]$totss
 plot(1:10, betSS_totSS, type = "b", ylab = "Between SS / Total SS", xlab = "Number of clusters")
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-24-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-24-1.png)<!-- -->
 
 #### Let us try to take out the outliers and see the diference in the k-means clustering
 
@@ -506,7 +506,7 @@ par(mar=c(15,2,1,1)) # Make labels fit in the boxplot
 boxplot(df_scaled, las = 2)
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-25-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-25-1.png)<!-- -->
 
   - **Detect the outliers**
 
@@ -542,19 +542,19 @@ km_no_outliers <- kmeans(df_no_outliers, 3)
 km_no_outliers
 ```
 
-    ## K-means clustering with 3 clusters of sizes 3, 4, 3
+    ## K-means clustering with 3 clusters of sizes 4, 3, 3
     ## 
     ## Cluster means:
     ##        [,1]
-    ## 1 397.66667
-    ## 2 539.00000
-    ## 3  89.66667
+    ## 1 539.00000
+    ## 2  89.66667
+    ## 3 397.66667
     ## 
     ## Clustering vector:
-    ##  [1] 3 3 3 1 1 1 2 2 2 2
+    ##  [1] 2 2 2 3 3 3 1 1 1 1
     ## 
     ## Within cluster sum of squares by cluster:
-    ## [1] 12604.667  2882.000  7708.667
+    ## [1]  2882.000  7708.667 12604.667
     ##  (between_SS / total_SS =  93.8 %)
     ## 
     ## Available components:
@@ -575,7 +575,7 @@ plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-29-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-29-1.png)<!-- -->
 
   - **K-means without outliers**
 
@@ -586,4 +586,4 @@ plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster)
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 
-![](README_files/3-ClusterAnalysis/unnamed-chunk-30-1.png)<!-- -->
+![](README_files/ClusterAnalysis/unnamed-chunk-30-1.png)<!-- -->

@@ -5,7 +5,7 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "README_files/3-ClusterAnalysis/")
+                      fig.path = "README_files/ClusterAnalysis/")
 ```
 
 ## Example Airports

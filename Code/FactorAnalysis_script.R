@@ -238,6 +238,9 @@ abline(h = 0, v = 0)
 #text(text(load,labels=names(df),cex=.7, col="yellow"))
 #abline(h = 0, v = 0)
 
+  # Note:When you have more than two factors it is difficult to analyze the factors by the plots. 
+  # Variables that have low explaining variance in the two factors analyzed, can have a be highly explained
+  # by the other factors not present in the graph. However, try comparing the plots with the factor loadings
+  # and plot the other graphs to get more familiar with exploratory factor analysis.  
 
-knitr::spin(hair = "Factor_Analysis_TDMLecture.R")
 

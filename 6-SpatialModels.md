@@ -16,7 +16,7 @@ library(sf)
 WIfinal = st_read("Data/Spatial/wi_final_census2_random4.shp") #it is a spatial feature dataset
 ```
 
-    ## Reading layer `wi_final_census2_random4' from data source `D:\GIS\TDM\Transport-Demand-Modelling\Data\Spatial\wi_final_census2_random4.shp' using driver `ESRI Shapefile'
+    ## Reading layer `wi_final_census2_random4' from data source `G:\O meu disco\TDM - Lecture R\TDM github\Transport-Demand-Modelling\Data\Spatial\wi_final_census2_random4.shp' using driver `ESRI Shapefile'
     ## Simple feature collection with 417 features and 34 fields
     ## geometry type:  MULTIPOLYGON
     ## dimension:      XY
@@ -28,7 +28,7 @@ knitr::kable(head(WIfinal))
 ```
 
 | FIPS        | MSA       | TOT\_POP | POP\_16 | POP\_65 | WHITE\_ | BLACK\_ | ASIAN\_ | HISP\_ | MULTI\_RA | MALES | FEMALES | MALE1664 | FEM1664 | EMPL16 | EMP\_AWAY | EMP\_HOME | EMP\_29 | EMP\_30 | EMP16\_2 | EMP\_MALE | EMP\_FEM | OCC\_MAN | OCC\_OFF1 | OCC\_INFO | HH\_INC | POV\_POP | POV\_TOT | HSG\_VAL | BLACK1 | BLACK\_R | PCTBLACK |  PCTBLCK | polyid | geometry                     |
-|:------------|:----------|---------:|--------:|--------:|--------:|--------:|--------:|-------:|----------:|------:|--------:|---------:|--------:|-------:|----------:|----------:|--------:|--------:|---------:|----------:|---------:|---------:|----------:|----------:|--------:|---------:|---------:|---------:|-------:|---------:|---------:|---------:|-------:|:-----------------------------|
+| :---------- | :-------- | -------: | ------: | ------: | ------: | ------: | ------: | -----: | --------: | ----: | ------: | -------: | ------: | -----: | --------: | --------: | ------: | ------: | -------: | --------: | -------: | -------: | --------: | --------: | ------: | -------: | -------: | -------: | -----: | -------: | -------: | -------: | -----: | :--------------------------- |
 | 55131430100 | Milwaukee |     5068 |    1248 |     429 |    5005 |       5 |       6 |     32 |        17 |  2610 |    2458 |     1763 |    1628 |   2817 |      2690 |       127 |    1852 |     838 |     2854 |      1563 |     1291 |      477 |       456 |        44 |   58295 |     5057 |      185 |   157200 |      5 |     2201 | 0.860631 | 0.000987 |      1 | MULTIPOLYGON (((-88.28074 4… |
 | 55089610100 | Milwaukee |     8003 |    1812 |     667 |    7720 |      35 |      36 |    129 |        59 |  3999 |    4004 |     2760 |    2764 |   4476 |      4237 |       239 |    2930 |    1307 |     4544 |      2386 |     2158 |      817 |       700 |        96 |   55124 |     7160 |      164 |   145900 |     35 |       26 | 0.005959 | 0.004373 |      2 | MULTIPOLYGON (((-87.8117 43… |
 | 55131410100 | Milwaukee |     4393 |    1026 |     534 |    4320 |       2 |      19 |     19 |        27 |  2198 |    2195 |     1446 |    1387 |   2389 |      2316 |        73 |    1636 |     680 |     2418 |      1306 |     1112 |      466 |       352 |        23 |   51769 |     4327 |      211 |   129800 |      2 |       97 | 0.030012 | 0.000455 |      3 | MULTIPOLYGON (((-88.16157 4… |
@@ -48,7 +48,7 @@ tm_shape(WIfinal) +
 
 ![](README_files/5-PanelSpatialmodels/unnamed-chunk-2-1.png)<!-- -->
 
-##### Neighbors
+#### Neighbors
 
 The first step requires that we define “neighboring” polygons. This
 could refer to contiguous polygons, polygons within a certain distance
@@ -66,7 +66,7 @@ library(spdep)
 neighbors <- poly2nb(WIfinal, queen=TRUE)
 ```
 
-##### Weights
+#### Weights
 
 Next, we need to assign weights to each neighboring polygon. In this
 case, each neighboring polygon will be assigned equal weight
@@ -78,7 +78,7 @@ See more details: use `?nb2listw`.
 weights = nb2listw(neighbors, style="W", zero.policy=TRUE)
 ```
 
-##### Result
+#### Result
 
 To get the Moran’s I value, simply use the `moran.test` function.
 
@@ -140,7 +140,7 @@ Install and load ape package
 library(ape)
 ```
 
-##### Prepare data
+#### Prepare data
 
 It does not deal with ordered factors, zeros, or infinite distances.  
 So we need to clean data first.
@@ -155,7 +155,7 @@ TABLEmoran<-na.omit(TABLEmoran) #remove cases with NA
 TABLEmoran<-TABLEmoran[TABLEmoran$Orig_Lat!=0,] #Remove cases with Lat/Lon equals to zero
 ```
 
-##### Distances matrix, from coordinates (Lat Long)
+#### Distances matrix, from coordinates (Lat Long)
 
 To calculate Moran’s I, we will need to generate a matrix of inverse
 distance weights. In the matrix, entries for pairs of points that are
@@ -176,7 +176,7 @@ the matrix is equal to 1/(distance between point *i* and point *j*).
 Note that this is just one of several ways in which we can calculate an
 inverse distance matrix.
 
-##### Result
+#### Result
 
 We can now calculate Moran’s I using the command `Moran.I`.
 
@@ -190,11 +190,11 @@ ozone.dists.bin <- (ozone.dists > 0 & ozone.dists <= 15000)
 Moran.I(TABLEmoran$classfactor, ozone.dists.bin) #Moran’s I =0.012, p = .001
 ```
 
-> The result (observed) is the Moran’s I value, and if it is enough
-> close to zero, we can affirm (with p=…) that ther is not a spatial
-> pattern, suggesting an aleatory distribution in space. Tf the result
-> was close to 1 or -1, it would suggest a pattern in distribuition in
-> space.
+> **Note:** The result (observed) is the Moran’s I value, and if it is
+> enough close to zero, we can affirm (with p=…) that ther is not a
+> spatial pattern, suggesting an aleatory distribution in space. Tf the
+> result was close to 1 or -1, it would suggest a pattern in
+> distribuition in space.
 
 **See more
 [here](https://stats.idre.ucla.edu/r/faq/how-can-i-calculate-morans-i-in-r/)**

@@ -415,56 +415,6 @@ summary(model2)
     ## 
     ## Number of Fisher Scoring iterations: 5
 
-#### Calculate the pseudo-Rsquare and perform an Omnibus test
-
-``` r
-nagelkerke(model2)
-```
-
-    ## $Models
-    ##                                                                                                                                   
-    ## Model: "glm, ACCIDENT ~ as.factor(STATE) + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)), quasipoisson(link = \"log\"), df, glm.fit"
-    ## Null:  "glm, ACCIDENT ~ 1, quasipoisson(link = \"log\"), df, glm.fit"                                                             
-    ## 
-    ## $Pseudo.R.squared.for.model.vs.null
-    ##                              Pseudo.R.squared
-    ## McFadden                                   NA
-    ## Cox and Snell (ML)                         NA
-    ## Nagelkerke (Cragg and Uhler)               NA
-    ## 
-    ## $Likelihood.ratio.test
-    ##  Df.diff LogLik.diff Chisq p.value
-    ##       -4          NA    NA      NA
-    ## 
-    ## $Number.of.observations
-    ##          
-    ## Model: 84
-    ## Null:  84
-    ## 
-    ## $Messages
-    ## [1] "Note: For models fit with REML, these statistics are based on refitting with ML"
-    ## 
-    ## $Warnings
-    ## [1] "None"
-
-#### Calculate the Type III test.
-
-``` r
-Anova(model2, type = "III", test = "Wald") 
-```
-
-    ## Analysis of Deviance Table (Type III tests)
-    ## 
-    ## Response: ACCIDENT
-    ##                  Df     Chisq Pr(>Chisq)    
-    ## (Intercept)       1 1419.8598  < 2.2e-16 ***
-    ## as.factor(STATE)  1    0.7615   0.382864    
-    ## AADT2             1   23.1430  1.504e-06 ***
-    ## MEDIAN            1    2.8353   0.092212 .  
-    ## DRIVE             1    7.7421   0.005395 ** 
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
 > **Note**: The estimates are the same, but the standard errors have
 > increased because they are adjusted by the scale parameter
 
@@ -560,27 +510,27 @@ nagelkerke(model3)
     ## $Warnings
     ## [1] "None"
 
-#### Compare models:
+#### Compare model 1 and model 3:
 
 #### Calculate the Akaike’s Information Criteria (AIC) and the Bayesian Information Criteria (BIC)
 
 ``` r
-aic <- data.frame(model1 = AIC(model1), model2 = AIC(model2), model3 = AIC(model3))
+aic <- data.frame(model1 = AIC(model1), model3 = AIC(model3))
 knitr::kable(aic, align = "l")
 ```
 
-| model1   | model2 | model3   |
-| :------- | :----- | :------- |
-| 339.2905 | NA     | 313.7189 |
+| model1   | model3   |
+| :------- | :------- |
+| 339.2905 | 313.7189 |
 
 ``` r
-bic <- data.frame(model1 = BIC(model1), model2 = BIC(model2), model3 = BIC(model3))
+bic <- data.frame(model1 = BIC(model1), model3 = BIC(model3))
 knitr::kable(bic, align = "l")
 ```
 
-| model1   | model2 | model3   |
-| :------- | :----- | :------- |
-| 351.4446 | NA     | 328.3038 |
+| model1   | model3   |
+| :------- | :------- |
+| 351.4446 | 328.3038 |
 
 > **Note**: AIC and BIC evaluates the quality of a finite set of models.
 

@@ -164,14 +164,6 @@ Anova(model1, type = "III", test = "Wald")
  
  summary(model2)
 
-# Calculate the pseudo-Rsquare and perform an Omnibus test 
- 
-#nagelkerke(model2)
-
-# Calculate the Type III test. 
- 
- # Anova(model2, type = "III", test = "Wald") 
- 
  # Note: The estimates are the same, but the standard errors have increased because they are 
  # adjusted by the scale parameter
 
@@ -188,14 +180,14 @@ Anova(model1, type = "III", test = "Wald")
  nagelkerke(model3)
 
 
-# Compare models:
+# Compare model 1 and model 3:
  
 ## Calculate the Akaike’s Information Criteria (AIC) and the Bayesian Information Criteria (BIC) 
 
-aic <- data.frame(model1 = AIC(model1), model2 = AIC(model2), model3 = AIC(model3))
+aic <- data.frame(model1 = AIC(model1), model3 = AIC(model3))
 knitr::kable(aic, align = "l")
 
-bic <- data.frame(model1 = BIC(model1), model2 = BIC(model2), model3 = BIC(model3))
+bic <- data.frame(model1 = BIC(model1), model3 = BIC(model3))
 knitr::kable(bic, align = "l")
 
   ## Note: AIC and BIC evaluates the quality of a finite set of models.
@@ -218,3 +210,6 @@ elasticity <-c (el1, el2, el3, el4, el5)
 elas_table <- data.frame(variable,elasticity)
 knitr::kable(elas_table, align = "l")
 
+# Note: AADT1 does not have a value because it is the offset of the model. 
+# Additionally, the variable STATE also does not have a value because it is a categorical variable. 
+# In this case it would be needed to calculate the pseudo-elasticity.

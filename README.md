@@ -14,8 +14,8 @@ transport demand modelling.
 
 This material was prepared by [Gabriel
 Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/),
-[Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/),
 [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/),
+[Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/),
 [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/),
 and [Filipe
 Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).

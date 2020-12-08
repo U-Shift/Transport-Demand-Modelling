@@ -91,60 +91,11 @@ setwd("G:/Meu Drive/TDM - Lecture R/Multiple Linear Regression")
 
 dataset <- read_excel("TDM_Class3_MLR_Chicago_Example.xls")  
 
-# Check the structure of the dataset 
-str(dataset)
-
-# Take a first look at the dataset
-head(dataset, 10)
-
-# Check the type and class of the dataset
-typeof(dataset)
-class(dataset)
-
 # Transform dataset into dataframe
 df <- data.frame(dataset)
 
-
-
-# EXPLORATORY DATA ANALYSIS (EDA)
-
-# Compare the structure of the dataset with df
-str(dataset)
-str(df)
-
-##Note: The dataframe function transforms columns into variables and rows into observations. 
-
-# Take a look at the dataframe
-head(df, 10)
-
 # Show summary statistics
 skim(df) 
-
-# Check missing data
-plot_missing(df)
-
-# Create a separate bar plot for each variable, demonstrating the distributions of all continuous variables
-plot_histogram(df)
-
-# Plot boxplots of each independent variable with TODU
-
-plot_boxplot(df, by = "TODU")
-
-# Plot correlation heatmaps
-
-res1 <- cor.mtest(df, conf.level = .95)
-
-corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
-
-## Note: try putting into method "color" or "circle", and see the diference.
-
-## Note: The pairwise correlations that are crossed are statistically insignificant. 
-## This means that pvalue > 0.05, and you should not reject the null hypothesis.
-## The null hypothesis is that correlation is zero.
-
-# Therefore, take a look at this example and see for yourself: 
-
-cor.test(df$AHS, df$SI)
 
 # MULTIPLE LINEAR REGRESSION
 # Task: Estimate a linear regression model that predicts trips per occupied dwelling unit.

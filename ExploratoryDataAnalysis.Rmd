@@ -212,7 +212,7 @@ par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
 boxplot(df_md, las = 2)
 ```
 
-* Compare results of the dataset with and without the outliers
+* **Compare results of the dataset with and without the outliers**
 
 **Data with outliers**
 ```{r}
@@ -269,4 +269,8 @@ Therefore, take a look at this example and check the pvalue of a crossed pair co
 cor.test(df$AHS, df$SI)
 ```
 
-> **Note:** Correlation heatmaps only consider pairwise correlations and does not demonstrate multicollinearity. 
+> **Note:** Correlation heatmaps only consider pairwise correlations and does not demonstrate multicollinearity.  
+
+
+#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will see how to perform a Multiple Linear Regression model!
+

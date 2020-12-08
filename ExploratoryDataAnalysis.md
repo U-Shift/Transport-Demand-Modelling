@@ -449,7 +449,7 @@ df_md[!is.na(df_md$TODU),]
 > depends on the number of missing data, sample size and characteristics
 > of your data.
 
-  - Replace missing value with mean or median
+  - **Replace missing value with mean or median**
 
 Let us suppose that the variable “TODU” has missing values and you want
 to replace it by the mean or median.
@@ -503,7 +503,7 @@ boxplot(df_md, las = 2)
 
 ![](README_files/EDA/unnamed-chunk-20-1.png)<!-- -->
 
-  - Compare results of the dataset with and without the outliers
+  - **Compare results of the dataset with and without the outliers**
 
 **Data with outliers**
 
@@ -614,3 +614,9 @@ cor.test(df$AHS, df$SI)
 
 > **Note:** Correlation heatmaps only consider pairwise correlations and
 > does not demonstrate multicollinearity.
+
+#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will see how to perform a Multiple Linear Regression model\!
+
+<!-- knitr::spin(hair = "Factor_Analysis_TDMLecture.R") -->
+
+<!-- knitr::purl("ExploratoryDataAnalysis.Rmd", "Code/ExploratoryDataAnalysis.R", documentation = 2) -->

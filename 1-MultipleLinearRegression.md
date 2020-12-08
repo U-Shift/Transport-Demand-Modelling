@@ -75,111 +75,17 @@ library(car) # Library used for testing autocorrelation (Durbin Watson)
 library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
-### EXPLORATORY DATA ANALYSIS (EDA)
-
 #### Import dataset
 
 ``` r
 dataset <- read_excel("Data/TDM_Class3_MLR_Chicago_Example.xls") 
 ```
 
-#### Check the structure of the dataset
-
-``` r
-str(dataset)
-```
-
-    ## tibble [57 x 6] (S3: tbl_df/tbl/data.frame)
-    ##  $ TODU: num [1:57] 3.18 3.89 3.98 4.16 3.6 4.1 4.36 4.87 5.85 4.97 ...
-    ##  $ ACO : num [1:57] 0.59 0.57 0.61 0.61 0.63 0.66 0.71 0.77 0.84 0.74 ...
-    ##  $ AHS : num [1:57] 3.26 3.13 3.02 3.14 3.75 3.24 2.77 2.74 3.02 2.84 ...
-    ##  $ SI  : num [1:57] 21 21.6 12.6 17.6 35.3 ...
-    ##  $ SRI : num [1:57] 28.3 20.9 26 28.5 27.2 ...
-    ##  $ UI  : num [1:57] 60.1 65.7 63.2 66.2 58.4 ...
-
-#### Take a first look at the dataset
-
-``` r
-head(dataset, 10)
-```
-
-    ## # A tibble: 10 x 6
-    ##     TODU   ACO   AHS    SI   SRI    UI
-    ##    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-    ##  1  3.18 0.59   3.26 21.0   28.3  60.1
-    ##  2  3.89 0.570  3.13 21.6   20.9  65.7
-    ##  3  3.98 0.61   3.02 12.6   26.0  63.2
-    ##  4  4.16 0.61   3.14 17.6   28.5  66.2
-    ##  5  3.6  0.63   3.75 35.3   27.2  58.4
-    ##  6  4.1  0.66   3.24 14.7   28.0  59.6
-    ##  7  4.36 0.71   2.77 11.6   39.9  64.6
-    ##  8  4.87 0.77   2.74 10.7   48.4  67.9
-    ##  9  5.85 0.84   3.02  8.2   42.2  56.9
-    ## 10  4.97 0.74   2.84  7.94  38.1  62.4
-
-#### Check the type and class of the dataset
-
-``` r
-typeof(dataset)
-class(dataset)
-```
-
-    ## [1] "list"
-
-    ## [1] "tbl_df"     "tbl"        "data.frame"
-
 #### Transform the dataset into a dataframe
 
 ``` r
 df <- data.frame(dataset)
 ```
-
-#### Compare the structure of the dataset with df
-
-``` r
-str(dataset)
-```
-
-    ## tibble [57 x 6] (S3: tbl_df/tbl/data.frame)
-    ##  $ TODU: num [1:57] 3.18 3.89 3.98 4.16 3.6 4.1 4.36 4.87 5.85 4.97 ...
-    ##  $ ACO : num [1:57] 0.59 0.57 0.61 0.61 0.63 0.66 0.71 0.77 0.84 0.74 ...
-    ##  $ AHS : num [1:57] 3.26 3.13 3.02 3.14 3.75 3.24 2.77 2.74 3.02 2.84 ...
-    ##  $ SI  : num [1:57] 21 21.6 12.6 17.6 35.3 ...
-    ##  $ SRI : num [1:57] 28.3 20.9 26 28.5 27.2 ...
-    ##  $ UI  : num [1:57] 60.1 65.7 63.2 66.2 58.4 ...
-
-``` r
-str(df)
-```
-
-    ## 'data.frame':    57 obs. of  6 variables:
-    ##  $ TODU: num  3.18 3.89 3.98 4.16 3.6 4.1 4.36 4.87 5.85 4.97 ...
-    ##  $ ACO : num  0.59 0.57 0.61 0.61 0.63 0.66 0.71 0.77 0.84 0.74 ...
-    ##  $ AHS : num  3.26 3.13 3.02 3.14 3.75 3.24 2.77 2.74 3.02 2.84 ...
-    ##  $ SI  : num  21 21.6 12.6 17.6 35.3 ...
-    ##  $ SRI : num  28.3 20.9 26 28.5 27.2 ...
-    ##  $ UI  : num  60.1 65.7 63.2 66.2 58.4 ...
-
-> **Note:** The dataframe function transforms columns into variables and
-> rows into observations.
-
-#### Take a look at the dataframe
-
-``` r
-head(df, 10)
-```
-
-    ##    TODU  ACO  AHS    SI   SRI    UI
-    ## 1  3.18 0.59 3.26 21.01 28.32 60.10
-    ## 2  3.89 0.57 3.13 21.61 20.89 65.71
-    ## 3  3.98 0.61 3.02 12.57 25.99 63.19
-    ## 4  4.16 0.61 3.14 17.61 28.52 66.24
-    ## 5  3.60 0.63 3.75 35.32 27.18 58.36
-    ## 6  4.10 0.66 3.24 14.73 27.95 59.58
-    ## 7  4.36 0.71 2.77 11.61 39.91 64.64
-    ## 8  4.87 0.77 2.74 10.71 48.36 67.88
-    ## 9  5.85 0.84 3.02  8.20 42.15 56.86
-    ## 10 4.97 0.74 2.84  7.94 38.14 62.44
 
 #### Show summary statistics
 
@@ -211,77 +117,6 @@ Data summary
 | SRI            |          0 |              1 | 49.56 | 15.84 | 20.89 | 38.14 | 49.37 | 60.85 | 87.38 | ▅▆▇▅▂ |
 | UI             |          0 |              1 | 52.62 | 13.46 | 24.08 | 44.80 | 55.51 | 61.09 | 83.66 | ▃▅▇▅▁ |
 
-#### Check missing data
-
-``` r
-plot_missing(df)
-```
-
-![](README_files/1-MLR/unnamed-chunk-11-1.png)<!-- -->
-
-#### Plot histograms of all the continuous variables
-
-``` r
-plot_histogram(df)
-```
-
-![](README_files/1-MLR/unnamed-chunk-12-1.png)<!-- -->
-
-> **Note**: Take a special look at TODU, and see if the variable looks
-> like a normal distribution.
-
-#### Plot boxplots of each independent variable with TODU
-
-``` r
-plot_boxplot(df, by = "TODU")
-```
-
-![](README_files/1-MLR/unnamed-chunk-13-1.png)<!-- -->
-
-> **Note**: If you increase the average car ownership (ACO) it will tend
-> to increase the number of trips per dwelling unit (TODU). This makes
-> sense. Try analyzing the other relations and check if it is coherent.
-
-#### Plot correlation heatmaps
-
-``` r
-res1 <- cor.mtest(df, conf.level = .95)
-
-corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
-```
-
-![](README_files/1-MLR/unnamed-chunk-14-1.png)<!-- -->
-
-> **Note:** try putting into method “color” or “circle”, and see the
-> diference.
-
-> **Note:** The pairwise correlations that are crossed are statistically
-> insignificant.The null hypothesis is that correlation is zero.This
-> means that the correlations are only significant when you reject the
-> null hypothesis (pvalue \< 0.05).
-
-Therefore, take a look at this example and check the pvalue of a crossed
-pair correlation:
-
-``` r
-cor.test(df$AHS, df$SI)
-```
-
-    ## 
-    ##  Pearson's product-moment correlation
-    ## 
-    ## data:  df$AHS and df$SI
-    ## t = 0.63199, df = 55, p-value = 0.53
-    ## alternative hypothesis: true correlation is not equal to 0
-    ## 95 percent confidence interval:
-    ##  -0.1796317  0.3379997
-    ## sample estimates:
-    ##        cor 
-    ## 0.08491026
-
-> **Note:** Correlation heatmaps only consider pairwise correlations and
-> does not demonstrate multicollinearity.
-
 ### MULTIPLE LINEAR REGRESSION
 
 > y(`TODU`) = bo + b1*`ACO` + b2*`AHS` + b3*`SI` + b4*`SRI` +b5\*`UI` +
@@ -293,31 +128,31 @@ cor.test(df$AHS, df$SI)
 plot(x = df$TODU, y = df$ACO, xlab = "TODU", ylab = "ACO")  
 ```
 
-![](README_files/1-MLR/unnamed-chunk-16-1.png)<!-- -->
+![](README_files/1-MLR/unnamed-chunk-5-1.png)<!-- -->
 
 ``` r
 plot(x = df$TODU, y = df$AHS, xlab = "TODU", ylab = "AHS")  
 ```
 
-![](README_files/1-MLR/unnamed-chunk-16-2.png)<!-- -->
+![](README_files/1-MLR/unnamed-chunk-5-2.png)<!-- -->
 
 ``` r
 plot(x = df$TODU, y = df$SI, xlab = "TODU", ylab = "SI")  
 ```
 
-![](README_files/1-MLR/unnamed-chunk-16-3.png)<!-- -->
+![](README_files/1-MLR/unnamed-chunk-5-3.png)<!-- -->
 
 ``` r
 plot(x = df$TODU, y = df$SRI, xlab = "TODU", ylab = "SRI")  
 ```
 
-![](README_files/1-MLR/unnamed-chunk-16-4.png)<!-- -->
+![](README_files/1-MLR/unnamed-chunk-5-4.png)<!-- -->
 
 ``` r
 plot(x = df$TODU, y = df$UI, xlab = "TODU", ylab = "UI")
 ```
 
-![](README_files/1-MLR/unnamed-chunk-16-5.png)<!-- -->
+![](README_files/1-MLR/unnamed-chunk-5-5.png)<!-- -->
 
 Or you could execute a pairwise scatterplot matrix, that compares every
 variable with each other:
@@ -326,7 +161,7 @@ variable with each other:
 pairs(df[,1:6], pch = 19, lower.panel = NULL)
 ```
 
-![](README_files/1-MLR/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/1-MLR/unnamed-chunk-6-1.png)<!-- -->
 
 > **Note:** SRI and TODU do not have a linear relationship. This should
 > interfere on the model.
@@ -432,7 +267,7 @@ summary(model)
 plot(model)
 ```
 
-![](README_files/1-MLR/unnamed-chunk-21-1.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-2.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-3.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-21-4.png)<!-- -->
+![](README_files/1-MLR/unnamed-chunk-10-1.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-10-2.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-10-3.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-10-4.png)<!-- -->
 
   - **Residuals vs Fitted:** This plot is used to detect non-linearity,
     heteroscedasticity, and outliers.
@@ -457,7 +292,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747   0.076
+    ##    1       0.1416308      1.597747   0.084
     ##  Alternative hypothesis: rho != 0
 
 > **Note:** In the Durbin-Watson test, values of the D-W Statistic vary

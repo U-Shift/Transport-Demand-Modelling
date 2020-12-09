@@ -164,7 +164,13 @@ sum(num_factors$fa.values > 1)
     plot(df_pca,type="lines") 
     fit$scores # the principal components
     biplot(df_pca)
-    
+
+# PCA is not the same thing as Factor Analysis!**. 
+# PCA only considers the common information (variance) of the variables, 
+# while factor analysis takes into account also the unique variance of the variable. 
+# Both approaches are often mixed up. In this example we use PCA as only a first criteria 
+# for choosing the number of factors. PCA is very used in image recognition and data reduction of big data.    
+        
 
 # EXPLORATORY FACTOR ANALYSIS
 

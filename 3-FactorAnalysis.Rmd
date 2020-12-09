@@ -215,6 +215,8 @@ screeplot(df_pca,type="lines", npcs = 31)
 
 > **Note:** Check the cummulative variance of the first components and the scree plot, and see if the PCA is a good approach to detect the number of factors in this case. 
 
+**PCA is not the same thing as Factor Analysis!**. PCA only considers the common information (variance) of the variables, while factor analysis takes into account also the unique variance of the variable. Both approaches are often mixed up. In this example we use PCA as only a first criteria for choosing the number of factors. PCA is very used in image recognition and data reduction of big data. 
+
 ## EXPLORATORY FACTOR ANALYSIS
 
 #### Model 1: No rotation

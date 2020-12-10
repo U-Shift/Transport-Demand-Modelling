@@ -54,8 +54,8 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 -   In [Data](Data/) folder you may find all the files to use for the
     exercises.  
 -   The [Code](Code/) folder contains scripts to use with each topic.
--   In [Slides](Slides/) you can find all the slides of the lectures
-    given by Prof. Filipe Moura.
+-   In [Slides](Slides/Slides.md) you can find all the slides of the
+    lectures given by Prof. Filipe Moura.
 
 ## R and Python stuff
 

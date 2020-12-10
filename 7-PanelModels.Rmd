@@ -8,8 +8,9 @@ knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/7-PanelModels/")
 ```
 
+#### Import libraries
 ```{r}
-library(readxl)
+library(readxl) #read excel files
 library(skimr)
 library(foreign)
 library(plm)

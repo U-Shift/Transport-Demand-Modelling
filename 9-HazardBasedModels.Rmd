@@ -8,16 +8,21 @@ knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/8-HazardBasedModels/")
 ```
 
-## Example: Work-to-home departure delay
+### Example: Work-to-home departure delay
 
 A survey of 204 Seattle-area commuters was conducted to examine the duration of time that commuters delay their work-to-home trips in an effort to avoid peak period traffic congestion. Of the 204 commuters surveyed, 96 indicated that they sometimes delayed their work-to-home trip to avoid traffic congestion. These commuters provided their average time delay. Thus, each commuter has a completed delay duration so that neither left nor right censoring is present in the data.
 
-> **Your task:** i) Plot the Kaplan-Meier estimate of the duration of time that commuters delay
-their work-to-home trips; ii) Determine the significant factors that affect the duration of commuters’ delay
-using a Cox model; iii) Examine the work-to-home departure delay using exponential, Weibull, and
+**Your task:**
+
+1. Plot the Kaplan-Meier estimate of the duration of time that commuters delay
+their work-to-home trips;
+2. Determine the significant factors that affect the duration of commuters’ delay
+using a Cox model;
+3. Examine the work-to-home departure delay using exponential, Weibull, and
 log-logistic proportional-hazards models.
 
-#### Import Libraries
+## Get to know your data
+##### Import Libraries
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 library(readxl)
@@ -28,136 +33,45 @@ library(survminer)
 library(ggplot2)
 ```
 
-#### Set working directory
-
-```{r}
-setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling")
-```
-
-#### Import dataset, tranform in dataframe, and take a first look.
+##### Import dataset, tranform in dataframe, and take a first look.
 
 ```{r}
 data.delay <- read_excel("Data/ExerciseHBDM.xlsx")
-
 data.delay <- data.frame(data.delay)
-
 head(data.delay)
 ```
 
->**Note:** The variables do not have names. Use the algorithm below to create new columns with the assigned variables.
-
-#### Create new variables and assign the values to each one respectively. 
-
+##### Assign variable lables to each one respectively
 ```{r}
-data.delay["minutes"] <- NA
-
-data.delay$minutes <-  data.delay$X1
-
-data.delay["activity"] <- NA
-
-data.delay$activity <-  data.delay$X2
-
-data.delay["number_of_times"] <- NA
-
-data.delay$number_of_times <-  data.delay$X3
-
-data.delay["mode"] <- NA
-
-data.delay$mode <-  data.delay$X4
-
-data.delay["route"] <- NA
-
-data.delay$route <-  data.delay$X5
-
-data.delay["congested"] <- NA
-
-data.delay$congested <-  data.delay$X6
-
-data.delay["age"] <- NA
-
-data.delay$age <-  data.delay$X7
-
-data.delay["gender"] <- NA
-
-data.delay$gender <-  data.delay$X8
-
-data.delay["number_cars"] <- NA
-
-data.delay$number_cars <-  data.delay$X9
-
-data.delay["number_children"] <- NA
-
-data.delay$number_children <-  data.delay$X10
-
-data.delay["income"] <- NA
-
-data.delay$income <-  data.delay$X11
-
-data.delay["flexible"] <- NA
-
-data.delay$flexible <-  data.delay$X12
-
-data.delay["distance"] <- NA
-
-data.delay$distance <-  data.delay$X13
-
-data.delay["LOSD"] <- NA
-
-data.delay$LOSD <-  data.delay$X14
-
-data.delay["rate_of_travel"] <- NA
-
-data.delay$rate_of_travel <-  data.delay$X15
-
-data.delay["population"] <- NA
-
-data.delay$population <-  data.delay$X16
-
-data.delay["retail"] <- NA
-
-data.delay$retail <-  data.delay$X17
-
-data.delay["service"] <- NA
-
-data.delay$service <-  data.delay$X18
-
-data.delay["size"] <- NA
-
-data.delay$size <-  data.delay$X19    
+names(data.delay) <- c("id","minutes","activity","number_of_times","mode","route","congested","age",
+"gender","number_cars","number_children","income","flexible","distance",
+"LOSD","rate_of_travel","population","retail","service","size") 
+data.delay <- data.frame(data.delay, row.names = 1) #make id (1st variable) as row name
 ```
 
-#### Take a look at the structure
+##### Take a look at the structure
 ```{r}
-
 str(data.delay)
 ```
 
->**Note:** We have repeated variables. Let us exclude the original ones without labels. 
-
-#### Exclude original variables
-
 ```{r}
-drop <- c("X1","X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9", "X10", "X11", "X12", "X13", "X14", "X15", "X16", "X17", "X18", "X19")
-df = data.delay[,!(names(data.delay) %in% drop)]
-```
-
-```{r}
+df <- data.delay
 skim(df)
 ```
 
 
-#### Sort the data by time
+##### Sort the data by time
 ```{r}
 df <- df[order(df$minutes),]
-
 ```
 
-#### Create graph
+##### Create plot
 ```{r}
-with(df, plot(minutes, type="h"))
+plot(df$minutes, type="h")
 ```
 
-#### Create the life table survival object for df
+## Survival funcion
+##### Create the life table survival object for df
 
 ```{r}
 data.delay2 <-subset(df, minutes>0)
@@ -165,9 +79,9 @@ df.survfit = survfit(Surv(minutes) ~ 1, data= data.delay2)
 summary(df.survfit)
 ```
 
->**Note:** The functions survfit() and Surv() create a life table survival object.
+>**Note:** The functions `survfit()` and `Surv()` create a life table survival object.
 
-#### Plot the Kaplan-Meier curve
+##### Plot the Kaplan-Meier curve
 
 ```{r}
 plot(df.survfit, xlab = "Time (minutes)", ylab="Survival
@@ -177,9 +91,8 @@ range(0:250) , conf.int = TRUE, pallete = "red", ggtheme =
 theme_minimal())
 ```
 
-> **Note:** It is the most widely applied nonparametric method in survival analysis.The Kaplan–Meier method provides useful estimates of survival probabilities and a graphical presentation of the survival distribution.
-
-> **Note:** The Kaplan–Meier method assumes that censoring is independent of survival times. If this is false, the Kaplan–Meier method is inappropriate.
+> **Note:** It is the most widely applied nonparametric method in survival analysis.The Kaplan–Meier method provides useful estimates of survival probabilities and a graphical presentation of the survival distribution.  
+The Kaplan–Meier method assumes that censoring is independent of survival times. If this is false, the Kaplan–Meier method is inappropriate.
 
 #### Cox Proportional Hazard Model Estimates of the Duration of Commuter Work-To-Home Delay to Avoid Congestion
 
@@ -188,11 +101,11 @@ result.cox <- coxph(Surv(minutes) ~ gender + rate_of_travel + distance + populat
 summary(result.cox)
 ```
 
-> **Note:** The Cox proportional-hazards model is semiparametric method that produces estimated hazard ratios (sometimes called rate ratios or risk ratios).
+> **Note:**
+The Cox proportional-hazards model is semiparametric method that produces estimated hazard ratios (sometimes called rate ratios or risk ratios).  
+Regression coefficients are on a log scale.
 
-> **Note:** Regression coefficients are on a log scale.
-
-#### Testing proportional Hazards assumption
+##### Testing proportional Hazards assumption
 
 ```{r}
 test.ph <- cox.zph(result.cox)
@@ -200,22 +113,20 @@ plot(test.ph)
 ggcoxzph(test.ph)
 ```
 
-> **Note:** It includes an interaction between the covariate and a function of time (or distance). Log time is often used but it could be any function. If significant then the assumption is violated.
+> **Note:**
+It includes an interaction between the covariate and a function of time (or distance). Log time is often used but it could be any function. If significant then the assumption is violated.  
+Test the proportional hazards assumption on the basis of partial residuals. Type of residual known as Schoenfeld residuals.  
+For each covariate, the function cox.zph() correlates the corresponding set of scaled Schoenfeld residuals with time, to test for independence between residuals and time. Additionally, it performs a global test for the model as a whole.  
+In principle, the Schoenfeld residuals are independent of time. A plot that shows a non-random pattern against time is evidence of violation of the PH assumption.
 
-> **Note:** Test the proportional hazards assumption on the basis of partial residuals. Type of residual known as Schoenfeld residuals.
-
-> **Note:** For each covariate, the function cox.zph() correlates the corresponding set of scaled Schoenfeld residuals with time, to test for independence between residuals and time. Additionally, it performs a global test for the model as a whole.
-
-> **Note:** In principle, the Schoenfeld residuals are independent of time. A plot that shows a non-random pattern against time is evidence of violation of the PH assumption.
-
-#### Plot the baseline survival function
+##### Plot the baseline survival function
 
 ```{r}
-ggsurvplot(survfit(result.cox), color = "#2E9FDF", ggtheme = theme_minimal())
+ggsurvplot(survfit(result.cox), data= data.delay2, palette = "#2E9FDF", ggtheme = theme_minimal())
 ```
 
 ```{r}
-ggsurvplot(survfit(result.cox), conf.int = TRUE, palette = c("#FF9E29",
+ggsurvplot(survfit(result.cox), data= data.delay2, conf.int = TRUE, palette = c("#FF9E29",
 "#86AA00"), risk.table = TRUE, risk.table.col = "strata", fun = "event")
 ```
 

@@ -1,7 +1,7 @@
 Hazard-Based Duration Models
 ================
 
-## Example: Work-to-home departure delay
+### Example: Work-to-home departure delay
 
 A survey of 204 Seattle-area commuters was conducted to examine the
 duration of time that commuters delay their work-to-home trips in an
@@ -11,13 +11,18 @@ trip to avoid traffic congestion. These commuters provided their average
 time delay. Thus, each commuter has a completed delay duration so that
 neither left nor right censoring is present in the data.
 
-> **Your task:** i) Plot the Kaplan-Meier estimate of the duration of
-> time that commuters delay their work-to-home trips; ii) Determine the
-> significant factors that affect the duration of commuters’ delay using
-> a Cox model; iii) Examine the work-to-home departure delay using
-> exponential, Weibull, and log-logistic proportional-hazards models.
+**Your task:**
 
-#### Import Libraries
+1.  Plot the Kaplan-Meier estimate of the duration of time that
+    commuters delay their work-to-home trips;
+2.  Determine the significant factors that affect the duration of
+    commuters’ delay using a Cox model;
+3.  Examine the work-to-home departure delay using exponential, Weibull,
+    and log-logistic proportional-hazards models.
+
+## Get to know your data
+
+##### Import Libraries
 
 ``` r
 library(readxl)
@@ -25,21 +30,14 @@ library(skimr)
 library(survival)
 library(coxme)
 library(survminer)
+library(ggplot2)
 ```
 
-#### Set working directory
-
-``` r
-setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling")
-```
-
-#### Import dataset, tranform in dataframe, and take a first look.
+##### Import dataset, tranform in dataframe, and take a first look.
 
 ``` r
 data.delay <- read_excel("Data/ExerciseHBDM.xlsx")
-
 data.delay <- data.frame(data.delay)
-
 head(data.delay)
 ```
 
@@ -51,116 +49,22 @@ head(data.delay)
     ## 5 1004  0  0  0  2  2  1  2  1  1   0   3   0   3   0 1.2  5079 1024  899 4092
     ## 6 1005 38  1  3  1  2  1  7  1  2   0   5   0  14   1 1.8 24410 6430 3206 1997
 
-> **Note:** The variables do not have names. Use the algorithm below to
-> create new columns with the assigned variables.
-
-#### Create new variables and assign the values to each one respectively.
+##### Assign variable lables to each one respectively
 
 ``` r
-data.delay["minutes"] <- NA
-
-data.delay$minutes <-  data.delay$X1
-
-data.delay["activity"] <- NA
-
-data.delay$activity <-  data.delay$X2
-
-data.delay["number_of_times"] <- NA
-
-data.delay$number_of_times <-  data.delay$X3
-
-data.delay["mode"] <- NA
-
-data.delay$mode <-  data.delay$X4
-
-data.delay["route"] <- NA
-
-data.delay$route <-  data.delay$X5
-
-data.delay["congested"] <- NA
-
-data.delay$congested <-  data.delay$X6
-
-data.delay["age"] <- NA
-
-data.delay$age <-  data.delay$X7
-
-data.delay["gender"] <- NA
-
-data.delay$gender <-  data.delay$X8
-
-data.delay["number_cars"] <- NA
-
-data.delay$number_cars <-  data.delay$X9
-
-data.delay["number_children"] <- NA
-
-data.delay$number_children <-  data.delay$X10
-
-data.delay["income"] <- NA
-
-data.delay$income <-  data.delay$X11
-
-data.delay["flexible"] <- NA
-
-data.delay$flexible <-  data.delay$X12
-
-data.delay["distance"] <- NA
-
-data.delay$distance <-  data.delay$X13
-
-data.delay["LOSD"] <- NA
-
-data.delay$LOSD <-  data.delay$X14
-
-data.delay["rate_of_travel"] <- NA
-
-data.delay$rate_of_travel <-  data.delay$X15
-
-data.delay["population"] <- NA
-
-data.delay$population <-  data.delay$X16
-
-data.delay["retail"] <- NA
-
-data.delay$retail <-  data.delay$X17
-
-data.delay["service"] <- NA
-
-data.delay$service <-  data.delay$X18
-
-data.delay["size"] <- NA
-
-data.delay$size <-  data.delay$X19    
+names(data.delay) <- c("id","minutes","activity","number_of_times","mode","route","congested","age",
+"gender","number_cars","number_children","income","flexible","distance",
+"LOSD","rate_of_travel","population","retail","service","size") 
+data.delay <- data.frame(data.delay, row.names = 1) #make id (1st variable) as row name
 ```
 
-#### Take a look at the structure
+##### Take a look at the structure
 
 ``` r
 str(data.delay)
 ```
 
-    ## 'data.frame':    204 obs. of  39 variables:
-    ##  $ id             : num  1000 1001 1002 1003 1004 ...
-    ##  $ X1             : num  0 30 0 0 0 38 0 0 45 0 ...
-    ##  $ X2             : num  0 1 0 0 0 1 0 0 1 0 ...
-    ##  $ X3             : num  0 1 0 0 0 3 0 0 0 0 ...
-    ##  $ X4             : num  1 1 1 1 2 1 2 1 2 1 ...
-    ##  $ X5             : num  2 2 5 5 2 2 2 1 2 5 ...
-    ##  $ X6             : num  1 1 1 1 1 1 1 0 1 0 ...
-    ##  $ X7             : num  1 2 4 4 2 7 2 7 3 6 ...
-    ##  $ X8             : num  1 0 1 1 1 1 1 1 1 1 ...
-    ##  $ X9             : num  2 2 1 1 1 2 2 2 2 3 ...
-    ##  $ X10            : num  0 0 0 0 0 0 0 0 0 1 ...
-    ##  $ X11            : num  5 5 3 2 3 5 6 4 4 5 ...
-    ##  $ X12            : num  1 0 0 0 0 0 0 0 0 0 ...
-    ##  $ X13            : num  12 14 5 5 3 14 11 13 22 6 ...
-    ##  $ X14            : num  1 1 1 1 0 1 1 0 1 0 ...
-    ##  $ X15            : chr  "1.4" "1.8" "1.3" "1.3" ...
-    ##  $ X16            : num  37070 24410 24410 24410 5079 ...
-    ##  $ X17            : num  1024 6430 6430 6430 1024 ...
-    ##  $ X18            : num  1295 3206 3206 3206 899 ...
-    ##  $ X19            : num  5610 1997 1997 1997 4092 ...
+    ## 'data.frame':    204 obs. of  19 variables:
     ##  $ minutes        : num  0 30 0 0 0 38 0 0 45 0 ...
     ##  $ activity       : num  0 1 0 0 0 1 0 0 1 0 ...
     ##  $ number_of_times: num  0 1 0 0 0 3 0 0 0 0 ...
@@ -181,29 +85,20 @@ str(data.delay)
     ##  $ service        : num  1295 3206 3206 3206 899 ...
     ##  $ size           : num  5610 1997 1997 1997 4092 ...
 
-> **Note:** We have repeated variables. Let us exclude the original ones
-> without labels.
-
-#### Exclude original variables
-
 ``` r
-drop <- c("X1","X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9", "X10", "X11", "X12", "X13", "X14", "X15", "X16", "X17", "X18", "X19")
-df = data.delay[,!(names(data.delay) %in% drop)]
-```
-
-``` r
+df <- data.delay
 skim(df)
 ```
 
 |                                                  |      |
-| :----------------------------------------------- | :--- |
+|:-------------------------------------------------|:-----|
 | Name                                             | df   |
 | Number of rows                                   | 204  |
-| Number of columns                                | 20   |
+| Number of columns                                | 19   |
 | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_   |      |
 | Column type frequency:                           |      |
 | character                                        | 1    |
-| numeric                                          | 19   |
+| numeric                                          | 18   |
 | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |      |
 | Group variables                                  | None |
 
@@ -212,48 +107,49 @@ Data summary
 **Variable type: character**
 
 | skim\_variable   | n\_missing | complete\_rate | min | max | empty | n\_unique | whitespace |
-| :--------------- | ---------: | -------------: | --: | --: | ----: | --------: | ---------: |
+|:-----------------|-----------:|---------------:|----:|----:|------:|----------:|-----------:|
 | rate\_of\_travel |          0 |              1 |   3 |   3 |     0 |        15 |          0 |
 
 **Variable type: numeric**
 
-| skim\_variable    | n\_missing | complete\_rate |     mean |       sd |   p0 |      p25 |     p50 |      p75 |  p100 | hist  |
-| :---------------- | ---------: | -------------: | -------: | -------: | ---: | -------: | ------: | -------: | ----: | :---- |
-| id                |          0 |              1 |  1101.50 |    59.03 | 1000 |  1050.75 |  1101.5 |  1152.25 |  1203 | ▇▇▇▇▇ |
-| minutes           |          0 |              1 |    24.14 |    36.27 |    0 |     0.00 |     0.0 |    30.00 |   240 | ▇▁▁▁▁ |
-| activity          |          0 |              1 |     0.78 |     0.97 |    0 |     0.00 |     0.0 |     1.00 |     3 | ▇▃▁▂▁ |
-| number\_of\_times |          0 |              1 |     0.86 |     1.31 |    0 |     0.00 |     0.0 |     2.00 |     5 | ▇▂▁▁▁ |
-| mode              |          0 |              1 |     2.08 |     1.49 |    1 |     1.00 |     1.0 |     4.00 |     5 | ▇▂▁▂▂ |
-| route             |          0 |              1 |     3.49 |     1.46 |    1 |     2.00 |     3.5 |     5.00 |     5 | ▂▆▂▂▇ |
-| congested         |          0 |              1 |     0.63 |     0.48 |    0 |     0.00 |     1.0 |     1.00 |     1 | ▅▁▁▁▇ |
-| age               |          0 |              1 |     2.83 |     1.69 |    1 |     2.00 |     2.0 |     4.00 |     7 | ▇▃▂▁▁ |
-| gender            |          0 |              1 |     0.64 |     0.48 |    0 |     0.00 |     1.0 |     1.00 |     1 | ▅▁▁▁▇ |
-| number\_cars      |          0 |              1 |     1.80 |     1.04 |    0 |     1.00 |     2.0 |     2.00 |     7 | ▇▇▂▁▁ |
-| number\_children  |          0 |              1 |     0.70 |     1.05 |    0 |     0.00 |     0.0 |     1.00 |     5 | ▇▂▁▁▁ |
-| income            |          0 |              1 |     2.78 |     1.56 |    1 |     1.00 |     3.0 |     4.00 |     6 | ▇▃▂▂▁ |
-| flexible          |          0 |              1 |     0.62 |     0.49 |    0 |     0.00 |     1.0 |     1.00 |     1 | ▅▁▁▁▇ |
-| distance          |          0 |              1 |     7.15 |     4.81 |    1 |     4.00 |     6.0 |    10.00 |    25 | ▇▆▃▁▁ |
-| LOSD              |          0 |              1 |     0.65 |     0.48 |    0 |     0.00 |     1.0 |     1.00 |     1 | ▅▁▁▁▇ |
-| population        |          0 |              1 | 25367.32 | 10232.19 | 1303 | 23026.00 | 24410.0 | 34895.00 | 37070 | ▃▁▁▇▇ |
-| retail            |          0 |              1 |  4604.66 |  4334.42 |  616 |  1866.00 |  3906.0 |  3966.00 | 16523 | ▆▇▁▁▂ |
-| service           |          0 |              1 |  9733.06 | 10552.66 |  595 |  1606.00 | 10582.0 | 10582.00 | 38607 | ▇▇▁▁▂ |
-| size              |          0 |              1 |  3087.51 |  1598.03 |  475 |  2472.00 |  2753.0 |  4447.75 |  5653 | ▃▇▇▁▆ |
+| skim\_variable    | n\_missing | complete\_rate |     mean |       sd |   p0 |   p25 |     p50 |      p75 |  p100 | hist  |
+|:------------------|-----------:|---------------:|---------:|---------:|-----:|------:|--------:|---------:|------:|:------|
+| minutes           |          0 |              1 |    24.14 |    36.27 |    0 |     0 |     0.0 |    30.00 |   240 | ▇▁▁▁▁ |
+| activity          |          0 |              1 |     0.78 |     0.97 |    0 |     0 |     0.0 |     1.00 |     3 | ▇▃▁▂▁ |
+| number\_of\_times |          0 |              1 |     0.86 |     1.31 |    0 |     0 |     0.0 |     2.00 |     5 | ▇▂▁▁▁ |
+| mode              |          0 |              1 |     2.08 |     1.49 |    1 |     1 |     1.0 |     4.00 |     5 | ▇▂▁▂▂ |
+| route             |          0 |              1 |     3.49 |     1.46 |    1 |     2 |     3.5 |     5.00 |     5 | ▂▆▂▂▇ |
+| congested         |          0 |              1 |     0.63 |     0.48 |    0 |     0 |     1.0 |     1.00 |     1 | ▅▁▁▁▇ |
+| age               |          0 |              1 |     2.83 |     1.69 |    1 |     2 |     2.0 |     4.00 |     7 | ▇▃▂▁▁ |
+| gender            |          0 |              1 |     0.64 |     0.48 |    0 |     0 |     1.0 |     1.00 |     1 | ▅▁▁▁▇ |
+| number\_cars      |          0 |              1 |     1.80 |     1.04 |    0 |     1 |     2.0 |     2.00 |     7 | ▇▇▂▁▁ |
+| number\_children  |          0 |              1 |     0.70 |     1.05 |    0 |     0 |     0.0 |     1.00 |     5 | ▇▂▁▁▁ |
+| income            |          0 |              1 |     2.78 |     1.56 |    1 |     1 |     3.0 |     4.00 |     6 | ▇▃▂▂▁ |
+| flexible          |          0 |              1 |     0.62 |     0.49 |    0 |     0 |     1.0 |     1.00 |     1 | ▅▁▁▁▇ |
+| distance          |          0 |              1 |     7.15 |     4.81 |    1 |     4 |     6.0 |    10.00 |    25 | ▇▆▃▁▁ |
+| LOSD              |          0 |              1 |     0.65 |     0.48 |    0 |     0 |     1.0 |     1.00 |     1 | ▅▁▁▁▇ |
+| population        |          0 |              1 | 25367.32 | 10232.19 | 1303 | 23026 | 24410.0 | 34895.00 | 37070 | ▃▁▁▇▇ |
+| retail            |          0 |              1 |  4604.66 |  4334.42 |  616 |  1866 |  3906.0 |  3966.00 | 16523 | ▆▇▁▁▂ |
+| service           |          0 |              1 |  9733.06 | 10552.66 |  595 |  1606 | 10582.0 | 10582.00 | 38607 | ▇▇▁▁▂ |
+| size              |          0 |              1 |  3087.51 |  1598.03 |  475 |  2472 |  2753.0 |  4447.75 |  5653 | ▃▇▇▁▆ |
 
-#### Sort the data by time
+##### Sort the data by time
 
 ``` r
 df <- df[order(df$minutes),]
 ```
 
-#### Create graph
+##### Create plot
 
 ``` r
-with(df, plot(minutes, type="h"))
+plot(df$minutes, type="h")
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-9-1.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-7-1.png)<!-- -->
 
-#### Create the life table survival object for df
+## Survival funcion
+
+##### Create the life table survival object for df
 
 ``` r
 data.delay2 <-subset(df, minutes>0)
@@ -285,10 +181,10 @@ summary(df.survfit)
     ##   150      2       1   0.0104  0.0104      0.00148       0.0732
     ##   240      1       1   0.0000     NaN           NA           NA
 
-> **Note:** The functions survfit() and Surv() create a life table
+> **Note:** The functions `survfit()` and `Surv()` create a life table
 > survival object.
 
-#### Plot the Kaplan-Meier curve
+##### Plot the Kaplan-Meier curve
 
 ``` r
 plot(df.survfit, xlab = "Time (minutes)", ylab="Survival
@@ -298,7 +194,15 @@ range(0:250) , conf.int = TRUE, pallete = "red", ggtheme =
 theme_minimal())
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-11-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-11-2.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-9-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-9-2.png)<!-- -->
+
+> **Note:** It is the most widely applied nonparametric method in
+> survival analysis.The Kaplan–Meier method provides useful estimates of
+> survival probabilities and a graphical presentation of the survival
+> distribution.  
+> The Kaplan–Meier method assumes that censoring is independent of
+> survival times. If this is false, the Kaplan–Meier method is
+> inappropriate.
 
 #### Cox Proportional Hazard Model Estimates of the Duration of Commuter Work-To-Home Delay to Avoid Congestion
 
@@ -356,39 +260,50 @@ summary(result.cox)
     ## Wald test            = 32.27  on 16 df,   p=0.009
     ## Score (logrank) test = 36  on 16 df,   p=0.003
 
-#### Testing proportional Hazards assumption
+> **Note:** The Cox proportional-hazards model is semiparametric method
+> that produces estimated hazard ratios (sometimes called rate ratios or
+> risk ratios).  
+> Regression coefficients are on a log scale.
+
+##### Testing proportional Hazards assumption
 
 ``` r
 test.ph <- cox.zph(result.cox)
 plot(test.ph)
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-13-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-13-2.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-13-3.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-11-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-11-2.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-11-3.png)<!-- -->
 
 ``` r
 ggcoxzph(test.ph)
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-13-4.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-13-5.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-11-4.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-11-5.png)<!-- -->
 
-> **Note:** Include an interaction between the covariate and a function
-> of time (or distance). Log time often used but could be any function.
-> If significant then assumption violated.
-
-> **Note:** Test the proportional hazards assumption on the basis of
-> partial residuals. Type of residual known as Schoenfeld residuals.
-
-> **Note:** For each covariate, the function cox.zph() correlates the
+> **Note:** It includes an interaction between the covariate and a
+> function of time (or distance). Log time is often used but it could be
+> any function. If significant then the assumption is violated.  
+> Test the proportional hazards assumption on the basis of partial
+> residuals. Type of residual known as Schoenfeld residuals.  
+> For each covariate, the function cox.zph() correlates the
 > corresponding set of scaled Schoenfeld residuals with time, to test
 > for independence between residuals and time. Additionally, it performs
-> a global test for the model as a whole.
+> a global test for the model as a whole.  
+> In principle, the Schoenfeld residuals are independent of time. A plot
+> that shows a non-random pattern against time is evidence of violation
+> of the PH assumption.
 
-> **Note:** In principle, the Schoenfeld residuals are independent of
-> time. A plot that shows a non-random pattern against time is evidence
-> of violation of the PH assumption.
-
-#### Plot the baseline survival function
+##### Plot the baseline survival function
 
 ``` r
-#  slide 56
+ggsurvplot(survfit(result.cox), data= data.delay2, palette = "#2E9FDF", ggtheme = theme_minimal())
 ```
+
+![](README_files/8-HazardBasedModels/unnamed-chunk-12-1.png)<!-- -->
+
+``` r
+ggsurvplot(survfit(result.cox), data= data.delay2, conf.int = TRUE, palette = c("#FF9E29",
+"#86AA00"), risk.table = TRUE, risk.table.col = "strata", fun = "event")
+```
+
+![](README_files/8-HazardBasedModels/unnamed-chunk-13-1.png)<!-- -->

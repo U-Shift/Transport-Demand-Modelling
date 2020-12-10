@@ -8,17 +8,16 @@ knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/3-FactorAnalysis/")
 ```
 
-## EXAMPLE EXERCISE: 
-### "Residential location satisfaction in the Lisbon metropolitan area"
-
+#### EXAMPLE EXERCISE: "Residential location satisfaction in the Lisbon metropolitan area"
 
 The aim of this study was to examine the perception of households towards their residential location considering several land use and accessibility factors as well as household socioeconomic and attitudinal characteristics.
 
-_Reference:_ **Martinez, L. G., de Abreu e Silva, J., & Viegas, J. M. (2010). Assessment of residential location satisfaction in the Lisbon metropolitan area, TRB (No. 10-1161).**
+_Reference:_ Martinez, L. G., de Abreu e Silva, J., & Viegas, J. M. (2010). Assessment of residential location satisfaction in the Lisbon metropolitan area, TRB (No. 10-1161).
 
-> Your task: Analyse the data and create meaningful latent factors.  
+**Your task:** Analyse the data and create meaningful latent factors.  
 
-### Variables: 
+## Data
+#### Variables: 
 
 * `DWELCLAS`: Classification of the dwelling;
 * `INCOME`: Income of the household;
@@ -44,22 +43,20 @@ _Reference:_ **Martinez, L. G., de Abreu e Silva, J., & Viegas, J. M. (2010). As
 * `EQUINDEX`: Number of undergraduate students/Population over 20 years old (500m)
 
 
-### Rules of thumb: 
+#### Rules of thumb: 
 * At least 10 variables
 * n < 50 (Unacceptable); n > 200 (recommended)
 * It is recommended to use continuous variables. If your data contains categorical variables, you should transform them to dummy variables. 
 
-### Assumptions: 
+#### Assumptions: 
 * Normality; 
 * linearity; 
 * Homogeneity;
 * Homoscedasticity (some multicollinearity is desirable);
 * Correlations between variables < 0.3 (not appropriate to use Factor Analysis)
 
+## Let's start!
 #### Import Libraries
-
-Let's start!
-
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 library(foreign) # Library used to read SPSS files
 library(nFactors) # Library used for factor analysis
@@ -69,49 +66,46 @@ library(psych) # Library used for factor analysis
 library(GPArotation) # Library used for factor analysis
 ```
 
-#### Import dataset
+### Get to know your dataset
+##### Import dataset
 
 ```{r message=FALSE, warning=FALSE}
-data <- read.spss("Data/example_fact.sav")
+df <- read.spss("Data/example_fact.sav", to.data.frame = T) #transforms a list into a data.frame directly
 ```
 
-#### Take a look at the main characteristics of the dataset
+##### Take a look at the main characteristics of the dataset
 
 ```{r}
-class(data) #type of data
-str(data)
+class(df) #type of data
+str(df)
 ```
 
-#### Transform dataset into dataframe
-
-```{r}
-df <- data.frame(data)
-```
-
-#### Check summary statistics of variables
+##### Check summary statistics of variables
 ```{r eval=F}
 descriptive_stats <- dfSummary(df)
 view(descriptive_stats)
 ```
-```{r summary tables show, results='asis', echo=FALSE, message=FALSE, warning=FALSE}
-dfSummary(df, valid.col = F, plain.ascii = FALSE, style = "grid", tmp.img.dir = "/tmp")
+```{r summary tables show, results="asis", echo=FALSE, message=FALSE, warning=FALSE}
+# dfSummary(df, valid.col = F, plain.ascii = FALSE, style = "grid", tmp.img.dir = "img") #assim não guarda os graficos
+st_options(plain.ascii = FALSE)
+print(dfSummary(df, valid.col = FALSE,  style = "grid", tmp.img.dir = "/tmp"), max.tbl.height = 500, method = "render") #assim aparece um \ a mais nas variáveis
 ```
 
 > **Note:** I used a different library of the MLR chapter for perfoming the summary statistics. "R" allows you to do the same or similar tasks with different packages. 
 
-#### Take a look at the first values of the dataset
+##### Take a look at the first values of the dataset
 
 ```{r}
-head(df,10)
+head(df,5)
 ```
 
-#### Make ID as row names or case number
+##### Make ID as row names or case number
 
 ```{r}
 df<-data.frame(df, row.names = 1)
 ```
 
-#### Evaluating the assumptions for factoral analysis: 
+### Evaluating the assumptions for factoral analysis
 
 Let's run a random regression model in order to evaluate some assumptions
 
@@ -139,26 +133,25 @@ abline(0,1)
 
 ```{r}
 plot(fitted, standardized)
-abline(0,0)
-abline(v=0)
+abline(h=0,v=0)
 ```
 
-#### Calculate the correlation matrix
+### Calculate the correlation matrix
 ```{r}
 corr_matrix <- cor(df, method = "pearson")
 ```
 
-
-#### Check for correlation adequacy - Bartlett's Test.
+##### Check for correlation adequacy - Bartlett's Test.
 
 ```{r}
 cortest.bartlett(corr_matrix, n = nrow(df))
 ```
 
-> **Note:** The Bartlett test examines if there is equal variance (homogeneity) between variables. Thus, it evaluates if there is any pattern between variables.  
-> **Note:** The null hypothesis is that there is no correlation between variables. Therefore, in factor analysis you want to reject the null hypothesis.   
+> **Note:** 
+* The Bartlett test examines if there is equal variance (homogeneity) between variables. Thus, it evaluates if there is any pattern between variables.  
+* The null hypothesis is that there is no correlation between variables. Therefore, in factor analysis you want to reject the null hypothesis.   
 
-#### Check for sampling adequacy - KMO test
+##### Check for sampling adequacy - KMO test
 
 ```{r}
 KMO(corr_matrix)
@@ -166,15 +159,15 @@ KMO(corr_matrix)
 
 > **Note:** We want at least 0.7 of the overall Mean Sample Adequacy (MSA). If, 0.6 < MSA < 0.7, it is not a good value, but acceptable in some cases.
 
-#### Determine the number of factors to extract
+### Determine the number of factors to extract
 
-**1._Parallel Analysis_**
+***1. Parallel Analysis***
 
 ```{r}
 num_factors = fa.parallel(df, fm = "ml", fa = "fa")
 ```
 
-> **Note:** fm = factor math; ml = maximum likelihood; fa = factor analysis
+> **Note:** `fm` = factor math; `ml` = maximum likelihood; `fa` = factor analysis
 
 The selection of the number of factors in the Parallel analysis can be threefold:  
 
@@ -183,17 +176,16 @@ The selection of the number of factors in the Parallel analysis can be threefold
 * Consider the number of factors with eigenvalue > 1.
 
 
-**2. _Kaiser Criterion_** 
+***2. Kaiser Criterion*** 
 
 ```{r}
 sum(num_factors$fa.values > 1)
 ```
 
 > **Note:** Determines the number of factors with eigenvalue > 1.  
+You can also consider factors with eigenvalue > 0.7, since some of the literature indicate that this value does not overestimate the number of factors as much as considering an eigenvalue = 1. 
 
-> **Note:** You can also consider factors with eigenvalue > 0.7, since some of the literature indicate that this value does not overestimate the number of factors as much as considering an eigenvalue = 1. 
-
-**3. _Principal Component Analysis_ (PCA)**
+***3. Principal Component Analysis (PCA)***
 
 ```{r}
 df_pca <- princomp(df, cor=TRUE)
@@ -201,7 +193,7 @@ df_pca <- princomp(df, cor=TRUE)
     
 > **Note:** cor = TRUE, standardizes your dataset before running a PCA. 
 
-  # print variance that explains the components
+##### Print variance that explains the components
 ```{r}
 summary(df_pca)  
 ```
@@ -209,96 +201,102 @@ summary(df_pca)
 * Scree Plot
 
 ```{r}
-require(graphics)
-screeplot(df_pca,type="lines", npcs = 31) 
+plot(df_pca,type="lines", npcs = 31) 
 ```
 
 > **Note:** Check the cummulative variance of the first components and the scree plot, and see if the PCA is a good approach to detect the number of factors in this case. 
 
-**PCA is not the same thing as Factor Analysis!**. PCA only considers the common information (variance) of the variables, while factor analysis takes into account also the unique variance of the variable. Both approaches are often mixed up. In this example we use PCA as only a first criteria for choosing the number of factors. PCA is very used in image recognition and data reduction of big data. 
+**PCA is not the same thing as Factor Analysis!** PCA only considers the common information (variance) of the variables, while factor analysis takes into account also the unique variance of the variable. Both approaches are often mixed up. In this example we use PCA as only a first criteria for choosing the number of factors. PCA is very used in image recognition and data reduction of big data. 
 
 ## EXPLORATORY FACTOR ANALYSIS
 
-#### Model 1: No rotation
-
+* *Model 1: No rotation*
+* *Model 2: Rotation Varimax*
+* *Model 3: Rotation Oblimin*
 ```{r}
+# No rotation
 df_factor <- factanal(df, factors = 4, rotation = "none", scores=c("regression"), fm = "ml")
-```
-
-
-#### Model 2: Rotation Varimax
-
-```{r}
+# Rotation Varimax
 df_factor_var <- factanal(df, factors = 4, rotation = "varimax", scores=c("regression"), fm = "ml")
-```
-
-
-#### Model 3: Rotation Oblimin
-
-```{r}
+# Rotiation Oblimin
 df_factor_obl <- factanal(df, factors = 4, rotation = "oblimin", scores=c("regression"), fm = "ml")
 ```
 
-#### Let's print out the results of df_factor_obl, and take a look. 
-
+##### Let's print out the results of df_factor_obl, and have a look. 
 ```{r}
 print(df_factor, digits=2, cutoff=0.3, sort=TRUE)
 ```
 
-> **Note:** We used a cutoff of 0.3 due to the sample size is higher than 350 observations.  
+> **Note:** 
+* We used a cutoff of 0.3 due to the sample size is higher than 350 observations.  
+* The variability contained in the factors = Communality + Uniqueness.  
+* Varimax assigns orthogonal rotation, and oblimin assigns oblique rotation.
 
-> **Note:** The variability contained in the factors = Communality + Uniqueness.  
 
-> **Note:** Varimax assigns orthogonal rotation, and oblimin assigns oblique rotation.
-
-
-#### Plot factor 1 against factor 2, and compare the results of different rotations
+##### Plot factor 1 against factor 2, and compare the results of different rotations
 
 * **No Rotation**
 ```{r}
-plot(df_factor$loadings[,1], 
-     df_factor$loadings[,2],
-     xlab = "Factor 1", 
-     ylab = "Factor 2", 
-     ylim = c(-1,1),
-     xlim = c(-1,1),
-     main = "No rotation")
-     abline(h = 0, v = 0)
-     load <- df_factor$loadings[,1:2]
-    #text(text(load,labels = names(df), cex=.7, col="blue")) 
-     
+plot(
+  df_factor$loadings[, 1],
+  df_factor$loadings[, 2],
+  xlab = "Factor 1",
+  ylab = "Factor 2",
+  ylim = c(-1, 1),
+  xlim = c(-1, 1),
+  main = "No rotation"
+)
+abline(h = 0, v = 0)
+load <- df_factor$loadings[, 1:2]
+text(
+  load,
+  names(df),
+  cex = .7,
+  col = "blue"
+)
 ```
 
 * **Varimax rotation**
-
 ```{r}
-plot(df_factor_var$loadings[,1], 
-     df_factor_var$loadings[,2],
-     xlab = "Factor 1", 
-     ylab = "Factor 2", 
-     ylim = c(-1,1),
-     xlim = c(-1,1),
-     main = "Varimax rotation")
-     abline(h = 0, v = 0)
-     load <- df_factor_var$loadings[,1:2]
-     #text(text(load,labels=names(df),cex=.7, col="red"))
+plot(
+  df_factor_var$loadings[, 1],
+  df_factor_var$loadings[, 2],
+  xlab = "Factor 1",
+  ylab = "Factor 2",
+  ylim = c(-1, 1),
+  xlim = c(-1, 1),
+  main = "Varimax rotation"
+)
+abline(h = 0, v = 0)
+load <- df_factor_var$loadings[, 1:2]
+text(
+  load,
+  labels = names(df),
+  cex = .7,
+  col = "red"
+)
 ```
 
 
 * **Oblimin Rotation**
-
 ```{r}
-plot(df_factor_obl$loadings[,1], 
-     df_factor_obl$loadings[,2],
-     xlab = "Factor 1", 
-     ylab = "Factor 2",
-     ylim = c(-1,1),
-     xlim = c(-1,1),
-     main = "Oblimin rotation")
-     abline(h = 0, v = 0)
-     load <- df_factor_obl$loadings[,1:2]
-     #text(text(load,labels=names(df),cex=.7, col="yellow"))
-     abline(h = 0, v = 0)
+plot(
+  df_factor_obl$loadings[, 1],
+  df_factor_obl$loadings[, 2],
+  xlab = "Factor 1",
+  ylab = "Factor 2",
+  ylim = c(-1, 1),
+  xlim = c(-1, 1),
+  main = "Oblimin rotation"
+)
+abline(h = 0, v = 0)
+load <- df_factor_obl$loadings[, 1:2]
+text(
+  load,
+  labels = names(df),
+  cex = .7,
+  col = "darkgreen"
+)
 ```
 
 > **Note:** When you have more than two factors it is difficult to analyse the factors by the plots. Variables that have low explaining variance in the two factors analyzed, can have a be highly explained by the other factors not present in the graph. However, try comparing the plots with the factor loadings and plot the other graphs to get more familiar with exploratory factor analysis.  

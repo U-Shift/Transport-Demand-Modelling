@@ -65,7 +65,7 @@ skim(df)
 df <- df[order(df$minutes),]
 ```
 
-##### Create plot
+##### Plot yout data
 ```{r}
 plot(df$minutes, type="h")
 ```
@@ -84,12 +84,29 @@ summary(df.survfit)
 ##### Plot the Kaplan-Meier curve
 
 ```{r}
-plot(df.survfit, xlab = "Time (minutes)", ylab="Survival
-probability", conf.int=TRUE)
-ggsurvplot(df.survfit, xlab = "Time (minutes)", xlim =
-range(0:250) , conf.int = TRUE, pallete = "red", ggtheme =
-theme_minimal())
+# option 1
+plot(
+  df.survfit,
+  xlab = "Time (minutes)",
+  ylab = "Survival
+probability",
+conf.int = TRUE
+)
 ```
+```{r}
+#option 2
+ggsurvplot(
+  df.survfit,
+  xlab = "Time (minutes)",
+  xlim =
+    range(0:250) ,
+  conf.int = TRUE,
+  pallete = "red",
+  ggtheme =
+    theme_minimal()
+)
+```
+
 
 > **Note:** It is the most widely applied nonparametric method in survival analysis.The Kaplan–Meier method provides useful estimates of survival probabilities and a graphical presentation of the survival distribution.  
 The Kaplan–Meier method assumes that censoring is independent of survival times. If this is false, the Kaplan–Meier method is inappropriate.
@@ -122,11 +139,23 @@ In principle, the Schoenfeld residuals are independent of time. A plot that show
 ##### Plot the baseline survival function
 
 ```{r}
-ggsurvplot(survfit(result.cox), data= data.delay2, palette = "#2E9FDF", ggtheme = theme_minimal())
+ggsurvplot(
+  survfit(result.cox),
+  data = data.delay2,
+  palette = "#2E9FDF",
+  ggtheme = theme_minimal()
+)
 ```
 
 ```{r}
-ggsurvplot(survfit(result.cox), data= data.delay2, conf.int = TRUE, palette = c("#FF9E29",
-"#86AA00"), risk.table = TRUE, risk.table.col = "strata", fun = "event")
+ggsurvplot(
+  survfit(result.cox),
+  data = data.delay2,
+  conf.int = TRUE,
+  palette = c("#FF9E29", "#86AA00"),
+  risk.table = TRUE,
+  risk.table.col = "strata",
+  fun = "event"
+)
 ```
 

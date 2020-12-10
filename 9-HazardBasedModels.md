@@ -139,7 +139,7 @@ Data summary
 df <- df[order(df$minutes),]
 ```
 
-##### Create plot
+##### Plot yout data
 
 ``` r
 plot(df$minutes, type="h")
@@ -187,14 +187,33 @@ summary(df.survfit)
 ##### Plot the Kaplan-Meier curve
 
 ``` r
-plot(df.survfit, xlab = "Time (minutes)", ylab="Survival
-probability", conf.int=TRUE)
-ggsurvplot(df.survfit, xlab = "Time (minutes)", xlim =
-range(0:250) , conf.int = TRUE, pallete = "red", ggtheme =
-theme_minimal())
+# option 1
+plot(
+  df.survfit,
+  xlab = "Time (minutes)",
+  ylab = "Survival
+probability",
+conf.int = TRUE
+)
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-9-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-9-2.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-9-1.png)<!-- -->
+
+``` r
+#option 2
+ggsurvplot(
+  df.survfit,
+  xlab = "Time (minutes)",
+  xlim =
+    range(0:250) ,
+  conf.int = TRUE,
+  pallete = "red",
+  ggtheme =
+    theme_minimal()
+)
+```
+
+![](README_files/8-HazardBasedModels/unnamed-chunk-10-1.png)<!-- -->
 
 > **Note:** It is the most widely applied nonparametric method in
 > survival analysis.The Kaplan–Meier method provides useful estimates of
@@ -272,13 +291,13 @@ test.ph <- cox.zph(result.cox)
 plot(test.ph)
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-11-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-11-2.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-11-3.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-12-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-12-2.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-12-3.png)<!-- -->
 
 ``` r
 ggcoxzph(test.ph)
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-11-4.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-11-5.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-12-4.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-12-5.png)<!-- -->
 
 > **Note:** It includes an interaction between the covariate and a
 > function of time (or distance). Log time is often used but it could be
@@ -296,14 +315,26 @@ ggcoxzph(test.ph)
 ##### Plot the baseline survival function
 
 ``` r
-ggsurvplot(survfit(result.cox), data= data.delay2, palette = "#2E9FDF", ggtheme = theme_minimal())
-```
-
-![](README_files/8-HazardBasedModels/unnamed-chunk-12-1.png)<!-- -->
-
-``` r
-ggsurvplot(survfit(result.cox), data= data.delay2, conf.int = TRUE, palette = c("#FF9E29",
-"#86AA00"), risk.table = TRUE, risk.table.col = "strata", fun = "event")
+ggsurvplot(
+  survfit(result.cox),
+  data = data.delay2,
+  palette = "#2E9FDF",
+  ggtheme = theme_minimal()
+)
 ```
 
 ![](README_files/8-HazardBasedModels/unnamed-chunk-13-1.png)<!-- -->
+
+``` r
+ggsurvplot(
+  survfit(result.cox),
+  data = data.delay2,
+  conf.int = TRUE,
+  palette = c("#FF9E29", "#86AA00"),
+  risk.table = TRUE,
+  risk.table.col = "strata",
+  fun = "event"
+)
+```
+
+![](README_files/8-HazardBasedModels/unnamed-chunk-14-1.png)<!-- -->

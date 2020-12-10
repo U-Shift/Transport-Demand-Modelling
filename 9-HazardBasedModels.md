@@ -33,7 +33,7 @@ library(survminer)
 library(ggplot2)
 ```
 
-##### Import dataset, tranform in dataframe, and take a first look.
+##### Import dataset, transform in dataframe, and take a first look.
 
 ``` r
 data.delay <- read_excel("Data/ExerciseHBDM.xlsx")
@@ -91,7 +91,7 @@ skim(df)
 ```
 
 |                                                  |      |
-|:-------------------------------------------------|:-----|
+| :----------------------------------------------- | :--- |
 | Name                                             | df   |
 | Number of rows                                   | 204  |
 | Number of columns                                | 19   |
@@ -107,13 +107,13 @@ Data summary
 **Variable type: character**
 
 | skim\_variable   | n\_missing | complete\_rate | min | max | empty | n\_unique | whitespace |
-|:-----------------|-----------:|---------------:|----:|----:|------:|----------:|-----------:|
+| :--------------- | ---------: | -------------: | --: | --: | ----: | --------: | ---------: |
 | rate\_of\_travel |          0 |              1 |   3 |   3 |     0 |        15 |          0 |
 
 **Variable type: numeric**
 
 | skim\_variable    | n\_missing | complete\_rate |     mean |       sd |   p0 |   p25 |     p50 |      p75 |  p100 | hist  |
-|:------------------|-----------:|---------------:|---------:|---------:|-----:|------:|--------:|---------:|------:|:------|
+| :---------------- | ---------: | -------------: | -------: | -------: | ---: | ----: | ------: | -------: | ----: | :---- |
 | minutes           |          0 |              1 |    24.14 |    36.27 |    0 |     0 |     0.0 |    30.00 |   240 | ▇▁▁▁▁ |
 | activity          |          0 |              1 |     0.78 |     0.97 |    0 |     0 |     0.0 |     1.00 |     3 | ▇▃▁▂▁ |
 | number\_of\_times |          0 |              1 |     0.86 |     1.31 |    0 |     0 |     0.0 |     2.00 |     5 | ▇▂▁▁▁ |
@@ -147,7 +147,7 @@ plot(df$minutes, type="h")
 
 ![](README_files/8-HazardBasedModels/unnamed-chunk-7-1.png)<!-- -->
 
-## Survival funcion
+## Survival function
 
 ##### Create the life table survival object for df
 
@@ -325,6 +325,8 @@ ggsurvplot(
 
 ![](README_files/8-HazardBasedModels/unnamed-chunk-13-1.png)<!-- -->
 
+##### Plot the cummulative hazard function
+
 ``` r
 ggsurvplot(
   survfit(result.cox),
@@ -338,3 +340,5 @@ ggsurvplot(
 ```
 
 ![](README_files/8-HazardBasedModels/unnamed-chunk-14-1.png)<!-- -->
+
+##### Calculate the Log-likelihood

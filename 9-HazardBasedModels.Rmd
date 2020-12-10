@@ -33,7 +33,7 @@ library(survminer)
 library(ggplot2)
 ```
 
-##### Import dataset, tranform in dataframe, and take a first look.
+##### Import dataset, transform in dataframe, and take a first look.
 
 ```{r}
 data.delay <- read_excel("Data/ExerciseHBDM.xlsx")
@@ -70,7 +70,7 @@ df <- df[order(df$minutes),]
 plot(df$minutes, type="h")
 ```
 
-## Survival funcion
+## Survival function
 ##### Create the life table survival object for df
 
 ```{r}
@@ -147,6 +147,8 @@ ggsurvplot(
 )
 ```
 
+##### Plot the cummulative hazard function
+
 ```{r}
 ggsurvplot(
   survfit(result.cox),
@@ -158,4 +160,9 @@ ggsurvplot(
   fun = "event"
 )
 ```
+
+##### Calculate the Log-likelihood
+
+
+
 

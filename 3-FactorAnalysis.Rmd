@@ -208,7 +208,7 @@ plot(df_pca,type="lines", npcs = 31)
 
 **PCA is not the same thing as Factor Analysis!** PCA only considers the common information (variance) of the variables, while factor analysis takes into account also the unique variance of the variable. Both approaches are often mixed up. In this example we use PCA as only a first criteria for choosing the number of factors. PCA is very used in image recognition and data reduction of big data. 
 
-## EXPLORATORY FACTOR ANALYSIS
+### EXPLORATORY FACTOR ANALYSIS
 
 * *Model 1: No rotation*
 * *Model 2: Rotation Varimax*
@@ -228,9 +228,9 @@ print(df_factor, digits=2, cutoff=0.3, sort=TRUE)
 ```
 
 > **Note:** 
-* We used a cutoff of 0.3 due to the sample size is higher than 350 observations.  
-* The variability contained in the factors = Communality + Uniqueness.  
-* Varimax assigns orthogonal rotation, and oblimin assigns oblique rotation.
+We used a cutoff of 0.3 due to the sample size is higher than 350 observations.  
+The variability contained in the factors = Communality + Uniqueness.  
+Varimax assigns orthogonal rotation, and oblimin assigns oblique rotation.
 
 
 ##### Plot factor 1 against factor 2, and compare the results of different rotations

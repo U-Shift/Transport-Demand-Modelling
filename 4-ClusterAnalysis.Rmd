@@ -170,7 +170,7 @@ rect.hclust(models, 4, border = "purple")
 
 **2. Complete linkage (Farthest neighbor) clustering algorithm**
 
-Based on the maximum distance between observations in each cluster.
+Complete linkage is based on the maximum distance between observations in each cluster.
 
 ```{r}
 modelc <- hclust(distance, "complete")
@@ -182,7 +182,7 @@ rect.hclust(modelc, 4, border = "blue")
 
 **3. Average linkage between groups** 
 
-The distance between clusters is the average of the distances between observations in one cluster to all the members in the other cluster. 
+The average linkage considers the distance between clusters to be the average of the distances between observations in one cluster to all the members in the other cluster. 
 
 
 ```{r}
@@ -193,7 +193,7 @@ rect.hclust(modelc, 4, border = "red")
 
 **4. Ward`s method**
   
-The measures of similarity are the sum of squares within the cluster summed over all variables. 
+The Ward`s method considers the measures of similarity as the sum of squares within the cluster summed over all variables. 
 
 
 ```{r}
@@ -205,7 +205,7 @@ rect.hclust(modelw, 4, border = "orange")
 
 **5. Centroid method**
 
-The similarity between two clusters is the distance between its centroids.
+The centroid method considers the similarity between two clusters as the distance between its centroids.
   
 ```{r}
 modelcen <- hclust(distance, "centroid")

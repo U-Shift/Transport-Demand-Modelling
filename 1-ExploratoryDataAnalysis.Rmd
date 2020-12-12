@@ -11,11 +11,11 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ## Chicago example exercise
 
-#### We will use the example of the following Multiple linear regression chapter to perform an EDA.
+#### We will use the example of the following Multiple linear regression chapter to perform an Exploratory Data Analysis.
 
 Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
 
-> Your task: Explore and analyse the dataset before going to the Multiple linear regression chapter.  
+*Your task*: Explore and analyse the dataset before going to the Multiple linear regression chapter.  
 
 ### Variables:
 
@@ -42,9 +42,7 @@ Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
      (_**Note:** High values for this index imply that those communities are less prone to leaving their living areas and as such to having lower levels of mobility_)
 
 
-
-#### Import Libraries
-Let's begin!
+## Let's begin with R!
 
 For the first time, you will need to install some of the packages. 
 Step by step: 
@@ -55,11 +53,13 @@ Step by step:
 Or... `install.packages("readxl","tidyverse")` etc...
 
 Depending on the version of your R, `DataExplorer` may need to be installed from source, such as
+
 ```r
 if (!require(devtools)) install.packages("devtools")
 devtools::install_github("boxuancui/DataExplorer")
 ```
 
+##### Import Libraries
 Now, import these libraries:
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 library(readxl) #Library used to import excel files
@@ -71,42 +71,38 @@ library(car) # Library used for testing autocorrelation (Durbin Watson)
 library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
-#### Import dataset
+## Get to know your data
+##### Import dataset
 
 ```{r}
 dataset <- read_excel("Data/TDM_Class3_MLR_Chicago_Example.xls") 
 ```
 
-#### Check the structure of the dataset 
+##### Check the structure of the dataset 
 ```{r}
 str(dataset)
 ```
 
-#### Take a first look at the dataset
+##### Take a first look at the dataset
 
 ```{r paged.print=TRUE}
 head(dataset, 10)
 ```
 
-#### Check the type and class of the dataset
+##### Check the type and class of the dataset
 
 ```{r echo=TRUE, eval=FALSE} 
 typeof(dataset)
 class(dataset)
 ```
 
-```{r echo=FALSE, purl = FALSE}
-typeof(dataset)
-class(dataset)
-```
-
-#### Transform the dataset into a dataframe
+##### Transform the dataset into a dataframe
 
 ```{r}
 df <- data.frame(dataset)
 ```
 
-#### Compare the structure of the dataset with df
+##### Compare the structure of the dataset with df
 
 ```{r}
 str(dataset)
@@ -115,42 +111,28 @@ str(df)
 
 > **Note:** The dataframe function transforms columns into variables and rows into observations. 
 
-#### Take a look at the dataframe
-
+##### Take a look at the dataframe
 ```{r}
 head(df, 10)
 ```
 
-#### Show summary statistics
- 
+##### Show summary statistics
 ```{r}
 skim(df)
 ```
 
-#### Check missing data
+### Deal with missing data
 
-Take a look where is the missing data
+Is there missing data? How many?
 ```{r}
-is.na(df)
-```
-
-Check the number of missing data
-
-```{r}
-sum(is.na(df))
-```
-
-Plot the percentage of missing data
-```{r}
+table(is.na(df))
 plot_missing(df)
 ```
 
-> **Note:** We do not have any missing data in the dataset. However, here are some functions that you can use in other datasets to treat missing data. 
+We do not have any missing data in the dataset. However, here are some functions that you can use in other datasets to treat missing data. 
 
-#### Treat missing data
-
+##### Treat missing data
 Let us create a new variable to demonstrate this example.
-
 ```{r echo=TRUE}
 df_md <- data.frame(df)
 ```
@@ -181,7 +163,7 @@ df_md$TODU[is.na(df_md$TODU)] <- median(df_md$TODU, na.rm = T)
 
 > **Note**: Here are just some examples of how to treat missing data. Take a look at other methods such as the prediction model or K-nearest neighbor imputation. 
 
-#### Detect Outliers  
+### Detect Outliers  
 
 * Examine the boxplots
   

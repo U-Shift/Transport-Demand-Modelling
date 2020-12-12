@@ -3,51 +3,48 @@ Exploratory Data Analysis
 
 ## Chicago example exercise
 
-#### We will use the example of the following Multiple linear regression chapter to perform an EDA.
+#### We will use the example of the following Multiple linear regression chapter to perform an Exploratory Data Analysis.
 
 Trip production of 57 Traffic Assignment Zones of Chicago in 1960’s.
 
-> Your task: Explore and analyse the dataset before going to the
-> Multiple linear regression chapter.
+*Your task*: Explore and analyse the dataset before going to the
+Multiple linear regression chapter.
 
 ### Variables:
 
-  - `TODU`: Motorized Trips (private car or Public Transportation) per
+-   `TODU`: Motorized Trips (private car or Public Transportation) per
     occupied dwelling unit;
 
-  - `ACO`: Average car ownership (cars per dwelling);
+-   `ACO`: Average car ownership (cars per dwelling);
 
-  - `AHS`: Average household size;
+-   `AHS`: Average household size;
 
-  - `SRI`: Social Rank Index:  
-    1\. proportion of blue-collar workers (e.g., construction,
-    mining);  
-    2\. proportion of people with age higher than 25 years that have
+-   `SRI`: Social Rank Index:  
+    1. proportion of blue-collar workers (e.g., construction, mining);  
+    2. proportion of people with age higher than 25 years that have
     completed at least 8 year of education; (***Note:** The SRI has its
     maximum value when there are no blue-collar workers and all adults
     have education of at least 8 years*)
 
-  - `UI`: Urbanization Index:  
-    1\. fertility rate, defined as the ratio of children under 5 years
-    of age to the female population of childbearing age;  
-    2\. female labor force participation rate, meaning the % of women
-    who are in the labor force;  
-    3\. % of single family units to total dwelling units.
-    
+-   `UI`: Urbanization Index:  
+    1. fertility rate, defined as the ratio of children under 5 years of
+    age to the female population of childbearing age;  
+    2. female labor force participation rate, meaning the % of women who
+    are in the labor force;  
+    3. % of single family units to total dwelling units.
+
     The degree of urbanization index would be increased by a) lower
-    fertility rate, b) higher female labor force participation rate, and
-    c) higher proportion of single dwelling units. (***Note:** High
+    fertility rate, b) higher female labor force participation rate,
+    and c) higher proportion of single dwelling units. (***Note:** High
     values for this index imply less attachment to the home*)
 
-  - `SI`:Segregation Index It measures the proportion of an area to
+-   `SI`:Segregation Index It measures the proportion of an area to
     which minority groups (e.g: non-whites, foreign-born, Eastern
     Europeans) live in isolation. (***Note:** High values for this index
     imply that those communities are less prone to leaving their living
     areas and as such to having lower levels of mobility*)
 
-#### Import Libraries
-
-Let’s begin\!
+## Let’s begin with R!
 
 For the first time, you will need to install some of the packages. Step
 by step:
@@ -65,6 +62,8 @@ if (!require(devtools)) install.packages("devtools")
 devtools::install_github("boxuancui/DataExplorer")
 ```
 
+##### Import Libraries
+
 Now, import these libraries:
 
 ``` r
@@ -77,13 +76,15 @@ library(car) # Library used for testing autocorrelation (Durbin Watson)
 library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
-#### Import dataset
+## Get to know your data
+
+##### Import dataset
 
 ``` r
 dataset <- read_excel("Data/TDM_Class3_MLR_Chicago_Example.xls") 
 ```
 
-#### Check the structure of the dataset
+##### Check the structure of the dataset
 
 ``` r
 str(dataset)
@@ -97,7 +98,7 @@ str(dataset)
     ##  $ SRI : num [1:57] 28.3 20.9 26 28.5 27.2 ...
     ##  $ UI  : num [1:57] 60.1 65.7 63.2 66.2 58.4 ...
 
-#### Take a first look at the dataset
+##### Take a first look at the dataset
 
 ``` r
 head(dataset, 10)
@@ -117,24 +118,20 @@ head(dataset, 10)
     ##  9  5.85 0.84   3.02  8.2   42.2  56.9
     ## 10  4.97 0.74   2.84  7.94  38.1  62.4
 
-#### Check the type and class of the dataset
+##### Check the type and class of the dataset
 
 ``` r
 typeof(dataset)
 class(dataset)
 ```
 
-    ## [1] "list"
-
-    ## [1] "tbl_df"     "tbl"        "data.frame"
-
-#### Transform the dataset into a dataframe
+##### Transform the dataset into a dataframe
 
 ``` r
 df <- data.frame(dataset)
 ```
 
-#### Compare the structure of the dataset with df
+##### Compare the structure of the dataset with df
 
 ``` r
 str(dataset)
@@ -163,7 +160,7 @@ str(df)
 > **Note:** The dataframe function transforms columns into variables and
 > rows into observations.
 
-#### Take a look at the dataframe
+##### Take a look at the dataframe
 
 ``` r
 head(df, 10)
@@ -181,14 +178,14 @@ head(df, 10)
     ## 9  5.85 0.84 3.02  8.20 42.15 56.86
     ## 10 4.97 0.74 2.84  7.94 38.14 62.44
 
-#### Show summary statistics
+##### Show summary statistics
 
 ``` r
 skim(df)
 ```
 
 |                                                  |      |
-| :----------------------------------------------- | :--- |
+|:-------------------------------------------------|:-----|
 | Name                                             | df   |
 | Number of rows                                   | 57   |
 | Number of columns                                | 6    |
@@ -203,7 +200,7 @@ Data summary
 **Variable type: numeric**
 
 | skim\_variable | n\_missing | complete\_rate |  mean |    sd |    p0 |   p25 |   p50 |   p75 |  p100 | hist  |
-| :------------- | ---------: | -------------: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | :---- |
+|:---------------|-----------:|---------------:|------:|------:|------:|------:|------:|------:|------:|:------|
 | TODU           |          0 |              1 |  5.37 |  1.33 |  3.02 |  4.54 |  5.10 |  6.13 |  9.14 | ▃▇▅▃▁ |
 | ACO            |          0 |              1 |  0.81 |  0.18 |  0.50 |  0.67 |  0.79 |  0.92 |  1.32 | ▆▇▇▃▁ |
 | AHS            |          0 |              1 |  3.19 |  0.39 |  1.83 |  3.00 |  3.19 |  3.37 |  4.50 | ▁▂▇▂▁ |
@@ -211,94 +208,28 @@ Data summary
 | SRI            |          0 |              1 | 49.56 | 15.84 | 20.89 | 38.14 | 49.37 | 60.85 | 87.38 | ▅▆▇▅▂ |
 | UI             |          0 |              1 | 52.62 | 13.46 | 24.08 | 44.80 | 55.51 | 61.09 | 83.66 | ▃▅▇▅▁ |
 
-#### Check missing data
+### Deal with missing data
 
-Take a look where is the missing data
-
-``` r
-is.na(df)
-```
-
-    ##        TODU   ACO   AHS    SI   SRI    UI
-    ##  [1,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ##  [2,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ##  [3,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ##  [4,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ##  [5,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ##  [6,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ##  [7,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ##  [8,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ##  [9,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [10,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [11,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [12,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [13,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [14,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [15,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [16,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [17,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [18,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [19,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [20,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [21,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [22,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [23,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [24,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [25,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [26,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [27,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [28,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [29,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [30,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [31,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [32,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [33,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [34,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [35,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [36,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [37,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [38,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [39,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [40,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [41,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [42,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [43,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [44,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [45,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [46,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [47,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [48,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [49,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [50,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [51,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [52,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [53,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [54,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [55,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [56,] FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [57,] FALSE FALSE FALSE FALSE FALSE FALSE
-
-Check the number of missing data
+Is there missing data? How many?
 
 ``` r
-sum(is.na(df))
+table(is.na(df))
 ```
 
-    ## [1] 0
-
-Plot the percentage of missing data
+    ## 
+    ## FALSE 
+    ##   342
 
 ``` r
 plot_missing(df)
 ```
 
-![](README_files/EDA/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-10-1.png)<!-- -->
 
-> **Note:** We do not have any missing data in the dataset. However,
-> here are some functions that you can use in other datasets to treat
-> missing data.
+We do not have any missing data in the dataset. However, here are some
+functions that you can use in other datasets to treat missing data.
 
-#### Treat missing data
+##### Treat missing data
 
 Let us create a new variable to demonstrate this example.
 
@@ -306,10 +237,8 @@ Let us create a new variable to demonstrate this example.
 df_md <- data.frame(df)
 ```
 
-  - **Listwise deletion**. Delete observation (row) with incomplete
+-   **Listwise deletion**. Delete observation (row) with incomplete
     information.
-
-<!-- end list -->
 
 ``` r
 na.omit(df_md)
@@ -374,11 +303,9 @@ na.omit(df_md)
     ## 56 7.64 0.93 3.37 15.08 34.74 44.54
     ## 57 7.25 0.75 4.50 16.44 26.21 44.80
 
-  - **Pairwise deletion**. Delete only the row of missing value if the
+-   **Pairwise deletion**. Delete only the row of missing value if the
     variable is used. Consider that the variable “TODU” has missing
     values.
-
-<!-- end list -->
 
 ``` r
 df_md[!is.na(df_md$TODU),]
@@ -449,7 +376,7 @@ df_md[!is.na(df_md$TODU),]
 > depends on the number of missing data, sample size and characteristics
 > of your data.
 
-  - **Replace missing value with mean or median**
+-   **Replace missing value with mean or median**
 
 Let us suppose that the variable “TODU” has missing values and you want
 to replace it by the mean or median.
@@ -464,18 +391,16 @@ df_md$TODU[is.na(df_md$TODU)] <- median(df_md$TODU, na.rm = T)
 > Take a look at other methods such as the prediction model or K-nearest
 > neighbor imputation.
 
-#### Detect Outliers
+### Detect Outliers
 
-  - Examine the boxplots
-
-<!-- end list -->
+-   Examine the boxplots
 
 ``` r
 par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
 boxplot(df_md, las = 2)
 ```
 
-![](README_files/EDA/unnamed-chunk-18-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-15-1.png)<!-- -->
 
 Take the out the outliers from the variable SI
 
@@ -492,18 +417,16 @@ outlier <- function(x){
 df_md$SI=outlier(df_md$SI)
 ```
 
-  - Take a look again at the boxplots
-
-<!-- end list -->
+-   Take a look again at the boxplots
 
 ``` r
 par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
 boxplot(df_md, las = 2)
 ```
 
-![](README_files/EDA/unnamed-chunk-20-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-17-1.png)<!-- -->
 
-  - **Compare results of the dataset with and without the outliers**
+-   **Compare results of the dataset with and without the outliers**
 
 **Data with outliers**
 
@@ -556,7 +479,7 @@ var(df_md$SI)
 plot_histogram(df)
 ```
 
-![](README_files/EDA/unnamed-chunk-23-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-20-1.png)<!-- -->
 
 > **Note**: Take a special look at TODU, and see if the variable looks
 > like a normal distribution.
@@ -567,7 +490,7 @@ plot_histogram(df)
 plot_boxplot(df, by = "TODU")
 ```
 
-![](README_files/EDA/unnamed-chunk-24-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-21-1.png)<!-- -->
 
 > **Note**: If you increase the average car ownership (ACO) it will tend
 > to increase the number of trips per dwelling unit (TODU). This makes
@@ -581,7 +504,7 @@ res1 <- cor.mtest(df, conf.level = .95)
 corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
 ```
 
-![](README_files/EDA/unnamed-chunk-25-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-22-1.png)<!-- -->
 
 > **Note:** try putting into method “color” or “circle”, and see the
 > diference.
@@ -589,7 +512,7 @@ corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclu
 > **Note:** The pairwise correlations that are crossed are statistically
 > insignificant.The null hypothesis is that correlation is zero.This
 > means that the correlations are only significant when you reject the
-> null hypothesis (pvalue \< 0.05).
+> null hypothesis (pvalue &lt; 0.05).
 
 Therefore, take a look at this example and check the pvalue of a crossed
 pair correlation:
@@ -613,4 +536,4 @@ cor.test(df$AHS, df$SI)
 > **Note:** Correlation heatmaps only consider pairwise correlations and
 > does not demonstrate multicollinearity.
 
-#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will see how to perform a Multiple Linear Regression model\!
+#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will see how to perform a Multiple Linear Regression model!

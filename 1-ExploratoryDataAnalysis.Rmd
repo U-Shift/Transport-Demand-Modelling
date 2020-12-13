@@ -7,17 +7,13 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/EDA/")
 ```
+We will use the example of the following Multiple linear regression chapter to perform an EDA.
 
+#### Example exercise: Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
 
-## Chicago example exercise
+**Your task**: Explore and analyse the dataset before going to the Multiple linear regression chapter.  
 
-##### We will use the example of the following Multiple linear regression chapter to perform an EDA.
-
-Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
-
-*Your task*: Explore and analyse the dataset before going to the Multiple linear regression chapter.  
-
-### Variables:
+#### Variables:
 
 * `TODU`: Motorized Trips (private car or Public Transportation) per occupied dwelling unit;
 * `ACO`: Average car ownership (cars per dwelling);
@@ -44,8 +40,6 @@ Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
 ## Let's begin with R!
 
 ##### Import Libraries
->>>>>>> Stashed changes
-
 For the first time, you will need to install some of the packages. 
 Step by step: 
 
@@ -93,7 +87,7 @@ head(dataset, 10)
 
 ##### Check the type and class of the dataset
 
-```{r echo=TRUE, eval=FALSE} 
+```{r echo=TRUE} 
 typeof(dataset)
 class(dataset)
 ```
@@ -104,7 +98,7 @@ class(dataset)
 df <- data.frame(dataset)
 ```
 
-##### Compare the structure of the dataset with df
+##### Compare the structure of the `dataset` with `df`
 
 ```{r}
 str(dataset)
@@ -130,25 +124,21 @@ skim(df)
 Is there missing data? How many?
 ```{r}
 table(is.na(df))
-plot_missing(df)
 ```
 
 > **Note:** We do not have any missing data in the dataset. 
 
-For the sake of the example, I deleted some values in the dataset and created a copy file. Import the file and take a look at some functions that you can use to treat missing data.
-
 ##### Dataset with missing data
+For the sake of the example, I deleted some values in the dataset and created a copy file. Import the file and take a look at some functions that you can use to treat missing data.
 
 ```{r}
 df_missing <- read_excel("Data/TDM_Class3_MLR_Chicago_Example_md.xls")
-
 df_missing <- data.frame(df_missing)
-
 ```
 
-Take a look where is the missing data
+How many missing data?
 ```{r}
-is.na(df_missing)
+table(is.na(df_missing))
 ```
 
 Plot the percentage of missing data
@@ -156,42 +146,39 @@ Plot the percentage of missing data
 plot_missing(df_missing)
 ```
 
-##### Treat missing data
+#### Treat missing data
 
 * **Listwise deletion**. Delete observation (row) with incomplete information. 
-```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
-na.omit(df_missing)
+```{r eval=FALSE}
+df_missingListwise = na.omit(df_missing) #removes all rows with at least one NA in any variable
 ```
 
 * **Pairwise deletion**. Delete only the row of missing value if the variable is used.   
-
-```{r message=FALSE, warning=FALSE, paged.print=FALSE}
-df_missing[!is.na(df_missing$ACO),]
+```{r eval=FALSE}
+df_missingPairwise = df_missing[!is.na(df_missing$ACO),] #removes all rows with NA in ACO variable
 ```
 
 > **Note:** Listwise deletion may lose a lot of information, while pairwise deletion considers diferent sizes of variables in the analysis, which may be a problem. Choosing one method or the other depends on the number of missing data, sample size and characteristics of your data.
 
 * **Replace missing value with mean or median**
 
-```{r}
+```{r eval=FALSE}
 df_missing$ACO[is.na(df_missing$ACO)] <- mean(df_missing$ACO, na.rm = TRUE)
-
 df_missing$ACO[is.na(df_missing$ACO)] <- median(df_missing$ACO, na.rm = TRUE)
 ```
 
 > **Note**: Here are just some examples of how to treat missing data. Take a look at other methods such as the prediction model or K-nearest neighbor imputation. 
 
-### Detect Outliers  
+### Detect outliers  
 
 * Examine the boxplots
   
 ```{r}
 df_no_outliers <- df
-par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
-boxplot(df_no_outliers, las = 2)
+boxplot(df_no_outliers)
 ```
 
-Take the out the outliers from the variable SI
+* Take the out the outliers from the variable SI
 
 ```{r}
 outlier <- function(x){
@@ -203,29 +190,31 @@ outlier <- function(x){
   return(x)
 }
 
-df_no_outliers$SI=outlier(df_no_outliers$SI)
+df_no_outliers$SI = outlier(df_no_outliers$SI)
 ```
 
 * Take a look again at the boxplots
 
 ```{r}
-par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
-boxplot(df_no_outliers, las = 2)
+boxplot(df_no_outliers)
 ```
 
-* **Compare results of the dataset with and without the outliers**
-
-**Data with outliers**
+* Compare results of the dataset with and without the outliers  
+**mean**
 ```{r}
 mean(df$SI)
-median(df$SI)
-var(df$SI)
+mean(df_no_outliers$SI)
 ```
 
-**Data without outliers**
+**median**
 ```{r}
-mean(df_no_outliers$SI)
+median(df$SI)
 median(df_no_outliers$SI)
+```
+
+**variance**
+```{r}
+var(df$SI)
 var(df_no_outliers$SI)
 ```
 
@@ -233,43 +222,44 @@ var(df_no_outliers$SI)
 > **Note:** There are many methods to treat outliers. This is just one of them. Try using other methods and evaluate the difference. In the next chapter we will demonstrate other methods of detecting outliers such as the Cook distance and QQ plot.    
 
 
-##### Plot histograms of all the continuous variables
+### Histograms
+Plot histograms of all the continuous variables
 
 ```{r}
-plot_histogram(df)
+plot_histogram(df, ncol = 3) #with 3 columns
 ```
 
 > **Note**: Take a special look at TODU, and see if the variable looks like a normal distribution.  
 
-##### Plot boxplots of each independent variable with TODU
+##### How do the other variables behave regarding TODU?
+Plot boxplots of each independent variable with TODU
 
 ```{r}
-plot_boxplot(df, by = "TODU")
+plot_boxplot(df, by = "TODU", ncol = 3)
 ```
 
 > **Note**: If you increase the average car ownership (ACO) it will tend to increase the number of trips per dwelling unit (TODU). This makes sense. Try analyzing the other relations and check if it is coherent. 
 
-##### Plot correlation heatmaps
-
+### Correlations
+Plot correlation heatmaps
 ```{r}
-res1 <- cor.mtest(df, conf.level = .95)
+res <- cor.mtest(df, conf.level = .95) #store the results so you can call the p-value at the corrplot
 
-corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
+corrplot(cor(df), p.mat = res$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
 ```
 
+> **Note:** The pairwise correlations that are crossed are statistically insignificant. The null hypothesis is that correlation is zero. This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05).   
+See `?corrplot` for more options.  
+Try putting into method "color" or "circle", and see the diference.  
 
-> **Note:** try putting into method "color" or "circle", and see the diference.
-
-> **Note:** The pairwise correlations that are crossed are statistically insignificant.The null hypothesis is that correlation is zero.This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05). 
-
-Therefore, take a look at this example and check the pvalue of a crossed pair correlation: 
+Therefore, take a look at this example and check the _pvalue_ of a crossed pair correlation: 
 
 ```{r}
 cor.test(df$AHS, df$SI)
 ```
+The default for `cor.test` is Pearson, two-sided, with a 95% confident level. Check `?cor.test` for more options.  
+<!-- > **Note:** Correlation heatmaps only consider pairwise correlations and does not demonstrate multicollinearity.   -->
 
-> **Note:** Correlation heatmaps only consider pairwise correlations and does not demonstrate multicollinearity.  
 
-
-#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will learn how to perform a Multiple Linear Regression model!
+Now that you have done some descriptive analysis of the data, go to the next chapter. There you will learn how to perform a [Multiple Linear Regression model](2-MultipleLinearRegression.md)!
 

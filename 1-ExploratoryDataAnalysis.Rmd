@@ -11,11 +11,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ## Chicago example exercise
 
-<<<<<<< Updated upstream
-#### We will use the example of the following Multiple linear regression chapter to perform an Exploratory Data Analysis.
-=======
 ##### We will use the example of the following Multiple linear regression chapter to perform an EDA.
->>>>>>> Stashed changes
 
 Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
 
@@ -45,11 +41,8 @@ Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
    It measures the proportion of an area to which minority groups (e.g: non-whites, foreign-born, Eastern Europeans) live in isolation.
      (_**Note:** High values for this index imply that those communities are less prone to leaving their living areas and as such to having lower levels of mobility_)
 
-
-<<<<<<< Updated upstream
 ## Let's begin with R!
-=======
-##Let's begin!
+
 ##### Import Libraries
 >>>>>>> Stashed changes
 
@@ -80,10 +73,7 @@ library(car) # Library used for testing autocorrelation (Durbin Watson)
 library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
-<<<<<<< Updated upstream
 ## Get to know your data
-=======
->>>>>>> Stashed changes
 ##### Import dataset
 
 ```{r}
@@ -108,14 +98,6 @@ typeof(dataset)
 class(dataset)
 ```
 
-<<<<<<< Updated upstream
-=======
-```{r echo=FALSE, purl = FALSE}
-typeof(dataset)
-class(dataset)
-```
-
->>>>>>> Stashed changes
 ##### Transform the dataset into a dataframe
 
 ```{r}
@@ -132,46 +114,23 @@ str(df)
 > **Note:** The dataframe function transforms columns into variables and rows into observations. 
 
 ##### Take a look at the dataframe
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 ```{r}
 head(df, 10)
 ```
 
 ##### Show summary statistics
-<<<<<<< Updated upstream
-=======
- 
->>>>>>> Stashed changes
+
 ```{r}
 skim(df)
 ```
 
-<<<<<<< Updated upstream
 ### Deal with missing data
 
 Is there missing data? How many?
 ```{r}
 table(is.na(df))
 plot_missing(df)
-```
-
-We do not have any missing data in the dataset. However, here are some functions that you can use in other datasets to treat missing data. 
-
-##### Treat missing data
-Let us create a new variable to demonstrate this example.
-```{r echo=TRUE}
-df_md <- data.frame(df)
-=======
-##### Check missing data
-
-
-Check the number of missing data
-
-```{r}
-sum(is.na(df))
 ```
 
 > **Note:** We do not have any missing data in the dataset. 
@@ -184,7 +143,7 @@ For the sake of the example, I deleted some values in the dataset and created a 
 df_missing <- read_excel("Data/TDM_Class3_MLR_Chicago_Example_md.xls")
 
 df_missing <- data.frame(df_missing)
->>>>>>> Stashed changes
+
 ```
 
 Take a look where is the missing data
@@ -222,11 +181,7 @@ df_missing$ACO[is.na(df_missing$ACO)] <- median(df_missing$ACO, na.rm = TRUE)
 
 > **Note**: Here are just some examples of how to treat missing data. Take a look at other methods such as the prediction model or K-nearest neighbor imputation. 
 
-<<<<<<< Updated upstream
 ### Detect Outliers  
-=======
-##### Detect Outliers  
->>>>>>> Stashed changes
 
 * Examine the boxplots
   

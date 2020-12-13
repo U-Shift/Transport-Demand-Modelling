@@ -3,11 +3,7 @@ Exploratory Data Analysis
 
 ## Chicago example exercise
 
-<<<<<<< Updated upstream
-#### We will use the example of the following Multiple linear regression chapter to perform an Exploratory Data Analysis.
-=======
 ##### We will use the example of the following Multiple linear regression chapter to perform an EDA.
->>>>>>> Stashed changes
 
 Trip production of 57 Traffic Assignment Zones of Chicago in 1960’s.
 
@@ -16,43 +12,44 @@ Multiple linear regression chapter.
 
 ### Variables:
 
--   `TODU`: Motorized Trips (private car or Public Transportation) per
+  - `TODU`: Motorized Trips (private car or Public Transportation) per
     occupied dwelling unit;
 
--   `ACO`: Average car ownership (cars per dwelling);
+  - `ACO`: Average car ownership (cars per dwelling);
 
--   `AHS`: Average household size;
+  - `AHS`: Average household size;
 
--   `SRI`: Social Rank Index:  
-    1. proportion of blue-collar workers (e.g., construction, mining);  
-    2. proportion of people with age higher than 25 years that have
+  - `SRI`: Social Rank Index:  
+    1\. proportion of blue-collar workers (e.g., construction,
+    mining);  
+    2\. proportion of people with age higher than 25 years that have
     completed at least 8 year of education; (***Note:** The SRI has its
     maximum value when there are no blue-collar workers and all adults
     have education of at least 8 years*)
 
--   `UI`: Urbanization Index:  
-    1. fertility rate, defined as the ratio of children under 5 years of
-    age to the female population of childbearing age;  
-    2. female labor force participation rate, meaning the % of women who
-    are in the labor force;  
-    3. % of single family units to total dwelling units.
-
+  - `UI`: Urbanization Index:  
+    1\. fertility rate, defined as the ratio of children under 5 years
+    of age to the female population of childbearing age;  
+    2\. female labor force participation rate, meaning the % of women
+    who are in the labor force;  
+    3\. % of single family units to total dwelling units.
+    
     The degree of urbanization index would be increased by a) lower
-    fertility rate, b) higher female labor force participation rate,
-    and c) higher proportion of single dwelling units. (***Note:** High
+    fertility rate, b) higher female labor force participation rate, and
+    c) higher proportion of single dwelling units. (***Note:** High
     values for this index imply less attachment to the home*)
 
--   `SI`:Segregation Index It measures the proportion of an area to
+  - `SI`:Segregation Index It measures the proportion of an area to
     which minority groups (e.g: non-whites, foreign-born, Eastern
     Europeans) live in isolation. (***Note:** High values for this index
     imply that those communities are less prone to leaving their living
     areas and as such to having lower levels of mobility*)
 
-<<<<<<< Updated upstream
-## Let’s begin with R!
-=======
-\#\#Let’s begin\! \#\#\#\#\# Import Libraries
->>>>>>> Stashed changes
+## Let’s begin with R\!
+
+##### Import Libraries
+
+> > > > > > > Stashed changes
 
 For the first time, you will need to install some of the packages. Step
 by step:
@@ -84,11 +81,8 @@ library(car) # Library used for testing autocorrelation (Durbin Watson)
 library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
-<<<<<<< Updated upstream
 ## Get to know your data
 
-=======
->>>>>>> Stashed changes
 ##### Import dataset
 
 ``` r
@@ -136,13 +130,6 @@ typeof(dataset)
 class(dataset)
 ```
 
-<<<<<<< Updated upstream
-=======
-    ## [1] "list"
-
-    ## [1] "tbl_df"     "tbl"        "data.frame"
-
->>>>>>> Stashed changes
 ##### Transform the dataset into a dataframe
 
 ``` r
@@ -203,7 +190,7 @@ skim(df)
 ```
 
 |                                                  |      |
-|:-------------------------------------------------|:-----|
+| :----------------------------------------------- | :--- |
 | Name                                             | df   |
 | Number of rows                                   | 57   |
 | Number of columns                                | 6    |
@@ -218,7 +205,7 @@ Data summary
 **Variable type: numeric**
 
 | skim\_variable | n\_missing | complete\_rate |  mean |    sd |    p0 |   p25 |   p50 |   p75 |  p100 | hist  |
-|:---------------|-----------:|---------------:|------:|------:|------:|------:|------:|------:|------:|:------|
+| :------------- | ---------: | -------------: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | :---- |
 | TODU           |          0 |              1 |  5.37 |  1.33 |  3.02 |  4.54 |  5.10 |  6.13 |  9.14 | ▃▇▅▃▁ |
 | ACO            |          0 |              1 |  0.81 |  0.18 |  0.50 |  0.67 |  0.79 |  0.92 |  1.32 | ▆▇▇▃▁ |
 | AHS            |          0 |              1 |  3.19 |  0.39 |  1.83 |  3.00 |  3.19 |  3.37 |  4.50 | ▁▂▇▂▁ |
@@ -226,7 +213,6 @@ Data summary
 | SRI            |          0 |              1 | 49.56 | 15.84 | 20.89 | 38.14 | 49.37 | 60.85 | 87.38 | ▅▆▇▅▂ |
 | UI             |          0 |              1 | 52.62 | 13.46 | 24.08 | 44.80 | 55.51 | 61.09 | 83.66 | ▃▅▇▅▁ |
 
-<<<<<<< Updated upstream
 ### Deal with missing data
 
 Is there missing data? How many?
@@ -238,16 +224,12 @@ table(is.na(df))
     ## 
     ## FALSE 
     ##   342
-=======
-##### Check missing data
-
-Check the number of missing data
 
 ``` r
-sum(is.na(df))
+plot_missing(df)
 ```
 
-    ## [1] 0
+![](README_files/EDA/unnamed-chunk-10-1.png)<!-- -->
 
 > **Note:** We do not have any missing data in the dataset.
 
@@ -329,33 +311,19 @@ is.na(df_missing)
     ## [57,] FALSE FALSE FALSE FALSE FALSE FALSE
 
 Plot the percentage of missing data
->>>>>>> Stashed changes
 
 ``` r
 plot_missing(df_missing)
 ```
 
-<<<<<<< Updated upstream
-![](README_files/EDA/unnamed-chunk-10-1.png)<!-- -->
-
-We do not have any missing data in the dataset. However, here are some
-functions that you can use in other datasets to treat missing data.
+![](README_files/EDA/unnamed-chunk-13-1.png)<!-- -->
 
 ##### Treat missing data
 
-Let us create a new variable to demonstrate this example.
-
-``` r
-df_md <- data.frame(df)
-```
-=======
-![](README_files/EDA/unnamed-chunk-14-1.png)<!-- -->
-
-##### Treat missing data
->>>>>>> Stashed changes
-
--   **Listwise deletion**. Delete observation (row) with incomplete
+  - **Listwise deletion**. Delete observation (row) with incomplete
     information.
+
+<!-- end list -->
 
 ``` r
 na.omit(df_missing)
@@ -415,14 +383,10 @@ na.omit(df_missing)
     ## 56 7.64 0.93 3.37 15.08 34.74 44.54
     ## 57 7.25 0.75 4.50 16.44 26.21 44.80
 
-<<<<<<< Updated upstream
--   **Pairwise deletion**. Delete only the row of missing value if the
-    variable is used. Consider that the variable “TODU” has missing
-    values.
-=======
   - **Pairwise deletion**. Delete only the row of missing value if the
     variable is used.
->>>>>>> Stashed changes
+
+<!-- end list -->
 
 ``` r
 df_missing[!is.na(df_missing$ACO),]
@@ -491,7 +455,7 @@ df_missing[!is.na(df_missing$ACO),]
 > depends on the number of missing data, sample size and characteristics
 > of your data.
 
--   **Replace missing value with mean or median**
+  - **Replace missing value with mean or median**
 
 <!-- end list -->
 
@@ -505,13 +469,11 @@ df_missing$ACO[is.na(df_missing$ACO)] <- median(df_missing$ACO, na.rm = TRUE)
 > Take a look at other methods such as the prediction model or K-nearest
 > neighbor imputation.
 
-<<<<<<< Updated upstream
 ### Detect Outliers
-=======
-##### Detect Outliers
->>>>>>> Stashed changes
 
--   Examine the boxplots
+  - Examine the boxplots
+
+<!-- end list -->
 
 ``` r
 df_no_outliers <- df
@@ -519,7 +481,7 @@ par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
 boxplot(df_no_outliers, las = 2)
 ```
 
-![](README_files/EDA/unnamed-chunk-15-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-17-1.png)<!-- -->
 
 Take the out the outliers from the variable SI
 
@@ -536,16 +498,18 @@ outlier <- function(x){
 df_no_outliers$SI=outlier(df_no_outliers$SI)
 ```
 
--   Take a look again at the boxplots
+  - Take a look again at the boxplots
+
+<!-- end list -->
 
 ``` r
 par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
 boxplot(df_no_outliers, las = 2)
 ```
 
-![](README_files/EDA/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-19-1.png)<!-- -->
 
--   **Compare results of the dataset with and without the outliers**
+  - **Compare results of the dataset with and without the outliers**
 
 **Data with outliers**
 
@@ -598,7 +562,7 @@ var(df_no_outliers$SI)
 plot_histogram(df)
 ```
 
-![](README_files/EDA/unnamed-chunk-20-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-22-1.png)<!-- -->
 
 > **Note**: Take a special look at TODU, and see if the variable looks
 > like a normal distribution.
@@ -609,7 +573,7 @@ plot_histogram(df)
 plot_boxplot(df, by = "TODU")
 ```
 
-![](README_files/EDA/unnamed-chunk-21-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-23-1.png)<!-- -->
 
 > **Note**: If you increase the average car ownership (ACO) it will tend
 > to increase the number of trips per dwelling unit (TODU). This makes
@@ -623,7 +587,7 @@ res1 <- cor.mtest(df, conf.level = .95)
 corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
 ```
 
-![](README_files/EDA/unnamed-chunk-22-1.png)<!-- -->
+![](README_files/EDA/unnamed-chunk-24-1.png)<!-- -->
 
 > **Note:** try putting into method “color” or “circle”, and see the
 > diference.
@@ -631,7 +595,7 @@ corrplot(cor(df), p.mat = res1$p, method = "number", type = "upper", order="hclu
 > **Note:** The pairwise correlations that are crossed are statistically
 > insignificant.The null hypothesis is that correlation is zero.This
 > means that the correlations are only significant when you reject the
-> null hypothesis (pvalue &lt; 0.05).
+> null hypothesis (pvalue \< 0.05).
 
 Therefore, take a look at this example and check the pvalue of a crossed
 pair correlation:
@@ -655,8 +619,4 @@ cor.test(df$AHS, df$SI)
 > **Note:** Correlation heatmaps only consider pairwise correlations and
 > does not demonstrate multicollinearity.
 
-<<<<<<< Updated upstream
-#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will see how to perform a Multiple Linear Regression model!
-=======
 #### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will learn how to perform a Multiple Linear Regression model\!
->>>>>>> Stashed changes

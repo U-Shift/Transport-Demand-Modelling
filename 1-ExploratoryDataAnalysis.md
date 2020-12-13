@@ -69,12 +69,10 @@ Now, import these libraries:
 
 ``` r
 library(readxl) #Library used to import excel files
-library(tidyverse) # Library used in data science to perform exploratory data analysis
+library(tidyverse) # Pack of most used libraries
 library(skimr) # Library used for providing a summary of the data
 library(DataExplorer) # Library used in data science to perform exploratory data analysis
 library(corrplot) # Library used for correlation plots
-library(car) # Library used for testing autocorrelation (Durbin Watson)
-library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
 ## Get to know your data

@@ -3,7 +3,11 @@ Exploratory Data Analysis
 
 ## Chicago example exercise
 
+<<<<<<< Updated upstream
 #### We will use the example of the following Multiple linear regression chapter to perform an Exploratory Data Analysis.
+=======
+##### We will use the example of the following Multiple linear regression chapter to perform an EDA.
+>>>>>>> Stashed changes
 
 Trip production of 57 Traffic Assignment Zones of Chicago in 1960’s.
 
@@ -44,7 +48,11 @@ Multiple linear regression chapter.
     imply that those communities are less prone to leaving their living
     areas and as such to having lower levels of mobility*)
 
+<<<<<<< Updated upstream
 ## Let’s begin with R!
+=======
+\#\#Let’s begin\! \#\#\#\#\# Import Libraries
+>>>>>>> Stashed changes
 
 For the first time, you will need to install some of the packages. Step
 by step:
@@ -76,8 +84,11 @@ library(car) # Library used for testing autocorrelation (Durbin Watson)
 library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
+<<<<<<< Updated upstream
 ## Get to know your data
 
+=======
+>>>>>>> Stashed changes
 ##### Import dataset
 
 ``` r
@@ -125,6 +136,13 @@ typeof(dataset)
 class(dataset)
 ```
 
+<<<<<<< Updated upstream
+=======
+    ## [1] "list"
+
+    ## [1] "tbl_df"     "tbl"        "data.frame"
+
+>>>>>>> Stashed changes
 ##### Transform the dataset into a dataframe
 
 ``` r
@@ -208,6 +226,7 @@ Data summary
 | SRI            |          0 |              1 | 49.56 | 15.84 | 20.89 | 38.14 | 49.37 | 60.85 | 87.38 | ▅▆▇▅▂ |
 | UI             |          0 |              1 | 52.62 | 13.46 | 24.08 | 44.80 | 55.51 | 61.09 | 83.66 | ▃▅▇▅▁ |
 
+<<<<<<< Updated upstream
 ### Deal with missing data
 
 Is there missing data? How many?
@@ -219,11 +238,104 @@ table(is.na(df))
     ## 
     ## FALSE 
     ##   342
+=======
+##### Check missing data
+
+Check the number of missing data
 
 ``` r
-plot_missing(df)
+sum(is.na(df))
 ```
 
+    ## [1] 0
+
+> **Note:** We do not have any missing data in the dataset.
+
+For the sake of the example, I deleted some values in the dataset and
+created a copy file. Import the file and take a look at some functions
+that you can use to treat missing data.
+
+##### Dataset with missing data
+
+``` r
+df_missing <- read_excel("Data/TDM_Class3_MLR_Chicago_Example_md.xls")
+
+df_missing <- data.frame(df_missing)
+```
+
+Take a look where is the missing data
+
+``` r
+is.na(df_missing)
+```
+
+    ##        TODU   ACO   AHS    SI   SRI    UI
+    ##  [1,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ##  [2,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ##  [3,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ##  [4,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ##  [5,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ##  [6,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ##  [7,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ##  [8,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ##  [9,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [10,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [11,] FALSE  TRUE FALSE FALSE FALSE FALSE
+    ## [12,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [13,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [14,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [15,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [16,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [17,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [18,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [19,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [20,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [21,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [22,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [23,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [24,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [25,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [26,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [27,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [28,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [29,] FALSE  TRUE FALSE FALSE FALSE FALSE
+    ## [30,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [31,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [32,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [33,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [34,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [35,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [36,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [37,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [38,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [39,] FALSE FALSE FALSE FALSE  TRUE FALSE
+    ## [40,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [41,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [42,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [43,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [44,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [45,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [46,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [47,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [48,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [49,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [50,] FALSE FALSE  TRUE FALSE FALSE FALSE
+    ## [51,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [52,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [53,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [54,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [55,] FALSE FALSE FALSE FALSE  TRUE FALSE
+    ## [56,] FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [57,] FALSE FALSE FALSE FALSE FALSE FALSE
+
+Plot the percentage of missing data
+>>>>>>> Stashed changes
+
+``` r
+plot_missing(df_missing)
+```
+
+<<<<<<< Updated upstream
 ![](README_files/EDA/unnamed-chunk-10-1.png)<!-- -->
 
 We do not have any missing data in the dataset. However, here are some
@@ -236,12 +348,17 @@ Let us create a new variable to demonstrate this example.
 ``` r
 df_md <- data.frame(df)
 ```
+=======
+![](README_files/EDA/unnamed-chunk-14-1.png)<!-- -->
+
+##### Treat missing data
+>>>>>>> Stashed changes
 
 -   **Listwise deletion**. Delete observation (row) with incomplete
     information.
 
 ``` r
-na.omit(df_md)
+na.omit(df_missing)
 ```
 
     ##    TODU  ACO  AHS    SI   SRI    UI
@@ -255,7 +372,6 @@ na.omit(df_md)
     ## 8  4.87 0.77 2.74 10.71 48.36 67.88
     ## 9  5.85 0.84 3.02  8.20 42.15 56.86
     ## 10 4.97 0.74 2.84  7.94 38.14 62.44
-    ## 11 3.54 0.67 2.93 12.72 51.30 68.67
     ## 12 4.31 0.64 3.87 27.33 43.90 59.49
     ## 13 4.54 0.73 3.16 18.70 30.27 57.76
     ## 14 4.82 0.86 3.42 14.52 32.18 63.06
@@ -273,7 +389,6 @@ na.omit(df_md)
     ## 26 5.84 0.92 2.95  6.53 57.34 58.60
     ## 27 4.70 0.80 3.00  3.37 62.60 62.40
     ## 28 4.54 0.79 2.71 10.10 73.00 67.23
-    ## 29 5.51 0.91 3.46 14.36 33.96 41.29
     ## 30 5.10 0.75 3.38 17.94 43.67 56.64
     ## 31 4.70 0.83 3.11  9.38 52.74 54.02
     ## 32 5.17 0.76 3.20  3.02 52.29 58.35
@@ -283,7 +398,6 @@ na.omit(df_md)
     ## 36 4.79 0.53 3.09 62.53 49.37 58.63
     ## 37 4.83 0.75 2.46  6.92 87.38 65.67
     ## 38 6.30 0.78 3.36 16.34 55.85 59.00
-    ## 39 4.94 0.69 2.94  9.51 50.15 61.09
     ## 40 6.01 0.96 3.27  4.25 67.01 48.39
     ## 41 6.39 0.86 3.32  3.85 62.18 50.04
     ## 42 5.82 1.09 3.29  7.54 45.58 46.47
@@ -294,21 +408,24 @@ na.omit(df_md)
     ## 47 7.89 1.32 3.58  2.42 79.69 25.37
     ## 48 7.80 1.06 3.17  7.20 57.01 31.97
     ## 49 8.02 1.02 3.35  9.17 50.93 38.17
-    ## 50 7.20 0.98 3.43  9.86 49.75 34.69
     ## 51 5.14 0.82 3.31  7.61 36.36 46.98
     ## 52 5.56 0.94 3.21 47.73 62.27 36.27
     ## 53 5.74 0.90 3.52  4.17 42.64 26.15
     ## 54 6.77 0.62 3.92 11.36 21.66 24.08
-    ## 55 4.94 0.77 3.02  8.73 49.18 51.39
     ## 56 7.64 0.93 3.37 15.08 34.74 44.54
     ## 57 7.25 0.75 4.50 16.44 26.21 44.80
 
+<<<<<<< Updated upstream
 -   **Pairwise deletion**. Delete only the row of missing value if the
     variable is used. Consider that the variable “TODU” has missing
     values.
+=======
+  - **Pairwise deletion**. Delete only the row of missing value if the
+    variable is used.
+>>>>>>> Stashed changes
 
 ``` r
-df_md[!is.na(df_md$TODU),]
+df_missing[!is.na(df_missing$ACO),]
 ```
 
     ##    TODU  ACO  AHS    SI   SRI    UI
@@ -322,7 +439,6 @@ df_md[!is.na(df_md$TODU),]
     ## 8  4.87 0.77 2.74 10.71 48.36 67.88
     ## 9  5.85 0.84 3.02  8.20 42.15 56.86
     ## 10 4.97 0.74 2.84  7.94 38.14 62.44
-    ## 11 3.54 0.67 2.93 12.72 51.30 68.67
     ## 12 4.31 0.64 3.87 27.33 43.90 59.49
     ## 13 4.54 0.73 3.16 18.70 30.27 57.76
     ## 14 4.82 0.86 3.42 14.52 32.18 63.06
@@ -340,7 +456,6 @@ df_md[!is.na(df_md$TODU),]
     ## 26 5.84 0.92 2.95  6.53 57.34 58.60
     ## 27 4.70 0.80 3.00  3.37 62.60 62.40
     ## 28 4.54 0.79 2.71 10.10 73.00 67.23
-    ## 29 5.51 0.91 3.46 14.36 33.96 41.29
     ## 30 5.10 0.75 3.38 17.94 43.67 56.64
     ## 31 4.70 0.83 3.11  9.38 52.74 54.02
     ## 32 5.17 0.76 3.20  3.02 52.29 58.35
@@ -350,7 +465,7 @@ df_md[!is.na(df_md$TODU),]
     ## 36 4.79 0.53 3.09 62.53 49.37 58.63
     ## 37 4.83 0.75 2.46  6.92 87.38 65.67
     ## 38 6.30 0.78 3.36 16.34 55.85 59.00
-    ## 39 4.94 0.69 2.94  9.51 50.15 61.09
+    ## 39 4.94 0.69 2.94  9.51    NA 61.09
     ## 40 6.01 0.96 3.27  4.25 67.01 48.39
     ## 41 6.39 0.86 3.32  3.85 62.18 50.04
     ## 42 5.82 1.09 3.29  7.54 45.58 46.47
@@ -361,12 +476,12 @@ df_md[!is.na(df_md$TODU),]
     ## 47 7.89 1.32 3.58  2.42 79.69 25.37
     ## 48 7.80 1.06 3.17  7.20 57.01 31.97
     ## 49 8.02 1.02 3.35  9.17 50.93 38.17
-    ## 50 7.20 0.98 3.43  9.86 49.75 34.69
+    ## 50 7.20 0.98   NA  9.86 49.75 34.69
     ## 51 5.14 0.82 3.31  7.61 36.36 46.98
     ## 52 5.56 0.94 3.21 47.73 62.27 36.27
     ## 53 5.74 0.90 3.52  4.17 42.64 26.15
     ## 54 6.77 0.62 3.92 11.36 21.66 24.08
-    ## 55 4.94 0.77 3.02  8.73 49.18 51.39
+    ## 55 4.94 0.77 3.02  8.73    NA 51.39
     ## 56 7.64 0.93 3.37 15.08 34.74 44.54
     ## 57 7.25 0.75 4.50 16.44 26.21 44.80
 
@@ -378,26 +493,30 @@ df_md[!is.na(df_md$TODU),]
 
 -   **Replace missing value with mean or median**
 
-Let us suppose that the variable “TODU” has missing values and you want
-to replace it by the mean or median.
+<!-- end list -->
 
 ``` r
-df_md$TODU[is.na(df_md$TODU)] <- mean(df_md$TODU, na.rm = T)
+df_missing$ACO[is.na(df_missing$ACO)] <- mean(df_missing$ACO, na.rm = TRUE)
 
-df_md$TODU[is.na(df_md$TODU)] <- median(df_md$TODU, na.rm = T)
+df_missing$ACO[is.na(df_missing$ACO)] <- median(df_missing$ACO, na.rm = TRUE)
 ```
 
 > **Note**: Here are just some examples of how to treat missing data.
 > Take a look at other methods such as the prediction model or K-nearest
 > neighbor imputation.
 
+<<<<<<< Updated upstream
 ### Detect Outliers
+=======
+##### Detect Outliers
+>>>>>>> Stashed changes
 
 -   Examine the boxplots
 
 ``` r
+df_no_outliers <- df
 par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
-boxplot(df_md, las = 2)
+boxplot(df_no_outliers, las = 2)
 ```
 
 ![](README_files/EDA/unnamed-chunk-15-1.png)<!-- -->
@@ -414,14 +533,14 @@ outlier <- function(x){
   return(x)
 }
 
-df_md$SI=outlier(df_md$SI)
+df_no_outliers$SI=outlier(df_no_outliers$SI)
 ```
 
 -   Take a look again at the boxplots
 
 ``` r
 par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
-boxplot(df_md, las = 2)
+boxplot(df_no_outliers, las = 2)
 ```
 
 ![](README_files/EDA/unnamed-chunk-17-1.png)<!-- -->
@@ -451,19 +570,19 @@ var(df$SI)
 **Data without outliers**
 
 ``` r
-mean(df_md$SI)
+mean(df_no_outliers$SI)
 ```
 
     ## [1] 12.14681
 
 ``` r
-median(df_md$SI)
+median(df_no_outliers$SI)
 ```
 
     ## [1] 9.86
 
 ``` r
-var(df_md$SI)
+var(df_no_outliers$SI)
 ```
 
     ## [1] 80.62296
@@ -471,9 +590,9 @@ var(df_md$SI)
 > **Note:** There are many methods to treat outliers. This is just one
 > of them. Try using other methods and evaluate the difference. In the
 > next chapter we will demonstrate other methods of detecting outliers
-> through the cook distance and QQ plot.
+> such as the Cook distance and QQ plot.
 
-#### Plot histograms of all the continuous variables
+##### Plot histograms of all the continuous variables
 
 ``` r
 plot_histogram(df)
@@ -484,7 +603,7 @@ plot_histogram(df)
 > **Note**: Take a special look at TODU, and see if the variable looks
 > like a normal distribution.
 
-#### Plot boxplots of each independent variable with TODU
+##### Plot boxplots of each independent variable with TODU
 
 ``` r
 plot_boxplot(df, by = "TODU")
@@ -496,7 +615,7 @@ plot_boxplot(df, by = "TODU")
 > to increase the number of trips per dwelling unit (TODU). This makes
 > sense. Try analyzing the other relations and check if it is coherent.
 
-#### Plot correlation heatmaps
+##### Plot correlation heatmaps
 
 ``` r
 res1 <- cor.mtest(df, conf.level = .95)
@@ -536,4 +655,8 @@ cor.test(df$AHS, df$SI)
 > **Note:** Correlation heatmaps only consider pairwise correlations and
 > does not demonstrate multicollinearity.
 
+<<<<<<< Updated upstream
 #### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will see how to perform a Multiple Linear Regression model!
+=======
+#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will learn how to perform a Multiple Linear Regression model\!
+>>>>>>> Stashed changes

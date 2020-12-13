@@ -11,7 +11,11 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ## Chicago example exercise
 
+<<<<<<< Updated upstream
 #### We will use the example of the following Multiple linear regression chapter to perform an Exploratory Data Analysis.
+=======
+##### We will use the example of the following Multiple linear regression chapter to perform an EDA.
+>>>>>>> Stashed changes
 
 Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
 
@@ -42,7 +46,12 @@ Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
      (_**Note:** High values for this index imply that those communities are less prone to leaving their living areas and as such to having lower levels of mobility_)
 
 
+<<<<<<< Updated upstream
 ## Let's begin with R!
+=======
+##Let's begin!
+##### Import Libraries
+>>>>>>> Stashed changes
 
 For the first time, you will need to install some of the packages. 
 Step by step: 
@@ -71,7 +80,10 @@ library(car) # Library used for testing autocorrelation (Durbin Watson)
 library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
+<<<<<<< Updated upstream
 ## Get to know your data
+=======
+>>>>>>> Stashed changes
 ##### Import dataset
 
 ```{r}
@@ -96,6 +108,14 @@ typeof(dataset)
 class(dataset)
 ```
 
+<<<<<<< Updated upstream
+=======
+```{r echo=FALSE, purl = FALSE}
+typeof(dataset)
+class(dataset)
+```
+
+>>>>>>> Stashed changes
 ##### Transform the dataset into a dataframe
 
 ```{r}
@@ -112,15 +132,24 @@ str(df)
 > **Note:** The dataframe function transforms columns into variables and rows into observations. 
 
 ##### Take a look at the dataframe
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 ```{r}
 head(df, 10)
 ```
 
 ##### Show summary statistics
+<<<<<<< Updated upstream
+=======
+ 
+>>>>>>> Stashed changes
 ```{r}
 skim(df)
 ```
 
+<<<<<<< Updated upstream
 ### Deal with missing data
 
 Is there missing data? How many?
@@ -135,41 +164,76 @@ We do not have any missing data in the dataset. However, here are some functions
 Let us create a new variable to demonstrate this example.
 ```{r echo=TRUE}
 df_md <- data.frame(df)
+=======
+##### Check missing data
+
+
+Check the number of missing data
+
+```{r}
+sum(is.na(df))
 ```
 
+> **Note:** We do not have any missing data in the dataset. 
+
+For the sake of the example, I deleted some values in the dataset and created a copy file. Import the file and take a look at some functions that you can use to treat missing data.
+
+##### Dataset with missing data
+
+```{r}
+df_missing <- read_excel("Data/TDM_Class3_MLR_Chicago_Example_md.xls")
+
+df_missing <- data.frame(df_missing)
+>>>>>>> Stashed changes
+```
+
+Take a look where is the missing data
+```{r}
+is.na(df_missing)
+```
+
+Plot the percentage of missing data
+```{r}
+plot_missing(df_missing)
+```
+
+##### Treat missing data
 
 * **Listwise deletion**. Delete observation (row) with incomplete information. 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
-na.omit(df_md)
+na.omit(df_missing)
 ```
 
-* **Pairwise deletion**. Delete only the row of missing value if the variable is used. Consider that the variable "TODU" has missing values.  
+* **Pairwise deletion**. Delete only the row of missing value if the variable is used.   
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
-df_md[!is.na(df_md$TODU),]
+df_missing[!is.na(df_missing$ACO),]
 ```
 
 > **Note:** Listwise deletion may lose a lot of information, while pairwise deletion considers diferent sizes of variables in the analysis, which may be a problem. Choosing one method or the other depends on the number of missing data, sample size and characteristics of your data.
 
 * **Replace missing value with mean or median**
 
-Let us suppose that the variable "TODU" has missing values and you want to replace it by the mean or median. 
-
 ```{r}
-df_md$TODU[is.na(df_md$TODU)] <- mean(df_md$TODU, na.rm = T)
+df_missing$ACO[is.na(df_missing$ACO)] <- mean(df_missing$ACO, na.rm = TRUE)
 
-df_md$TODU[is.na(df_md$TODU)] <- median(df_md$TODU, na.rm = T)
+df_missing$ACO[is.na(df_missing$ACO)] <- median(df_missing$ACO, na.rm = TRUE)
 ```
 
 > **Note**: Here are just some examples of how to treat missing data. Take a look at other methods such as the prediction model or K-nearest neighbor imputation. 
 
+<<<<<<< Updated upstream
 ### Detect Outliers  
+=======
+##### Detect Outliers  
+>>>>>>> Stashed changes
 
 * Examine the boxplots
   
 ```{r}
+df_no_outliers <- df
 par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
-boxplot(df_md, las = 2)
+boxplot(df_no_outliers, las = 2)
 ```
 
 Take the out the outliers from the variable SI
@@ -184,14 +248,14 @@ outlier <- function(x){
   return(x)
 }
 
-df_md$SI=outlier(df_md$SI)
+df_no_outliers$SI=outlier(df_no_outliers$SI)
 ```
 
 * Take a look again at the boxplots
 
 ```{r}
 par(mar=c(5,2,1,1)) # Make labels fit in the boxplot
-boxplot(df_md, las = 2)
+boxplot(df_no_outliers, las = 2)
 ```
 
 * **Compare results of the dataset with and without the outliers**
@@ -205,16 +269,16 @@ var(df$SI)
 
 **Data without outliers**
 ```{r}
-mean(df_md$SI)
-median(df_md$SI)
-var(df_md$SI)
+mean(df_no_outliers$SI)
+median(df_no_outliers$SI)
+var(df_no_outliers$SI)
 ```
 
 
-> **Note:** There are many methods to treat outliers. This is just one of them. Try using other methods and evaluate the difference. In the next chapter we will demonstrate other methods of detecting outliers through the cook distance and QQ plot.    
+> **Note:** There are many methods to treat outliers. This is just one of them. Try using other methods and evaluate the difference. In the next chapter we will demonstrate other methods of detecting outliers such as the Cook distance and QQ plot.    
 
 
-#### Plot histograms of all the continuous variables
+##### Plot histograms of all the continuous variables
 
 ```{r}
 plot_histogram(df)
@@ -222,7 +286,7 @@ plot_histogram(df)
 
 > **Note**: Take a special look at TODU, and see if the variable looks like a normal distribution.  
 
-#### Plot boxplots of each independent variable with TODU
+##### Plot boxplots of each independent variable with TODU
 
 ```{r}
 plot_boxplot(df, by = "TODU")
@@ -230,7 +294,7 @@ plot_boxplot(df, by = "TODU")
 
 > **Note**: If you increase the average car ownership (ACO) it will tend to increase the number of trips per dwelling unit (TODU). This makes sense. Try analyzing the other relations and check if it is coherent. 
 
-#### Plot correlation heatmaps
+##### Plot correlation heatmaps
 
 ```{r}
 res1 <- cor.mtest(df, conf.level = .95)
@@ -252,5 +316,5 @@ cor.test(df$AHS, df$SI)
 > **Note:** Correlation heatmaps only consider pairwise correlations and does not demonstrate multicollinearity.  
 
 
-#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will see how to perform a Multiple Linear Regression model!
+#### Now that you have done some descriptive analysis of the data, go to the next chapter. There you will learn how to perform a Multiple Linear Regression model!
 

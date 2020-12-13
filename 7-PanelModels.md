@@ -1,20 +1,60 @@
 Panel Data Models
 ================
 
+#### EXAMPLE EXERCISE: Grunfeld Investment data. This data consists of 10 large US manufacturing firms from 1935 to 1954.
+
+> **Your Task:** Analyze the many types of panel models.
+
+This code was developed based on the paper: Croissant, Y., Milo,
+G.(2008). Panel Data Econometrics in R: The plm Package, Journal of
+Statistical Software, 27(2).
+
+## Data
+
+#### Variables:
+
+  - `invest`: Gross investment, defined as additions to plant and
+    equipment plus maintenance and repairs in millions of dollars
+    deflated by the implicit price deflator of producers’ durable
+    equipment (base 1947);  
+  - `value`: Market value of the firm, defined as the price of common
+    shares at December 31 (base 1947);
+  - `capital`: Stock of plant and equipment, defined as the accumulated
+    sum of net additions to plant and equipment deflated by the implicit
+    price deflator for producers’ durable equipment (base 1947);
+  - `firm`: General Motors (GM), US Steel (US), General Electric (GE),
+    Chrysler (CH), Atlantic Rening (AR), IBM, Union Oil (UO),
+    Westinghouse (WH), Goodyear (GY), Diamond Match (DM), American Steel
+    (AS);
+  - `year`: Year of data;
+  - `firmcod`: Numeric code that identifies each firm.
+
+## Let’s start\!
+
+#### Import libraries
+
 ``` r
-library(readxl)
-library(skimr)
-library(foreign)
-library(plm)
+library(readxl) #read excel files
+library(skimr) #summary statistics
+library(foreign) #panel data models
+library(plm) # Lagrange multiplier test and panel models
 ```
+
+### Get to know your dataset
+
+##### Import dataset
 
 ``` r
 data <- read_excel("Data/Grunfeld_data.xlsx")
 ```
 
+##### Transform dataset into dataframe
+
 ``` r
 df <- data.frame(data)
 ```
+
+##### Take a first look at your data
 
 ``` r
 head(df)
@@ -27,6 +67,8 @@ head(df)
     ## 4  257.7 2792.2   209.2 General Motors 1938       6
     ## 5  330.8 4313.2   203.4 General Motors 1939       6
     ## 6  461.2 4643.9   207.2 General Motors 1940       6
+
+##### Check summary statistics of variables
 
 ``` r
 skim(df)
@@ -62,12 +104,14 @@ Data summary
 | year           |          0 |              1 | 1944.50 |    5.78 | 1935.00 | 1939.75 | 1944.50 | 1949.25 | 1954.0 | ▇▇▇▇▇ |
 | firmcod        |          0 |              1 |    6.00 |    3.17 |    1.00 |    3.00 |    6.00 |    9.00 |   11.0 | ▇▅▅▅▅ |
 
+##### Take out the “firmcod” from the dataset
+
 ``` r
 drop <- c("firmcod")
 df = df[,!(names(df) %in% drop)]
 ```
 
-#### Ordinary least square model
+##### First run an Ordinary least square model. Compare the results from this model to the many panel data models
 
 ``` r
 mlr = lm(invest ~ value + capital, data = df)
@@ -94,7 +138,28 @@ summary(mlr)
     ## Multiple R-squared:  0.8179, Adjusted R-squared:  0.8162 
     ## F-statistic: 487.3 on 2 and 217 DF,  p-value: < 2.2e-16
 
-#### One way fixed effects model
+## Now let’s run Panel models.
+
+Panel data models use *one way* and *two way* component models to
+overcome heterogeneity, correlation in the disturbance terms, and
+heteroscedasticity.
+
+  - **One way error component model:** variable-intercept models across
+    individuals **or** time;
+  - **Two way error component model:** variable-intercept models across
+    individuals **and** time.
+
+Modelling Specifications:
+
+  - **With fixed-effects:** effects that are in the sample.
+    Fixed-effects explore the causes of change within a person or entity
+    (In this example the entity is the *firms*);
+
+  - **With random-effects:** effect randomly drawn from a population.
+    The random effects model is an appropriate specification if we are
+    drawing *n* individuals randomly from a large population.
+
+##### One way fixed effects model
 
 ``` r
 fixed = plm(invest ~ value + capital, data = df, index = c("firm", "year"), model = "within")
@@ -126,7 +191,7 @@ summary(fixed)
     ## Adj. R-Squared: 0.75314
     ## F-statistic: 340.079 on 2 and 207 DF, p-value: < 2.22e-16
 
-#### One way random effects model
+##### One way random effects model
 
 ``` r
 random = plm(invest ~ value + capital, data = df, index = c("firm", "year"), model = "random")
@@ -168,13 +233,6 @@ summary(random)
 
 You can also try other types of model estimation:
 
-``` r
-model <-c ("Fixed effects", "Pooling model", "First-diference model", "Between model", "Random effects")
-code <-c("within", "pooling", "fd", "between", "random")
-table <- data.frame(model,code)
-knitr::kable(table, align = "l")
-```
-
 | model                 | code    |
 | :-------------------- | :------ |
 | Fixed effects         | within  |
@@ -183,7 +241,7 @@ knitr::kable(table, align = "l")
 | Between model         | between |
 | Random effects        | random  |
 
-#### Use the Hausman test to evaluate when to use fixed or random effects
+##### Use the Hausman test to evaluate when to use fixed or random effects
 
 ``` r
 phtest(random, fixed)
@@ -273,7 +331,7 @@ summary(random_tw)
     ## Adj. R-Squared: 0.75094
     ## Chisq: 662.3 on 2 DF, p-value: < 2.22e-16
 
-#### Langrage Multiplier Test
+#### Lagrange Multiplier Test
 
 ``` r
 plmtest(random_tw)
@@ -285,3 +343,16 @@ plmtest(random_tw)
     ## data:  invest ~ value + capital
     ## normal = 29.576, p-value < 2.2e-16
     ## alternative hypothesis: significant effects
+
+> **Note:** The Lagrange multiplier statistic, is used to test the null
+> hypothesis that there are no group effects in the Random Effects
+> model.
+
+> **Note:** Large values of the Lagrange Multiplier indicate that
+> effects model is more suitable than the classical model with no common
+> effects.
+
+> **Note:** Large values of H indicate that the fixed effects model is
+> prefered over the random effects model. While, A large value of the LM
+> statistic in the presence of a small H statistic indicate that the
+> random effects model is more suitable.

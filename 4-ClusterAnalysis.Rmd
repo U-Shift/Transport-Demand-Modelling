@@ -112,7 +112,9 @@ distance <- dist(df_scaled, method = "euclidean")
 ```{r}
 fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"), order = FALSE)
 ```
+
 #### Types of hierarchical clustering
+
 Now, let us perform the many types of hierarchical clustering
 
 **1. Single linkage (nearest neighbor) clustering algorithm**

@@ -63,18 +63,22 @@ df <- data.frame(dataset)
 ##### Show summary statistics
 ```{r}
 skim(df)
+summary(df)
 ```
 
 ## Multiple Linear Regression
 Equation with `TODU` as the dependent variable:  
 
-$$y_{TODU} = \beta_0 + \beta_1{ACO} + \beta_2{AHS} + \beta_3{SI} + \beta_4{SRI} +\beta_5{UI} + \varepsilon$$
-
+$$Y_{\text{TODU}} = \beta_{0} + \beta_{1}{\text{ACO}} + \beta_{2}{\text{AHS}} + \beta_{3}{\text{SI}} + \beta_{4}{\text{SRI}} +\beta_{5}{\text{UI}} + \varepsilon$$
 
 #### Checking assumptions
-Before running the model, you need to check if the assumptions are met. For instance, let's take a look if the independent variables have linear relation with the dependent variable.
+Before running the model, you need to check if the assumptions are met.
+
+##### Linear relation
+For instance, let's take a look if the independent variables have linear relation with the dependent variable.
 
 ```{r}
+par(mfrow=c(2,3)) #set plot area as 2 rows and 3 columns
 plot(x = df$TODU, y = df$ACO, xlab = "TODU", ylab = "ACO")  
 plot(x = df$TODU, y = df$AHS, xlab = "TODU", ylab = "AHS")  
 plot(x = df$TODU, y = df$SI, xlab = "TODU", ylab = "SI")  
@@ -90,9 +94,8 @@ pairs(df[,1:6], pch = 19, lower.panel = NULL)
 
 > **Note:** SRI and TODU do not have a linear relationship. This should interfere on the model. 
 
-#### Check if the Dependent variable is normally distributed
-
-If the sample is smaller than 2000 observations, use Shapiro-Wilk test: 
+##### Normal distribution of the dependent variable
+Check if the dependent variable is normally distributed. If the sample is smaller than 2000 observations, use Shapiro-Wilk test: 
 
 ```{r}
 shapiro.test(df$TODU)
@@ -104,50 +107,51 @@ If not, use the Kolmogorov-Smirnov test
 ks.test(df$TODU, "pnorm", mean=mean(df$TODU), sd = sd(df$TODU))
 ```
 
-> **Note:** The warning that appears in the Kolmogorov-Smirnov test:
-"ties should not be present for the Kolmogorov-Smirnov test".
-Most likely what happened is that this test is only reliable with continuous variables. Although TODU is a continuous variable, the small sample size, makes it likely to have repeated values. Consequently, the test considers TODU as a categorical variable. Therefore, this is another evidence, that for small samples it is more appropriate to use the Shapiro-Wilk Test.
+> **Note:** Regarding the warning that appears in the Kolmogorov-Smirnov test "ties should not be present for the Kolmogorov-Smirnov test", what most likely happened is that this test is only reliable with continuous variables.   
 
-> **Note:** The null hypothesis of both tests is that the distribution is normal. Therefore, for the distribution to be normal, the pvalue > 0.05 and you should not reject the null hypothesis. 
+Although `TODU` is a continuous variable, the small sample size (n=57) makes it likely to have repeated values. Consequently, the test considers `TODU` as a categorical variable. Therefore, this is another evidence, that for small samples it is more appropriate to use the Shapiro-Wilk Test.  
+The null hypothesis of both tests is that the distribution is normal. Therefore, for the distribution to be normal, the pvalue > 0.05 and you should not reject the null hypothesis.
 
-#### Finally, let's run the multiple linear regression model!
+### Multiple linear regression model
 
 ```{r}
 model <- lm(TODU ~ ACO + AHS + SI + SRI + UI, data = df)
 summary(model)
 ```
 
-> **Note**: First check the pvalue and the F statistics of the model to see if there is any statistical relation between the Dependent Variable and the Independent Variables. If pvalue < 0.05 and the F statistics > Fcritical = 2,39, then the model is statistically acceptable.
+**Assessing the model**:
 
-> **Note**: The Rsquare and Adjusted Rsquare evaluate the amount of variance that is explained by the model. The diference between one and another is that the Rsquare does not consider the number of variables. If you increase the number of variables in the model, the Rsquare will tend to increase which can lead to overfitting. On the other hand, the Adjusted Rsquare adjust to the number of independent variables. 
+1. First check the **pvalue** and the **F statistics** of the model to see if there is any statistical relation between the dependent variable and the independent variables. If pvalue < 0.05 and the F statistics > Fcritical = 2,39, then the model is statistically acceptable.  
+2. The **R-square** and **Adjusted R-square** evaluate the amount of variance that is explained by the model. The difference between one and another is that the R-square does not consider the number of variables. If you increase the number of variables in the model, the R-square will tend to increase which can lead to overfitting. On the other hand, the Adjusted R-square adjust to the number of independent variables.  
+3. Take a look a the **t-value** and the Pr(>|t|). If the t-value > 1,96 or Pr(>|t|) < 0,05, then the IV is statistically significant to the model.   
+4. To analyze the **estimates** of the variables, you should first check the **signal** and evaluate if the independent variable has a direct or inverse relationship with the dependent variable. It is only possible to evaluate the **magnitude** of the estimate if all variables are continuous and standarzized or by calculating the elasticities. The elasticities are explained and demonstrated in chapter 4. 
 
-> **Note**: Take a look a the tvalue and the Pr(>|t|). If the tvalue > 1,96 or Pr(>|t|) < 0,05, then the IV is statistically significant to the model. 
 
-> **Note**: To analyze the estimates of the variables, you should first check the signal and evaluate if the independent variable has a direct or inverse relationship with the dependent variable. It is only possible to evaluate the magnitude of the estimate if all variables are continuous and standarzized or by calculating the elasticities. The elasticities are explained and demonstrated in chapter 4. 
-
-```{r}
-plot(model)
-```
+##### Residuals
+Let's see how do the residuals behave by plotting them.  
 
 * **Residuals vs Fitted:** This plot is used to detect non-linearity, heteroscedasticity, and outliers. 
-
 * **Normal Q-Q:** The quantile-quantile (Q-Q) plot is used to check if the dependent variable follows a normal distribution.
-
 * **Scale-Location:** This plot is used to verify if the residuals are spread equally (homoscedasticity) or not (heteroscedasticity) through the sample. 
-
 * **Residuals vs Leverage:** This plot is used to detect the impact of the outliers in the model. If the outliers are outside the Cook-distance, this may lead to serious problems in the model. 
 
 Try analyzing the plots and check if the model meets the assumptions. 
+```{r}
+par(mfrow=c(2,2))
+plot(model)
+```
 
-#### Execute the Durbin Watson test to evaluate autocorrelation of the residuals
 
+##### Autocorrelation
+Execute the Durbin-Watson test to evaluate autocorrelation of the residuals
 ```{r}
 durbinWatsonTest(model)
 ```
 
 > **Note:** In the Durbin-Watson test, values of the D-W Statistic vary from 0 to 4. If the values are from 1.8 to 2.2 this means that there is no autocorrelation in the model. 
 
-#### Calculate the VIF and TOL to test multicollinearity
+##### Multicollinearity
+Calculate the VIF and TOL to test for multicollinearity.
 
 ```{r}
 ols_vif_tol(model)
@@ -155,17 +159,14 @@ ols_vif_tol(model)
 
 > **Note:** Values of VIF > 5, indicate multicollinearity problems.
 
-#### Calculate the Condition Index to test multicollinearity
-
+Calculate the Condition Index to test for multicollinearity
 ```{r}
 ols_eigen_cindex(model)
 ```
 
 > **Note:** Condition index values > 15 indicate multicollinearity problems, and values > 30 indicate serious problems of multicollinearity.
 
-#### To test both simultaneously, you can run the code below:
-
-```{r}
+To test both simultaneously, you can run the code below:
+```{r eval=F}
 ols_coll_diag(model)
 ```
-

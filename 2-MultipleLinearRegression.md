@@ -99,47 +99,50 @@ Data summary
 | SRI            |          0 |              1 | 49.56 | 15.84 | 20.89 | 38.14 | 49.37 | 60.85 | 87.38 | ▅▆▇▅▂ |
 | UI             |          0 |              1 | 52.62 | 13.46 | 24.08 | 44.80 | 55.51 | 61.09 | 83.66 | ▃▅▇▅▁ |
 
+``` r
+summary(df)
+```
+
+    ##       TODU            ACO              AHS              SI       
+    ##  Min.   :3.020   Min.   :0.5000   Min.   :1.830   Min.   : 2.17  
+    ##  1st Qu.:4.540   1st Qu.:0.6700   1st Qu.:3.000   1st Qu.: 6.82  
+    ##  Median :5.100   Median :0.7900   Median :3.190   Median : 9.86  
+    ##  Mean   :5.373   Mean   :0.8118   Mean   :3.185   Mean   :13.07  
+    ##  3rd Qu.:6.130   3rd Qu.:0.9200   3rd Qu.:3.370   3rd Qu.:15.08  
+    ##  Max.   :9.140   Max.   :1.3200   Max.   :4.500   Max.   :62.53  
+    ##       SRI              UI       
+    ##  Min.   :20.89   Min.   :24.08  
+    ##  1st Qu.:38.14   1st Qu.:44.80  
+    ##  Median :49.37   Median :55.51  
+    ##  Mean   :49.56   Mean   :52.62  
+    ##  3rd Qu.:60.85   3rd Qu.:61.09  
+    ##  Max.   :87.38   Max.   :83.66
+
 ## Multiple Linear Regression
 
 Equation with `TODU` as the dependent variable:
 
-*y*<sub>*T**O**D**U*</sub> = *β*<sub>0</sub> + *β*<sub>1</sub>*A**C**O* + *β*<sub>2</sub>*A**H**S* + *β*<sub>3</sub>*S**I* + *β*<sub>4</sub>*S**R**I* + *β*<sub>5</sub>*U**I* + *ε*
+*Y*<sub>TODU</sub> = *β*<sub>0</sub> + *β*<sub>1</sub>ACO + *β*<sub>2</sub>AHS + *β*<sub>3</sub>SI + *β*<sub>4</sub>SRI + *β*<sub>5</sub>UI + *ε*
 
 #### Checking assumptions
 
 Before running the model, you need to check if the assumptions are met.
+
+##### Linear relation
+
 For instance, let’s take a look if the independent variables have linear
 relation with the dependent variable.
 
 ``` r
+par(mfrow=c(2,3)) #set plot area as 2 rows and 3 columns
 plot(x = df$TODU, y = df$ACO, xlab = "TODU", ylab = "ACO")  
-```
-
-![](README_files/1-MLR/unnamed-chunk-5-1.png)<!-- -->
-
-``` r
 plot(x = df$TODU, y = df$AHS, xlab = "TODU", ylab = "AHS")  
-```
-
-![](README_files/1-MLR/unnamed-chunk-5-2.png)<!-- -->
-
-``` r
 plot(x = df$TODU, y = df$SI, xlab = "TODU", ylab = "SI")  
-```
-
-![](README_files/1-MLR/unnamed-chunk-5-3.png)<!-- -->
-
-``` r
 plot(x = df$TODU, y = df$SRI, xlab = "TODU", ylab = "SRI")  
-```
-
-![](README_files/1-MLR/unnamed-chunk-5-4.png)<!-- -->
-
-``` r
 plot(x = df$TODU, y = df$UI, xlab = "TODU", ylab = "UI")
 ```
 
-![](README_files/1-MLR/unnamed-chunk-5-5.png)<!-- -->
+![](README_files/1-MLR/unnamed-chunk-5-1.png)<!-- -->
 
 Or you could execute a pairwise scatterplot matrix, that compares every
 variable with each other:
@@ -153,9 +156,10 @@ pairs(df[,1:6], pch = 19, lower.panel = NULL)
 > **Note:** SRI and TODU do not have a linear relationship. This should
 > interfere on the model.
 
-#### Check if the Dependent variable is normally distributed
+##### Normal distribution of the dependent variable
 
-If the sample is smaller than 2000 observations, use Shapiro-Wilk test:
+Check if the dependent variable is normally distributed. If the sample
+is smaller than 2000 observations, use Shapiro-Wilk test:
 
 ``` r
 shapiro.test(df$TODU)
@@ -183,20 +187,21 @@ ks.test(df$TODU, "pnorm", mean=mean(df$TODU), sd = sd(df$TODU))
     ## D = 0.12231, p-value = 0.3612
     ## alternative hypothesis: two-sided
 
-> **Note:** The warning that appears in the Kolmogorov-Smirnov test:
-> “ties should not be present for the Kolmogorov-Smirnov test”. Most
-> likely what happened is that this test is only reliable with
-> continuous variables. Although TODU is a continuous variable, the
-> small sample size, makes it likely to have repeated values.
-> Consequently, the test considers TODU as a categorical variable.
-> Therefore, this is another evidence, that for small samples it is more
-> appropriate to use the Shapiro-Wilk Test.
+> **Note:** Regarding the warning that appears in the Kolmogorov-Smirnov
+> test “ties should not be present for the Kolmogorov-Smirnov test”,
+> what most likely happened is that this test is only reliable with
+> continuous variables.
 
-> **Note:** The null hypothesis of both tests is that the distribution
-> is normal. Therefore, for the distribution to be normal, the pvalue
-> &gt; 0.05 and you should not reject the null hypothesis.
+Although `TODU` is a continuous variable, the small sample size (n=57)
+makes it likely to have repeated values. Consequently, the test
+considers `TODU` as a categorical variable. Therefore, this is another
+evidence, that for small samples it is more appropriate to use the
+Shapiro-Wilk Test.  
+The null hypothesis of both tests is that the distribution is normal.
+Therefore, for the distribution to be normal, the pvalue &gt; 0.05 and
+you should not reject the null hypothesis.
 
-#### Finally, let’s run the multiple linear regression model!
+### Multiple linear regression model
 
 ``` r
 model <- lm(TODU ~ ACO + AHS + SI + SRI + UI, data = df)
@@ -226,67 +231,75 @@ summary(model)
     ## Multiple R-squared:  0.7042, Adjusted R-squared:  0.6752 
     ## F-statistic: 24.28 on 5 and 51 DF,  p-value: 2.04e-12
 
-> **Note**: First check the pvalue and the F statistics of the model to
-> see if there is any statistical relation between the Dependent
-> Variable and the Independent Variables. If pvalue &lt; 0.05 and the F
-> statistics &gt; Fcritical = 2,39, then the model is statistically
-> acceptable.
+**Assessing the model**:
 
-> **Note**: The Rsquare and Adjusted Rsquare evaluate the amount of
-> variance that is explained by the model. The diference between one and
-> another is that the Rsquare does not consider the number of variables.
-> If you increase the number of variables in the model, the Rsquare will
-> tend to increase which can lead to overfitting. On the other hand, the
-> Adjusted Rsquare adjust to the number of independent variables.
+1.  First check the **pvalue** and the **F statistics** of the model to
+    see if there is any statistical relation between the dependent
+    variable and the independent variables. If pvalue &lt; 0.05 and the
+    F statistics &gt; Fcritical = 2,39, then the model is statistically
+    acceptable.  
+2.  The **R-square** and **Adjusted R-square** evaluate the amount of
+    variance that is explained by the model. The difference between one
+    and another is that the R-square does not consider the number of
+    variables. If you increase the number of variables in the model, the
+    R-square will tend to increase which can lead to overfitting. On the
+    other hand, the Adjusted R-square adjust to the number of
+    independent variables.  
+3.  Take a look a the **t-value** and the Pr(&gt;\|t\|). If the
+    t-value &gt; 1,96 or Pr(&gt;\|t\|) &lt; 0,05, then the IV is
+    statistically significant to the model.  
+4.  To analyze the **estimates** of the variables, you should first
+    check the **signal** and evaluate if the independent variable has a
+    direct or inverse relationship with the dependent variable. It is
+    only possible to evaluate the **magnitude** of the estimate if all
+    variables are continuous and standarzized or by calculating the
+    elasticities. The elasticities are explained and demonstrated in
+    chapter 4.
 
-> **Note**: Take a look a the tvalue and the Pr(&gt;\|t\|). If the
-> tvalue &gt; 1,96 or Pr(&gt;\|t\|) &lt; 0,05, then the IV is
-> statistically significant to the model.
+##### Residuals
 
-> **Note**: To analyze the estimates of the variables, you should first
-> check the signal and evaluate if the independent variable has a direct
-> or inverse relationship with the dependent variable. It is only
-> possible to evaluate the magnitude of the estimate if all variables
-> are continuous and standarzized or by calculating the elasticities.
-> The elasticities are explained and demonstrated in chapter 4.
-
-``` r
-plot(model)
-```
-
-![](README_files/1-MLR/unnamed-chunk-10-1.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-10-2.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-10-3.png)<!-- -->![](README_files/1-MLR/unnamed-chunk-10-4.png)<!-- -->
+Let’s see how do the residuals behave by plotting them.
 
 -   **Residuals vs Fitted:** This plot is used to detect non-linearity,
     heteroscedasticity, and outliers.
-
 -   **Normal Q-Q:** The quantile-quantile (Q-Q) plot is used to check if
     the dependent variable follows a normal distribution.
-
 -   **Scale-Location:** This plot is used to verify if the residuals are
     spread equally (homoscedasticity) or not (heteroscedasticity)
     through the sample.
-
 -   **Residuals vs Leverage:** This plot is used to detect the impact of
     the outliers in the model. If the outliers are outside the
     Cook-distance, this may lead to serious problems in the model.
 
 Try analyzing the plots and check if the model meets the assumptions.
 
-#### Execute the Durbin Watson test to evaluate autocorrelation of the residuals
+``` r
+par(mfrow=c(2,2))
+plot(model)
+```
+
+![](README_files/1-MLR/unnamed-chunk-10-1.png)<!-- -->
+
+##### Autocorrelation
+
+Execute the Durbin-Watson test to evaluate autocorrelation of the
+residuals
 
 ``` r
 durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747   0.084
+    ##    1       0.1416308      1.597747    0.07
     ##  Alternative hypothesis: rho != 0
 
 > **Note:** In the Durbin-Watson test, values of the D-W Statistic vary
 > from 0 to 4. If the values are from 1.8 to 2.2 this means that there
 > is no autocorrelation in the model.
 
-#### Calculate the VIF and TOL to test multicollinearity
+##### Multicollinearity
+
+Calculate the VIF and TOL to test for multicollinearity.
 
 ``` r
 ols_vif_tol(model)
@@ -301,7 +314,7 @@ ols_vif_tol(model)
 
 > **Note:** Values of VIF &gt; 5, indicate multicollinearity problems.
 
-#### Calculate the Condition Index to test multicollinearity
+Calculate the Condition Index to test for multicollinearity
 
 ``` r
 ols_eigen_cindex(model)
@@ -326,35 +339,8 @@ ols_eigen_cindex(model)
 > problems, and values &gt; 30 indicate serious problems of
 > multicollinearity.
 
-#### To test both simultaneously, you can run the code below:
+To test both simultaneously, you can run the code below:
 
 ``` r
 ols_coll_diag(model)
 ```
-
-    ## Tolerance and Variance Inflation Factor
-    ## ---------------------------------------
-    ##   Variables Tolerance      VIF
-    ## 1       ACO 0.3528890 2.833752
-    ## 2       AHS 0.3963709 2.522889
-    ## 3        SI 0.7968916 1.254876
-    ## 4       SRI 0.5236950 1.909508
-    ## 5        UI 0.3165801 3.158758
-    ## 
-    ## 
-    ## Eigenvalue and Condition Index
-    ## ------------------------------
-    ##    Eigenvalue Condition Index    intercept          ACO          AHS
-    ## 1 5.386537577        1.000000 6.994331e-05 0.0005136938 0.0001916512
-    ## 2 0.444466338        3.481252 6.484243e-05 0.0026682253 0.0001278701
-    ## 3 0.084386209        7.989491 5.829055e-05 0.0478676279 0.0091615336
-    ## 4 0.073784878        8.544195 1.355679e-03 0.0031699136 0.0100934045
-    ## 5 0.009322827       24.037043 5.414145e-03 0.7943557055 0.2105218176
-    ## 6 0.001502171       59.881840 9.930371e-01 0.1514248340 0.7699037229
-    ##            SI         SRI           UI
-    ## 1 0.007888051 0.001515333 6.216297e-04
-    ## 2 0.693175876 0.006641788 7.488285e-07
-    ## 3 0.051400736 0.055585833 1.128114e-01
-    ## 4 0.152292605 0.382488929 4.801705e-02
-    ## 5 0.090809203 0.374832118 1.851308e-01
-    ## 6 0.004433528 0.178935999 6.534183e-01

@@ -1,98 +1,73 @@
 Cluster Analysis
 ================
 
-## Example Airports
+#### Example exercise: Airports
 
-> Your task: Create and evaluate the many types of clustering methods.
+**Your task**: Create and evaluate the many types of clustering methods.
 
-### Variables:
+#### Variables:
 
-`Code`: Code of the airport;
+-   `Code`: Code of the airport;  
+-   `Airport`: Name of the airport;  
+-   `Ordem`: ID of the observations;  
+-   `Passengers`: Number of passengers;  
+-   `Movements`: Number of flights;  
+-   `Numberofairlines`: Number of airlines in each airport;  
+-   `Mainairlineflightspercentage`: Percentage of flights of the main
+    airline of each airport;  
+-   `Maximumpercentageoftrafficpercountry`: Maximum percentage of
+    flights per country;  
+-   `NumberofLCCflightsweekly`: Number of weekly low cost flights\`;  
+-   `NumberofLowCostAirlines`: Number of low cost airlines of each
+    airport;  
+-   `LowCostAirlinespercentage`: Percentage of the number of low cost
+    airlines in each airport;  
+-   `Destinations`: Number of flights arriving at each airport;  
+-   `Average_route_Distance`: Average route distance in km;  
+-   `DistancetoclosestAirport`: Distance to closest airport in km
+-   `DistancetoclosestSimilarAirport`: Distance to closest similar
+    airport in km;  
+-   `AirportRegionalRelevance`: Relevance of the airport in a regional
+    scale (0 - 1);  
+-   `Distancetocitykm`: Distance between the airport and the city in
+    km;  
+-   `Inhabitantscorrected`: Population of the city;  
+-   `numberofvisitorscorrected`: Number of vistors that arrived in the
+    airport;  
+-   `GDP corrected`: Corrected value of the Gross Domestic Product;  
+-   `Cargoton`: Cargo ton. The total number of cargo transported in a
+    certain period multiplied by the number o flights.
 
-`Airport`: Name of the airport;
+## Startup
 
-`Ordem`: ID of the observations;
-
-`Passengers`: Number of passengers;
-
-`Movements`: Number of flights;
-
-`Numberofairlines`: Number of airlines in each airport;
-
-`Mainairlineflightspercentage`: Percentage of flights of the main
-airline of each airport;
-
-`Maximumpercentageoftrafficpercountry`: Maximum percentage of flights
-per country;
-
-`NumberofLCCflightsweekly`: Number of weekly low cost flights\`;
-
-`NumberofLowCostAirlines`: Number of low cost airlines of each airport;
-
-`LowCostAirlinespercentage`: Percentage of the number of low cost
-airlines in each airport;
-
-`Destinations`: Number of flights arriving at each airport;
-
-`Average_route_Distance`: Average route distance in km;
-
-`DistancetoclosestAirport`: Distance to closest airport in km
-
-`DistancetoclosestSimilarAirport`: Distance to closest similar airport
-in km;
-
-`AirportRegionalRelevance`: Relevance of the airport in a regional scale
-(0 - 1);
-
-`Distancetocitykm`: Distance between the airport and the city in km;
-
-`Inhabitantscorrected`: Population of the city;
-
-`numberofvisitorscorrected`: Number of vistors that arrived in the
-airport;
-
-`GDP corrected`: Corrected value of the Gross Domestic Product;
-
-`Cargoton`: Cargo ton. The total number of cargo transported in a
-certain period multiplied by the number o flights.
-
-#### Import Libraries
+##### Import Libraries
 
 ``` r
-library(readxl) # Library used for reading excel files
-library(skimr) # Library used for summary statistics
-library(tidyverse) # Library used in data science to perform exploratory data analysis
-library(mclust) # Library used for model based clustering
-library(cluster) # Library used for cluster analysis
-library(factoextra) # Library used for visualizing distances
+library(readxl) # Reading excel files
+library(skimr) # Summary statistics
+library(tidyverse) # Pack of useful tools
+library(mclust) # Model based clustering
+library(cluster) # Cluster analysis
+library(factoextra) # Visualizing distances
 ```
 
-#### Set working directory
-
-``` r
-setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling/")
-```
-
-#### Import dataset
+##### Import dataset as a dataframe
 
 ``` r
 dataset <- read_excel("Data/Data_Aeroports_Clustersv1.xlsX")
-```
-
-#### Transform dataset into dataframe
-
-``` r
 df <- data.frame(dataset)
 ```
 
-#### Summary statistics
+## Get to know your data
+
+##### Summary statistics
 
 ``` r
 skim(df)
 ```
 
 |                                                  |      |
-| :----------------------------------------------- | :--- |
+|:-------------------------------------------------|:-----|
 | Name                                             | df   |
 | Number of rows                                   | 32   |
 | Number of columns                                | 21   |
@@ -108,14 +83,14 @@ Data summary
 **Variable type: character**
 
 | skim\_variable | n\_missing | complete\_rate | min | max | empty | n\_unique | whitespace |
-| :------------- | ---------: | -------------: | --: | --: | ----: | --------: | ---------: |
+|:---------------|-----------:|---------------:|----:|----:|------:|----------:|-----------:|
 | Code           |          0 |              1 |   3 |   3 |     0 |        32 |          0 |
 | Airport        |          0 |              1 |   4 |  35 |     0 |        32 |          0 |
 
 **Variable type: numeric**
 
 | skim\_variable                       | n\_missing | complete\_rate |        mean |          sd |        p0 |        p25 |         p50 |         p75 |        p100 | hist  |
-| :----------------------------------- | ---------: | -------------: | ----------: | ----------: | --------: | ---------: | ----------: | ----------: | ----------: | :---- |
+|:-------------------------------------|-----------:|---------------:|------------:|------------:|----------:|-----------:|------------:|------------:|------------:|:------|
 | Ordem                                |          0 |              1 |       16.50 |        9.38 |      1.00 |       8.75 |       16.50 |       24.25 |       32.00 | ▇▇▇▇▇ |
 | Passengers                           |          0 |              1 | 20750710.88 | 17601931.34 | 456698.00 | 8927021.50 | 17275317.50 | 28666511.50 | 67054745.00 | ▇▅▂▂▁ |
 | Movements                            |          0 |              1 |   205111.16 |   143564.45 |   5698.00 |   82765.75 |   191742.50 |   258654.50 |   518018.00 | ▇▅▇▂▃ |
@@ -136,48 +111,47 @@ Data summary
 | GDPcorrected                         |          0 |              1 |    30160.75 |    10510.93 |   8500.00 |   25000.00 |    31150.00 |    35550.00 |    56600.00 | ▃▅▇▃▁ |
 | Cargoton                             |          0 |              1 |   236531.76 |   478310.12 |      0.00 |   10325.00 |    72749.85 |   153372.85 |  1819000.00 | ▇▁▁▁▁ |
 
-#### Now let us plot an example and take a look
+##### Sneak the plot
+
+Now let us plot an example and take a look
 
 ``` r
-plot(Numberofairlines ~ Destinations, df)
-with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 4, cex = 0.6))
+plot(Numberofairlines ~ Destinations, df) #plot
+text(Numberofairlines ~ Destinations, df, label = Airport, pos = 4, cex = 0.6) #labels over the previous plot
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-6-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-4-1.png)<!-- -->
 
-> **Note:** You can already guess the number of clusters by visualizing
-> the two variables. However, this is not clear and it does not consider
-> the other variables in the analysis.
+By looking at the plot, you may already have a clue on the number of
+clusters with this two variabls. However, this is not clear and it does
+not consider the other variables in the analysis.
 
-#### Treat the data before performing a cluster analysis
+### Prepare data before performing a cluster analysis
 
-  - In this example we do not have missing values. In case you do have
-    in the future, you can take out the missing values with listwise
-    deletion.
-
-<!-- end list -->
+##### Deal with missing data
 
 ``` r
- df <- na.omit(df)
+table(is.na(df))
 ```
 
-> **Note**: The listwise deletion removes the whole observation that has
-> a missing value from the analysis. This may be appropriate only in
-> some cases. There are many other forms of treating missing values.
+    ## 
+    ## FALSE 
+    ##   672
 
-  - Leave only continuous variables, and take out “Ordem”
+In this example we do not have missing values. In case you do have in
+the future, you can take out the missing values with *listwise deletion*
+(`df <- na.omit(df)`) or use other ways of treating missing values.
 
-<!-- end list -->
+##### Continuous variables
+
+Leave only continuous variables, and make `Ordem` as the row ID variable
 
 ``` r
-  drop <- c("Code","Airport", "Ordem")
-  df_reduced = df[,!(names(df) %in% drop)]
+df_reduced = df[,!(names(df) %in% c("Code","Airport"))]
+df_reduced = data.frame(df_reduced, row.names = 1) #Ordem is the 1st variable in the df
 ```
 
-> **Note:** We took out “Ordem” because it is an ID variable, and
-> therefore it does not give value to the analysis.
-
-#### Take a look at the scale of the variables. See how they are different\!
+Take a look at the scale of the variables. See how they are different!
 
 ``` r
 head(df_reduced)
@@ -226,35 +200,38 @@ head(df_reduced)
     ## 5             1562709.8                  181063.5        32000 28698.00
     ## 6             6626197.0                  770720.5        11200 82756.54
 
-#### Z-score standardization - (xi - xmean / standard deviation)
+##### Standardize variables
+
+Z-score standardization: (*x*<sub>*i*</sub> − *x*<sub>mean</sub>)/*σ*
 
 ``` r
-  mean <- apply(df_reduced, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
-  sd <- apply(df_reduced, 2, sd)
-  df_scaled <- scale(df_reduced, mean, sd)
+mean <- apply(df_reduced, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
+sd <- apply(df_reduced, 2, sd)
+df_scaled <- scale(df_reduced, mean, sd)
 ```
 
-### HIERARCHICAL CLUSTERING
+## Hierarchical Clustering
 
-#### Measuring Similarity through Euclidean distances
+##### Measuring Similarity through Euclidean distances
 
 ``` r
-  distance <- dist(df_scaled, method = "euclidean")
+distance <- dist(df_scaled, method = "euclidean")
 ```
 
 > **Note:** There are other forms of distance measures that can be used
-> such as: i) Minkowski distance; ii) Manhattan distance; iii)
-> Mahanalobis distance.
+> such as:  
+> i) Minkowski distance; ii) Manhattan distance; iii) Mahanalobis
+> distance.
 
-#### Visualize distances in heatmap
+##### Visualize distances in heatmap
 
 ``` r
-  fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"), order = FALSE)
+fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"), order = FALSE)
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-12-1.png)<!-- -->
-
-#### Now, let us perform the many types of hierarchical clustering
+![](README_files/4-ClusterAnalysis/unnamed-chunk-10-1.png)<!-- -->
+\#\#\#\# Types of hierarchical clustering Now, let us perform the many
+types of hierarchical clustering
 
 **1. Single linkage (nearest neighbor) clustering algorithm**
 
@@ -263,13 +240,12 @@ closest distance between each other.
 
 ``` r
 models <- hclust(distance, "single")
-plot(models, labels = df$Airport, xlab = "Distance - Single linkage", hang = -1)
+plot(models, labels = df$Airport, xlab = "Distance - Single linkage", cex=0.6, hang = -1)
 
-# Visualize the cut on the tree 
-rect.hclust(models, 4, border = "purple") 
+rect.hclust(models, 4, border = "purple") # Visualize the cut on the dendogram, with 4 clusters
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-11-1.png)<!-- -->
 
 **2. Complete linkage (Farthest neighbor) clustering algorithm**
 
@@ -278,13 +254,11 @@ in each cluster.
 
 ``` r
 modelc <- hclust(distance, "complete")
-plot(modelc, labels = df$Airport, xlab = "Distance - Complete linkage", hang = -1)
-
-# Visualize the cut on the tree 
+plot(modelc, labels = df$Airport, xlab = "Distance - Complete linkage", cex=0.6, hang = -1)
 rect.hclust(modelc, 4, border = "blue") 
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-12-1.png)<!-- -->
 
 **3. Average linkage between groups**
 
@@ -294,11 +268,11 @@ members in the other cluster.
 
 ``` r
 modela <- hclust(distance, "average")
-plot(modela, labels = df$Airport, xlab = "Distance - Average linkage", hang = -1)
+plot(modela, labels = df$Airport, xlab = "Distance - Average linkage", cex=0.6, hang = -1)
 rect.hclust(modelc, 4, border = "red")
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-15-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-13-1.png)<!-- -->
 
 **4. Ward\`s method**
 
@@ -307,12 +281,11 @@ squares within the cluster summed over all variables.
 
 ``` r
 modelw <- hclust(distance, "ward.D2")
-plot(modelw, labels = df$Airport, xlab = "Distance - Ward method", hang = -1)
-# Visualize where to cut on the tree (choose number of clusters)
+plot(modelw, labels = df$Airport, xlab = "Distance - Ward method", cex=0.6, hang = -1)
 rect.hclust(modelw, 4, border = "orange")
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-16-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-14-1.png)<!-- -->
 
 **5. Centroid method**
 
@@ -321,13 +294,16 @@ distance between its centroids.
 
 ``` r
 modelcen <- hclust(distance, "centroid")
-plot(modelcen, labels = df$Airport, xlab = "Distance - Centroid method", hang = -1)
-rect.hclust(modelcen, 4, border = "green")
+plot(modelcen, labels = df$Airport, xlab = "Distance - Centroid method", cex=0.6, hang = -1)
+rect.hclust(modelcen, 4, border = "darkgreen")
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-15-1.png)<!-- -->
 
-#### Now lets evaluate the membership of each observation with the cutree function for each method.
+##### Comparing results from different hierarchical methods
+
+Now lets evaluate the **membership** of each observation with the
+`cutree` function for each method.
 
 ``` r
 member_single <- cutree(models, 4)
@@ -337,12 +313,10 @@ member_ward <- cutree(modelw, 4)
 member_cen <- cutree(modelcen, 4)
 ```
 
-#### Plot table to compare how common each method is to each other.
-
-Let us compare the complete linkage with the average linkage
+Compare how common each method is to each other.
 
 ``` r
-table(member_com, member_av)
+table(member_com, member_av) # compare the complete linkage with the average linkage
 ```
 
     ##           member_av
@@ -355,94 +329,91 @@ table(member_com, member_av)
 > **Note:** Try comparing other methods, and evaluate how common they
 > are.
 
-#### Execute Silhouette Plots in order to evaluate which method is more appropriate.
+##### Silhouette Plots: evaluate which method is more appropriate
+
+The silhouette plot evaluates how similar an observation is to its own
+cluster compared to other clusters. The clustering configuration is
+appropriate when most objects have high values. Low or negative values
+indicate that the clustering method is not appropriate or the number of
+clusters is not ideal.
 
 ``` r
 plot(silhouette(member_single, distance))
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-20-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-18-1.png)<!-- -->
 
 ``` r
 plot(silhouette(member_com, distance))
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-20-2.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-18-2.png)<!-- -->
 
 ``` r
 plot(silhouette(member_av, distance))
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-20-3.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-18-3.png)<!-- -->
 
 ``` r
 plot(silhouette(member_ward, distance))
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-20-4.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-18-4.png)<!-- -->
 
 ``` r
 plot(silhouette(member_cen, distance))
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-20-5.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-18-5.png)<!-- -->
 
-> **Note:** The silhouette plot evaluates how similiar an observation is
-> to its own cluster compared to other clusters. The clustering
-> configuration is appropriate when most objects have high values. Low
-> or negative values indicate that the clustering method is not
-> appropriate or the number of clusters is not ideal.
+## Non-Hirarchical Clustering
 
-### NON-HiERARCHICAL CLUSTERING
+##### K-means clustering
 
-#### K-means clustering
+-   k-means with n=3 clusters
 
 ``` r
 km_clust <- kmeans(df_scaled, 3)
+km_clust #print the results
 ```
 
-Print out the results
-
-``` r
-km_clust 
-```
-
-    ## K-means clustering with 3 clusters of sizes 11, 5, 16
+    ## K-means clustering with 3 clusters of sizes 5, 16, 11
     ## 
     ## Cluster means:
     ##   Passengers  Movements Numberofairlines Mainairlineflightspercentage
-    ## 1 -0.6095999 -0.6567742       -0.5981361                   -0.1917995
-    ## 2 -0.9520429 -1.0882984       -1.3214660                    1.9931973
-    ## 3  0.7166133  0.7916255        0.8241767                   -0.4910120
+    ## 1 -0.9520429 -1.0882984       -1.3214660                    1.9931973
+    ## 2  0.7166133  0.7916255        0.8241767                   -0.4910120
+    ## 3 -0.6095999 -0.6567742       -0.5981361                   -0.1917995
     ##   Maximumpercentageoftrafficpercountry NumberofLCCflightsweekly
-    ## 1                            0.5577814               -0.5451081
-    ## 2                            0.6473374               -1.2772631
-    ## 3                           -0.5857676                0.7739065
+    ## 1                            0.6473374               -1.2772631
+    ## 2                           -0.5857676                0.7739065
+    ## 3                            0.5577814               -0.5451081
     ##   NumberofLowCostAirlines LowCostAirlinespercentage Destinations
-    ## 1              0.07256111                 0.1215978   -0.4548142
-    ## 2             -1.39205703                 1.9302799   -1.4105623
-    ## 3              0.38513206                -0.6868110    0.7534855
+    ## 1             -1.39205703                 1.9302799   -1.4105623
+    ## 2              0.38513206                -0.6868110    0.7534855
+    ## 3              0.07256111                 0.1215978   -0.4548142
     ##   Average_Route_Distance DistancetoclosestAirport
-    ## 1             -0.4759152                0.4952267
-    ## 2             -0.9635706                0.2765206
-    ## 3              0.6283075               -0.4268811
+    ## 1             -0.9635706                0.2765206
+    ## 2              0.6283075               -0.4268811
+    ## 3             -0.4759152                0.4952267
     ##   DistancetoclosestSimilarAirport AirportRegionalrelevance Distancetocitykm
-    ## 1                      0.04572232                 0.230860       -0.4143005
-    ## 2                     -0.71705981                -1.236449        1.6976272
-    ## 3                      0.19264710                 0.227674       -0.2456769
+    ## 1                     -0.71705981                -1.236449        1.6976272
+    ## 2                      0.19264710                 0.227674       -0.2456769
+    ## 3                      0.04572232                 0.230860       -0.4143005
     ##   Inhanbitantscorrected numberofvisitorscorrected GDPcorrected   Cargoton
-    ## 1            -0.4802512                -0.5070902   -0.6566693 -0.4356553
-    ## 2            -0.9802943                -0.7587213   -0.3558915 -0.4142745
-    ## 3             0.6365147                 0.5857249    0.5626763  0.4289738
+    ## 1            -0.9802943                -0.7587213   -0.3558915 -0.4142745
+    ## 2             0.6365147                 0.5857249    0.5626763  0.4289738
+    ## 3            -0.4802512                -0.5070902   -0.6566693 -0.4356553
     ## 
     ## Clustering vector:
     ##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
-    ##  1  1  1  1  2  1  1  1  1  3  3  3  1  3  3  3  1  3  3  3  3  3  3  3  3  3 
+    ##  3  3  3  3  1  3  3  3  3  2  2  2  3  2  2  2  3  2  2  2  2  2  2  2  2  2 
     ## 27 28 29 30 31 32 
-    ##  2  2  3  1  2  2 
+    ##  1  1  2  3  1  1 
     ## 
     ## Within cluster sum of squares by cluster:
-    ## [1]  81.96037  41.82151 166.93358
+    ## [1]  41.82151 166.93358  81.96037
     ##  (between_SS / total_SS =  47.9 %)
     ## 
     ## Available components:
@@ -450,29 +421,10 @@ km_clust
     ## [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
     ## [6] "betweenss"    "size"         "iter"         "ifault"
 
-``` r
-str(km_clust)
-```
+-   Other ways of setting the number of clusters
 
-    ## List of 9
-    ##  $ cluster     : Named int [1:32] 1 1 1 1 2 1 1 1 1 3 ...
-    ##   ..- attr(*, "names")= chr [1:32] "1" "2" "3" "4" ...
-    ##  $ centers     : num [1:3, 1:18] -0.61 -0.952 0.717 -0.657 -1.088 ...
-    ##   ..- attr(*, "dimnames")=List of 2
-    ##   .. ..$ : chr [1:3] "1" "2" "3"
-    ##   .. ..$ : chr [1:18] "Passengers" "Movements" "Numberofairlines" "Mainairlineflightspercentage" ...
-    ##  $ totss       : num 558
-    ##  $ withinss    : num [1:3] 82 41.8 166.9
-    ##  $ tot.withinss: num 291
-    ##  $ betweenss   : num 267
-    ##  $ size        : int [1:3] 11 5 16
-    ##  $ iter        : int 2
-    ##  $ ifault      : int 0
-    ##  - attr(*, "class")= chr "kmeans"
-
-#### Choosing K
-
-#### This algorithm will detect how many clusters from 1 to 10 explains more variance
+This algorithm will detect how many clusters from 1 to 10 explains more
+variance
 
 ``` r
   k <- list()
@@ -482,10 +434,10 @@ str(km_clust)
 ```
 
 > **Note**: Try printing the k value and take a look at the ratio
-> “between\_SS / total\_SS”. Evaluate how it varies when you add
+> `between_SS` / `total_SS`. Evaluate how it varies when you add
 > clusters.
 
-#### Now, let us try to plot (between\_SS / total\_SS) into a scree plot
+Now, lets plot `between_SS` / `total_SS` into a scree plot
 
 ``` r
 betSS_totSS <- list()
@@ -495,97 +447,121 @@ betSS_totSS[[i]] <- k[[i]]$betweenss/k[[i]]$totss
 plot(1:10, betSS_totSS, type = "b", ylab = "Between SS / Total SS", xlab = "Number of clusters")
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-24-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-21-1.png)<!-- -->
 
-#### Let us try to take out the outliers and see the diference in the k-means clustering
+Let take out the outliers and see the difference in the k-means
+clustering:
 
-  - Examine the boxplots
-
-<!-- end list -->
+-   **Examine the boxplots**
 
 ``` r
-par(mar=c(15,2,1,1)) # Make labels fit in the boxplot
-boxplot(df_scaled, las = 2)
+par(cex.axis=0.6, mar=c(11,2,1,1))# Make labels fit in the boxplot
+boxplot(df_scaled, las = 2) #labels rotated to vertical
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-25-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/fig.height==6-1.png)<!-- -->
 
-  - **Detect the outliers**
-
-<!-- end list -->
+-   **Detect the outliers**
 
 ``` r
 outliers <- boxplot.stats(df_scaled)$out
-
 outliers
 ```
 
     ##  [1] 2.630622 2.772024 2.772024 3.611626 2.916185 2.523102 2.732030 2.515406
     ##  [9] 3.308457 3.285459
 
-  - **Remove rows with outliers**
-
-<!-- end list -->
+-   **Remove rows with outliers**
 
 ``` r
-df_no_outliers <- which(df_scaled %in% outliers,) 
+nrow(df_scaled) #32
 ```
+
+    ## [1] 32
+
+``` r
+out_ind <- which(df_scaled %in% c(outliers)) #the row.names that contain outliers
+df_no_outliers = df_scaled[-c(out_ind),] #remove those rows from the df_scaled
+nrow(df_no_outliers) #31
+```
+
+    ## [1] 31
 
 > **Note:** There are many methods to treat outliers. This is just one
 > of them. Note that it is not very appropriate, since it removes many
 > observations that are relevant for the analysis. Try using other
 > methods and evaluate the difference.
 
-#### Execute a k-means clustering with the dataset without the outliers and see the diference.
+Execute a k-means clustering with the dataset without the outliers and
+see the difference.
 
 ``` r
 km_no_outliers <- kmeans(df_no_outliers, 3)
-
 km_no_outliers
 ```
 
-    ## K-means clustering with 3 clusters of sizes 1, 6, 3
+    ## K-means clustering with 3 clusters of sizes 15, 5, 11
     ## 
     ## Cluster means:
-    ##        [,1]
-    ## 1 306.00000
-    ## 2 507.16667
-    ## 3  89.66667
+    ##   Passengers  Movements Numberofairlines Mainairlineflightspercentage
+    ## 1  0.5890127  0.7260264        0.8111878                   -0.5183690
+    ## 2 -0.9520429 -1.0882984       -1.3214660                    1.9931973
+    ## 3 -0.6095999 -0.6567742       -0.5981361                   -0.1917995
+    ##   Maximumpercentageoftrafficpercountry NumberofLCCflightsweekly
+    ## 1                           -0.6296646                0.7116404
+    ## 2                            0.6473374               -1.2772631
+    ## 3                            0.5577814               -0.5451081
+    ##   NumberofLowCostAirlines LowCostAirlinespercentage Destinations
+    ## 1              0.46550744                -0.6675400    0.7801097
+    ## 2             -1.39205703                 1.9302799   -1.4105623
+    ## 3              0.07256111                 0.1215978   -0.4548142
+    ##   Average_Route_Distance DistancetoclosestAirport
+    ## 1              0.4294196               -0.4088129
+    ## 2             -0.9635706                0.2765206
+    ## 3             -0.4759152                0.4952267
+    ##   DistancetoclosestSimilarAirport AirportRegionalrelevance Distancetocitykm
+    ## 1                      0.27904593                0.2668308       -0.2520645
+    ## 2                     -0.71705981               -1.2364486        1.6976272
+    ## 3                      0.04572232                0.2308600       -0.4143005
+    ##   Inhanbitantscorrected numberofvisitorscorrected GDPcorrected   Cargoton
+    ## 1             0.6091294                 0.4709562    0.4324943  0.3093463
+    ## 2            -0.9802943                -0.7587213   -0.3558915 -0.4142745
+    ## 3            -0.4802512                -0.5070902   -0.6566693 -0.4356553
     ## 
     ## Clustering vector:
-    ##  [1] 3 3 3 1 2 2 2 2 2 2
+    ##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 19 20 21 22 23 24 25 26 27 
+    ##  3  3  3  3  2  3  3  3  3  1  1  1  3  1  1  1  3  1  1  1  1  1  1  1  1  2 
+    ## 28 29 30 31 32 
+    ##  2  1  3  2  2 
     ## 
     ## Within cluster sum of squares by cluster:
-    ## [1]     0.000 15042.833  7708.667
-    ##  (between_SS / total_SS =  93.9 %)
+    ## [1] 135.98599  41.82151  81.96037
+    ##  (between_SS / total_SS =  48.9 %)
     ## 
     ## Available components:
     ## 
     ## [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
     ## [6] "betweenss"    "size"         "iter"         "ifault"
 
-#### Finally, try plotting each variable with each other and analyze if the clusters make sense.
+#### Ploting the clusters
 
+Finally, plotting the clusters results to check if they make sense.  
 Let us go back to first example and take a look.
 
-  - **K-means with outliers**
-
-<!-- end list -->
+-   **K-means with outliers**
 
 ``` r
 plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-29-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-25-1.png)<!-- -->
 
-  - **K-means without outliers**
-
-<!-- end list -->
+-   **K-means without outliers**
 
 ``` r
 plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster)
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 
-![](README_files/ClusterAnalysis/unnamed-chunk-30-1.png)<!-- -->
+![](README_files/4-ClusterAnalysis/unnamed-chunk-26-1.png)<!-- -->

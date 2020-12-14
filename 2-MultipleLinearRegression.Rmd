@@ -8,14 +8,11 @@ knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/1-MLR/")
 ```
 
+#### Example exercise: Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
 
-## Chicago example exercise
+**Your task**: Estimate a linear regression model that predicts trips per occupied dwelling unit.  
 
-Trip production of 57 Traffic Assignment Zones of Chicago in 1960's
-
-> Your task: Estimate a linear regression model that predicts trips per occupied dwelling unit.  
-
-### Variables:
+#### Variables:
 
 * `TODU`: Motorized Trips (private car or Public Transportation) per occupied dwelling unit;
 * `ACO`: Average car ownership (cars per dwelling);
@@ -39,13 +36,12 @@ Trip production of 57 Traffic Assignment Zones of Chicago in 1960's
    It measures the proportion of an area to which minority groups (e.g: non-whites, foreign-born, Eastern Europeans) live in isolation.
      (_**Note:** High values for this index imply that those communities are less prone to leaving their living areas and as such to having lower levels of mobility_)
 
+## Let's begin!
 
-#### Import Libraries
-Let's begin!
-
+##### Import Libraries
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 library(readxl) #Library used to import excel files
-library(tidyverse) # Library used in data science to perform exploratory data analysis
+library(tidyverse) # Pack of most used libraries
 library(skimr) # Library used for providing a summary of the data
 library(DataExplorer) # Library used in data science to perform exploratory data analysis
 library(corrplot) # Library used for correlation plots
@@ -53,29 +49,30 @@ library(car) # Library used for testing autocorrelation (Durbin Watson)
 library(olsrr) # Library used for testing multicollinearity (VIF, TOL, etc.)
 ```
 
-#### Import dataset
-
+##### Import dataset
 ```{r}
-dataset <- read_excel("Data/TDM_Class3_MLR_Chicago_Example.xls") 
+dataset <- read_excel("Data/TDM_Class3_MLR_Chicago_Example.xls")
+class(dataset)
 ```
 
-#### Transform the dataset into a dataframe
-
+##### Transform the dataset into a dataframe
 ```{r}
 df <- data.frame(dataset)
 ```
 
-#### Show summary statistics
- 
+##### Show summary statistics
 ```{r}
 skim(df)
 ```
 
-### MULTIPLE LINEAR REGRESSION
+## Multiple Linear Regression
+Equation with `TODU` as the dependent variable:  
 
-> y(`TODU`) = bo + b1*`ACO` + b2*`AHS` + b3*`SI` + b4*`SRI` +b5*`UI` + Error
+$$y_{TODU} = \beta_0 + \beta_1{ACO} + \beta_2{AHS} + \beta_3{SI} + \beta_4{SRI} +\beta_5{UI} + \varepsilon$$
 
-#### Before running the model, you need to check if the assumptions are met. For instance, let's take a look if the independent variables have linear relation with the dependent variable.
+
+#### Checking assumptions
+Before running the model, you need to check if the assumptions are met. For instance, let's take a look if the independent variables have linear relation with the dependent variable.
 
 ```{r}
 plot(x = df$TODU, y = df$ACO, xlab = "TODU", ylab = "ACO")  

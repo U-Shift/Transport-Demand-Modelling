@@ -368,7 +368,7 @@ result.cox$loglik[2]
 <!-- end list -->
 
 ``` r
-PseudoR2 <- (1- (result.cox $loglik[2]/ result.cox $loglik[1]))
+PseudoR2 <- (1- (result.cox$loglik[2]/result.cox$loglik[1]))
 
 PseudoR2
 ```
@@ -460,3 +460,7 @@ result.loglog
     ## Loglik(model)= -442.2   Loglik(intercept only)= -456.9
     ##  Chisq= 29.45 on 16 degrees of freedom, p= 0.0211 
     ## n= 96
+
+> **Note:** The argument dist has several options to describe the
+> parametric model used (“weibull”, “exponential”, “gaussian”,
+> “logistic”, “lognormal”, or “loglogistic”)

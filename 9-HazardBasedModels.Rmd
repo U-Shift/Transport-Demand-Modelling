@@ -175,7 +175,7 @@ result.cox$loglik[2]
 
 * Pseudo R-square
 ```{r}
-PseudoR2 <- (1- (result.cox $loglik[2]/ result.cox $loglik[1]))
+PseudoR2 <- (1- (result.cox$loglik[2]/result.cox$loglik[1]))
 
 PseudoR2
 ```
@@ -196,4 +196,4 @@ result.loglog <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + pop
 result.loglog
 ```
 
-
+>**Note:** The argument _dist_ has several options to describe the parametric model used ("weibull", "exponential", "gaussian", "logistic", "lognormal", or "loglogistic")

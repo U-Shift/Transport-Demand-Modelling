@@ -35,6 +35,9 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
+# Folders
+teste
+
 
 6-DiscreteChoiceModels/*/.ipynb_checkpoints
 6-DiscreteChoiceModels/*/*.html

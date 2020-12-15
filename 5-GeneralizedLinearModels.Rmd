@@ -3,161 +3,115 @@ title: "Generalized Linear Models"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, purl=F}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/GLM/")
 ```
 
-## Example: Accident data from California (1993 to 1998) and Michigan (1993 to 1997) 
+#### Example exercise: Accident data from California (1993 to 1998) and Michigan (1993 to 1997) 
 
-> Your Task: Analyze the number o accidents.
+**Your task**: Analyze the number o accidents.
 
-### Variables:
+#### Variables:
 
-`ACCIDENT`: Count on injury accidents over observation period;  
+* `ACCIDENT`: Count on injury accidents over observation period;  
+* `STATE`: indicator variable for state [0: California | 1: Michigan]  
+* `AADT1`: Average annual daily traffic on major road;  
+* `AADT2`: Average annual daily traffic on minor road;  
+* `Median`: Median width on major road in feet;  
+* `DRIVE`: Number of driveways within 250 ft of intersection center.
 
-`STATE`: indicator variable for state:  
-
-    0: California  
-    
-    1: Michigan  
-    
-`AADT1`: Average annual daily traffic on major road;  
-
-`AADT2`: Average annual daily traffic on minor road;  
-
-`Median`: Median width on major road in feet;  
-
-`DRIVE`: Number of driveways within 250 ft of intersection center.
-
-#### Import Libraries
-
+## Startup
+##### Import Libraries
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
-library(readxl) # Library used for reading excel files
-library(skimr) # Library used for summary statistics
-library(tidyverse) # Library used in data science to perform exploratory data analysis
-library(MASS) # Library used for negative binomial regression
-library(vcd) # Library used for goodness of fit parameters
-library(car) # Library used for goodness of fit
-library(rcompanion) # Library used for goodness of fit
-library(popbio) # Library used to calculate elasticities
+library(readxl) # reading excel files
+library(skimr) # summary statistics
+library(tidyverse) # Pack of useful tools
+library(DataExplorer) # Exploratory data analysis
+library(MASS) # Negative binomial regression
+library(vcd) # Godness of fit parameters
+library(car) # Goodness of fit
+library(rcompanion) # Goodness of fit
+library(popbio) # calculate elasticities
 ```
 
-#### Set working directory
-
-```{r}
-setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling")
-```
-
-#### Import dataset
-
-```{r}
+##### Import dataset
+```{r eval=F}
 dataset <- read_excel("Data/TDM_GZLM_CALMICH_Example.xlsX")
-```
-
-#### Let us take a look at the summary and structure of the dataset
-
-```{r}
-summary(dataset)
-str(dataset)
-```
-
-> **Note**: The dataset looks weird. Use the view function to take a better look at the dataset.
-
-```{r echo=TRUE}
 view(dataset)
 ```
+The dataset looks weird. It is better to import it again, using the RStudio menus, as follows:
 
-#### Treat the dataset
+   1. Go to "Import Dataset" on the "Environment" window at the upper right display;  
+   2. Click on "From excel";  
+   3. Check if "First row as names" is checked;  
+   4. Put the number of rows you want to skip and click on "import";  
+   5. This will generate a code, which you can copy and use it the next time you open the file. 
 
-#### The best way to treat the dataset is to import it again. Use the following steps:  
-
-   **1.** Go to "Import Dataset" on the "Environment" window at the upper right display;  
-   
-   **2.** Click on "From excel";  
-   
-   **3.** Check if "First row as names" is checked;  
-   
-   **4.** Put the number of rows you want to skip and click on "import";  
-   
-   **5.** This will generate a code, which you can copy and use it the next time you open the file.  
-   
-#### Therefore, here is the following code:
-
+Therefore, here is the given code:
 ```{r}
-TDM_GZLM_CALMICH_Example <- read_excel("Data/TDM_GZLM_CALMICH_Example.xlsx", skip = 5)
+dataset <- read_excel("Data/TDM_GZLM_CALMICH_Example.xlsx", skip = 5) #skipping the first 5 rows
+view(dataset)
 ```
  
-#### Transform "TDM_GZLM_CALMICH_Example" into a dataframe to better manage the dataset
 
+## Get to know your data
+##### Summary statistics
+Look at the descriptive statistics of the dataframe
 ```{r}
-df <- data.frame(TDM_GZLM_CALMICH_Example)
-view(df)
-```
- 
-#### Now we can analyze the descriptive statistics of the dataframe
- 
-```{r}
+df <- dataset
 str(df)
+summary(df)
+```
+##### Preparing your data
+Have a look at the variable `STATE`. This is a **binary variable**, 0: California and 1: Michigan. It does not mean that Michigan is somehow higher or better than California, just because it is coded as 1. We then should prepare the data, letting R know that this should not be treated as a numeric variable, but as a categorical nominal one.  
+We use the `factor` function to do so, and we can also say which values mean what, so it gets easier to read plots or model results.  
+```{r}
+df$STATE <- factor(df$STATE, labels = c("California", "Michigan"))
+table(df$STATE)
+```
+Now if we look again to the summary statistics, the variable `STATE` will show up as a different one from the others.
+```{r}
 skim(df)
 ```
- 
-#### Take a look at the histograms of the variables
 
+##### Histograms
+Take a look at the histograms of the variables
 ```{r}
-hist(df$ACCIDENT, xlab = "ACCIDENT", main = "Histogram of ACCIDENT") 
-hist(df$STATE, xlab = "STATE", main = "Histogram of STATE")
-hist(df$AADT1, xlab = "AADT1", main = "Histogram of AADT1")
-hist(df$AADT2, xlab = "AADT2", main = "Histogram of AADT2")
-hist(df$MEDIAN, xlab = "MEDIAN", main = "Histogram of MEDIAN")
-hist(df$DRIVE, xlab = "DRIVE", main = "Histogram of DRIVE")
+plot_histogram(df, ncol = 3) #with 3 columns
 ```
 
-#### Plot the density function of the variable ACCIDENTS
+## Generalized Linear Models
+For this example, we will have the variable `ACCIDENTS` as the dependent variable.
 
+Let's start by plotting the **density function** of the dependent variable.
 ```{r}
 plot(density(df$ACCIDENT), main="Density estimate of ACCIDENTS")
 ```
 
-> **Note**: As the dependent variable is "count data", as has discrete values, then a poisson distribution should be more adequate. 
+As the dependent variable is "count data", and has discrete values (it is not continuous), then a Poisson distribution should be more adequate. 
 
-#### Poisson assumption: 
-Take a look at the mean and the variance of the Dependent variable. Check if they are equal to each other. 
-
+##### Poisson assumption
+Take a look at the mean and the variance of the dependent variable. Check if they are equal to each other. 
 ```{r}
 mean(df$ACCIDENT)
 var(df$ACCIDENT)
+var(df$ACCIDENT)/mean(df$ACCIDENT) #coefficient of variance
 ```
+> **Note**: If the coefficient of variance > 1, you have overdispersion.
 
-Or you could calculate the coefficient of variance:
 
+##### Goodness of fit
+Estimate goodness of fit parameter for the PDF of ACCIDENT.
 ```{r}
-var(df$ACCIDENT)/mean(df$ACCIDENT)
-```
-
-> **Note**: If the coefficient of variance > 1, then you have overdispersion.
-
-#### Try estimating goodness of fit parameter for the PDF of ACCIDENT. Use the Maximum Likelihood method.
-
-```{r}
-gf<-goodfit(df$ACCIDENT,type= "poisson", method= "ML")
+gf<-goodfit(df$ACCIDENT,  type= "poisson", method= "ML") #Maximum Likelihood method
 summary(gf)
 ```
 
-> **Note**: The null hypothesis is that it is a Poisson distribution. Therefore, for it to be a poisson distribution, the pvalue > 0.05.
+> **Note**: The null hypothesis is that it is a Poisson distribution. Therefore, for it to be a Poisson distribution, the pvalue > 0.05.
 
-#### Now let us run the many possible models  
-
-**1. Poisson model:**
- 
-```{r}
-model1 = glm(ACCIDENT ~ as.factor(STATE) + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)), family = poisson(link = "log"), data = df, method = "glm.fit")
-```
- 
-> **Note**: The method "glm.fit" uses iteratively reweighted least squares to fit the model. Try looking for other methods and see the difference. 
-  
+### Different models  
 There are many families and links that can be used, depending on the characteristics of your data.
-
 ```{r echo=FALSE}
 family <-c ("Gaussian", "Binomial", "Poisson", "Gamma", "inverse.gaussian")
 link <-c("identity", "logit, probit, cloglog", "log, identity, sqrt", "inverse, identity, log", "1/mu^2")
@@ -165,105 +119,119 @@ table <- data.frame(family,link)
 knitr::kable(table, align = "l")
 ```
 
+Now let us try two possible models to fit this data:
+
+1. Poisson Model
+2. Overdispersed Poisson Model
+3. Negative Binomial distribution
+
+#### 1. Poisson model
+We start by declaring what type of modelling we are performing. `gml()` stands for Generalized Linear Models.  
+The dependent variable should be declared before an `~` and then all the independent variables we want to try. If you want to try with all the variables in the dataset without any changes, you can just write `~ .` and the dot assumes that are _all the other_.
+```{r}
+model1 = glm(
+  ACCIDENT ~ STATE + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)),
+  family = poisson(link = "log"),
+  data = df,
+  method = "glm.fit"
+)
+```
+ 
+> **Note**: The method "glm.fit" uses iteratively reweighted least squares to fit the model. Try looking for other methods and see the difference. 
+
 ```{r}
 summary(model1)
 ```
 
-If we obtain:  
+What can we say about the **residuals** and **degrees of freedom**? 
 
-residuals > degrees of freedom (overdispersion);  
-
-residuals < degrees of freedom (underdispersion);  
-
-residuals = degrees of freedom (mean = variance).  
+* residuals > degrees of freedom -> **overdispersion**
+* residuals < degrees of freedom -> **underdispersion** 
+* residuals = degrees of freedom -> **mean = variance**  
 
 > **Note:** In overdispersion, the estimates are reliable but the standard errors tend to be smaller. 
  
-#### Calculate the pseudo-Rsquare and perform an Omnibus test
-
+##### Pseudo-Rsquare and Log-likelihood ratio test  
+Calculate the pseudo-Rsquare and perform an Omnibus test
 ```{r}
 nagelkerke(model1)
 ```
+The likelihood ratio test (Omnibus test) compares the fitted model ("Model") with the only-intercept model ("Null"). This test verifies if the explained variance is higher than the the unexplained variance.
 
-> **Note**: The likelihood ratio test (Omnibus test) compares the fitted model ("Model") with the only-intercept model ("Null"). This test verifies if the explained variance is higher than the the unexplained variance.
+> **Note**: $h_0$ There is no overdispersion in the model. Therefore, if pvalue < 0.05, there is overdispersion, and we should choose to use a Negative Binomial model.
 
-> **Note**: Ho: There is no overdispersion in the model. Therefore, if pvalue < 0.05, there is overdispersion, and we should choose to use a Negative Binomial model.
-
-#### Calculate the Type III test.
-
+##### Wald test  
+Calculate the Type III test.
 ```{r}
 Anova(model1, type = "III", test = "Wald")
 ```
 
-> **Note**: Type III tests examine the significance of each partial effect. Thus, it considers the significance of an effect with all the other effects in the model. The Chisq tests the significance of the effect added to the model by having all of the other effects.
+Type III tests examine the significance of each partial effect. Thus, it considers the significance of an effect with all the other effects in the model. The $\chi^2$ (Chisq) tests the significance of the effect added to the model by having all of the other effects.
 
-#### Let us correct the standard errors with an overdispersed poisson 
- 
+### 2. Overdispersed Poisson Model  
+Let us correct the standard errors with an overdispersed poisson model.
 ```{r}
-
-model2 = glm(ACCIDENT ~ as.factor(STATE) + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)), family = quasipoisson(link = "log"), data = df, method = "glm.fit")
-
+model2 = glm(
+  ACCIDENT ~ STATE + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)),
+  family = quasipoisson(link = "log"),
+  data = df,
+  method = "glm.fit"
+)
 summary(model2)
 ```
 
-> **Note**: The estimates are the same, but the standard errors have increased because they are adjusted by the scale parameter
+> **Note**: The estimates are the same, but the standard errors have increased because they are adjusted by the scale parameter.
 
-#### Let us try the negative binomial distribution
- 
+### 3. Negative Binomial distribution  
+We use `glm.nb()` for this one.
 ```{r}
-model3 = glm.nb(ACCIDENT ~ as.factor(STATE) + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)), data = df)
-
+model3 = glm.nb(ACCIDENT ~ STATE + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)),
+                data = df)
 summary(model3)
 ```
 
-#### Calculate the pseudo-Rsquare and perform an Omnibus test   
-
+##### Pseudo-Rsquare and Log-likelihood ratio test  
+Calculate the pseudo-Rsquare and perform an Omnibus test 
 ```{r}
 Anova(model3, type = "III", test = "Wald") 
 ```
 
-#### Calculate the Type III test.  
-
+##### Wald test  
+Calculate the Type III test.
 ```{r}
 nagelkerke(model3)
 ```
 
-#### Compare model 1 and model 3:
+#### Comparing model 1 and model 3
  
-#### Calculate the Akaike’s Information Criteria (AIC) and the Bayesian Information Criteria (BIC) 
-
-
+##### AIC and BIC  
+Akaike’s Information Criteria (AIC) and Bayesian Information Criteria (BIC) evaluates the quality of a finite set of models.  
+AIC and BIC consider the maximum likelihood and the number of parameters in assessing the quality of the models. Nonetheless, the difference between both methods is that the BIC takes into account the number of observations of dataset.  
+Calculate the AIC and the BIC.
 ```{r}
 aic <- data.frame(model1 = AIC(model1), model3 = AIC(model3))
-knitr::kable(aic, align = "l")
-```
-
-```{r}
 bic <- data.frame(model1 = BIC(model1), model3 = BIC(model3))
-knitr::kable(bic, align = "l")
+```
+```{r echo=F, purl=F}
+knitr::kable(list(aic, bic),caption = 'AIC and BIC',booktabs = F, valign = 't')
 ```
 
-> **Note**: AIC and BIC evaluates the quality of a finite set of models.
-  
-> **Note**: AIC and BIC consider the maximum likelihood and the number of parameters in assessing the quality of the models.Nonetheless, the difference between both methods is that the BIC takes into account the number of observations of dataset. 
-  
 > **Note**: The smaller the values of AIC and BIC, the better the model 
 
-#### Calculate the elasticities of the negative binomial model (model 3)
+##### Elasticities
+Calculate the elasticities of the negative binomial model.
 
 ```{r}
 el1 <- as.numeric(model3$coefficients["AADT1"] * mean(df$AADT1)/mean(df$ACCIDENT))
 el2 <- as.numeric(model3$coefficients["AADT2"] * mean(df$AADT2)/mean(df$ACCIDENT))
 el3 <- as.numeric(model3$coefficients["MEDIAN"] * mean(df$MEDIAN)/mean(df$ACCIDENT))
 el4 <- as.numeric(model3$coefficients["DRIVE"] * mean(df$DRIVE)/mean(df$ACCIDENT))
-el5 <- as.numeric(model3$coefficients["STATE"] * mean(df$STATE)/mean(df$ACCIDENT))
 
-variable <-c ("AADT1", "AADT2", "MEDIAN", "DRIVE", "STATE")
-elasticity <-c (el1, el2, el3, el4, el5)
-elas_table <- data.frame(variable,elasticity)
-knitr::kable(elas_table, align = "l")
+elasticity <- data.frame(variable = c("AADT1", "AADT2", "MEDIAN", "DRIVE"),
+                         elasticity = c(el1, el2, el3, el4))
 ```
-  
-  
-> **Note:** AADT1 does not have a value because it is the offset of the model. Additionally, the variable STATE also does not have a value because it is a categorical variable. In this case, it would be necessary to calculate the pseudo-elasticity. 
+```{r echo=F, purl=F}
+knitr::kable(elasticity, align = "l")
+```
 
+> **Note:** `AADT1` does not have a value because it is the offset of the model.

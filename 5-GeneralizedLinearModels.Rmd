@@ -218,8 +218,8 @@ knitr::kable(list(aic, bic),caption = 'AIC and BIC',booktabs = F, valign = 't')
 
 > **Note**: The smaller the values of AIC and BIC, the better the model 
 
-##### Elasticities
-Calculate the elasticities of the negative binomial model.
+#### Elasticities
+Calculate the elasticities of the negative binomial model. You can also try to calculate for the other models. 
 
 ```{r}
 el1 <- as.numeric(model3$coefficients["AADT1"] * mean(df$AADT1)/mean(df$ACCIDENT))
@@ -235,3 +235,4 @@ knitr::kable(elasticity, align = "l")
 ```
 
 > **Note:** `AADT1` does not have a value because it is the offset of the model.
+> **Note:** `STATE` is a categorical variable. We would need to calculate the pseudo-elasticities in this case. Follow the same logic of the code and try to calculate for yourselves.

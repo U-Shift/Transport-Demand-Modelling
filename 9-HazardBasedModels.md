@@ -341,4 +341,122 @@ ggsurvplot(
 
 ![](README_files/8-HazardBasedModels/unnamed-chunk-14-1.png)<!-- -->
 
-##### Calculate the Log-likelihood
+##### Calculate the McFadden Pseudo R-square
+
+  - Initial log-likelihood
+
+<!-- end list -->
+
+``` r
+result.cox$loglik[1]
+```
+
+    ## [1] -345.3794
+
+  - Final log-likelihood
+
+<!-- end list -->
+
+``` r
+result.cox$loglik[2]
+```
+
+    ## [1] -330.0545
+
+  - Pseudo R-square
+
+<!-- end list -->
+
+``` r
+PseudoR2 <- (1- (result.cox $loglik[2]/ result.cox $loglik[1]))
+
+PseudoR2
+```
+
+    ## [1] 0.0443713
+
+##### Parametric Model Estimates of the Duration of Commuter Work-ToHome Delay to Avoid Congestion
+
+``` r
+result.expon <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + population, data= data.delay2, dist="exponential")
+
+result.expon
+```
+
+    ## Call:
+    ## survreg(formula = Surv(minutes) ~ gender + rate_of_travel + distance + 
+    ##     population, data = data.delay2, dist = "exponential")
+    ## 
+    ## Coefficients:
+    ##       (Intercept)            gender rate_of_travel1.3 rate_of_travel1.4 
+    ##      2.879512e+00     -1.108216e-01      2.286504e-01     -6.243518e-01 
+    ## rate_of_travel1.5 rate_of_travel1.6 rate_of_travel1.7 rate_of_travel1.8 
+    ##      2.089118e-01     -7.778191e-02     -5.431004e-01      3.753339e-01 
+    ## rate_of_travel1.9 rate_of_travel2.0 rate_of_travel2.1 rate_of_travel2.2 
+    ##      4.918786e-01      4.186932e-01      6.440768e-01      5.006781e-01 
+    ## rate_of_travel2.3 rate_of_travel2.4 rate_of_travel2.5          distance 
+    ##      9.390733e-01      7.377887e-01      8.025575e-01      4.070892e-02 
+    ##        population 
+    ##      1.261692e-05 
+    ## 
+    ## Scale fixed at 1 
+    ## 
+    ## Loglik(model)= -467.8   Loglik(intercept only)= -474
+    ##  Chisq= 12.5 on 16 degrees of freedom, p= 0.709 
+    ## n= 96
+
+``` r
+result.weib <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + population, data= data.delay2, dist="weibull")
+
+result.weib
+```
+
+    ## Call:
+    ## survreg(formula = Surv(minutes) ~ gender + rate_of_travel + distance + 
+    ##     population, data = data.delay2, dist = "weibull")
+    ## 
+    ## Coefficients:
+    ##       (Intercept)            gender rate_of_travel1.3 rate_of_travel1.4 
+    ##      2.895928e+00     -9.903521e-02      2.181794e-01     -6.093365e-01 
+    ## rate_of_travel1.5 rate_of_travel1.6 rate_of_travel1.7 rate_of_travel1.8 
+    ##      2.762764e-01     -3.648657e-03     -4.933829e-01      4.904227e-01 
+    ## rate_of_travel1.9 rate_of_travel2.0 rate_of_travel2.1 rate_of_travel2.2 
+    ##      5.528334e-01      5.234497e-01      8.567097e-01      6.509833e-01 
+    ## rate_of_travel2.3 rate_of_travel2.4 rate_of_travel2.5          distance 
+    ##      1.210978e+00      8.503809e-01      8.828783e-01      3.939630e-02 
+    ##        population 
+    ##      1.222171e-05 
+    ## 
+    ## Scale= 0.5153148 
+    ## 
+    ## Loglik(model)= -442.3   Loglik(intercept only)= -461.8
+    ##  Chisq= 38.9 on 16 degrees of freedom, p= 0.00112 
+    ## n= 96
+
+``` r
+result.loglog <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + population, data= data.delay2, dist="loglogistic") 
+
+result.loglog
+```
+
+    ## Call:
+    ## survreg(formula = Surv(minutes) ~ gender + rate_of_travel + distance + 
+    ##     population, data = data.delay2, dist = "loglogistic")
+    ## 
+    ## Coefficients:
+    ##       (Intercept)            gender rate_of_travel1.3 rate_of_travel1.4 
+    ##      2.892950e+00     -1.442251e-01      2.314555e-01     -6.226149e-01 
+    ## rate_of_travel1.5 rate_of_travel1.6 rate_of_travel1.7 rate_of_travel1.8 
+    ##      1.475325e-01     -1.335428e-01     -5.913971e-01      2.521084e-01 
+    ## rate_of_travel1.9 rate_of_travel2.0 rate_of_travel2.1 rate_of_travel2.2 
+    ##      4.608343e-01      2.887788e-01      3.701638e-01      3.211386e-01 
+    ## rate_of_travel2.3 rate_of_travel2.4 rate_of_travel2.5          distance 
+    ##      5.197213e-01      6.084442e-01      7.333592e-01      4.171315e-02 
+    ##        population 
+    ##      1.217428e-05 
+    ## 
+    ## Scale= 0.3326078 
+    ## 
+    ## Loglik(model)= -442.2   Loglik(intercept only)= -456.9
+    ##  Chisq= 29.45 on 16 degrees of freedom, p= 0.0211 
+    ## n= 96

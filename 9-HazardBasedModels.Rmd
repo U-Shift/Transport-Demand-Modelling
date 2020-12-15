@@ -161,8 +161,39 @@ ggsurvplot(
 )
 ```
 
-##### Calculate the Log-likelihood
+##### Calculate the McFadden Pseudo R-square
 
+* Initial log-likelihood
+```{r}
+result.cox$loglik[1]
+```
 
+* Final log-likelihood
+```{r}
+result.cox$loglik[2]
+```
+
+* Pseudo R-square
+```{r}
+PseudoR2 <- (1- (result.cox $loglik[2]/ result.cox $loglik[1]))
+
+PseudoR2
+```
+
+##### Parametric Model Estimates of the Duration of Commuter Work-ToHome Delay to Avoid Congestion
+
+```{r}
+result.expon <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + population, data= data.delay2, dist="exponential")
+
+result.expon
+
+result.weib <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + population, data= data.delay2, dist="weibull")
+
+result.weib
+
+result.loglog <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + population, data= data.delay2, dist="loglogistic") 
+
+result.loglog
+```
 
 

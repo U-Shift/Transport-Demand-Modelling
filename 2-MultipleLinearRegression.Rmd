@@ -122,9 +122,9 @@ summary(model)
 **Assessing the model**:
 
 1. First check the **pvalue** and the **F statistics** of the model to see if there is any statistical relation between the dependent variable and the independent variables. If pvalue < 0.05 and the F statistics > Fcritical = 2,39, then the model is statistically acceptable.  
-2. The **R-square** and **Adjusted R-square** evaluate the amount of variance that is explained by the model. The difference between one and another is that the R-square does not consider the number of variables. If you increase the number of variables in the model, the R-square will tend to increase which can lead to overfitting. On the other hand, the Adjusted R-square adjust to the number of independent variables.  
-3. Take a look a the **t-value** and the Pr(>|t|). If the t-value > 1,96 or Pr(>|t|) < 0,05, then the IV is statistically significant to the model.   
-4. To analyze the **estimates** of the variables, you should first check the **signal** and evaluate if the independent variable has a direct or inverse relationship with the dependent variable. It is only possible to evaluate the **magnitude** of the estimate if all variables are continuous and standarzized or by calculating the elasticities. The elasticities are explained and demonstrated in chapter 4. 
+2. The **R-square** and **Adjusted R-square** evaluate the amount of variance that is explained by the model. The difference between one and other is that the R-square does not consider the number of variables. If you increase the number of variables in the model, the R-square will tend to increase which can lead to overfitting. On the other hand, the Adjusted R-square adjusts to the number of independent variables.  
+3. Take a look at the **t-value** and the Pr(>|t|). If the t-value > 1,96 or Pr(>|t|) < 0,05, then the IV is statistically significant to the model.   
+4. To analyze the **estimates** of the variables, you should first check the **signal** and evaluate if the independent variable has a direct or inverse relationship with the dependent variable. It is only possible to evaluate the **magnitude** of the estimate if all variables are continuous and standarzized or by calculating the elasticities. The elasticities are explained and demonstrated in chapter 5. 
 
 
 ##### Residuals

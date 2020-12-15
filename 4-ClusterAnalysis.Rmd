@@ -65,7 +65,7 @@ plot(Numberofairlines ~ Destinations, df) #plot
 text(Numberofairlines ~ Destinations, df, label = Airport, pos = 4, cex = 0.6) #labels over the previous plot
 ```
 
-By looking at the plot, you may already have a clue on the number of clusters with this two variabls. However, this is not clear and it does not consider the other variables in the analysis. 
+By looking at the plot, you may already have a clue on the number of clusters with this two variables. However, this is not clear and it does not consider the other variables in the analysis. 
 
 ### Prepare data before performing a cluster analysis
 ##### Deal with missing data

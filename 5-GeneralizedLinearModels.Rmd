@@ -125,7 +125,7 @@ Now let us try two possible models to fit this data:
 2. Overdispersed Poisson Model
 3. Negative Binomial distribution
 
-#### 1. Poisson model
+### 1. Poisson model
 We start by declaring what type of modelling we are performing. `gml()` stands for Generalized Linear Models.  
 The dependent variable should be declared before an `~` and then all the independent variables we want to try. If you want to try with all the variables in the dataset without any changes, you can just write `~ .` and the dot assumes that are _all the other_.
 ```{r}

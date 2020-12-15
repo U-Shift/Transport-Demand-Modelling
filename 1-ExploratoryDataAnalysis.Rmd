@@ -55,7 +55,6 @@ if (!require(devtools)) install.packages("devtools")
 devtools::install_github("boxuancui/DataExplorer")
 ```
 
-##### Import Libraries
 Now, import these libraries:
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 library(readxl) #Library used to import excel files
@@ -175,7 +174,7 @@ df_no_outliers <- df
 boxplot(df_no_outliers)
 ```
 
-* Take the out the outliers from the variable SI
+* Take out the outliers from the variable SI
 
 ```{r}
 outlier <- function(x){

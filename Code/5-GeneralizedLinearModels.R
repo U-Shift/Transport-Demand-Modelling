@@ -1,0 +1,198 @@
+
+#' #### Example exercise: Accident data from California (1993 to 1998) and Michigan (1993 to 1997) 
+#' 
+#' **Your task**: Analyze the number o accidents.
+#' 
+#' #### Variables:
+#' 
+#' * `ACCIDENT`: Count on injury accidents over observation period;  
+#' * `STATE`: indicator variable for state [0: California | 1: Michigan]  
+#' * `AADT1`: Average annual daily traffic on major road;  
+#' * `AADT2`: Average annual daily traffic on minor road;  
+#' * `Median`: Median width on major road in feet;  
+#' * `DRIVE`: Number of driveways within 250 ft of intersection center.
+#' 
+#' ## Startup
+#' ##### Import Libraries
+library(readxl) # reading excel files
+library(skimr) # summary statistics
+library(tidyverse) # Pack of useful tools
+library(DataExplorer) # Exploratory data analysis
+library(MASS) # Negative binomial regression
+library(vcd) # Godness of fit parameters
+library(car) # Goodness of fit
+library(rcompanion) # Goodness of fit
+library(popbio) # calculate elasticities
+
+#' 
+#' ##### Import dataset
+dataset <- read_excel("Data/TDM_GZLM_CALMICH_Example.xlsX")
+view(dataset)
+
+#' The dataset looks weird. It is better to import it again, using the RStudio menus, as follows:
+#' 
+#'    1. Go to "Import Dataset" on the "Environment" window at the upper right display;  
+#'    2. Click on "From excel";  
+#'    3. Check if "First row as names" is checked;  
+#'    4. Put the number of rows you want to skip and click on "import";  
+#'    5. This will generate a code, which you can copy and use it the next time you open the file. 
+#' 
+#' Therefore, here is the given code:
+dataset <- read_excel("Data/TDM_GZLM_CALMICH_Example.xlsx", skip = 5) #skipping the first 5 rows
+view(dataset)
+
+#'  
+#' 
+#' ## Get to know your data
+#' ##### Summary statistics
+#' Look at the descriptive statistics of the dataframe
+df <- dataset
+str(df)
+summary(df)
+
+#' ##### Preparing your data
+#' Have a look at the variable `STATE`. This is a **binary variable**, 0: California and 1: Michigan. It does not mean that Michigan is somehow higher or better than California, just because it is coded as 1. We then should prepare the data, letting R know that this should not be treated as a numeric variable, but as a categorical nominal one.  
+#' We use the `factor` function to do so, and we can also say which values mean what, so it gets easier to read plots or model results.  
+
+df$STATE <- factor(df$STATE, labels = c("California", "Michigan"))
+table(df$STATE)
+
+#' Now if we look again to the summary statistics, the variable `STATE` will show up as a different one from the others.
+skim(df)
+
+#' 
+#' ##### Histograms
+#' Take a look at the histograms of the variables
+plot_histogram(df, ncol = 3) #with 3 columns
+
+#' 
+#' ## Generalized Linear Models
+#' For this example, we will have the variable `ACCIDENTS` as the dependent variable.
+#' 
+#' Let's start by plotting the **density function** of the dependent variable.
+plot(density(df$ACCIDENT), main="Density estimate of ACCIDENTS")
+
+#' 
+#' As the dependent variable is "count data", and has discrete values (it is not continuous), then a Poisson distribution should be more adequate. 
+#' 
+#' ##### Poisson assumption
+#' Take a look at the mean and the variance of the dependent variable. Check if they are equal to each other. 
+mean(df$ACCIDENT)
+var(df$ACCIDENT)
+var(df$ACCIDENT)/mean(df$ACCIDENT) #coefficient of variance
+
+#' > **Note**: If the coefficient of variance > 1, you have overdispersion.
+#' 
+#' 
+#' ##### Goodness of fit
+#' Estimate goodness of fit parameter for the PDF of ACCIDENT.
+gf<-goodfit(df$ACCIDENT,  type= "poisson", method= "ML") #Maximum Likelihood method
+summary(gf)
+
+#' 
+#' > **Note**: The null hypothesis is that it is a Poisson distribution. Therefore, for it to be a Poisson distribution, the pvalue > 0.05.
+#' 
+#' ### Different models  
+#' There are many families and links that can be used, depending on the characteristics of your data.
+#' Now let us try two possible models to fit this data:
+#' 
+#' 1. Poisson Model
+#' 2. Overdispersed Poisson Model
+#' 3. Negative Binomial distribution
+#' 
+#' #### 1. Poisson model
+#' We start by declaring what type of modelling we are performing. `gml()` stands for Generalized Linear Models.  
+#' The dependent variable should be declared before an `~` and then all the independent variables we want to try. If you want to try with all the variables in the dataset without any changes, you can just write `~ .` and the dot assumes that are _all the other_.
+
+model1 = glm(
+  ACCIDENT ~ STATE + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)),
+  family = poisson(link = "log"),
+  data = df,
+  method = "glm.fit"
+)
+
+#'  
+#' > **Note**: The method "glm.fit" uses iteratively reweighted least squares to fit the model. Try looking for other methods and see the difference. 
+#' 
+
+summary(model1)
+
+#' 
+#' What can we say about the **residuals** and **degrees of freedom**? 
+#' 
+#' * residuals > degrees of freedom -> **overdispersion**
+#' * residuals < degrees of freedom -> **underdispersion** 
+#' * residuals = degrees of freedom -> **mean = variance**  
+#' 
+#' > **Note:** In overdispersion, the estimates are reliable but the standard errors tend to be smaller. 
+#'  
+#' ##### Pseudo-Rsquare and Log-likelihood ratio test  
+#' Calculate the pseudo-Rsquare and perform an Omnibus test
+nagelkerke(model1)
+
+#' The likelihood ratio test (Omnibus test) compares the fitted model ("Model") with the only-intercept model ("Null"). This test verifies if the explained variance is higher than the the unexplained variance.
+#' 
+#' > **Note**: $h_0$ There is no overdispersion in the model. Therefore, if pvalue < 0.05, there is overdispersion, and we should choose to use a Negative Binomial model.
+#' 
+#' ##### Wald test  
+#' Calculate the Type III test.
+Anova(model1, type = "III", test = "Wald")
+
+#' 
+#' Type III tests examine the significance of each partial effect. Thus, it considers the significance of an effect with all the other effects in the model. The $\chi^2$ (Chisq) tests the significance of the effect added to the model by having all of the other effects.
+#' 
+#' ### 2. Overdispersed Poisson Model  
+#' Let us correct the standard errors with an overdispersed poisson model.
+model2 = glm(
+  ACCIDENT ~ STATE + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)),
+  family = quasipoisson(link = "log"),
+  data = df,
+  method = "glm.fit"
+)
+summary(model2)
+
+#' 
+#' > **Note**: The estimates are the same, but the standard errors have increased because they are adjusted by the scale parameter.
+#' 
+#' ### 3. Negative Binomial distribution  
+#' We use `glm.nb()` for this one.
+model3 = glm.nb(ACCIDENT ~ STATE + AADT2 + MEDIAN + DRIVE + offset(log(AADT1)),
+                data = df)
+summary(model3)
+
+#' 
+#' ##### Pseudo-Rsquare and Log-likelihood ratio test  
+#' Calculate the pseudo-Rsquare and perform an Omnibus test 
+Anova(model3, type = "III", test = "Wald") 
+
+#' 
+#' ##### Wald test  
+#' Calculate the Type III test.
+nagelkerke(model3)
+
+#' 
+#' #### Comparing model 1 and model 3
+#'  
+#' ##### AIC and BIC  
+#' Akaike’s Information Criteria (AIC) and Bayesian Information Criteria (BIC) evaluates the quality of a finite set of models.  
+#' AIC and BIC consider the maximum likelihood and the number of parameters in assessing the quality of the models. Nonetheless, the difference between both methods is that the BIC takes into account the number of observations of dataset.  
+#' Calculate the AIC and the BIC.
+aic <- data.frame(model1 = AIC(model1), model3 = AIC(model3))
+bic <- data.frame(model1 = BIC(model1), model3 = BIC(model3))
+
+
+#' 
+#' > **Note**: The smaller the values of AIC and BIC, the better the model 
+#' 
+#' ##### Elasticities
+#' Calculate the elasticities of the negative binomial model.
+el1 <- as.numeric(model3$coefficients["AADT1"] * mean(df$AADT1)/mean(df$ACCIDENT))
+el2 <- as.numeric(model3$coefficients["AADT2"] * mean(df$AADT2)/mean(df$ACCIDENT))
+el3 <- as.numeric(model3$coefficients["MEDIAN"] * mean(df$MEDIAN)/mean(df$ACCIDENT))
+el4 <- as.numeric(model3$coefficients["DRIVE"] * mean(df$DRIVE)/mean(df$ACCIDENT))
+
+elasticity <- data.frame(variable = c("AADT1", "AADT2", "MEDIAN", "DRIVE"),
+                         elasticity = c(el1, el2, el3, el4))
+
+
+#' > **Note:** `AADT1` does not have a value because it is the offset of the model.

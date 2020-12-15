@@ -3,7 +3,7 @@ title: "Exploratory Factor Analysis"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/3-FactorAnalysis/")
 ```
@@ -85,7 +85,7 @@ str(df)
 descriptive_stats <- dfSummary(df)
 view(descriptive_stats)
 ```
-```{r summary tables show, results="asis", echo=FALSE, message=FALSE, warning=FALSE}
+```{r summary tables show, results="asis", echo=FALSE, message=FALSE, warning=FALSE, purl=F}
 # dfSummary(df, valid.col = F, plain.ascii = FALSE, style = "grid", tmp.img.dir = "img") #assim não guarda os graficos
 st_options(plain.ascii = FALSE)
 print(dfSummary(df, valid.col = FALSE,  style = "grid", tmp.img.dir = "tmp"), max.tbl.height = 500, method = "render") #assim aparece um \ a mais nas variáveis

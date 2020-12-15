@@ -3,7 +3,7 @@ title: "Cluster Analysis"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/4-ClusterAnalysis/")
 ```
@@ -113,9 +113,8 @@ distance <- dist(df_scaled, method = "euclidean")
 fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"), order = FALSE)
 ```
 
-#### Types of hierarchical clustering
-
-Now, let us perform the many types of hierarchical clustering
+#### Types of hierarchical clustering  
+There are many types of hierarchical clustering. Let's explore some.
 
 **1. Single linkage (nearest neighbor) clustering algorithm**
 

@@ -3,7 +3,7 @@ title: "Multiple Linear Regression models"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/1-MLR/")
 ```

@@ -3,7 +3,7 @@ title: "Exploratory Data Analysis"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "README_files/EDA/")
 ```
@@ -67,7 +67,6 @@ library(corrplot) # Library used for correlation plots
 
 ## Get to know your data
 ##### Import dataset
-
 ```{r}
 dataset <- read_excel("Data/TDM_Class3_MLR_Chicago_Example.xls") 
 ```

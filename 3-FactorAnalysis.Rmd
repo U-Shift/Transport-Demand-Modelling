@@ -148,7 +148,7 @@ cortest.bartlett(corr_matrix, n = nrow(df))
 ```
 > **Note:** The null hypothesis is that there is no correlation between variables. Therefore, in factor analysis you want to reject the null hypothesis.   
 
-##### Check for sampling adequacy - KMO test
+* **Check for sampling adequacy - KMO test**
 
 ```{r}
 KMO(corr_matrix)
@@ -156,7 +156,7 @@ KMO(corr_matrix)
 
 > **Note:** We want at least 0.7 of the overall Mean Sample Adequacy (MSA). If, 0.6 < MSA < 0.7, it is not a good value, but acceptable in some cases.
 
-##### Determine the number of factors to extract
+### Determine the number of factors to extract
 
 **1. Parallel Analysis**
 

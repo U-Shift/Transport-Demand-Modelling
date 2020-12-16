@@ -12,8 +12,8 @@ transport demand modelling.
 
 This material was prepared by [Gabriel
 Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/) (Chapters 1-5, 7),
-[Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/) (Chapter 6),
-[Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/) (Chapter 8),
+[Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/) (Chapter 6, "How to install R", "Tips for homewwork in Markdown"),
+[Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/) (Chapter 8, "How to install Python"),
 [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/) (Chapter 9),
 and [Filipe
 Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/) (All slides and supervision).
@@ -54,8 +54,7 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/) (All slides and sup
 
 ## R and Python stuff
 
-  - [How to install R and RStudio](0-InstallR.md) (**Rosa Félix**)
+  - [How to install R and RStudio](0-InstallR.md)
   - Check [some tips](RMarkdownReports.md) how to make your home
-    assignments as static or dynamic outputs with *R Markdown*. (**Rosa
-    Félix**)
-  - How to install Python and Pandas Biogeme (**Miguel Costa**)
+    assignments as static or dynamic outputs with *R Markdown*.
+  - How to install Python and Pandas Biogeme

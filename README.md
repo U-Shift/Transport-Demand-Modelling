@@ -11,7 +11,7 @@ material is also an open source tutorial for applying R programming
 transport demand modelling.
 
 This material was prepared by [Gabriel
-Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/), (**Chapters 1-5, 7**),
+Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/) (Chapters 1-5, 7),
 [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/),
 [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/),
 [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/),

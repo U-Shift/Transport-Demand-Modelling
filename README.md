@@ -11,7 +11,7 @@ material is also an open source tutorial for applying R programming
 transport demand modelling.
 
 This material was prepared by [Gabriel
-Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/),
+Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/), (**Chapters 1-5, 7**),
 [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/),
 [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/),
 [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/),
@@ -22,8 +22,7 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 
 ## Summary
 
-1.  [Exploratory Data Analysis](1-ExploratoryDataAnalysis.md) (**Gabriel
-    Valença**)
+1.  [Exploratory Data Analysis](1-ExploratoryDataAnalysis.md)
 
 2.  [Multiple Linear Regression models](2-MultipleLinearRegression.md)
     (**Gabriel Valença**)

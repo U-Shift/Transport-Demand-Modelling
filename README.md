@@ -12,11 +12,11 @@ transport demand modelling.
 
 This material was prepared by [Gabriel
 Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/) (Chapters 1-5, 7),
-[Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/),
-[Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/),
-[Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/),
+[Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/) (Chapter 6),
+[Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/) (Chapter 8),
+[Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/) (Chapter 9),
 and [Filipe
-Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
+Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/) (All slides and supervision).
 
 ![](README_files/ist.PNG)
 
@@ -25,28 +25,24 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).
 1.  [Exploratory Data Analysis](1-ExploratoryDataAnalysis.md)
 
 2.  [Multiple Linear Regression models](2-MultipleLinearRegression.md)
-    (**Gabriel Valença**)
 
-3.  [Exploratory Factor Analysis](3-FactorAnalysis.md) (**Gabriel
-    Valença**)
+3.  [Exploratory Factor Analysis](3-FactorAnalysis.md)
 
-4.  [Cluster Analysis](4-ClusterAnalysis.md) (**Gabriel Valença**)
+4.  [Cluster Analysis](4-ClusterAnalysis.md)
 
-5.  [Generalized linear models](5-GeneralizedLinearModels.md) (**Gabriel
-    Valença**)
+5.  [Generalized linear models](5-GeneralizedLinearModels.md)
 
-6.  [Spatial regression models](6-SpatialModels.md) (**Rosa Félix**)
+6.  [Spatial regression models](6-SpatialModels.md)
 
-7.  [Panel Data Models](7-PanelModels.md) (**Gabriel Valença**)
+7.  [Panel Data Models](7-PanelModels.md)
 
-8.  [Discrete Choice Models](8-DiscreteChoiceModels/) (**Miguel Costa**)
+8.  [Discrete Choice Models](8-DiscreteChoiceModels/)
     
       - [Multinomial](8-DiscreteChoiceModels/8.1-MultinomialLogitAndProbitModels/)
       - [Nested](8-DiscreteChoiceModels/8.2-NestedLogitModels/)
       - [Ordered Models](8-DiscreteChoiceModels/8.3-OrderedLogitModels/)
 
-9.  [Hazard-Based Duration Models](9-HazardBasedModels.md) (**Carlos
-    Roque**)
+9.  [Hazard-Based Duration Models](9-HazardBasedModels.md)
 
 ### Files
 

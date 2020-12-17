@@ -40,7 +40,7 @@ This material is also an open source tutorial for applying R programming (chapte
 
   - [How to install R and RStudio](0-InstallR.md)
   - Check [some tips](RMarkdownReports.md) how to make your home assignments as static or dynamic outputs with *R Markdown*.
-  - [How to install Python and Pandas Biogeme](0-Install/python_and_biogeme_windows.md]
+  - [How to install Python and Pandas Biogeme](0-Install/python_and_biogeme_windows.md)
   
 ## Acknowledgements:
 

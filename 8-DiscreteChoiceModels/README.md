@@ -1,4 +1,4 @@
-# 6. Discrete Choice Models
+# 8. Discrete Choice Models
 
 This chapter explores how to estimate and analyze Discrete Choice Models, their uses and applications.
 

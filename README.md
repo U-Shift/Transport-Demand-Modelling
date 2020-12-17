@@ -44,7 +44,7 @@ This material is also an open source tutorial for applying R programming (chapte
   - Check [some tips](RMarkdownReports.md) how to make your home assignments as static or dynamic outputs with *R Markdown*.
   - [How to install Python and Pandas Biogeme](0-Install/python_and_biogeme_windows.md]
   
-### Acknowledgements:
+## Acknowledgements:
 
 * [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/): preparation of Chapters 1-5, 7
 * [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/): preparation of Chapter 6, "How to install R", "Tips for RMarkdown", revision of Chapters 1-7, 9

@@ -240,7 +240,7 @@ Now let us try two possible models to fit this data:
 2.  Overdispersed Poisson Model
 3.  Negative Binomial distribution
 
-#### 1. Poisson model
+### 1. Poisson model
 
 We start by declaring what type of modelling we are performing. `gml()`
 stands for Generalized Linear Models.  
@@ -553,9 +553,10 @@ AIC and BIC
 
 > **Note**: The smaller the values of AIC and BIC, the better the model
 
-##### Elasticities
+### Elasticities
 
-Calculate the elasticities of the negative binomial model.
+Calculate the elasticities of the negative binomial model. You can also
+try to calculate for the other models.
 
 ``` r
 el1 <- as.numeric(model3$coefficients["AADT1"] * mean(df$AADT1)/mean(df$ACCIDENT))
@@ -575,4 +576,6 @@ elasticity <- data.frame(variable = c("AADT1", "AADT2", "MEDIAN", "DRIVE"),
 | DRIVE    | 0.0706501  |
 
 > **Note:** `AADT1` does not have a value because it is the offset of
-> the model.
+> the model. **Note:** `STATE` is a categorical variable. We would need
+> to calculate the pseudo-elasticities in this case. Follow the same
+> logic of the code and try to calculate for yourselves.

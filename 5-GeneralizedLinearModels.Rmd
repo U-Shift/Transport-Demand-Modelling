@@ -218,7 +218,7 @@ knitr::kable(list(aic, bic),caption = 'AIC and BIC',booktabs = F, valign = 't')
 
 > **Note**: The smaller the values of AIC and BIC, the better the model 
 
-#### Elasticities
+### Elasticities
 Calculate the elasticities of the negative binomial model. You can also try to calculate for the other models. 
 
 ```{r}

@@ -1,23 +1,8 @@
 Transport Demand Modelling Course
 ================
 
-This repository intends to gather, and make available, the supporting
-materials for the [Transport Demand Modeling
-course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/materiais-de-apoio),
-lectured by [Prof. Filipe
-Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/). This
-material is also an open source tutorial for applying R programming
-(chapters 1,2,3,4,5,6,7 and 9) and Python Biogeme (chapter 8) in
-transport demand modelling.
-
-**Acknowledgements:**
-This material was prepared by [Gabriel
-Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/) (Chapters 1-5, 7),
-[Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/) (Chapter 6, "How to install R", "Tips for homewwork in Markdown"),
-[Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/) (Chapter 8, "How to install Python"),
-[Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/) (Chapter 9),
-and [Filipe
-Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/) (All slides and supervision).
+This repository intends to gather, and make available, the supporting materials for the [Transport Demand Modeling course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/materiais-de-apoio), lectured by [Prof. Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).  
+This material is also an open source tutorial for applying R programming (chapters 1-7 and 9) and Python Biogeme (chapter 8) in transport demand modelling.
 
 ![](README_files/ist.PNG)
 
@@ -56,6 +41,14 @@ Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/) (All slides and sup
 ## R and Python stuff
 
   - [How to install R and RStudio](0-InstallR.md)
-  - Check [some tips](RMarkdownReports.md) how to make your home
-    assignments as static or dynamic outputs with *R Markdown*.
-  - How to install Python and Pandas Biogeme
+  - Check [some tips](RMarkdownReports.md) how to make your home assignments as static or dynamic outputs with *R Markdown*.
+  - [How to install Python and Pandas Biogeme](0-Install/python_and_biogeme_windows.md]
+  
+### Acknowledgements:
+
+* [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/): preparation of Chapters 1-5, 7
+* [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/): preparation of Chapter 6, "How to install R", "Tips for RMarkdown", revision of Chapters 1-7, 9
+* [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/): prepatarion of Chapter 8, "How to install Python"
+* [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/): preparation of Chapter 9
+* [Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/): preparation of all slides, and supervision.
+

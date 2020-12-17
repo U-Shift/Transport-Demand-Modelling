@@ -1,7 +1,7 @@
 Hazard-Based Duration Models
 ================
 
-### Example: Work-to-home departure delay
+#### Example: Work-to-home departure delay
 
 A survey of 204 Seattle-area commuters was conducted to examine the
 duration of time that commuters delay their work-to-home trips in an
@@ -11,7 +11,7 @@ trip to avoid traffic congestion. These commuters provided their average
 time delay. Thus, each commuter has a completed delay duration so that
 neither left nor right censoring is present in the data.
 
-**Your task:**
+**Your tasks:**
 
 1.  Plot the Kaplan-Meier estimate of the duration of time that
     commuters delay their work-to-home trips;
@@ -38,7 +38,7 @@ library(ggplot2)
 ``` r
 data.delay <- read_excel("Data/ExerciseHBDM.xlsx")
 data.delay <- data.frame(data.delay)
-head(data.delay)
+head(data.delay) #variable names are missing
 ```
 
     ##     id X1 X2 X3 X4 X5 X6 X7 X8 X9 X10 X11 X12 X13 X14 X15   X16  X17  X18  X19
@@ -53,15 +53,15 @@ head(data.delay)
 
 ``` r
 names(data.delay) <- c("id","minutes","activity","number_of_times","mode","route","congested","age",
-"gender","number_cars","number_children","income","flexible","distance",
-"LOSD","rate_of_travel","population","retail","service","size") 
-data.delay <- data.frame(data.delay, row.names = 1) #make id (1st variable) as row name
+                        "gender","number_cars","number_children","income","flexible","distance",
+                        "LOSD","rate_of_travel","population","retail","service","size") 
+df <- data.frame(data.delay, row.names = 1) #make id (1st variable) as row name
 ```
 
 ##### Take a look at the structure
 
 ``` r
-str(data.delay)
+str(df)
 ```
 
     ## 'data.frame':    204 obs. of  19 variables:
@@ -86,12 +86,11 @@ str(data.delay)
     ##  $ size           : num  5610 1997 1997 1997 4092 ...
 
 ``` r
-df <- data.delay
 skim(df)
 ```
 
 |                                                  |      |
-| :----------------------------------------------- | :--- |
+|:-------------------------------------------------|:-----|
 | Name                                             | df   |
 | Number of rows                                   | 204  |
 | Number of columns                                | 19   |
@@ -107,13 +106,13 @@ Data summary
 **Variable type: character**
 
 | skim\_variable   | n\_missing | complete\_rate | min | max | empty | n\_unique | whitespace |
-| :--------------- | ---------: | -------------: | --: | --: | ----: | --------: | ---------: |
+|:-----------------|-----------:|---------------:|----:|----:|------:|----------:|-----------:|
 | rate\_of\_travel |          0 |              1 |   3 |   3 |     0 |        15 |          0 |
 
 **Variable type: numeric**
 
 | skim\_variable    | n\_missing | complete\_rate |     mean |       sd |   p0 |   p25 |     p50 |      p75 |  p100 | hist  |
-| :---------------- | ---------: | -------------: | -------: | -------: | ---: | ----: | ------: | -------: | ----: | :---- |
+|:------------------|-----------:|---------------:|---------:|---------:|-----:|------:|--------:|---------:|------:|:------|
 | minutes           |          0 |              1 |    24.14 |    36.27 |    0 |     0 |     0.0 |    30.00 |   240 | ▇▁▁▁▁ |
 | activity          |          0 |              1 |     0.78 |     0.97 |    0 |     0 |     0.0 |     1.00 |     3 | ▇▃▁▂▁ |
 | number\_of\_times |          0 |              1 |     0.86 |     1.31 |    0 |     0 |     0.0 |     2.00 |     5 | ▇▂▁▁▁ |
@@ -133,21 +132,18 @@ Data summary
 | service           |          0 |              1 |  9733.06 | 10552.66 |  595 |  1606 | 10582.0 | 10582.00 | 38607 | ▇▇▁▁▂ |
 | size              |          0 |              1 |  3087.51 |  1598.03 |  475 |  2472 |  2753.0 |  4447.75 |  5653 | ▃▇▇▁▆ |
 
-##### Sort the data by time
-
-``` r
-df <- df[order(df$minutes),]
-```
-
 ##### Plot yout data
 
 ``` r
-plot(df$minutes, type="h")
+df <- df[order(df$minutes),] #sort by time
+plot(df$minutes, type="h") #high-density vertical lines
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-7-1.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-5-1.png)<!-- -->
 
 ## Survival function
+
+### 1.Plot the Kaplan-Meier estimate curve
 
 ##### Create the life table survival object for df
 
@@ -197,7 +193,7 @@ conf.int = TRUE
 )
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-9-1.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 #option 2
@@ -213,7 +209,7 @@ ggsurvplot(
 )
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-10-1.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-8-1.png)<!-- -->
 
 > **Note:** It is the most widely applied nonparametric method in
 > survival analysis.The Kaplan–Meier method provides useful estimates of
@@ -223,7 +219,13 @@ ggsurvplot(
 > survival times. If this is false, the Kaplan–Meier method is
 > inappropriate.
 
-#### Cox Proportional Hazard Model Estimates of the Duration of Commuter Work-To-Home Delay to Avoid Congestion
+### 2. Cox proportional-hazards Model
+
+The Cox proportional-hazards model is semiparametric method that
+produces estimated hazard ratios (sometimes called rate ratios or risk
+ratios).  
+Let’s perform a Cox Proportional Hazard Model Estimate estimate the
+model for Duration of Commuter Work-To-Home Delay to Avoid Congestion
 
 ``` r
 result.cox <- coxph(Surv(minutes) ~ gender + rate_of_travel + distance + population, data= data.delay2)
@@ -279,38 +281,32 @@ summary(result.cox)
     ## Wald test            = 32.27  on 16 df,   p=0.009
     ## Score (logrank) test = 36  on 16 df,   p=0.003
 
-> **Note:** The Cox proportional-hazards model is semiparametric method
-> that produces estimated hazard ratios (sometimes called rate ratios or
-> risk ratios).  
-> Regression coefficients are on a log scale.
+> **Note:** Regression coefficients are on a log scale.
 
 ##### Testing proportional Hazards assumption
 
+Test the proportional hazards assumption on the basis of partial
+residuals. Type of residual known as Schoenfeld residuals.  
+It includes an interaction between the covariate and a function of time
+(or distance). Log time is often used but it could be any function. For
+each covariate, the function `cox.zph()` correlates the corresponding
+set of scaled Schoenfeld residuals with time, to test for independence
+between residuals and time. Additionally, it performs a global test for
+the model as a whole.  
+A plot that shows a non-random pattern against time is evidence of
+violation of the PH assumption.
+
 ``` r
 test.ph <- cox.zph(result.cox)
+par(mfrow=c(2,2))
 plot(test.ph)
-```
-
-![](README_files/8-HazardBasedModels/unnamed-chunk-12-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-12-2.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-12-3.png)<!-- -->
-
-``` r
 ggcoxzph(test.ph)
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-12-4.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-12-5.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-10-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-10-2.png)<!-- -->
 
-> **Note:** It includes an interaction between the covariate and a
-> function of time (or distance). Log time is often used but it could be
-> any function. If significant then the assumption is violated.  
-> Test the proportional hazards assumption on the basis of partial
-> residuals. Type of residual known as Schoenfeld residuals.  
-> For each covariate, the function cox.zph() correlates the
-> corresponding set of scaled Schoenfeld residuals with time, to test
-> for independence between residuals and time. Additionally, it performs
-> a global test for the model as a whole.  
-> In principle, the Schoenfeld residuals are independent of time. A plot
-> that shows a non-random pattern against time is evidence of violation
-> of the PH assumption.
+> **Note:** If significant then the assumption is violated.  
+> In principle, the Schoenfeld residuals are independent of time.
 
 ##### Plot the baseline survival function
 
@@ -323,7 +319,7 @@ ggsurvplot(
 )
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-11-1.png)<!-- -->
 
 ##### Plot the cummulative hazard function
 
@@ -339,48 +335,36 @@ ggsurvplot(
 )
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/8-HazardBasedModels/unnamed-chunk-12-1.png)<!-- -->
 
 ##### Calculate the McFadden Pseudo R-square
 
-  - Initial log-likelihood
-
-<!-- end list -->
-
 ``` r
-result.cox$loglik[1]
+result.cox$loglik
 ```
 
-    ## [1] -345.3794
-
-  - Final log-likelihood
-
-<!-- end list -->
+    ## [1] -345.3794 -330.0545
 
 ``` r
-result.cox$loglik[2]
-```
-
-    ## [1] -330.0545
-
-  - Pseudo R-square
-
-<!-- end list -->
-
-``` r
-PseudoR2 <- (1- (result.cox$loglik[2]/result.cox$loglik[1]))
-
-PseudoR2
+LLi = result.cox$loglik[1] # Initial log-likelihood
+LLf = result.cox$loglik[2] # Final log-likelihood
+1- (LLf/LLi) # pseudo R-suare
 ```
 
     ## [1] 0.0443713
 
-##### Parametric Model Estimates of the Duration of Commuter Work-ToHome Delay to Avoid Congestion
+### 3. Exponential, Weibull, and log-logistic proportional-hazards models
+
+Parametric Model Estimates of the Duration of Commuter Work-ToHome Delay
+to Avoid Congestion
+
+-   **Exponential**
 
 ``` r
-result.expon <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + population, data= data.delay2, dist="exponential")
-
-result.expon
+survreg(
+  Surv(minutes) ~ gender + rate_of_travel + distance + population,
+  data = data.delay2,
+  dist = "exponential" )
 ```
 
     ## Call:
@@ -405,10 +389,13 @@ result.expon
     ##  Chisq= 12.5 on 16 degrees of freedom, p= 0.709 
     ## n= 96
 
-``` r
-result.weib <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + population, data= data.delay2, dist="weibull")
+-   **Weibull**
 
-result.weib
+``` r
+survreg(
+  Surv(minutes) ~ gender + rate_of_travel + distance + population,
+  data = data.delay2,
+  dist = "weibull" )
 ```
 
     ## Call:
@@ -433,10 +420,13 @@ result.weib
     ##  Chisq= 38.9 on 16 degrees of freedom, p= 0.00112 
     ## n= 96
 
-``` r
-result.loglog <- survreg(Surv(minutes)~ gender + rate_of_travel + distance + population, data= data.delay2, dist="loglogistic") 
+-   **Log-logistic**
 
-result.loglog
+``` r
+survreg(
+  Surv(minutes) ~ gender + rate_of_travel + distance + population,
+  data = data.delay2,
+  dist = "loglogistic" ) 
 ```
 
     ## Call:
@@ -461,6 +451,6 @@ result.loglog
     ##  Chisq= 29.45 on 16 degrees of freedom, p= 0.0211 
     ## n= 96
 
-> **Note:** The argument dist has several options to describe the
+> **Note:** The argument *dist* has several options to describe the
 > parametric model used (“weibull”, “exponential”, “gaussian”,
-> “logistic”, “lognormal”, or “loglogistic”)
+> “logistic”, “lognormal”, or “loglogistic”. See more with `?survreg`

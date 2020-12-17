@@ -8,7 +8,7 @@ Slides
 3.  [Multiple Linear
     Regression](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.1/class_3.pdf)
 4.  [Factor
-    Analysis](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.1/class_4.pdf.pdf)
+    Analysis](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.1/class_4.pdf)
 5.  [Cluster
     Analysis](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.1/class_5.pdf)
 6.  [Generalized Linear Models - Lecture

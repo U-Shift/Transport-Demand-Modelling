@@ -32,13 +32,11 @@ This material is also an open source tutorial for applying R programming (chapte
 
 ### Files
 
-  - In [Data](Data/) folder you may find all the files to use for the
-    exercises.  
+  - In [Data](Data/) folder you may find all the files to use for the exercises.  
   - The [Code](Code/) folder contains scripts to use with each topic.
-  - In [Slides](Slides/Slides.md) you can find all the slides of the
-    lectures given by Prof. Filipe Moura.
+  - In [Slides](Slides/Slides.md) you can find all the slides of the lectures given by Prof. Filipe Moura.
 
-## R and Python stuff
+### R and Python stuff
 
   - [How to install R and RStudio](0-InstallR.md)
   - Check [some tips](RMarkdownReports.md) how to make your home assignments as static or dynamic outputs with *R Markdown*.

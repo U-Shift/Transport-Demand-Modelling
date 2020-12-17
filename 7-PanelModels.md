@@ -1,35 +1,35 @@
 Panel Data Models
 ================
 
-#### EXAMPLE EXERCISE: Grunfeld Investment data. This data consists of 10 large US manufacturing firms from 1935 to 1954.
+#### Example Exercise: Grunfeld Investment data
 
-> **Your Task:** Analyze the many types of panel models.
+This data consists of 10 large US manufacturing firms from 1935 to 1954.
 
-This code was developed based on the paper: Croissant, Y., Milo,
-G.(2008). Panel Data Econometrics in R: The plm Package, Journal of
-Statistical Software, 27(2).
+**Your Task:** Analyze the many types of panel models.
+
+This code was based on the paper: Croissant, Y., Milo, G.(2008). [*Panel
+Data Econometrics in R: The plm
+Package*](https://www.jstatsoft.org/index.php/jss/article/view/v027i02/v27i02.pdf),
+Journal of Statistical Software, 27(2).
 
 ## Data
 
 #### Variables:
 
-  - `invest`: Gross investment, defined as additions to plant and
+-   `invest`: Gross investment, defined as additions to plant and
     equipment plus maintenance and repairs in millions of dollars
     deflated by the implicit price deflator of producers’ durable
     equipment (base 1947);  
-  - `value`: Market value of the firm, defined as the price of common
+-   `value`: Market value of the firm, defined as the price of common
     shares at December 31 (base 1947);
-  - `capital`: Stock of plant and equipment, defined as the accumulated
+-   `capital`: Stock of plant and equipment, defined as the accumulated
     sum of net additions to plant and equipment deflated by the implicit
     price deflator for producers’ durable equipment (base 1947);
-  - `firm`: General Motors (GM), US Steel (US), General Electric (GE),
-    Chrysler (CH), Atlantic Rening (AR), IBM, Union Oil (UO),
-    Westinghouse (WH), Goodyear (GY), Diamond Match (DM), American Steel
-    (AS);
-  - `year`: Year of data;
-  - `firmcod`: Numeric code that identifies each firm.
+-   `firm`: American manufacturing firms;
+-   `year`: Year of data;
+-   `firmcod`: Numeric code that identifies each firm.
 
-## Let’s start\!
+## Startup
 
 #### Import libraries
 
@@ -40,78 +40,76 @@ library(foreign) #panel data models
 library(plm) # Lagrange multiplier test and panel models
 ```
 
-### Get to know your dataset
-
 ##### Import dataset
 
 ``` r
 data <- read_excel("Data/Grunfeld_data.xlsx")
-```
-
-##### Transform dataset into dataframe
-
-``` r
 df <- data.frame(data)
 ```
 
 ##### Take a first look at your data
 
-``` r
-head(df)
-```
+| invest |  value | capital | firm           | year | firmcod |
+|-------:|-------:|--------:|:---------------|-----:|--------:|
+|  317.6 | 3078.5 |     2.8 | General Motors | 1935 |       6 |
+|  391.8 | 4661.7 |    52.6 | General Motors | 1936 |       6 |
+|  410.6 | 5387.1 |   156.9 | General Motors | 1937 |       6 |
+|  257.7 | 2792.2 |   209.2 | General Motors | 1938 |       6 |
+|  330.8 | 4313.2 |   203.4 | General Motors | 1939 |       6 |
+|  461.2 | 4643.9 |   207.2 | General Motors | 1940 |       6 |
+|  512.0 | 4551.2 |   255.2 | General Motors | 1941 |       6 |
+|  448.0 | 3244.1 |   303.7 | General Motors | 1942 |       6 |
+|  499.6 | 4053.7 |   264.1 | General Motors | 1943 |       6 |
+|  547.5 | 4379.3 |   201.6 | General Motors | 1944 |       6 |
 
-    ##   invest  value capital           firm year firmcod
-    ## 1  317.6 3078.5     2.8 General Motors 1935       6
-    ## 2  391.8 4661.7    52.6 General Motors 1936       6
-    ## 3  410.6 5387.1   156.9 General Motors 1937       6
-    ## 4  257.7 2792.2   209.2 General Motors 1938       6
-    ## 5  330.8 4313.2   203.4 General Motors 1939       6
-    ## 6  461.2 4643.9   207.2 General Motors 1940       6
+#### Prepare your data
 
-##### Check summary statistics of variables
-
-``` r
-skim(df)
-```
-
-|                                                  |      |
-| :----------------------------------------------- | :--- |
-| Name                                             | df   |
-| Number of rows                                   | 220  |
-| Number of columns                                | 6    |
-| \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_   |      |
-| Column type frequency:                           |      |
-| character                                        | 1    |
-| numeric                                          | 5    |
-| \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |      |
-| Group variables                                  | None |
-
-Data summary
-
-**Variable type: character**
-
-| skim\_variable | n\_missing | complete\_rate | min | max | empty | n\_unique | whitespace |
-| :------------- | ---------: | -------------: | --: | --: | ----: | --------: | ---------: |
-| firm           |          0 |              1 |   3 |  17 |     0 |        11 |          0 |
-
-**Variable type: numeric**
-
-| skim\_variable | n\_missing | complete\_rate |    mean |      sd |      p0 |     p25 |     p50 |     p75 |   p100 | hist  |
-| :------------- | ---------: | -------------: | ------: | ------: | ------: | ------: | ------: | ------: | -----: | :---- |
-| invest         |          0 |              1 |  133.31 |  210.59 |    0.93 |   27.38 |   52.36 |   99.78 | 1486.7 | ▇▁▁▁▁ |
-| value          |          0 |              1 |  988.58 | 1287.30 |   30.28 |  160.32 |  404.65 | 1605.93 | 6241.7 | ▇▂▁▁▁ |
-| capital        |          0 |              1 |  257.11 |  293.23 |    0.80 |   67.10 |  180.10 |  344.50 | 2226.3 | ▇▁▁▁▁ |
-| year           |          0 |              1 | 1944.50 |    5.78 | 1935.00 | 1939.75 | 1944.50 | 1949.25 | 1954.0 | ▇▇▇▇▇ |
-| firmcod        |          0 |              1 |    6.00 |    3.17 |    1.00 |    3.00 |    6.00 |    9.00 |   11.0 | ▇▅▅▅▅ |
-
-##### Take out the “firmcod” from the dataset
+##### Take out the “firmcod” variale from the dataset
 
 ``` r
-drop <- c("firmcod")
-df = df[,!(names(df) %in% drop)]
+df$firmcod = NULL #another way or removing a variable
 ```
 
-##### First run an Ordinary least square model. Compare the results from this model to the many panel data models
+##### Factor categorical variables
+
+`firm` is a categorical nominal variable, and should be treated as so in
+the modeling processes. And for this example `year` should also be
+considered as a categorical ordinal variable, instead of a continuous
+one.
+
+``` r
+df$firm = factor(df$firm)
+df$year = factor(df$year, ordered = T)
+```
+
+Take a look at the summary of your data. See the differences regarding
+the categorical ones?
+
+``` r
+summary(df)
+```
+
+    ##      invest            value            capital                      firm    
+    ##  Min.   :   0.93   Min.   :  30.28   Min.   :   0.8   American Steel   : 20  
+    ##  1st Qu.:  27.38   1st Qu.: 160.32   1st Qu.:  67.1   Atlantic Refining: 20  
+    ##  Median :  52.37   Median : 404.65   Median : 180.1   Chrysler         : 20  
+    ##  Mean   : 133.31   Mean   : 988.58   Mean   : 257.1   Diamond Match    : 20  
+    ##  3rd Qu.:  99.78   3rd Qu.:1605.92   3rd Qu.: 344.5   General Electric : 20  
+    ##  Max.   :1486.70   Max.   :6241.70   Max.   :2226.3   General Motors   : 20  
+    ##                                                       (Other)          :100  
+    ##       year    
+    ##  1935   : 11  
+    ##  1936   : 11  
+    ##  1937   : 11  
+    ##  1938   : 11  
+    ##  1939   : 11  
+    ##  1940   : 11  
+    ##  (Other):154
+
+## Ordinary least square model
+
+First run an Ordinary least square model without the `firm` variable.
+Compare the results from this model to the many panel data models.
 
 ``` r
 mlr = lm(invest ~ value + capital, data = df)
@@ -138,31 +136,51 @@ summary(mlr)
     ## Multiple R-squared:  0.8179, Adjusted R-squared:  0.8162 
     ## F-statistic: 487.3 on 2 and 217 DF,  p-value: < 2.2e-16
 
-## Now let’s run Panel models.
+## Panel Data Models
 
-Panel data models use *one way* and *two way* component models to
+Panel data models use **one way** and **two way** component models to
 overcome heterogeneity, correlation in the disturbance terms, and
 heteroscedasticity.
 
-  - **One way error component model:** variable-intercept models across
+-   **One way error component model:** variable-intercept models across
     individuals **or** time;
-  - **Two way error component model:** variable-intercept models across
+-   **Two way error component model:** variable-intercept models across
     individuals **and** time.
 
 Modelling Specifications:
 
-  - **With fixed-effects:** effects that are in the sample.
+-   **With fixed-effects:** effects that are in the sample.
     Fixed-effects explore the causes of change within a person or entity
     (In this example the entity is the *firms*);
 
-  - **With random-effects:** effect randomly drawn from a population.
+-   **With random-effects:** effect randomly drawn from a population.
     The random effects model is an appropriate specification if we are
     drawing *n* individuals randomly from a large population.
+
+You can also try other types of model estimation:
+
+| model                 | argument |
+|:----------------------|:---------|
+| Fixed effects         | within   |
+| Random effects        | random   |
+| Pooling model         | pooling  |
+| First-diference model | fd       |
+| Between model         | between  |
+
+See `?plm` for more options, regarding the effects and instrumental
+variable transformation types.
+
+### One way
 
 ##### One way fixed effects model
 
 ``` r
-fixed = plm(invest ~ value + capital, data = df, index = c("firm", "year"), model = "within")
+fixed = plm(
+  invest ~ value + capital,
+  data = df,
+  index = c("firm", "year"), #panel settings
+  model = "within" #fixed effects option
+)
 summary(fixed)
 ```
 
@@ -194,7 +212,12 @@ summary(fixed)
 ##### One way random effects model
 
 ``` r
-random = plm(invest ~ value + capital, data = df, index = c("firm", "year"), model = "random")
+random = plm(
+  invest ~ value + capital,
+  data = df,
+  index = c("firm", "year"),
+  model = "random" #random effects option
+)
 summary(random)
 ```
 
@@ -231,17 +254,9 @@ summary(random)
     ## Adj. R-Squared: 0.76787
     ## Chisq: 726.428 on 2 DF, p-value: < 2.22e-16
 
-You can also try other types of model estimation:
+#### Haussman test
 
-| model                 | code    |
-| :-------------------- | :------ |
-| Fixed effects         | within  |
-| Pooling model         | pooling |
-| First-diference model | fd      |
-| Between model         | between |
-| Random effects        | random  |
-
-##### Use the Hausman test to evaluate when to use fixed or random effects
+Use the Hausman test to evaluate when to use fixed or random effects
 
 ``` r
 phtest(random, fixed)
@@ -257,10 +272,19 @@ phtest(random, fixed)
 > **Note:** The null hypothesis is that random effect model is more
 > appropriate than the fixed effect model.
 
-#### Two-way Fixed effects model
+### Two-way
+
+##### Two-way Fixed effects model
 
 ``` r
-fixed_tw <- plm(invest ~ value + capital, data = df, effect = "twoways", model = "within", index = c("firm", "year"))
+fixed_tw <-
+  plm(
+    invest ~ value + capital,
+    data = df,
+    effect = "twoways", #effects option
+    model = "within", #fixed
+    index = c("firm", "year") #panel settings
+  )
 summary(fixed_tw)
 ```
 
@@ -289,10 +313,18 @@ summary(fixed_tw)
     ## Adj. R-Squared: 0.67997
     ## F-statistic: 248.15 on 2 and 188 DF, p-value: < 2.22e-16
 
-#### Two-way Random effects model
+##### Two-way Random effects model
 
 ``` r
-random_tw <- plm(invest ~ value + capital, data = df, effect = "twoways", model = "random", index = c("firm", "year"), random.method = "amemiya")
+random_tw <-
+  plm(
+    invest ~ value + capital,
+    data = df,
+    effect = "twoways",
+    model = "random",
+    index = c("firm", "year"),
+    random.method = "amemiya"
+  )
 summary(random_tw)
 ```
 
@@ -333,6 +365,11 @@ summary(random_tw)
 
 #### Lagrange Multiplier Test
 
+The Lagrange multiplier statistic, is used to test the null hypothesis
+that there are no group effects in the Random Effects model.  
+Large values of the Lagrange Multiplier indicate that effects model is
+more suitable than the classical model with no common effects.
+
 ``` r
 plmtest(random_tw)
 ```
@@ -343,14 +380,6 @@ plmtest(random_tw)
     ## data:  invest ~ value + capital
     ## normal = 29.576, p-value < 2.2e-16
     ## alternative hypothesis: significant effects
-
-> **Note:** The Lagrange multiplier statistic, is used to test the null
-> hypothesis that there are no group effects in the Random Effects
-> model.
-
-> **Note:** Large values of the Lagrange Multiplier indicate that
-> effects model is more suitable than the classical model with no common
-> effects.
 
 > **Note:** Large values of H indicate that the fixed effects model is
 > prefered over the random effects model. While, A large value of the LM

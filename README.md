@@ -2,12 +2,7 @@ Transport Demand Modelling Course
 ================
 
 This repository intends to gather, and make available, the supporting materials for the [Transport Demand Modeling course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/materiais-de-apoio), lectured by [Prof. Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).  
-This material is also an open source tutorial for applying R programming (chapters 1-7 and 9) and Python Biogeme (chapter 8) in transport demand modelling.  
-If you use this materials, please cite as:
-
-> Gabriel Valença, Rosa Félix, Miguel Costa, Carlos Roque, & Filipe Moura. (2020, December). Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon (Version 2020.1). GitHub. http://doi.org/10.5281/zenodo.4527618 
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4527618.svg)](https://doi.org/10.5281/zenodo.4527617)
+This material is also an open source tutorial for applying R programming (chapters 1-7 and 9) and Python Biogeme (chapter 8) in transport demand modelling.
 
 ![](README_files/ist.PNG)
 
@@ -55,3 +50,8 @@ If you use this materials, please cite as:
 * [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/): preparation of Chapter 9
 * [Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/): preparation of all slides, and supervision.
 
+If you use this material, please cite as:
+
+> Gabriel Valença, Rosa Félix, Miguel Costa, Carlos Roque, & Filipe Moura. (2020, December). Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon (Version 2020.1). GitHub. http://doi.org/10.5281/zenodo.4527618 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4527618.svg)](https://doi.org/10.5281/zenodo.4527617)

@@ -253,7 +253,7 @@ Plot the percentage of missing data
 plot_missing(df_missing)
 ```
 
-![](figs/1-EDA/unnamed-chunk-13-1.png)<!-- -->
+![](1-EDA/unnamed-chunk-13-1.png)<!-- -->
 
 #### Treat missing data
 
@@ -297,7 +297,7 @@ df_no_outliers <- df
 boxplot(df_no_outliers)
 ```
 
-![](figs/1-EDA/unnamed-chunk-17-1.png)<!-- -->
+![](1-EDA/unnamed-chunk-17-1.png)<!-- -->
 
 -   Take out the outliers from the variable SI
 
@@ -320,7 +320,7 @@ df_no_outliers$SI = outlier(df_no_outliers$SI)
 boxplot(df_no_outliers)
 ```
 
-![](figs/1-EDA/unnamed-chunk-19-1.png)<!-- -->
+![](1-EDA/unnamed-chunk-19-1.png)<!-- -->
 
 -   Compare results of the dataset with and without the outliers  
     **mean**
@@ -378,7 +378,7 @@ Plot histograms of all the continuous variables
 plot_histogram(df, ncol = 3) #with 3 columns
 ```
 
-![](figs/1-EDA/unnamed-chunk-23-1.png)<!-- -->
+![](1-EDA/unnamed-chunk-23-1.png)<!-- -->
 
 > **Note**: Take a special look at TODU, and see if the variable looks
 > like a normal distribution.
@@ -391,7 +391,7 @@ Plot boxplots of each independent variable with TODU
 plot_boxplot(df, by = "TODU", ncol = 3)
 ```
 
-![](figs/1-EDA/unnamed-chunk-24-1.png)<!-- -->
+![](1-EDA/unnamed-chunk-24-1.png)<!-- -->
 
 > **Note**: If you increase the average car ownership (ACO) it will tend
 > to increase the number of trips per dwelling unit (TODU). This makes
@@ -407,7 +407,7 @@ res <- cor.mtest(df, conf.level = .95) #store the results so you can call the p-
 corrplot(cor(df), p.mat = res$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
 ```
 
-![](figs/1-EDA/unnamed-chunk-25-1.png)<!-- -->
+![](1-EDA/unnamed-chunk-25-1.png)<!-- -->
 
 > **Note:** The pairwise correlations that are crossed are statistically
 > insignificant. The null hypothesis is that correlation is zero. This

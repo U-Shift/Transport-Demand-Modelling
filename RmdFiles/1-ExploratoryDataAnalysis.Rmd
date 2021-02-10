@@ -7,7 +7,7 @@ output:
 
 ```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "RmdFiles/1-EDA/")
+                      fig.path = "RmdFiles/1-ExploratoryDataAnalysis/")
 ```
 We will use the example of the following Multiple linear regression chapter to perform an EDA.
 

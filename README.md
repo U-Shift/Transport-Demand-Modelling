@@ -44,16 +44,18 @@ This material is also an open source tutorial for applying R programming (chapte
   
 ## Acknowledgements:
 
-* [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/): preparation of Chapters 1-5, 7
-* [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/): preparation of Chapter 6, "How to install R", "Tips for RMarkdown", revision of Chapters 1-7, 9
-* [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/): prepatarion of Chapter 8, "How to install Python"
-* [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/): preparation of Chapter 9
-* [Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/): preparation of all slides, and supervision.
+* [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/): preparation of code of Chapters 1-5, 7.
+* [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/): preparation of code of Chapter 6, "How to install R", "Tips for RMarkdown", revision of code of Chapters 1-7, 9.
+* [Anabela Ribeiro](https://apps.uc.pt/mypage/faculty/dec_anabela): preparation of slides of Chapters 6 and 7, and home assignment 3
+* [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/): prepatarion of code of Chapter 8, home assignment 4, "How to install Python".
+* [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/): preparation of code and slides of Chapter 9.
+* [Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/): preparation of slides of Chapters 1-5 and 8, home assignments 1 and 2, and supervision.
+* [João Abreu e Silva](https://fenix.tecnico.ulisboa.pt/homepage/ist24709): preparation of the first version of slides of Chapters 1-5 and 8.
 
 ## Reference
 
 If you use this material, please cite as:
 
-> Gabriel Valença, Rosa Félix, Miguel Costa, Carlos Roque, & Filipe Moura. (2020, December). Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon (Version 2020.1). GitHub. http://doi.org/10.5281/zenodo.4527618 
+> Filipe Moura, João Abreu e Silva, Anabela Ribeiro, Carlos Roque, Gabriel Valença, Miguel Costa, & Rosa Félix. (2020, December). Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon (Version 2020.1). GitHub. doi:10.5281/zenodo.4527618
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4527618.svg)](https://doi.org/10.5281/zenodo.4527617)

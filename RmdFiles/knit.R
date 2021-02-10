@@ -11,17 +11,21 @@ rmarkdown::render(
 rmarkdown::render(
   input = "RmdFiles/00-RMarkdownReports.Rmd",
   knit_root_dir = getwd(),
-  output_dir = getwd(),
+  output_file = getwd(),
   clean = T
 )
 
 #1-ExploratoryDataAnalysis
+name = "1-ExploratoryDataAnalysis"
+
 rmarkdown::render(
-  input = "RmdFiles/1-ExploratoryDataAnalysis.Rmd",
+  input = paste0("RmdFiles/", name, ".Rmd"),
   knit_root_dir = getwd(),
-  output_dir = getwd(),
-  # clean = T
 )
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
+file.rename(paste0("RmdFiles/RmdFiles/", name, "/"), paste0("RmdFiles/", name, "/"))
+
+
 
 #2-MultipleLinearRegression
 rmarkdown::render(

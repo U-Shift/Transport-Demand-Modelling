@@ -135,7 +135,7 @@ plot(x = df$TODU, y = df$SRI, xlab = "TODU", ylab = "SRI")
 plot(x = df$TODU, y = df$UI, xlab = "TODU", ylab = "UI")
 ```
 
-![](2-MLR/unnamed-chunk-5-1.png)<!-- -->
+![](RmdFiles/2-MultipleLinearRegression/unnamed-chunk-5-1.png)<!-- -->
 
 Or you could execute a pairwise scatterplot matrix, that compares every
 variable with each other:
@@ -144,7 +144,7 @@ variable with each other:
 pairs(df[,1:6], pch = 19, lower.panel = NULL)
 ```
 
-![](2-MLR/unnamed-chunk-6-1.png)<!-- -->
+![](RmdFiles/2-MultipleLinearRegression/unnamed-chunk-6-1.png)<!-- -->
 
 > **Note:** SRI and TODU do not have a linear relationship. This should
 > interfere on the model.
@@ -271,7 +271,7 @@ par(mfrow=c(2,2))
 plot(model)
 ```
 
-![](2-MLR/unnamed-chunk-10-1.png)<!-- -->
+![](RmdFiles/2-MultipleLinearRegression/unnamed-chunk-10-1.png)<!-- -->
 
 ##### Autocorrelation
 

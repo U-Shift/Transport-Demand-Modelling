@@ -7,7 +7,7 @@ output:
 
 ```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "6-SpatialModels/")
+                      fig.path = "RmdFiles/6-SpatialModels/")
 ```
 
 ## Startup

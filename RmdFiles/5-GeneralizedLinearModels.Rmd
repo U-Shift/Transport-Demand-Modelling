@@ -7,7 +7,7 @@ output:
 
 ```{r setup, include=FALSE, purl=F}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "5-GLM/")
+                      fig.path = "RmdFiles/5-GeneralizedLinearModels/")
 ```
 
 #### Example exercise: Accident data from California (1993 to 1998) and Michigan (1993 to 1997) 

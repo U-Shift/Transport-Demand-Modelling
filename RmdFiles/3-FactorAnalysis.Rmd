@@ -7,7 +7,7 @@ output:
 
 ```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "3-FactorAnalysis/")
+                      fig.path = "RmdFiles/3-FactorAnalysis/")
 ```
 
 #### Example exercise: "Residential location satisfaction in the Lisbon metropolitan area"

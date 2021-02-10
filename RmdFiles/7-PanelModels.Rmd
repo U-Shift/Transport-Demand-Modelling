@@ -7,7 +7,7 @@ output:
 
 ```{r setup, include=FALSE, purl=F}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "7-PanelModels/")
+                      fig.path = "RmdFiles/7-PanelModels/")
 ```
 
 #### Example Exercise: Grunfeld Investment data  

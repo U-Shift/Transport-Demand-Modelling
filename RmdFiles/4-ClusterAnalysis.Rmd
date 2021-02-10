@@ -7,7 +7,7 @@ output:
 
 ```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "4-ClusterAnalysis/")
+                      fig.path = "RmdFiles/4-ClusterAnalysis/")
 ```
 
 #### Example exercise: Airports

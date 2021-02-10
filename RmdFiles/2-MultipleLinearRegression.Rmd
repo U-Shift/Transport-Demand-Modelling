@@ -7,7 +7,7 @@ output:
 
 ```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "2-MLR/")
+                      fig.path = "RmdFiles/2-MultipleLinearRegression/")
 ```
 
 #### Example exercise: Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.

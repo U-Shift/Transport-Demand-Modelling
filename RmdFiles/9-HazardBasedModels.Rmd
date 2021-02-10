@@ -7,7 +7,7 @@ output:
 
 ```{r setup, include=FALSE, purl=F}
 knitr::opts_chunk$set(echo = TRUE,
-                      fig.path = "9-HazardBasedModels/")
+                      fig.path = "RmdFiles/9-HazardBasedModels/")
 ```
 
 #### Example: Work-to-home departure delay

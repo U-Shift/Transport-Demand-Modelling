@@ -69,7 +69,7 @@ tm_shape(WIfinal) +
   tm_legend(outside = TRUE, text.size = .8) 
 ```
 
-![](README_files/Spatialmodels/unnamed-chunk-5-1.png)<!-- -->
+![](6-SpatialModels/unnamed-chunk-5-1.png)<!-- -->
 
 You can use `tmap()` as interactive view mode. Example, using the same
 command.
@@ -85,7 +85,7 @@ tm_shape(WIfinal) +
   tm_polygons(style = "quantile", col = "HISP_", title= "Hispanic people")
 ```
 
-![](README_files/Spatialmodels/unnamed-chunk-6-1.png)<!-- -->
+![](6-SpatialModels/unnamed-chunk-6-1.png)<!-- -->
 
 ## Global spatial autocorrelation
 
@@ -213,7 +213,7 @@ histogram).
 plot(moran.mc(WIfinal$HISP_, weightsW, nsim=599), main="", las=1) #density plot
 ```
 
-![](README_files/Spatialmodels/unnamed-chunk-11-1.png)<!-- -->
+![](6-SpatialModels/unnamed-chunk-11-1.png)<!-- -->
 
 ## Local spatial autocorrelation
 
@@ -225,7 +225,7 @@ plot(moran.mc(WIfinal$HISP_, weightsW, nsim=599), main="", las=1) #density plot
 moran.plot(WIfinal$HISP_, listw = weightsW)
 ```
 
-![](README_files/Spatialmodels/unnamed-chunk-12-1.png)<!-- -->
+![](6-SpatialModels/unnamed-chunk-12-1.png)<!-- -->
 
 Notice how the plot is split in 4 quadrants. The top right corner
 belongs to areas that have high level of Hispanic people and are
@@ -252,20 +252,13 @@ localmoranstats <- localmoran(WIfinal$HISP_, weightsW)
 summary(localmoranstats)
 ```
 
-    ##        Ii                E.Ii               Var.Ii            Z.Ii         
-    ##  Min.   :-0.23179   Min.   :-0.002404   Min.   :0.0536   Min.   :-0.75376  
-    ##  1st Qu.: 0.03026   1st Qu.:-0.002404   1st Qu.:0.1332   1st Qu.: 0.08241  
-    ##  Median : 0.09557   Median :-0.002404   Median :0.1558   Median : 0.24318  
-    ##  Mean   : 0.81942   Mean   :-0.002404   Mean   :0.1650   Mean   : 2.20017  
-    ##  3rd Qu.: 0.14393   3rd Qu.:-0.002404   3rd Qu.:0.1874   3rd Qu.: 0.36976  
-    ##  Max.   :33.54955   Max.   :-0.002404   Max.   :0.9455   Max.   :92.01262  
-    ##    Pr(z > 0)     
-    ##  Min.   :0.0000  
-    ##  1st Qu.:0.3558  
-    ##  Median :0.4039  
-    ##  Mean   :0.3845  
-    ##  3rd Qu.:0.4672  
-    ##  Max.   :0.7745
+    ##        Ii                E.Ii               Var.Ii            Z.Ii            Pr(z > 0)     
+    ##  Min.   :-0.23179   Min.   :-0.002404   Min.   :0.0536   Min.   :-0.75376   Min.   :0.0000  
+    ##  1st Qu.: 0.03026   1st Qu.:-0.002404   1st Qu.:0.1332   1st Qu.: 0.08241   1st Qu.:0.3558  
+    ##  Median : 0.09557   Median :-0.002404   Median :0.1558   Median : 0.24318   Median :0.4039  
+    ##  Mean   : 0.81942   Mean   :-0.002404   Mean   :0.1650   Mean   : 2.20017   Mean   :0.3845  
+    ##  3rd Qu.: 0.14393   3rd Qu.:-0.002404   3rd Qu.:0.1874   3rd Qu.: 0.36976   3rd Qu.:0.4672  
+    ##  Max.   :33.54955   Max.   :-0.002404   Max.   :0.9455   Max.   :92.01262   Max.   :0.7745
 
 The outputs of this statistics’ table are defined as:
 
@@ -287,7 +280,7 @@ tm_shape(moranmap) +
 
     ## Variable(s) "Ii" contains positive and negative values, so midpoint is set to 0. Set midpoint = NA to show the full spectrum of the color palette.
 
-![](README_files/Spatialmodels/unnamed-chunk-14-1.png)<!-- -->
+![](6-SpatialModels/unnamed-chunk-14-1.png)<!-- -->
 
 ``` r
 tm_shape(moranmap) +
@@ -298,7 +291,7 @@ tm_shape(moranmap) +
     title = "local Moran's I p-values") 
 ```
 
-![](README_files/Spatialmodels/unnamed-chunk-14-2.png)<!-- -->
+![](6-SpatialModels/unnamed-chunk-14-2.png)<!-- -->
 
 A positive value for `Ii` indicates that the unit is surrounded by units
 with similar values.  
@@ -379,14 +372,18 @@ table(moranmap$quad_sig)
 And now let’s put the results in a map!
 
 ``` r
-palcolor = c("red",rgb(1,0,0,alpha=0.4),rgb(0,0,1,alpha=0.4),"blue", "white") #define the color palette
+# palcolor = c("red",rgb(1,0,0,alpha=0.4),rgb(0,0,1,alpha=0.4),"blue", "white") #define the color palette for the 5 categories (HH, HL, LH, LL, NS)
+palcolor = c("red", "white") #the color palette for only 2 categories
 tmap_mode("plot")
 tm_shape(moranmap)+
   tm_polygons(col = "quad_sig", palette = palcolor, title = "local moran statistic")+
   tm_legend(outside = TRUE) 
 ```
 
-![](README_files/Spatialmodels/unnamed-chunk-17-1.png)<!-- -->
+![](6-SpatialModels/unnamed-chunk-17-1.png)<!-- --> What can you
+conclude?  
+Now, try with other variable, for example the % of Black people per
+tract (`PCTBLCK`).
 
 **See more**
 [here](https://mgimond.github.io/Spatial/spatial-autocorrelation-in-r.html),

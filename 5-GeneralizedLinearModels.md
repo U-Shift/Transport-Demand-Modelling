@@ -56,6 +56,8 @@ dataset <- read_excel("Data/TDM_GZLM_CALMICH_Example.xlsx", skip = 5) #skipping 
 view(dataset)
 ```
 
+    ## x must either be a summarytools object created with freq(), descr(), or a list of summarytools objects created using by()
+
 ## Get to know your data
 
 ##### Summary statistics
@@ -79,20 +81,13 @@ str(df)
 summary(df)
 ```
 
-    ##      STATE           ACCIDENT          AADT1           AADT2       
-    ##  Min.   :0.0000   Min.   : 0.000   Min.   : 2367   Min.   :  15.0  
-    ##  1st Qu.:0.0000   1st Qu.: 0.000   1st Qu.: 7307   1st Qu.: 101.0  
-    ##  Median :0.0000   Median : 1.000   Median :12050   Median : 348.5  
-    ##  Mean   :0.2857   Mean   : 2.619   Mean   :12870   Mean   : 595.9  
-    ##  3rd Qu.:1.0000   3rd Qu.: 4.000   3rd Qu.:16659   3rd Qu.: 917.5  
-    ##  Max.   :1.0000   Max.   :13.000   Max.   :33058   Max.   :3001.0  
-    ##      MEDIAN           DRIVE       
-    ##  Min.   : 0.000   Min.   : 0.000  
-    ##  1st Qu.: 0.000   1st Qu.: 0.000  
-    ##  Median : 0.000   Median : 1.000  
-    ##  Mean   : 3.798   Mean   : 3.095  
-    ##  3rd Qu.: 6.000   3rd Qu.: 5.250  
-    ##  Max.   :36.000   Max.   :15.000
+    ##      STATE           ACCIDENT          AADT1           AADT2            MEDIAN           DRIVE       
+    ##  Min.   :0.0000   Min.   : 0.000   Min.   : 2367   Min.   :  15.0   Min.   : 0.000   Min.   : 0.000  
+    ##  1st Qu.:0.0000   1st Qu.: 0.000   1st Qu.: 7307   1st Qu.: 101.0   1st Qu.: 0.000   1st Qu.: 0.000  
+    ##  Median :0.0000   Median : 1.000   Median :12050   Median : 348.5   Median : 0.000   Median : 1.000  
+    ##  Mean   :0.2857   Mean   : 2.619   Mean   :12870   Mean   : 595.9   Mean   : 3.798   Mean   : 3.095  
+    ##  3rd Qu.:1.0000   3rd Qu.: 4.000   3rd Qu.:16659   3rd Qu.: 917.5   3rd Qu.: 6.000   3rd Qu.: 5.250  
+    ##  Max.   :1.0000   Max.   :13.000   Max.   :33058   Max.   :3001.0   Max.   :36.000   Max.   :15.000
 
 ##### Preparing your data
 
@@ -158,7 +153,7 @@ Take a look at the histograms of the variables
 plot_histogram(df, ncol = 3) #with 3 columns
 ```
 
-![](README_files/GLM/unnamed-chunk-7-1.png)<!-- -->
+![](5-GLM/unnamed-chunk-7-1.png)<!-- -->
 
 ## Generalized Linear Models
 
@@ -172,7 +167,7 @@ variable.
 plot(density(df$ACCIDENT), main="Density estimate of ACCIDENTS")
 ```
 
-![](README_files/GLM/unnamed-chunk-8-1.png)<!-- -->
+![](5-GLM/unnamed-chunk-8-1.png)<!-- -->
 
 As the dependent variable is “count data”, and has discrete values (it
 is not continuous), then a Poisson distribution should be more adequate.

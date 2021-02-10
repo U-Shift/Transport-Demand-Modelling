@@ -69,7 +69,7 @@ tm_shape(WIfinal) +
   tm_legend(outside = TRUE, text.size = .8) 
 ```
 
-![](6-SpatialModels/unnamed-chunk-5-1.png)<!-- -->
+![](RmdFiles/6-SpatialModels/unnamed-chunk-5-1.png)<!-- -->
 
 You can use `tmap()` as interactive view mode. Example, using the same
 command.
@@ -85,7 +85,7 @@ tm_shape(WIfinal) +
   tm_polygons(style = "quantile", col = "HISP_", title= "Hispanic people")
 ```
 
-![](6-SpatialModels/unnamed-chunk-6-1.png)<!-- -->
+![](RmdFiles/6-SpatialModels/unnamed-chunk-6-1.png)<!-- -->
 
 ## Global spatial autocorrelation
 
@@ -213,7 +213,7 @@ histogram).
 plot(moran.mc(WIfinal$HISP_, weightsW, nsim=599), main="", las=1) #density plot
 ```
 
-![](6-SpatialModels/unnamed-chunk-11-1.png)<!-- -->
+![](RmdFiles/6-SpatialModels/unnamed-chunk-11-1.png)<!-- -->
 
 ## Local spatial autocorrelation
 
@@ -225,7 +225,7 @@ plot(moran.mc(WIfinal$HISP_, weightsW, nsim=599), main="", las=1) #density plot
 moran.plot(WIfinal$HISP_, listw = weightsW)
 ```
 
-![](6-SpatialModels/unnamed-chunk-12-1.png)<!-- -->
+![](RmdFiles/6-SpatialModels/unnamed-chunk-12-1.png)<!-- -->
 
 Notice how the plot is split in 4 quadrants. The top right corner
 belongs to areas that have high level of Hispanic people and are
@@ -280,7 +280,7 @@ tm_shape(moranmap) +
 
     ## Variable(s) "Ii" contains positive and negative values, so midpoint is set to 0. Set midpoint = NA to show the full spectrum of the color palette.
 
-![](6-SpatialModels/unnamed-chunk-14-1.png)<!-- -->
+![](RmdFiles/6-SpatialModels/unnamed-chunk-14-1.png)<!-- -->
 
 ``` r
 tm_shape(moranmap) +
@@ -291,7 +291,7 @@ tm_shape(moranmap) +
     title = "local Moran's I p-values") 
 ```
 
-![](6-SpatialModels/unnamed-chunk-14-2.png)<!-- -->
+![](RmdFiles/6-SpatialModels/unnamed-chunk-14-2.png)<!-- -->
 
 A positive value for `Ii` indicates that the unit is surrounded by units
 with similar values.  
@@ -380,8 +380,8 @@ tm_shape(moranmap)+
   tm_legend(outside = TRUE) 
 ```
 
-![](6-SpatialModels/unnamed-chunk-17-1.png)<!-- --> What can you
-conclude?  
+![](RmdFiles/6-SpatialModels/unnamed-chunk-17-1.png)<!-- --> What can
+you conclude?  
 Now, try with other variable, for example the % of Black people per
 tract (`PCTBLCK`).
 

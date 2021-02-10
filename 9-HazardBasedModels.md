@@ -139,7 +139,7 @@ df <- df[order(df$minutes),] #sort by time
 plot(df$minutes, type="h") #high-density vertical lines
 ```
 
-![](9-HazardBasedModels/unnamed-chunk-5-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-5-1.png)<!-- -->
 
 ## Survival function
 
@@ -193,7 +193,7 @@ conf.int = TRUE
 )
 ```
 
-![](9-HazardBasedModels/unnamed-chunk-7-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 #option 2
@@ -209,7 +209,7 @@ ggsurvplot(
 )
 ```
 
-![](9-HazardBasedModels/unnamed-chunk-8-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-8-1.png)<!-- -->
 
 > **Note:** It is the most widely applied nonparametric method in
 > survival analysis.The Kaplan–Meier method provides useful estimates of
@@ -300,10 +300,15 @@ violation of the PH assumption.
 test.ph <- cox.zph(result.cox)
 par(mfrow=c(2,2))
 plot(test.ph)
+```
+
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-10-1.png)<!-- -->
+
+``` r
 ggcoxzph(test.ph)
 ```
 
-![](9-HazardBasedModels/unnamed-chunk-10-1.png)<!-- -->![](9-HazardBasedModels/unnamed-chunk-10-2.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-10-2.png)<!-- -->
 
 > **Note:** If significant then the assumption is violated.  
 > In principle, the Schoenfeld residuals are independent of time.
@@ -319,7 +324,7 @@ ggsurvplot(
 )
 ```
 
-![](9-HazardBasedModels/unnamed-chunk-11-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-11-1.png)<!-- -->
 
 ##### Plot the cummulative hazard function
 
@@ -335,7 +340,7 @@ ggsurvplot(
 )
 ```
 
-![](9-HazardBasedModels/unnamed-chunk-12-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-12-1.png)<!-- -->
 
 ##### Calculate the McFadden Pseudo R-square
 

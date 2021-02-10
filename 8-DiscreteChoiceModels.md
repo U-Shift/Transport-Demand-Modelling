@@ -49,13 +49,13 @@ This chapter explores how to estimate and analyze Discrete Choice Models, their 
 
 ## Datasets
 
-- [Swissmetro](Data/DMC/swissmetro.dat)
-- [Optima](Data/DMC/optima.dat)
+- [Swissmetro](Data/DCM/swissmetro.dat)
+- [Optima](Data/DCM/optima.dat)
 
 (from [https://biogeme.epfl.ch/data.html](https://biogeme.epfl.ch/data.html))
 
 
-#### Other Useful Links
+### Other Useful Links
 
 * Installation: https://biogeme.epfl.ch/install.html
 * Datasets: https://biogeme.epfl.ch/data.html

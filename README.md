@@ -46,10 +46,10 @@ This material is also an open source tutorial for applying R programming (chapte
 
 * [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/): preparation of code of Chapters 1-5, 7.
 * [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/): preparation of code of Chapter 6, "How to install R", "Tips for RMarkdown", revision of code of Chapters 1-7, 9.
-* [Anabela Ribeiro](https://apps.uc.pt/mypage/faculty/dec_anabela): preparation of slides of Chapters 6 and 7, and home assignment 3
 * [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/): prepatarion of code of Chapter 8, home assignment 4, "How to install Python".
 * [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/): preparation of code and slides of Chapter 9.
 * [Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/): preparation of slides of Chapters 1-5 and 8, home assignments 1 and 2, and supervision.
+* [Anabela Ribeiro](https://apps.uc.pt/mypage/faculty/dec_anabela): preparation of slides of Chapters 6 and 7, and home assignment 3
 * [João Abreu e Silva](https://fenix.tecnico.ulisboa.pt/homepage/ist24709): preparation of the first version of slides of Chapters 1-5 and 8.
 
 ## Reference

@@ -20,7 +20,7 @@ rmarkdown::render(
   input = "RmdFiles/1-ExploratoryDataAnalysis.Rmd",
   knit_root_dir = getwd(),
   output_dir = getwd(),
-  clean = T
+  # clean = T
 )
 
 #2-MultipleLinearRegression

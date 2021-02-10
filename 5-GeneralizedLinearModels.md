@@ -153,7 +153,7 @@ Take a look at the histograms of the variables
 plot_histogram(df, ncol = 3) #with 3 columns
 ```
 
-![](5-GLM/unnamed-chunk-7-1.png)<!-- -->
+![](RmdFiles/5-GeneralizedLinearModels/unnamed-chunk-7-1.png)<!-- -->
 
 ## Generalized Linear Models
 
@@ -167,7 +167,7 @@ variable.
 plot(density(df$ACCIDENT), main="Density estimate of ACCIDENTS")
 ```
 
-![](5-GLM/unnamed-chunk-8-1.png)<!-- -->
+![](RmdFiles/5-GeneralizedLinearModels/unnamed-chunk-8-1.png)<!-- -->
 
 As the dependent variable is “count data”, and has discrete values (it
 is not continuous), then a Poisson distribution should be more adequate.

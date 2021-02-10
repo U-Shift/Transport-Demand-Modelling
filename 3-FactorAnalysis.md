@@ -135,443 +135,499 @@ descriptive_stats <- dfSummary(df)
 view(descriptive_stats)
 ```
 
-<div class="container st-container">
-<h3>Data Frame Summary</h3>
-<h4>df</h4>
-<strong>Dimensions</strong>: 470 x 32
-  <br/><strong>Duplicates</strong>: 0
-<br/>
-<div style="max-height:500px;overflow-y:scroll;margin:10px 2px">
-  <table class="table table-striped table-bordered st-table st-table-striped st-table-bordered st-multiline ">
-    <thead>
-      <tr>
-        <th align="center" class="st-protect-top-border"><strong>No</strong></th>
-        <th align="center" class="st-protect-top-border"><strong>Variable</strong></th>
-        <th align="center" class="st-protect-top-border"><strong>Stats / Values</strong></th>
-        <th align="center" class="st-protect-top-border"><strong>Freqs (% of Valid)</strong></th>
-        <th align="center" class="st-protect-top-border"><strong>Graph</strong></th>
-        <th align="center" class="st-protect-top-border"><strong>Missing</strong></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td align="center">1</td>
-        <td align="left">RespondentID
+### Data Frame Summary
+
+#### df
+
+**Dimensions:** 470 x 32  
+**Duplicates:** 0
+
+<table style="width:100%;">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 14%" />
+<col style="width: 33%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>No</th>
+<th>Variable</th>
+<th>Stats / Values</th>
+<th>Freqs (% of Valid)</th>
+<th>Graph</th>
+<th>Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>RespondentID<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 784082878 (8627501)
-min < med < max:
-773001005 < 780248283 < 808234671
+<td>Mean (sd) : 784082878 (8627501)<br />
+min &lt; med &lt; max:<br />
+773001005 &lt; 780248283 &lt; 808234671<br />
 IQR (CV) : 16634785 (0)</td>
-        <td align="left" style="vertical-align:middle">470 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAIJJREFUaN7t18EJgDAMQNGuUDewbmD2382DpEJyaEwLgvx/Ekse3mJLoUxVa1pNZLFD7k4wMDAwMDBtC6yaOCbjbwYDAwMDAwMDAwP7Dut/vyswNQQMDAwM7G+Yros9jtmRB9OHF5gdAYtjfdevwNwLMDAwsCTWXBOYP7HXnakKZboAL6cmJpiqiDQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDIrMDA6MDCXgXvhAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjAyKzAwOjAw5tzDXQAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>470 distinct values</td>
+<td><img src="tmp/ds0033.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">2</td>
-        <td align="left">DWELCLAS
+</tr>
+<tr class="even">
+<td>2</td>
+<td>DWELCLAS<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 5.1 (1.3)
-min < med < max:
-1 < 5 < 7
+<td>Mean (sd) : 5.1 (1.3)<br />
+min &lt; med &lt; max:<br />
+1 &lt; 5 &lt; 7<br />
 IQR (CV) : 2 (0.2)</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">5</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">1.1%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">14</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">3.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">3</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">31</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">6.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">4</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">75</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">16.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">5</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">130</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">27.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">6</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">162</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">34.5%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">7</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">53</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">11.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAEAAAACsBAMAAAA5wbcUAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAIRJREFUWMPt07ENwCAMRFFW8Ag4G5D9d0tEgCqHpQQMxf36FVg6QtgjFRQBwaZA5gPV2AfHSUDgCsxNCmzgv1DwjHbFHQHBMGBOTmDO/6IU30A+s0RA8B+YkxPYmn/RQmfWEgHBZ2BObtXsc50rnlMICKYAc5Oe/wKBekUiIPAB5iZXdwFZ8dtxIhxIkQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowMiswMDowMJeBe+EAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDIrMDA6MDDm3MNdAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>1 : 5 ( 1.1%)<br />
+2 : 14 ( 3.0%)<br />
+3 : 31 ( 6.6%)<br />
+4 : 75 (16.0%)<br />
+5 : 130 (27.7%)<br />
+6 : 162 (34.5%)<br />
+7 : 53 (11.3%)</td>
+<td><img src="tmp/ds0034.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">3</td>
-        <td align="left">INCOME
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>INCOME<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 4259.6 (3001.8)
-min < med < max:
-700 < 2750 < 12500
+<td>Mean (sd) : 4259.6 (3001.8)<br />
+min &lt; med &lt; max:<br />
+700 &lt; 2750 &lt; 12500<br />
 IQR (CV) : 2000 (0.7)</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">700</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">20</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">4.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1500</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">96</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">20.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2750</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">142</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">30.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">4750</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">106</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">22.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">7500</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">75</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">16.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">12500</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">31</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">6.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAADoAAACVBAMAAAD73/QgAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAHRJREFUWMPt07ENwCAMRFFWYASbDWD/3ZKCSBDgYkWJae7a17j4DmHfVFXiuKqpFCr1heKu4nwfqPaTXs+b21GpRsVdufV8bX5zXaZSHxR35dgz+sGSqVST4q58epZB25upVLvirn7uWVaabsdSqTbFXe3YAbH+nJ1dKrfCAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjAyKzAwOjAwl4F74QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowMiswMDowMObcw10AAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>700 : 20 ( 4.3%)<br />
+1500 : 96 (20.4%)<br />
+2750 : 142 (30.2%)<br />
+4750 : 106 (22.6%)<br />
+7500 : 75 (16.0%)<br />
+12500 : 31 ( 6.6%)</td>
+<td><img src="tmp/ds0035.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">4</td>
-        <td align="left">CHILD13
+</tr>
+<tr class="even">
+<td>4</td>
+<td>CHILD13<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 0.4 (0.8)
-min < med < max:
-0 < 0 < 4
+<td>Mean (sd) : 0.4 (0.8)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 0 &lt; 4<br />
 IQR (CV) : 0 (2)</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">353</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">75.1%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">62</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">13.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">41</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">8.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">3</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">13</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">2.8%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">4</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAH0AAAB9BAMAAAB9rnEWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAHRJREFUWMPt1LERgDAMQ9GMQDYAZ4Nk/93S5OCOznKBc3z1r5AKlUJMzLl8G1rweDz+ax/9vyrmSOKfRpq/9+94PB6/l4/+n0/l81L5+t7fOT4ej8cn8NH/c8Nk3uwK+TbweDx+Tx/9Pwkn8lp7PB6Px/85E+uWgMmyqTSLAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjAyKzAwOjAwl4F74QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowMiswMDowMObcw10AAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>0 : 353 (75.1%)<br />
+1 : 62 (13.2%)<br />
+2 : 41 ( 8.7%)<br />
+3 : 13 ( 2.8%)<br />
+4 : 1 ( 0.2%)</td>
+<td><img src="tmp/ds0036.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">5</td>
-        <td align="left">H18
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>H18<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 2.1 (0.9)
-min < med < max:
-0 < 2 < 6
+<td>Mean (sd) : 2.1 (0.9)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 2 &lt; 6<br />
 IQR (CV) : 0.8 (0.4)</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">112</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">23.8%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">239</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">50.9%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">3</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">77</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">16.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">4</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">35</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">7.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">5</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">3</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">6</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">3</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAFkAAACsBAMAAADieh02AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAIRJREFUWMPt1sENgCAMRmFGkA1EN8D9d/NqEOSvMViS987fgTRpQwjzlqLSgkaj3WoJD9HbrSe9H0UZjUZ/r217GaX+uSe11tZMqqHR6FLbNs3PhXh/T1JXXyeIRqN1bdu0KOVPt/9SzQlmNBpt1bZN67lxuvtkNBrtXEuYe4JGowU9YyfZvWc8ioi+KQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowMiswMDowMJeBe+EAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDIrMDA6MDDm3MNdAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>0 : 1 ( 0.2%)<br />
+1 : 112 (23.8%)<br />
+2 : 239 (50.9%)<br />
+3 : 77 (16.4%)<br />
+4 : 35 ( 7.4%)<br />
+5 : 3 ( 0.6%)<br />
+6 : 3 ( 0.6%)</td>
+<td><img src="tmp/ds0037.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">6</td>
-        <td align="left">HEMPLOY
+</tr>
+<tr class="even">
+<td>6</td>
+<td>HEMPLOY<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 1.5 (0.7)
-min < med < max:
-0 < 2 < 5
+<td>Mean (sd) : 1.5 (0.7)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 2 &lt; 5<br />
 IQR (CV) : 1 (0.5)</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">39</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">8.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">171</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">36.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">237</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">50.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">3</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">21</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">4.5%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">4</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">5</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAFgAAACVBAMAAAAuzSBtAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAHxJREFUWMPt1lsKgCAURVGn4BC8zqDmP7foAQU9vCcyFPb+Xh8iHDGEPrOlFJ/bcB7nwGDwh1jaYHRVHdt96YTX27gMDAa/w9IGpXXXw+aqfBt7AxgMFrC0wXbejeTGufz1AoPBGpY2WIa/YMeBwWBwK9hleTfAYPAB99YEdUoqOhR35A4AAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDIrMDA6MDCXgXvhAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjAyKzAwOjAw5tzDXQAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>0 : 39 ( 8.3%)<br />
+1 : 171 (36.4%)<br />
+2 : 237 (50.4%)<br />
+3 : 21 ( 4.5%)<br />
+4 : 1 ( 0.2%)<br />
+5 : 1 ( 0.2%)</td>
+<td><img src="tmp/ds0038.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">7</td>
-        <td align="left">HSIZE
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>HSIZE<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 2.6 (1.3)
-min < med < max:
-1 < 2 < 7
+<td>Mean (sd) : 2.6 (1.3)<br />
+min &lt; med &lt; max:<br />
+1 &lt; 2 &lt; 7<br />
 IQR (CV) : 2 (0.5)</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">104</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">22.1%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">147</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">31.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">3</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">96</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">20.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">4</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">96</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">20.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">5</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">20</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">4.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">6</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">5</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">1.1%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">7</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">2</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAADwAAACsBAMAAADVtNICAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAHBJREFUWMPt0sENgCAMRmFW6AjABrr/bhzUBBtLowHh8P7rd2mTF8LcJT05dnLe79tg+Cs7rYmxLpyMGZdfD8Dwa3Za+7PzqFhdDsMNdmIaGjKdw3Qe6nMeOFfPwHCbnZjEWJ+QYXgNlpEcYXgNnrUCvpXGLewCBsIAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDIrMDA6MDCXgXvhAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjAyKzAwOjAw5tzDXQAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>1 : 104 (22.1%)<br />
+2 : 147 (31.3%)<br />
+3 : 96 (20.4%)<br />
+4 : 96 (20.4%)<br />
+5 : 20 ( 4.3%)<br />
+6 : 5 ( 1.1%)<br />
+7 : 2 ( 0.4%)</td>
+<td><img src="tmp/ds0039.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">8</td>
-        <td align="left">AVADUAGE
+</tr>
+<tr class="even">
+<td>8</td>
+<td>AVADUAGE<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 37.8 (9.9)
-min < med < max:
-0 < 36 < 78
+<td>Mean (sd) : 37.8 (9.9)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 36 &lt; 78<br />
 IQR (CV) : 12.7 (0.3)</td>
-        <td align="left" style="vertical-align:middle">126 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAHhJREFUaN7t17ENgCAARUFWwA3UDWT/3SwUGkNAxcTiXkVCcqGg+SHoSbHakovtmtiajjYYDAaDwWAwGAwGu4FNeZgMwU4jfYN1jKh+LLWfCIPBYDAYDAaDwX6E5T0wj8DyAQarYNcB+gIrNzBYBSsf7sSWIQU9aQfIfu5cRZbNfgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowMiswMDowMJeBe+EAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDIrMDA6MDDm3MNdAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>126 distinct values</td>
+<td><img src="tmp/ds0040.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">9</td>
-        <td align="left">IAGE
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>IAGE<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 36.9 (11.6)
-min < med < max:
-0 < 34 < 78
+<td>Mean (sd) : 36.9 (11.6)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 34 &lt; 78<br />
 IQR (CV) : 15 (0.3)</td>
-        <td align="left" style="vertical-align:middle">53 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAIFJREFUaN7t18EJwCAMQNGsYDeobtDsv5uHNl6sJKhQKP+fBOkjeBArQjOlYdlKfi5W9O4C87DDzn0L9hgKBgYGBgYGBgYGBgYG9gss8LMex9QfEQwMDAxsD2bX97kDswUYGBgY2AvWv5gXsLYDBvYFlrsWsDL8NoC1AYaTzSQ0UwWhRSGej+VBgwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowMiswMDowMJeBe+EAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDIrMDA6MDDm3MNdAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>53 distinct values</td>
+<td><img src="tmp/ds0041.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">10</td>
-        <td align="left">ISEX
+</tr>
+<tr class="even">
+<td>10</td>
+<td>ISEX<br />
 [numeric]</td>
-        <td align="left">Min : 0
-Mean : 0.5
+<td>Min : 0<br />
+Mean : 0.5<br />
 Max : 1</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">214</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">45.5%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">256</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">54.5%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAF4AAAA3BAMAAAB3B+DPAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAEFJREFUSMdjYBj6QIkgUBQEA6h6ZWNCYFT9qPpR9YNVPan5XZBYQCf1hN0PBUSHDwQYjaofVT+qftCpJzW/D2UAAE4TUAHUQvXSAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjAyKzAwOjAwl4F74QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowMiswMDowMObcw10AAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>0 : 214 (45.5%)<br />
+1 : 256 (54.5%)</td>
+<td><img src="tmp/ds0042.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">11</td>
-        <td align="left">NCARS
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>NCARS<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 1.7 (0.9)
-min < med < max:
-0 < 2 < 5
+<td>Mean (sd) : 1.7 (0.9)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 2 &lt; 5<br />
 IQR (CV) : 1 (0.5)</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">23</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">4.9%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">182</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">38.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">193</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">41.1%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">3</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">56</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">11.9%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">4</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">13</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">2.8%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">5</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">3</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAEoAAACVBAMAAAANlnG4AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoCw0W2OwAAAHRJREFUWMPt07ENwCAMRFFW8AiYDfD+uyVFFKXBugYF0P/1ayydS1k3v7Nxj2oRHYU6R2m7t7wJyrPq58ZxKNR2Stv9Yv/ortwYHYXaTGm7//Efa6beG1GoI5S2e8ub8o9VUC1QqJOUtnvLm/GPKBRqoFbsAt6t6MqfZ1wZAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjAyKzAwOjAwl4F74QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowMiswMDowMObcw10AAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>0 : 23 ( 4.9%)<br />
+1 : 182 (38.7%)<br />
+2 : 193 (41.1%)<br />
+3 : 56 (11.9%)<br />
+4 : 13 ( 2.8%)<br />
+5 : 3 ( 0.6%)</td>
+<td><img src="tmp/ds0043.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">12</td>
-        <td align="left">AREA
+</tr>
+<tr class="even">
+<td>12</td>
+<td>AREA<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 133 (121.5)
-min < med < max:
-30 < 110 < 2250
+<td>Mean (sd) : 133 (121.5)<br />
+min &lt; med &lt; max:<br />
+30 &lt; 110 &lt; 2250<br />
 IQR (CV) : 60 (0.9)</td>
-        <td align="left" style="vertical-align:middle">76 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoDtEKGrQAAAFpJREFUaN7t2bENwCAMRUGvwAiBDcj+u6EQJnCQkKJ7hcurfucIZaqzq3xrYe1+gsFgMBgMBoPBYDAYDAaDwWAwGAwGg8FgZ7D3/bcJm7fD/oTlB7KwuqVQpgFlTTR4U1FpLwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowMyswMDowMDH2cFUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDMrMDA6MDBAq8jpAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>76 distinct values</td>
+<td><img src="tmp/ds0044.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">13</td>
-        <td align="left">BEDROOM
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>BEDROOM<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 2.9 (1.1)
-min < med < max:
-0 < 3 < 7
+<td>Mean (sd) : 2.9 (1.1)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 3 &lt; 7<br />
 IQR (CV) : 1 (0.4)</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">28</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">6.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">153</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">32.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">3</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">180</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">38.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">4</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">73</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">15.5%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">5</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">26</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">5.5%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">6</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">7</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">1.5%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">7</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">2</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">0.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAEYAAADEBAMAAADQeEpkAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoDtEKGrQAAAItJREFUWMPt08ENgCAMRmFW6AiVDWD/3QyejFFoohbQ987fpcnfEMZLpRIG80EjjmYpNUzMOScMZgJj2bPUeuO/TtLDXWdhMJ7GslXP37nzX1uN20sJg3Eylq2O/F9XZnd7wmB6GctWpVan/9KGKbdjML2NZatS6+nf0baJGMwkxrJnET+jGMzPzEitetUnkuR8PB0AAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDMrMDA6MDAx9nBVAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjAzKzAwOjAwQKvI6QAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>0 : 1 ( 0.2%)<br />
+1 : 28 ( 6.0%)<br />
+2 : 153 (32.6%)<br />
+3 : 180 (38.3%)<br />
+4 : 73 (15.5%)<br />
+5 : 26 ( 5.5%)<br />
+6 : 7 ( 1.5%)<br />
+7 : 2 ( 0.4%)</td>
+<td><img src="tmp/ds0045.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">14</td>
-        <td align="left">PARK
+</tr>
+<tr class="even">
+<td>14</td>
+<td>PARK<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 0.8 (1)
-min < med < max:
-0 < 1 < 4
+<td>Mean (sd) : 0.8 (1)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 1 &lt; 4<br />
 IQR (CV) : 1 (1.2)</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">224</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">47.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">136</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">28.9%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">84</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">17.9%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">3</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">18</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">3.8%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">4</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">8</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">1.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAFQAAAB9BAMAAADO5lkMAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoDtEKGrQAAAHJJREFUWMPt1EEKgDAMRNFeIUeovUG9/93cCCLWZoJEKPxZv0USmJSyVjYhJ227mw6FQuPdMiGpdDzdkA4v0KFQ6NdumZD//kCd0tsFoFDonAa6ZUKy/0AVaXvdGwqFPmigWx5Lp/6k1wWgUKhOA91aJQeAXdzWz7HogQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowMyswMDowMDH2cFUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDMrMDA6MDBAq8jpAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>0 : 224 (47.7%)<br />
+1 : 136 (28.9%)<br />
+2 : 84 (17.9%)<br />
+3 : 18 ( 3.8%)<br />
+4 : 8 ( 1.7%)</td>
+<td><img src="tmp/ds0046.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">15</td>
-        <td align="left">BEDSIZE
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>BEDSIZE<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 1.4 (0.8)
-min < med < max:
-0 < 1 < 5
+<td>Mean (sd) : 1.4 (0.8)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 1 &lt; 5<br />
 IQR (CV) : 0.7 (0.6)</td>
-        <td align="left" style="vertical-align:middle">22 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoEKiYTDgAAAIdJREFUaN7t2MEJgDAMQNGuUDdQN2j3300w8RAIJY3Qg/5/EUEfEdoeLIUyVemQ9prLYme/AwMDAwMDAwMDAwMDAwMDAwMDA1uEZX/wuVh2QDCwBDa9dkfY9IBgYGD/wfS0GWCbPhLAXMVictPAvof5CyWA6XsWc+cMYHJpq7Dno+12elmhTBf9u4kf58lJ1gAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowNCswMDowMPRRTtsAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDQrMDA6MDCFDPZnAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>22 distinct values</td>
+<td><img src="tmp/ds0047.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">16</td>
-        <td align="left">PARKSIZE
+</tr>
+<tr class="even">
+<td>16</td>
+<td>PARKSIZE<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 0.5 (0.6)
-min < med < max:
-0 < 0.2 < 3
+<td>Mean (sd) : 0.5 (0.6)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 0.2 &lt; 3<br />
 IQR (CV) : 1 (1.2)</td>
-        <td align="left" style="vertical-align:middle">13 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoEKiYTDgAAAG5JREFUaN7t2bENgCAQQFFW0A3EDWT/3WyIXqEJAY0xeb8iV7xAy6WknnJo6q5iaznaYDAYDAaDwWAwGAwGg8H+ioX/kmUYO48FBoPBYDAYDAaDXWNzw9ayHQvj7XssPm0Yuxm/hsXLVyw/UlJPO5IQx/b/G6/SAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjA0KzAwOjAw9FFO2wAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowNCswMDowMIUM9mcAAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>13 distinct values</td>
+<td><img src="tmp/ds0048.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">17</td>
-        <td align="left">RAGE10
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>RAGE10<br />
 [numeric]</td>
-        <td align="left">Min : 0
-Mean : 0.2
+<td>Min : 0<br />
+Mean : 0.2<br />
 Max : 1</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">356</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">75.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">114</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">24.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAH4AAAA3BAMAAAA4WuMfAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoEKiYTDgAAAEJJREFUSMdjYBgFSuQCqH5lY/KA0aj+Uf2j+kf1D3H9lJafguSCQaIf02OKJOnHDP9R/aP6R/WP6h8Z+iktP0cyAAClFoHxLQjPqQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowNCswMDowMPRRTtsAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDQrMDA6MDCFDPZnAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>0 : 356 (75.7%)<br />
+1 : 114 (24.3%)</td>
+<td><img src="tmp/ds0049.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">18</td>
-        <td align="left">TCBD
+</tr>
+<tr class="even">
+<td>18</td>
+<td>TCBD<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 24.7 (16.2)
-min < med < max:
-0.8 < 23.8 < 73.3
+<td>Mean (sd) : 24.7 (16.2)<br />
+min &lt; med &lt; max:<br />
+0.8 &lt; 23.8 &lt; 73.3<br />
 IQR (CV) : 25.7 (0.7)</td>
-        <td align="left" style="vertical-align:middle">434 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoEKiYTDgAAAIhJREFUaN7t2N0JwDAIRlFX6AhNN2j2360vUQoSCmrpD/d7CkgOBgKRiJBImmZdEhnY1kfAwMDAwL6N2etQgWllD2CukQzm9oKB3Ynp5S3Bpq2CgYGBgYGBgYGBgZ3G71aB9esWn8bmX7oBTBdgYGBgYGA/x/y8kMCs8l7MzluBWWVgrSRCIjkAxn+b2F7s7n0AAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDQrMDA6MDD0UU7bAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjA0KzAwOjAwhQz2ZwAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>434 distinct values</td>
+<td><img src="tmp/ds0050.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">19</td>
-        <td align="left">DISTHTC
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>DISTHTC<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 1347 (1815.8)
-min < med < max:
-49 < 719 < 17732.7
+<td>Mean (sd) : 1347 (1815.8)<br />
+min &lt; med &lt; max:<br />
+49 &lt; 719 &lt; 17732.7<br />
 IQR (CV) : 1125 (1.3)</td>
-        <td align="left" style="vertical-align:middle">434 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoEKiYTDgAAAGdJREFUaN7t2bENgDAMRUGvwAiEDWD/3SgwJUgxUSSke42761z9CFVq2bp8KbHtuILBYDAYDAaDwWAwGAwGg8FgMBgMBoP9CbsnoyFY3h0Gm4HV5s4HrPZdE7HOdfcd6/z/xNqQQpVO8rFc21t7lfQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDQrMDA6MDD0UU7bAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjA0KzAwOjAwhQz2ZwAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>434 distinct values</td>
+<td><img src="tmp/ds0051.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">20</td>
-        <td align="left">TWCBD
+</tr>
+<tr class="even">
+<td>20</td>
+<td>TWCBD<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 17 (16.2)
-min < med < max:
-0.3 < 9.9 < 67.8
+<td>Mean (sd) : 17 (16.2)<br />
+min &lt; med &lt; max:<br />
+0.3 &lt; 9.9 &lt; 67.8<br />
 IQR (CV) : 20 (1)</td>
-        <td align="left" style="vertical-align:middle">439 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoEKiYTDgAAAKxJREFUaN7t2FsKgCAQhWG3YDuodqD731spoV2kvAxU+J+HIYQ+RkEfRilSE+0yuYy6PntstmvAwHrE/E2SwrwDBgYGBgYGBgYGBgYGlom1DDcuWEt7YGBgfWPlj9ENVt4jGNhnMH8XpDD3Zb6GhWmwydhrGosD5VCMfW4vjSXKv7DhdI5t2GmtEDu20ogd/+4Ki+cogMW117GwLwksilJYypbCfNmwSSSK1GQB6lHGWNJhqtIAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDQrMDA6MDD0UU7bAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjA0KzAwOjAwhQz2ZwAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>439 distinct values</td>
+<td><img src="tmp/ds0052.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">21</td>
-        <td align="left">TDWWK
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>TDWWK<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 23.5 (17.1)
-min < med < max:
-0 < 22.2 < 80.7
+<td>Mean (sd) : 23.5 (17.1)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 22.2 &lt; 80.7<br />
 IQR (CV) : 23.6 (0.7)</td>
-        <td align="left" style="vertical-align:middle">414 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoEKiYTDgAAAIJJREFUaN7t2DEOgCAMQFGu4BGoN5D7383BdqiLSGtimv8XAsNLSICB1mgl0foWSbF9XIGBgaVhdkdTMB0PsEqY+HoI89PZswwGBgYGBgYGBgYGBgYGVgSb/IiZw2wZDAwMDOxr7OH5focNj/YUTEewStj92IUwW/4vZttVTFJqtNIJJPd1xKW/FjUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDQrMDA6MDD0UU7bAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjA0KzAwOjAwhQz2ZwAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>414 distinct values</td>
+<td><img src="tmp/ds0053.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">22</td>
-        <td align="left">HEADH
+</tr>
+<tr class="even">
+<td>22</td>
+<td>HEADH<br />
 [numeric]</td>
-        <td align="left">Min : 0
-Mean : 0.9
+<td>Min : 0<br />
+Mean : 0.9<br />
 Max : 1</td>
-        <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">64</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">13.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">406</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">86.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></table></td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAI4AAAA3BAMAAAAoFm+GAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoEKiYTDgAAAExJREFUSMdjYBgFhIASHCgKkgWg5igbw8CoOaPmjJozas6oOYPJHGqV8+RpHvzmKFEKMOKLPGA0as6oOaPmjJozag5NzKFWOT8KcAMA8dSa6UqLcJUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDQrMDA6MDD0UU7bAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjA0KzAwOjAwhQz2ZwAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>0 : 64 (13.6%)<br />
+1 : 406 (86.4%)</td>
+<td><img src="tmp/ds0054.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">23</td>
-        <td align="left">POPDENS
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>POPDENS<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 92 (58.2)
-min < med < max:
-0 < 83.2 < 255.6
+<td>Mean (sd) : 92 (58.2)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 83.2 &lt; 255.6<br />
 IQR (CV) : 89.2 (0.6)</td>
-        <td align="left" style="vertical-align:middle">431 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoEKiYTDgAAALZJREFUaN7t2F0KgCAQRlG3UDsod5D731s1QoZkNTZC0f0ehOnh0A+Tg86RmnRZRkmnTAHzYckEBgYGpsPkPzQYYesSwMDMsHyffITl7fM/TNHt15i/f3vtsPREBlh64WBgX8KkDawwvy1gYGDNsP7qFECFycX3Yiezhx4L5Q9yE4uTpRGWajAwMLAa7PhQuBKLNRgY2E+wfjdiPcekfhu2DW0WWKrBwApY3JSNsFi3wEaTOFKTGXxZnbCXBh8jAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjA0KzAwOjAw9FFO2wAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowNCswMDowMIUM9mcAAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>431 distinct values</td>
+<td><img src="tmp/ds0055.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">24</td>
-        <td align="left">EDUINDEX
+</tr>
+<tr class="even">
+<td>24</td>
+<td>EDUINDEX<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 0.2 (0.1)
-min < med < max:
-0 < 0.2 < 0.7
+<td>Mean (sd) : 0.2 (0.1)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 0.2 &lt; 0.7<br />
 IQR (CV) : 0.2 (0.6)</td>
-        <td align="left" style="vertical-align:middle">434 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoFXSEjmAAAAKpJREFUaN7t1sENgCAQRFFawA7UDqT/3hQ8aCICuxBF8+dgPL2MsptgDNHE+kw+o9XnjM1uC9jLWM2RXrCaemBgYGBgYGD/xZQXjjimrPdJTP7jEpi8HhgY2GOYaNtzmKgeGFg3WFiDVph/LGBgfWFhxlthSad3rGDbyzGXrwcG1iGWXgMhlq4HBtYYG2Ljq8ZiHV/Hwhceb3WYczfn8Xtsn5TzLag6hmiyAjyOFK2muB3yAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjA1KzAwOjAwUiZFbwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowNSswMDowMCN7/dMAAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>434 distinct values</td>
+<td><img src="tmp/ds0056.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">25</td>
-        <td align="left">GRAVCPC
+</tr>
+<tr class="odd">
+<td>25</td>
+<td>GRAVCPC<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 0.3 (0.1)
-min < med < max:
-0.1 < 0.3 < 0.4
+<td>Mean (sd) : 0.3 (0.1)<br />
+min &lt; med &lt; max:<br />
+0.1 &lt; 0.3 &lt; 0.4<br />
 IQR (CV) : 0.1 (0.2)</td>
-        <td align="left" style="vertical-align:middle">433 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoFXSEjmAAAAHpJREFUaN7t17ENgCAQQFFW0BF0A91/Nys9CzTxoND4fkUoXgEEQinKNDxtnI5iMo2tewsMBoPBYDAYDAaDwWBvwk7/3w5YELAWLDalAxYjGAwG+xVWe+DS2HxLfByLleqAHcQKg8Fg11jl4sljFQL2Z+z2dOWxlooybVOQL22Aj76yAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjA1KzAwOjAwUiZFbwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowNSswMDowMCN7/dMAAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>433 distinct values</td>
+<td><img src="tmp/ds0057.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">26</td>
-        <td align="left">GRAVCPT
+</tr>
+<tr class="even">
+<td>26</td>
+<td>GRAVCPT<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 0.3 (0.1)
-min < med < max:
-0 < 0.3 < 0.4
+<td>Mean (sd) : 0.3 (0.1)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 0.3 &lt; 0.4<br />
 IQR (CV) : 0.1 (0.2)</td>
-        <td align="left" style="vertical-align:middle">434 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoFXSEjmAAAAIdJREFUaN7t2LERgCAMQNGsoCPABrD/bhaaFHJpkqDN/6Vc3llwcCpCkY5ATbMnCazPuwEGBgYGBvY3duoNV4I9xgQDAwMDAwtgdim1CkyNAQYGBgZWiy2ndQbrbwMMDAwMDAxsK7b+DMxgywjYJ5j/8RzAujviY/YCFZit7MCau+EzWCqhSBeJiSNj3FoepAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowNSswMDowMFImRW8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDUrMDA6MDAje/3TAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>434 distinct values</td>
+<td><img src="tmp/ds0058.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">27</td>
-        <td align="left">GRAVPCPT
+</tr>
+<tr class="odd">
+<td>27</td>
+<td>GRAVPCPT<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 1.2 (0.3)
-min < med < max:
-0.5 < 1.1 < 2.9
+<td>Mean (sd) : 1.2 (0.3)<br />
+min &lt; med &lt; max:<br />
+0.5 &lt; 1.1 &lt; 2.9<br />
 IQR (CV) : 0.2 (0.3)</td>
-        <td align="left" style="vertical-align:middle">434 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoFXSEjmAAAAI9JREFUaN7t2UEKgCAQQFGvoDeobqD3v1s1QuaAaCa26P9F0MIHpaCUMdSTVa2SfVgB28KRBwMDAwMDAwMDAwMDAwMDAwMD+wiTj12jMHHAwOZhsn6XQdh5CWBgYGA/x1w6GWis7Q9ZhoXL0VjbnjAZu52Kas9ax9S9n4zF2RqElQeDubRU4jvPJuBthnraARPhb2/us1trAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjA1KzAwOjAwUiZFbwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowNSswMDowMCN7/dMAAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>434 distinct values</td>
+<td><img src="tmp/ds0059.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">28</td>
-        <td align="left">NSTRTC
+</tr>
+<tr class="even">
+<td>28</td>
+<td>NSTRTC<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 22.2 (12.6)
-min < med < max:
-0 < 22 < 84
+<td>Mean (sd) : 22.2 (12.6)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 22 &lt; 84<br />
 IQR (CV) : 16 (0.6)</td>
-        <td align="left" style="vertical-align:middle">59 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoFXSEjmAAAAINJREFUaN7t2UEKgCAQQFGv4BGauUHe/25BjYsiTQcXWf9vBMGHSIFgCOQpWmJFVxdM094KBjYdZj/CMgQ7hgQGBgYGBgYGNg0mfbehOqZ9O/wXlk96CKbn1WBgYGBgYGBgYGBgYO/FGp+j2rA8DQZWwB6+tz4s1Xf4NUzuM0yGFMjTBvHhIvZ4ZI2gAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTEwVDAzOjI2OjA1KzAwOjAwUiZFbwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xMFQwMzoyNjowNSswMDowMCN7/dMAAAAASUVORK5CYII="></td>
-        <td align="center">0
+<td>59 distinct values</td>
+<td><img src="tmp/ds0060.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">29</td>
-        <td align="left">DISTHW
+</tr>
+<tr class="odd">
+<td>29</td>
+<td>DISTHW<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 1883.4 (1748.3)
-min < med < max:
-74.7 < 1338.7 < 16590.1
+<td>Mean (sd) : 1883.4 (1748.3)<br />
+min &lt; med &lt; max:<br />
+74.7 &lt; 1338.7 &lt; 16590.1<br />
 IQR (CV) : 1820.5 (0.9)</td>
-        <td align="left" style="vertical-align:middle">434 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoFXSEjmAAAAG1JREFUaN7t2b0NgCAQgFFWcARhA91/NwvPUiM/Jmre1xCalysJl5JaytE89RRYWfdgMBgMBoPBYDAYDAaDwWCwn2HHP9oQLM4FBoPBYDAY7EmsbQ94gsX1vVjl2vMaK3UTfh27+dQNLA8pqaUNC3d4ThEcWDAAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDItMTBUMDM6MjY6MDUrMDA6MDBSJkVvAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTAyLTEwVDAzOjI2OjA1KzAwOjAwI3v90wAAAABJRU5ErkJggg=="></td>
-        <td align="center">0
+<td>434 distinct values</td>
+<td><img src="tmp/ds0061.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">30</td>
-        <td align="left">DIVIDX
+</tr>
+<tr class="even">
+<td>30</td>
+<td>DIVIDX<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 0.4 (0.1)
-min < med < max:
-0.3 < 0.4 < 0.6
+<td>Mean (sd) : 0.4 (0.1)<br />
+min &lt; med &lt; max:<br />
+0.3 &lt; 0.4 &lt; 0.6<br />
 IQR (CV) : 0.1 (0.2)</td>
-        <td align="left" style="vertical-align:middle">144 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoFXSEjmAAAAIpJREFUaN7t2cENgCAMQFFWYARxA7v/bh6kPdgYsPZgwv8XiCQvcDAmUgpFqlrTaqA7tsvVAQYGBga2LqYfli0D66OAgYGBgYGBgYGBgYGBgYGBgcUwuwZw2JsLgo6pIQ6zB//FJs47j8l4i2CLY8//SQOYTlIx/0p8wGwlFbMtZmC2AhbGWkqFIp3YpQUrwdJObwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowNSswMDowMFImRW8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDUrMDA6MDAje/3TAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>144 distinct values</td>
+<td><img src="tmp/ds0062.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">31</td>
-        <td align="left">ACTDENS
+</tr>
+<tr class="odd">
+<td>31</td>
+<td>ACTDENS<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 5.8 (8.5)
-min < med < max:
-0 < 2.5 < 63.2
+<td>Mean (sd) : 5.8 (8.5)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 2.5 &lt; 63.2<br />
 IQR (CV) : 3.5 (1.5)</td>
-        <td align="left" style="vertical-align:middle">144 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoFXSEjmAAAAHhJREFUaN7t2UsOQDAUQNFuwRLUDtj/3lDCQCTylEicO+isJ/3NmpIi5VJzsxXrhqkeBoPBYDAYDAaDwWAwGAwGg8FgMBgMBvscVr7F2krYPAx/wmK/iidY7Hbfw/ancm3bR6xMi630iHXb8Cx2vtflGFYsVykp0giSTzwK66ag4AAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowNSswMDowMFImRW8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDUrMDA6MDAje/3TAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>144 distinct values</td>
+<td><img src="tmp/ds0063.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-      <tr>
-        <td align="center">32</td>
-        <td align="left">DISTCBD
+</tr>
+<tr class="even">
+<td>32</td>
+<td>DISTCBD<br />
 [numeric]</td>
-        <td align="left">Mean (sd) : 7967.4 (7442.9)
-min < med < max:
-148.9 < 5542.3 < 44004.6
+<td>Mean (sd) : 7967.4 (7442.9)<br />
+min &lt; med &lt; max:<br />
+148.9 &lt; 5542.3 &lt; 44004.6<br />
 IQR (CV) : 9777.9 (0.9)</td>
-        <td align="left" style="vertical-align:middle">434 distinct values</td>
-        <td align="left" style="vertical-align:middle;padding:0;background-color:transparent"><img style="border:none;background-color:transparent;padding:0" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5QIKAxoFXSEjmAAAAIRJREFUaN7t2cEJwCAMheGs0BGqG9T9d/PQeIw1aaBI/3cJePgIiCJRhERSNOfxJorVdgcMDAwMDAwMDAwMDAwMDAwMLBsbY5wUTOsFBrYdFptnGljsqIKBgf0ec36tzLHq6xBsC2zx2baGjWWwj7GHXfVhbd5hDDNuphim1cBKSoRE0gEgS65qizIxEwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xMFQwMzoyNjowNSswMDowMFImRW8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTBUMDM6MjY6MDUrMDA6MDAje/3TAAAAAElFTkSuQmCC"></td>
-        <td align="center">0
+<td>434 distinct values</td>
+<td><img src="tmp/ds0064.png" /></td>
+<td>0<br />
 (0.0%)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<p>Generated by <a href='https://github.com/dcomtois/summarytools'>summarytools</a> 0.9.8 (<a href='https://www.r-project.org/'>R</a> version 4.0.3)<br/>2021-02-10</p>
-</div>
+</tr>
+</tbody>
+</table>
 
 > **Note:** I used a different library of the MLR chapter for perfoming
 > the summary statistics. “R” allows you to do the same or similar tasks
@@ -704,7 +760,7 @@ num_factors = fa.parallel(df, fm = "ml", fa = "fa")
 
 ![](RmdFiles/3-FactorAnalysis/unnamed-chunk-14-1.png)<!-- -->
 
-    ## Parallel analysis suggests that the number of factors =  8  and the number of components =  NA
+    ## Parallel analysis suggests that the number of factors =  9  and the number of components =  NA
 
 > **Note:** `fm` = factor math; `ml` = maximum likelihood; `fa` = factor
 > analysis

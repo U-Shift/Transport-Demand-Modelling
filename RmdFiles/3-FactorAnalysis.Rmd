@@ -87,10 +87,13 @@ str(df)
 descriptive_stats <- dfSummary(df)
 view(descriptive_stats)
 ```
-```{r summary tables show, results="asis", echo=FALSE, message=FALSE, warning=FALSE, purl=F}
+```{r summary tables not working, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE, purl=F, results="asis"}
 # dfSummary(df, valid.col = F, plain.ascii = FALSE, style = "grid", tmp.img.dir = "img") #assim não guarda os graficos
 st_options(plain.ascii = FALSE)
 print(dfSummary(df, valid.col = FALSE,  style = "grid", tmp.img.dir = "tmp"), max.tbl.height = 500, method = "render") #assim aparece um \ a mais nas variáveis
+```
+```{r summary tables show, results="asis", echo=FALSE, message=FALSE, warning=FALSE, purl=F}
+dfSummary(df, valid.col = F, plain.ascii = FALSE, style = "grid", tmp.img.dir = "tmp") #assim não guarda os graficos
 ```
 
 > **Note:** I used a different library of the MLR chapter for perfoming the summary statistics. "R" allows you to do the same or similar tasks with different packages. 

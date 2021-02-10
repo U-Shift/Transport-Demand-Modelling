@@ -23,3 +23,13 @@ Slides
     Models](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.1/class_10.pdf)
 11. [Hazard-Based Duration
     Models](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.1/class_11.pdf)
+
+## Home Assignments
+
+1.  [**HA1**: Multiple Linear
+    Regression](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.1/TDM_HA1_LinearRegression202021.pdf)
+2.  [**HA2**: Generalized Linear
+    Models](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.1/TDM_HA2_GZLM_202021.pdf)
+3.  **HA3**: Panel Data Models and Spatial Regression
+4.  [**HA4**: Discrete Choice
+    Models](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.1/TDM_HA4_DCM_202021.pdf)

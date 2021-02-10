@@ -1,19 +1,5 @@
 # Knit and render Rmd files with correct related paths, for data, for md output, and for figure plots.
 
-#0-InstallR
-rmarkdown::render(
-  input = "RmdFiles/0-InstallR.Rmd",
-  output_dir = getwd(),
-  clean = T
-)
-
-#00-RMarkdownReports
-rmarkdown::render(
-  input = "RmdFiles/00-RMarkdownReports.Rmd",
-  knit_root_dir = getwd(),
-  output_file = getwd(),
-  clean = T
-)
 
 #Slides
 rmarkdown::render(
@@ -24,7 +10,8 @@ rmarkdown::render(
 )
 
 
-#run each one separately
+##run each one separately
+
 # name = "1-ExploratoryDataAnalysis"
 # name = "2-MultipleLinearRegression"
 name = "3-FactorAnalysis"
@@ -33,6 +20,8 @@ name = "3-FactorAnalysis"
 # name = "6-SpatialModels" 
 # name = "7-PanelModels" #não tem figs
 # name = "9-HazardBasedModels"
+# name = "0-InstallR.Rmd" #não tem figs
+# name = "00-RMarkdownReports" #não tem figs
 
 rmarkdown::render(
   input = paste0("RmdFiles/", name, ".Rmd"),

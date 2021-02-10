@@ -26,12 +26,14 @@ install.packages("rmarkdown")
 
 ## Usefull resources
 
+-   [**A great quick
+    tutorial**](https://towardsdatascience.com/getting-started-in-r-markdown-2d3de636bde3)
 -   [R Markdown
     Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 -   [R Markdown: The Definitive
     Guide](https://bookdown.org/yihui/rmarkdown/)
 
-### Outputs online
+### Make your outputs live
 
 To make your outputs online at your IST server.
 
@@ -46,4 +48,4 @@ Donwload FileZilla at:
 -   user: ist1XXXXX
 -   Connect, save password, always trust this key
 
-Upload your outputs under web &gt; tdm
+Upload your outputs under web / tdm

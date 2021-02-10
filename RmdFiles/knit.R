@@ -25,9 +25,9 @@ rmarkdown::render(
 
 
 #run each one separately
-name = "1-ExploratoryDataAnalysis"
+# name = "1-ExploratoryDataAnalysis"
 # name = "2-MultipleLinearRegression"
-# name = "3-FactorAnalysis" 
+name = "3-FactorAnalysis"
 # name = "4-ClusterAnalysis"
 # name = "5-GeneralizedLinearModels"
 # name = "6-SpatialModels" 

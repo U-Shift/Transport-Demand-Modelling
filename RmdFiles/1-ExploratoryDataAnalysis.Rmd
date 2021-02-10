@@ -261,3 +261,19 @@ The default for `cor.test` is Pearson, two-sided, with a 95% confident level. Ch
 
 Now that you have done some descriptive analysis of the data, go to the next chapter. There you will learn how to perform a [Multiple Linear Regression model](2-MultipleLinearRegression.md)!
 
+
+```{r knit, eval=FALSE, include=FALSE}
+#para fazer o knit nos locais certos > batch process em knit.R
+name = "1-ExploratoryDataAnalysis"
+rmarkdown::render(
+  input = paste0("RmdFiles/", name, ".Rmd"),
+  knit_root_dir = getwd(),
+)
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
+file.rename(paste0("RmdFiles/RmdFiles/", name, "/"), paste0("RmdFiles/", name, "/"))
+
+#para transformar em R script
+# knitr::purl(paste0("RmdFiles/", name, ".Rmd"), paste0("Code/", name, ".R"),, documentation = 0)
+```
+
+

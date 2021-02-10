@@ -103,20 +103,13 @@ Data summary
 summary(df)
 ```
 
-    ##       TODU            ACO              AHS              SI       
-    ##  Min.   :3.020   Min.   :0.5000   Min.   :1.830   Min.   : 2.17  
-    ##  1st Qu.:4.540   1st Qu.:0.6700   1st Qu.:3.000   1st Qu.: 6.82  
-    ##  Median :5.100   Median :0.7900   Median :3.190   Median : 9.86  
-    ##  Mean   :5.373   Mean   :0.8118   Mean   :3.185   Mean   :13.07  
-    ##  3rd Qu.:6.130   3rd Qu.:0.9200   3rd Qu.:3.370   3rd Qu.:15.08  
-    ##  Max.   :9.140   Max.   :1.3200   Max.   :4.500   Max.   :62.53  
-    ##       SRI              UI       
-    ##  Min.   :20.89   Min.   :24.08  
-    ##  1st Qu.:38.14   1st Qu.:44.80  
-    ##  Median :49.37   Median :55.51  
-    ##  Mean   :49.56   Mean   :52.62  
-    ##  3rd Qu.:60.85   3rd Qu.:61.09  
-    ##  Max.   :87.38   Max.   :83.66
+    ##       TODU            ACO              AHS              SI             SRI              UI       
+    ##  Min.   :3.020   Min.   :0.5000   Min.   :1.830   Min.   : 2.17   Min.   :20.89   Min.   :24.08  
+    ##  1st Qu.:4.540   1st Qu.:0.6700   1st Qu.:3.000   1st Qu.: 6.82   1st Qu.:38.14   1st Qu.:44.80  
+    ##  Median :5.100   Median :0.7900   Median :3.190   Median : 9.86   Median :49.37   Median :55.51  
+    ##  Mean   :5.373   Mean   :0.8118   Mean   :3.185   Mean   :13.07   Mean   :49.56   Mean   :52.62  
+    ##  3rd Qu.:6.130   3rd Qu.:0.9200   3rd Qu.:3.370   3rd Qu.:15.08   3rd Qu.:60.85   3rd Qu.:61.09  
+    ##  Max.   :9.140   Max.   :1.3200   Max.   :4.500   Max.   :62.53   Max.   :87.38   Max.   :83.66
 
 ## Multiple Linear Regression
 
@@ -142,7 +135,7 @@ plot(x = df$TODU, y = df$SRI, xlab = "TODU", ylab = "SRI")
 plot(x = df$TODU, y = df$UI, xlab = "TODU", ylab = "UI")
 ```
 
-![](README_files/1-MLR/unnamed-chunk-5-1.png)<!-- -->
+![](RmdFiles/2-MultipleLinearRegression/unnamed-chunk-5-1.png)<!-- -->
 
 Or you could execute a pairwise scatterplot matrix, that compares every
 variable with each other:
@@ -151,7 +144,7 @@ variable with each other:
 pairs(df[,1:6], pch = 19, lower.panel = NULL)
 ```
 
-![](README_files/1-MLR/unnamed-chunk-6-1.png)<!-- -->
+![](RmdFiles/2-MultipleLinearRegression/unnamed-chunk-6-1.png)<!-- -->
 
 > **Note:** SRI and TODU do not have a linear relationship. This should
 > interfere on the model.
@@ -177,8 +170,8 @@ If not, use the Kolmogorov-Smirnov test
 ks.test(df$TODU, "pnorm", mean=mean(df$TODU), sd = sd(df$TODU))
 ```
 
-    ## Warning in ks.test(df$TODU, "pnorm", mean = mean(df$TODU), sd = sd(df$TODU)):
-    ## ties should not be present for the Kolmogorov-Smirnov test
+    ## Warning in ks.test(df$TODU, "pnorm", mean = mean(df$TODU), sd = sd(df$TODU)): ties should not be present for the
+    ## Kolmogorov-Smirnov test
 
     ## 
     ##  One-sample Kolmogorov-Smirnov test
@@ -240,12 +233,12 @@ summary(model)
     acceptable.  
 2.  The **R-square** and **Adjusted R-square** evaluate the amount of
     variance that is explained by the model. The difference between one
-    and another is that the R-square does not consider the number of
+    and other is that the R-square does not consider the number of
     variables. If you increase the number of variables in the model, the
     R-square will tend to increase which can lead to overfitting. On the
-    other hand, the Adjusted R-square adjust to the number of
+    other hand, the Adjusted R-square adjusts to the number of
     independent variables.  
-3.  Take a look a the **t-value** and the Pr(&gt;\|t\|). If the
+3.  Take a look at the **t-value** and the Pr(&gt;\|t\|). If the
     t-value &gt; 1,96 or Pr(&gt;\|t\|) &lt; 0,05, then the IV is
     statistically significant to the model.  
 4.  To analyze the **estimates** of the variables, you should first
@@ -254,7 +247,7 @@ summary(model)
     only possible to evaluate the **magnitude** of the estimate if all
     variables are continuous and standarzized or by calculating the
     elasticities. The elasticities are explained and demonstrated in
-    chapter 4.
+    chapter 5.
 
 ##### Residuals
 
@@ -278,7 +271,7 @@ par(mfrow=c(2,2))
 plot(model)
 ```
 
-![](README_files/1-MLR/unnamed-chunk-10-1.png)<!-- -->
+![](RmdFiles/2-MultipleLinearRegression/unnamed-chunk-10-1.png)<!-- -->
 
 ##### Autocorrelation
 
@@ -290,7 +283,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747    0.07
+    ##    1       0.1416308      1.597747   0.076
     ##  Alternative hypothesis: rho != 0
 
 > **Note:** In the Durbin-Watson test, values of the D-W Statistic vary
@@ -320,20 +313,13 @@ Calculate the Condition Index to test for multicollinearity
 ols_eigen_cindex(model)
 ```
 
-    ##    Eigenvalue Condition Index    intercept          ACO          AHS
-    ## 1 5.386537577        1.000000 6.994331e-05 0.0005136938 0.0001916512
-    ## 2 0.444466338        3.481252 6.484243e-05 0.0026682253 0.0001278701
-    ## 3 0.084386209        7.989491 5.829055e-05 0.0478676279 0.0091615336
-    ## 4 0.073784878        8.544195 1.355679e-03 0.0031699136 0.0100934045
-    ## 5 0.009322827       24.037043 5.414145e-03 0.7943557055 0.2105218176
-    ## 6 0.001502171       59.881840 9.930371e-01 0.1514248340 0.7699037229
-    ##            SI         SRI           UI
-    ## 1 0.007888051 0.001515333 6.216297e-04
-    ## 2 0.693175876 0.006641788 7.488285e-07
-    ## 3 0.051400736 0.055585833 1.128114e-01
-    ## 4 0.152292605 0.382488929 4.801705e-02
-    ## 5 0.090809203 0.374832118 1.851308e-01
-    ## 6 0.004433528 0.178935999 6.534183e-01
+    ##    Eigenvalue Condition Index    intercept          ACO          AHS          SI         SRI           UI
+    ## 1 5.386537577        1.000000 6.994331e-05 0.0005136938 0.0001916512 0.007888051 0.001515333 6.216297e-04
+    ## 2 0.444466338        3.481252 6.484243e-05 0.0026682253 0.0001278701 0.693175876 0.006641788 7.488285e-07
+    ## 3 0.084386209        7.989491 5.829055e-05 0.0478676279 0.0091615336 0.051400736 0.055585833 1.128114e-01
+    ## 4 0.073784878        8.544195 1.355679e-03 0.0031699136 0.0100934045 0.152292605 0.382488929 4.801705e-02
+    ## 5 0.009322827       24.037043 5.414145e-03 0.7943557055 0.2105218176 0.090809203 0.374832118 1.851308e-01
+    ## 6 0.001502171       59.881840 9.930371e-01 0.1514248340 0.7699037229 0.004433528 0.178935999 6.534183e-01
 
 > **Note:** Condition index values &gt; 15 indicate multicollinearity
 > problems, and values &gt; 30 indicate serious problems of

@@ -139,7 +139,7 @@ df <- df[order(df$minutes),] #sort by time
 plot(df$minutes, type="h") #high-density vertical lines
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-5-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-5-1.png)<!-- -->
 
 ## Survival function
 
@@ -193,7 +193,7 @@ conf.int = TRUE
 )
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-7-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 #option 2
@@ -209,7 +209,7 @@ ggsurvplot(
 )
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-8-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-8-1.png)<!-- -->
 
 > **Note:** It is the most widely applied nonparametric method in
 > survival analysis.The Kaplan–Meier method provides useful estimates of
@@ -300,10 +300,15 @@ violation of the PH assumption.
 test.ph <- cox.zph(result.cox)
 par(mfrow=c(2,2))
 plot(test.ph)
+```
+
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-10-1.png)<!-- -->
+
+``` r
 ggcoxzph(test.ph)
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-10-1.png)<!-- -->![](README_files/8-HazardBasedModels/unnamed-chunk-10-2.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-10-2.png)<!-- -->
 
 > **Note:** If significant then the assumption is violated.  
 > In principle, the Schoenfeld residuals are independent of time.
@@ -319,7 +324,7 @@ ggsurvplot(
 )
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-11-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-11-1.png)<!-- -->
 
 ##### Plot the cummulative hazard function
 
@@ -335,7 +340,7 @@ ggsurvplot(
 )
 ```
 
-![](README_files/8-HazardBasedModels/unnamed-chunk-12-1.png)<!-- -->
+![](RmdFiles/9-HazardBasedModels/unnamed-chunk-12-1.png)<!-- -->
 
 ##### Calculate the McFadden Pseudo R-square
 
@@ -372,16 +377,12 @@ survreg(
     ##     population, data = data.delay2, dist = "exponential")
     ## 
     ## Coefficients:
-    ##       (Intercept)            gender rate_of_travel1.3 rate_of_travel1.4 
-    ##      2.879512e+00     -1.108216e-01      2.286504e-01     -6.243518e-01 
-    ## rate_of_travel1.5 rate_of_travel1.6 rate_of_travel1.7 rate_of_travel1.8 
-    ##      2.089118e-01     -7.778191e-02     -5.431004e-01      3.753339e-01 
-    ## rate_of_travel1.9 rate_of_travel2.0 rate_of_travel2.1 rate_of_travel2.2 
-    ##      4.918786e-01      4.186932e-01      6.440768e-01      5.006781e-01 
-    ## rate_of_travel2.3 rate_of_travel2.4 rate_of_travel2.5          distance 
-    ##      9.390733e-01      7.377887e-01      8.025575e-01      4.070892e-02 
-    ##        population 
-    ##      1.261692e-05 
+    ##       (Intercept)            gender rate_of_travel1.3 rate_of_travel1.4 rate_of_travel1.5 rate_of_travel1.6 
+    ##      2.879512e+00     -1.108216e-01      2.286504e-01     -6.243518e-01      2.089118e-01     -7.778191e-02 
+    ## rate_of_travel1.7 rate_of_travel1.8 rate_of_travel1.9 rate_of_travel2.0 rate_of_travel2.1 rate_of_travel2.2 
+    ##     -5.431004e-01      3.753339e-01      4.918786e-01      4.186932e-01      6.440768e-01      5.006781e-01 
+    ## rate_of_travel2.3 rate_of_travel2.4 rate_of_travel2.5          distance        population 
+    ##      9.390733e-01      7.377887e-01      8.025575e-01      4.070892e-02      1.261692e-05 
     ## 
     ## Scale fixed at 1 
     ## 
@@ -403,16 +404,12 @@ survreg(
     ##     population, data = data.delay2, dist = "weibull")
     ## 
     ## Coefficients:
-    ##       (Intercept)            gender rate_of_travel1.3 rate_of_travel1.4 
-    ##      2.895928e+00     -9.903521e-02      2.181794e-01     -6.093365e-01 
-    ## rate_of_travel1.5 rate_of_travel1.6 rate_of_travel1.7 rate_of_travel1.8 
-    ##      2.762764e-01     -3.648657e-03     -4.933829e-01      4.904227e-01 
-    ## rate_of_travel1.9 rate_of_travel2.0 rate_of_travel2.1 rate_of_travel2.2 
-    ##      5.528334e-01      5.234497e-01      8.567097e-01      6.509833e-01 
-    ## rate_of_travel2.3 rate_of_travel2.4 rate_of_travel2.5          distance 
-    ##      1.210978e+00      8.503809e-01      8.828783e-01      3.939630e-02 
-    ##        population 
-    ##      1.222171e-05 
+    ##       (Intercept)            gender rate_of_travel1.3 rate_of_travel1.4 rate_of_travel1.5 rate_of_travel1.6 
+    ##      2.895928e+00     -9.903521e-02      2.181794e-01     -6.093365e-01      2.762764e-01     -3.648657e-03 
+    ## rate_of_travel1.7 rate_of_travel1.8 rate_of_travel1.9 rate_of_travel2.0 rate_of_travel2.1 rate_of_travel2.2 
+    ##     -4.933829e-01      4.904227e-01      5.528334e-01      5.234497e-01      8.567097e-01      6.509833e-01 
+    ## rate_of_travel2.3 rate_of_travel2.4 rate_of_travel2.5          distance        population 
+    ##      1.210978e+00      8.503809e-01      8.828783e-01      3.939630e-02      1.222171e-05 
     ## 
     ## Scale= 0.5153148 
     ## 
@@ -434,16 +431,12 @@ survreg(
     ##     population, data = data.delay2, dist = "loglogistic")
     ## 
     ## Coefficients:
-    ##       (Intercept)            gender rate_of_travel1.3 rate_of_travel1.4 
-    ##      2.892950e+00     -1.442251e-01      2.314555e-01     -6.226149e-01 
-    ## rate_of_travel1.5 rate_of_travel1.6 rate_of_travel1.7 rate_of_travel1.8 
-    ##      1.475325e-01     -1.335428e-01     -5.913971e-01      2.521084e-01 
-    ## rate_of_travel1.9 rate_of_travel2.0 rate_of_travel2.1 rate_of_travel2.2 
-    ##      4.608343e-01      2.887788e-01      3.701638e-01      3.211386e-01 
-    ## rate_of_travel2.3 rate_of_travel2.4 rate_of_travel2.5          distance 
-    ##      5.197213e-01      6.084442e-01      7.333592e-01      4.171315e-02 
-    ##        population 
-    ##      1.217428e-05 
+    ##       (Intercept)            gender rate_of_travel1.3 rate_of_travel1.4 rate_of_travel1.5 rate_of_travel1.6 
+    ##      2.892950e+00     -1.442251e-01      2.314555e-01     -6.226149e-01      1.475325e-01     -1.335428e-01 
+    ## rate_of_travel1.7 rate_of_travel1.8 rate_of_travel1.9 rate_of_travel2.0 rate_of_travel2.1 rate_of_travel2.2 
+    ##     -5.913971e-01      2.521084e-01      4.608343e-01      2.887788e-01      3.701638e-01      3.211386e-01 
+    ## rate_of_travel2.3 rate_of_travel2.4 rate_of_travel2.5          distance        population 
+    ##      5.197213e-01      6.084442e-01      7.333592e-01      4.171315e-02      1.217428e-05 
     ## 
     ## Scale= 0.3326078 
     ## 

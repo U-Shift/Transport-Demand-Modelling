@@ -89,22 +89,14 @@ the categorical ones?
 summary(df)
 ```
 
-    ##      invest            value            capital                      firm    
-    ##  Min.   :   0.93   Min.   :  30.28   Min.   :   0.8   American Steel   : 20  
-    ##  1st Qu.:  27.38   1st Qu.: 160.32   1st Qu.:  67.1   Atlantic Refining: 20  
-    ##  Median :  52.37   Median : 404.65   Median : 180.1   Chrysler         : 20  
-    ##  Mean   : 133.31   Mean   : 988.58   Mean   : 257.1   Diamond Match    : 20  
-    ##  3rd Qu.:  99.78   3rd Qu.:1605.92   3rd Qu.: 344.5   General Electric : 20  
-    ##  Max.   :1486.70   Max.   :6241.70   Max.   :2226.3   General Motors   : 20  
-    ##                                                       (Other)          :100  
-    ##       year    
-    ##  1935   : 11  
-    ##  1936   : 11  
-    ##  1937   : 11  
-    ##  1938   : 11  
-    ##  1939   : 11  
-    ##  1940   : 11  
-    ##  (Other):154
+    ##      invest            value            capital                      firm          year    
+    ##  Min.   :   0.93   Min.   :  30.28   Min.   :   0.8   American Steel   : 20   1935   : 11  
+    ##  1st Qu.:  27.38   1st Qu.: 160.32   1st Qu.:  67.1   Atlantic Refining: 20   1936   : 11  
+    ##  Median :  52.37   Median : 404.65   Median : 180.1   Chrysler         : 20   1937   : 11  
+    ##  Mean   : 133.31   Mean   : 988.58   Mean   : 257.1   Diamond Match    : 20   1938   : 11  
+    ##  3rd Qu.:  99.78   3rd Qu.:1605.92   3rd Qu.: 344.5   General Electric : 20   1939   : 11  
+    ##  Max.   :1486.70   Max.   :6241.70   Max.   :2226.3   General Motors   : 20   1940   : 11  
+    ##                                                       (Other)          :100   (Other):154
 
 ## Ordinary least square model
 

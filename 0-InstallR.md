@@ -106,7 +106,7 @@ And .RData
 `Tools > Global Options > Appearence > Editor Theme > ...`
 
 Try to change to “Cobalt”, or check others you may like.  
-![](README_files/0-Rstuff/Cobalt.PNG)
+![](RmdFiles/0-InstallR/Cobalt.PNG)
 
 You can also change font, font-size, and even the panels layout.
 

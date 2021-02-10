@@ -1,8 +1,7 @@
 ---
 title: "RMarkdown reports"
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -48,3 +47,11 @@ Donwload FileZilla at: https://filezilla-project.org/download.php?type=client
 * Connect, save password, always trust this key
 
 Upload your outputs under web / tdm
+
+
+
+```{r knit, eval=FALSE, include=FALSE}
+#para colocar os ficheiros nos locais certos (> ver batch process em knit.R)
+name = "00-RMarkdownReports"
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
+```

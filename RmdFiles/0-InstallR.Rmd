@@ -1,8 +1,7 @@
 ---
 title: "How to install R and RStudio"
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -101,4 +100,12 @@ You can also change font, font-size, and even the panels layout.
 <!-- > See [r.rosafelix.bike](http://r.rosafelix.bike/) for some R tips to use in Transport Demand Modeling ! (_em português_) -->
 
 
+```{r knit, eval=FALSE, include=FALSE}
+#para colocar os ficheiros nos locais certos (> ver batch process em knit.R)
+name = "0-InstallR"
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
+
+#para transformar em R script
+# knitr::purl(paste0("RmdFiles/", name, ".Rmd"), paste0("Code/", name, ".R"),, documentation = 0)
+```
 

@@ -1,13 +1,13 @@
 ---
 title: "Generalized Linear Models"
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r setup, include=FALSE, purl=F}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "RmdFiles/5-GeneralizedLinearModels/")
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
 #### Example exercise: Accident data from California (1993 to 1998) and Michigan (1993 to 1997) 
@@ -238,3 +238,14 @@ knitr::kable(elasticity, align = "l")
 
 > **Note:** `AADT1` does not have a value because it is the offset of the model.
 > **Note:** `STATE` is a categorical variable. We would need to calculate the pseudo-elasticities in this case. Follow the same logic of the code and try to calculate for yourselves.
+
+```{r knit, eval=FALSE, include=FALSE}
+#para colocar os ficheiros nos locais certos (> ver batch process em knit.R)
+#é preciso remover antes qualquer ficheiro dei figuras que exista na pasta onde está o Rmd
+name = "5-GeneralizedLinearModels"
+file.rename(paste0("RmdFiles/RmdFiles/", name, "/"), paste0("RmdFiles/", name, "/"))
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
+
+#para transformar em R script
+# knitr::purl(paste0("RmdFiles/", name, ".Rmd"), paste0("Code/", name, ".R"),, documentation = 0)
+```

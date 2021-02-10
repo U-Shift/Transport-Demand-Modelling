@@ -1,13 +1,13 @@
 ---
 title: "Cluster Analysis"
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "RmdFiles/4-ClusterAnalysis/")
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
 #### Example exercise: Airports
@@ -283,3 +283,13 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0
 ```
 
 
+```{r knit, eval=FALSE, include=FALSE}
+#para colocar os ficheiros nos locais certos (> ver batch process em knit.R)
+#é preciso remover antes qualquer ficheiro dei figuras que exista na pasta onde está o Rmd
+name = "4-ClusterAnalysis"
+file.rename(paste0("RmdFiles/RmdFiles/", name, "/"), paste0("RmdFiles/", name, "/"))
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
+
+#para transformar em R script
+# knitr::purl(paste0("RmdFiles/", name, ".Rmd"), paste0("Code/", name, ".R"),, documentation = 0)
+```

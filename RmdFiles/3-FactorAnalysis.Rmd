@@ -1,13 +1,13 @@
 ---
 title: "Exploratory Factor Analysis"
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "RmdFiles/3-FactorAnalysis/")
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
 #### Example exercise: "Residential location satisfaction in the Lisbon metropolitan area"
@@ -295,3 +295,14 @@ text(
 
 When you have more than two factors it is difficult to analyse the factors by the plots. Variables that have low explaining variance in the two factors analyzed, could be highly explained by the other factors not present in the graph. However, try comparing the plots with the factor loadings and plot the other graphs to get more familiar with exploratory factor analysis.  
 
+
+```{r knit, eval=FALSE, include=FALSE}
+#para colocar os ficheiros nos locais certos (> ver batch process em knit.R)
+#é preciso remover antes qualquer ficheiro dei figuras que exista na pasta onde está o Rmd
+name = "3-FactorAnalysis"
+file.rename(paste0("RmdFiles/RmdFiles/", name, "/"), paste0("RmdFiles/", name, "/"))
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
+
+#para transformar em R script
+# knitr::purl(paste0("RmdFiles/", name, ".Rmd"), paste0("Code/", name, ".R"),, documentation = 0)
+```

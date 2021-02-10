@@ -1,13 +1,13 @@
 ---
 title: "Spatial Regression Models"
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "RmdFiles/6-SpatialModels/")
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
 ## Startup
@@ -255,3 +255,15 @@ Check more here, to perform SRL with R:
 
 * https://maczokni.github.io/crimemapping_textbook_bookdown/spatial-regression-models.html
 * https://rpubs.com/quarcs-lab/tutorial-spatial-regression 
+
+
+```{r knit, eval=FALSE, include=FALSE}
+#para colocar os ficheiros nos locais certos (> ver batch process em knit.R)
+#é preciso remover antes qualquer ficheiro dei figuras que exista na pasta onde está o Rmd
+name = "6-SpatialModels"
+file.rename(paste0("RmdFiles/RmdFiles/", name, "/"), paste0("RmdFiles/", name, "/"))
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
+
+#para transformar em R script
+# knitr::purl(paste0("RmdFiles/", name, ".Rmd"), paste0("Code/", name, ".R"),, documentation = 0)
+```

@@ -1,13 +1,13 @@
 ---
 title: "Panel Data Models"
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r setup, include=FALSE, purl=F}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "RmdFiles/7-PanelModels/")
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
 #### Example Exercise: Grunfeld Investment data  
@@ -168,3 +168,15 @@ plmtest(random_tw)
 ```
 
 >**Note:** Large values of H indicate that the fixed effects model is prefered over the random effects model. While, A large value of the LM statistic in the presence of a small H statistic indicate that the random effects model is more suitable.
+
+
+```{r knit, eval=FALSE, include=FALSE}
+#para colocar os ficheiros nos locais certos (> ver batch process em knit.R)
+#é preciso remover antes qualquer ficheiro dei figuras que exista na pasta onde está o Rmd
+name = "7-PanelModels" 
+# file.rename(paste0("RmdFiles/RmdFiles/", name, "/"), paste0("RmdFiles/", name, "/")) #não tem figs
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
+
+#para transformar em R script
+# knitr::purl(paste0("RmdFiles/", name, ".Rmd"), paste0("Code/", name, ".R"),, documentation = 0)
+```

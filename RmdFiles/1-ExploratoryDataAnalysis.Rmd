@@ -1,13 +1,14 @@
 ---
 title: "Exploratory Data Analysis"
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "RmdFiles/1-ExploratoryDataAnalysis/")
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
 ```
 We will use the example of the following Multiple linear regression chapter to perform an EDA.
 
@@ -263,14 +264,11 @@ Now that you have done some descriptive analysis of the data, go to the next cha
 
 
 ```{r knit, eval=FALSE, include=FALSE}
-#para fazer o knit nos locais certos > batch process em knit.R
+#para colocar os ficheiros nos locais certos (> ver batch process em knit.R)
+#é preciso remover antes qualquer ficheiro dei figuras que exista na pasta onde está o Rmd
 name = "1-ExploratoryDataAnalysis"
-rmarkdown::render(
-  input = paste0("RmdFiles/", name, ".Rmd"),
-  knit_root_dir = getwd(),
-)
-file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
 file.rename(paste0("RmdFiles/RmdFiles/", name, "/"), paste0("RmdFiles/", name, "/"))
+file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
 
 #para transformar em R script
 # knitr::purl(paste0("RmdFiles/", name, ".Rmd"), paste0("Code/", name, ".R"),, documentation = 0)

@@ -23,10 +23,6 @@ name = "3-FactorAnalysis"
 # name = "0-InstallR.Rmd" #não tem figs
 # name = "00-RMarkdownReports" #não tem figs
 
-rmarkdown::render(
-  input = paste0("RmdFiles/", name, ".Rmd"),
-  knit_root_dir = getwd(),
-)
 file.rename(paste0("RmdFiles/", name, ".md"), paste0(name, ".md"))
 file.rename(paste0("RmdFiles/RmdFiles/", name, "/"), paste0("RmdFiles/", name, "/"))
 

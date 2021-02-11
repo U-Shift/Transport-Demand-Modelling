@@ -31,6 +31,6 @@ Slides
 2.  [**HA2**: Generalized Linear
     Models](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.2/TDM_HA2_GZLM_202021.pdf)
 3.  [**HA3**: Panel Data Models and Spatial
-    Regression](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.2/TDM_HA3_AnabelaRibeiro_202021.pdf)
+    Regression](https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335669527/TDM_2020_2021_HA_AnabelaRibeiro.pdf)
 4.  [**HA4**: Discrete Choice
     Models](https://github.com/U-Shift/Transport-Demand-Modelling/releases/download/2020.2/TDM_HA4_DCM_202021.pdf)

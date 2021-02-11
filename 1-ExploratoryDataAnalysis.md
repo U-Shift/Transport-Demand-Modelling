@@ -1,49 +1,47 @@
 Exploratory Data Analysis
 ================
 
-We will use the example of the following Multiple linear regression
-chapter to perform an EDA.
-
-#### Example exercise: Trip production of 57 Traffic Assignment Zones of Chicago in 1960’s.
+#### Example exercise: Trip production of 57 Traffic Assignment Zones of Chicago in the 1960’s.
 
 **Your task**: Explore and analyse the dataset before going to the
 Multiple linear regression chapter.
 
 #### Variables:
 
--   `TODU`: Motorized Trips (private car or Public Transportation) per
+  - `TODU`: Motorized Trips (private car or Public Transportation) per
     occupied dwelling unit;
 
--   `ACO`: Average car ownership (cars per dwelling);
+  - `ACO`: Average car ownership (cars per dwelling);
 
--   `AHS`: Average household size;
+  - `AHS`: Average household size;
 
--   `SRI`: Social Rank Index:  
-    1. proportion of blue-collar workers (e.g., construction, mining);  
-    2. proportion of people with age higher than 25 years that have
+  - `SRI`: Social Rank Index:  
+    1\. proportion of blue-collar workers (e.g., construction,
+    mining);  
+    2\. proportion of people with age higher than 25 years that have
     completed at least 8 year of education; (***Note:** The SRI has its
     maximum value when there are no blue-collar workers and all adults
     have education of at least 8 years*)
 
--   `UI`: Urbanization Index:  
-    1. fertility rate, defined as the ratio of children under 5 years of
-    age to the female population of childbearing age;  
-    2. female labor force participation rate, meaning the % of women who
-    are in the labor force;  
-    3. % of single family units to total dwelling units.
-
+  - `UI`: Urbanization Index:  
+    1\. fertility rate, defined as the ratio of children under 5 years
+    of age to the female population of childbearing age;  
+    2\. female labor force participation rate, meaning the % of women
+    who are in the labor force;  
+    3\. % of single family units to total dwelling units.
+    
     The degree of urbanization index would be increased by a) lower
-    fertility rate, b) higher female labor force participation rate,
-    and c) higher proportion of single dwelling units. (***Note:** High
+    fertility rate, b) higher female labor force participation rate, and
+    c) higher proportion of single dwelling units. (***Note:** High
     values for this index imply less attachment to the home*)
 
--   `SI`:Segregation Index It measures the proportion of an area to
+  - `SI`:Segregation Index It measures the proportion of an area to
     which minority groups (e.g: non-whites, foreign-born, Eastern
     Europeans) live in isolation. (***Note:** High values for this index
     imply that those communities are less prone to leaving their living
     areas and as such to having lower levels of mobility*)
 
-## Let’s begin with R!
+## Let’s begin with R\!
 
 ##### Import Libraries
 
@@ -189,7 +187,7 @@ skim(df)
 ```
 
 |                                                  |      |
-|:-------------------------------------------------|:-----|
+| :----------------------------------------------- | :--- |
 | Name                                             | df   |
 | Number of rows                                   | 57   |
 | Number of columns                                | 6    |
@@ -204,7 +202,7 @@ Data summary
 **Variable type: numeric**
 
 | skim\_variable | n\_missing | complete\_rate |  mean |    sd |    p0 |   p25 |   p50 |   p75 |  p100 | hist  |
-|:---------------|-----------:|---------------:|------:|------:|------:|------:|------:|------:|------:|:------|
+| :------------- | ---------: | -------------: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | :---- |
 | TODU           |          0 |              1 |  5.37 |  1.33 |  3.02 |  4.54 |  5.10 |  6.13 |  9.14 | ▃▇▅▃▁ |
 | ACO            |          0 |              1 |  0.81 |  0.18 |  0.50 |  0.67 |  0.79 |  0.92 |  1.32 | ▆▇▇▃▁ |
 | AHS            |          0 |              1 |  3.19 |  0.39 |  1.83 |  3.00 |  3.19 |  3.37 |  4.50 | ▁▂▇▂▁ |
@@ -257,15 +255,19 @@ plot_missing(df_missing)
 
 #### Treat missing data
 
--   **Listwise deletion**. Delete observation (row) with incomplete
+  - **Listwise deletion**. Delete observation (row) with incomplete
     information.
+
+<!-- end list -->
 
 ``` r
 df_missingListwise = na.omit(df_missing) #removes all rows with at least one NA in any variable
 ```
 
--   **Pairwise deletion**. Delete only the row of missing value if the
+  - **Pairwise deletion**. Delete only the row of missing value if the
     variable is used.
+
+<!-- end list -->
 
 ``` r
 df_missingPairwise = df_missing[!is.na(df_missing$ACO),] #removes all rows with NA in ACO variable
@@ -277,7 +279,9 @@ df_missingPairwise = df_missing[!is.na(df_missing$ACO),] #removes all rows with 
 > depends on the number of missing data, sample size and characteristics
 > of your data.
 
--   **Replace missing value with mean or median**
+  - **Replace missing value with mean or median**
+
+<!-- end list -->
 
 ``` r
 df_missing$ACO[is.na(df_missing$ACO)] <- mean(df_missing$ACO, na.rm = TRUE)
@@ -290,7 +294,9 @@ df_missing$ACO[is.na(df_missing$ACO)] <- median(df_missing$ACO, na.rm = TRUE)
 
 ### Detect outliers
 
--   Examine the boxplots
+  - Examine the boxplots
+
+<!-- end list -->
 
 ``` r
 df_no_outliers <- df
@@ -299,7 +305,9 @@ boxplot(df_no_outliers)
 
 ![](RmdFiles/1-ExploratoryDataAnalysis/unnamed-chunk-17-1.png)<!-- -->
 
--   Take out the outliers from the variable SI
+  - Take out the outliers from the variable SI
+
+<!-- end list -->
 
 ``` r
 outlier <- function(x){
@@ -314,7 +322,9 @@ outlier <- function(x){
 df_no_outliers$SI = outlier(df_no_outliers$SI)
 ```
 
--   Take a look again at the boxplots
+  - Take a look again at the boxplots
+
+<!-- end list -->
 
 ``` r
 boxplot(df_no_outliers)
@@ -322,8 +332,10 @@ boxplot(df_no_outliers)
 
 ![](RmdFiles/1-ExploratoryDataAnalysis/unnamed-chunk-19-1.png)<!-- -->
 
--   Compare results of the dataset with and without the outliers  
+  - Compare results of the dataset with and without the outliers  
     **mean**
+
+<!-- end list -->
 
 ``` r
 mean(df$SI)
@@ -410,9 +422,9 @@ corrplot(cor(df), p.mat = res$p, method = "number", type = "upper", order="hclus
 ![](RmdFiles/1-ExploratoryDataAnalysis/unnamed-chunk-25-1.png)<!-- -->
 
 > **Note:** The pairwise correlations that are crossed are statistically
-> insignificant. The null hypothesis is that correlation is zero. This
-> means that the correlations are only significant when you reject the
-> null hypothesis (pvalue &lt; 0.05).  
+> insignificant. The null hypothesis is that the correlation is zero.
+> This means that the correlations are only significant when you reject
+> the null hypothesis (pvalue \< 0.05).  
 > See `?corrplot` for more options.  
 > Try putting into method “color” or “circle”, and see the diference.
 
@@ -441,4 +453,4 @@ level. Check `?cor.test` for more options.
 
 Now that you have done some descriptive analysis of the data, go to the
 next chapter. There you will learn how to perform a [Multiple Linear
-Regression model](2-MultipleLinearRegression.md)!
+Regression model](2-MultipleLinearRegression.md)\!

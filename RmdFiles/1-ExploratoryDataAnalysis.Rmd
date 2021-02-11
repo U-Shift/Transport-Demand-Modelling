@@ -10,9 +10,8 @@ knitr::opts_chunk$set(echo = TRUE,
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 ```
-We will use the example of the following Multiple linear regression chapter to perform an EDA.
 
-#### Example exercise: Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
+#### Example exercise: Trip production of 57 Traffic Assignment Zones of Chicago in the 1960's.
 
 **Your task**: Explore and analyse the dataset before going to the Multiple linear regression chapter.  
 
@@ -247,7 +246,7 @@ res <- cor.mtest(df, conf.level = .95) #store the results so you can call the p-
 corrplot(cor(df), p.mat = res$p, method = "number", type = "upper", order="hclust", sig.level = 0.05)
 ```
 
-> **Note:** The pairwise correlations that are crossed are statistically insignificant. The null hypothesis is that correlation is zero. This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05).   
+> **Note:** The pairwise correlations that are crossed are statistically insignificant. The null hypothesis is that the correlation is zero. This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05).   
 See `?corrplot` for more options.  
 Try putting into method "color" or "circle", and see the diference.  
 

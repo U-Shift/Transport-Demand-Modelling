@@ -7,13 +7,13 @@ Generalized Linear Models
 
 #### Variables:
 
--   `ACCIDENT`: Count on injury accidents over observation period;  
--   `STATE`: indicator variable for state \[0: California \| 1:
+  - `ACCIDENT`: Count on injury accidents over observation period;  
+  - `STATE`: indicator variable for state \[0: California | 1:
     Michigan\]  
--   `AADT1`: Average annual daily traffic on major road;  
--   `AADT2`: Average annual daily traffic on minor road;  
--   `Median`: Median width on major road in feet;  
--   `DRIVE`: Number of driveways within 250 ft of intersection center.
+  - `AADT1`: Average annual daily traffic on major road;  
+  - `AADT2`: Average annual daily traffic on minor road;  
+  - `Median`: Median width on major road in feet;  
+  - `DRIVE`: Number of driveways within 250 ft of intersection center.
 
 ## Startup
 
@@ -56,8 +56,6 @@ dataset <- read_excel("Data/TDM_GZLM_CALMICH_Example.xlsx", skip = 5) #skipping 
 view(dataset)
 ```
 
-    ## x must either be a summarytools object created with freq(), descr(), or a list of summarytools objects created using by()
-
 ## Get to know your data
 
 ##### Summary statistics
@@ -81,13 +79,20 @@ str(df)
 summary(df)
 ```
 
-    ##      STATE           ACCIDENT          AADT1           AADT2            MEDIAN           DRIVE       
-    ##  Min.   :0.0000   Min.   : 0.000   Min.   : 2367   Min.   :  15.0   Min.   : 0.000   Min.   : 0.000  
-    ##  1st Qu.:0.0000   1st Qu.: 0.000   1st Qu.: 7307   1st Qu.: 101.0   1st Qu.: 0.000   1st Qu.: 0.000  
-    ##  Median :0.0000   Median : 1.000   Median :12050   Median : 348.5   Median : 0.000   Median : 1.000  
-    ##  Mean   :0.2857   Mean   : 2.619   Mean   :12870   Mean   : 595.9   Mean   : 3.798   Mean   : 3.095  
-    ##  3rd Qu.:1.0000   3rd Qu.: 4.000   3rd Qu.:16659   3rd Qu.: 917.5   3rd Qu.: 6.000   3rd Qu.: 5.250  
-    ##  Max.   :1.0000   Max.   :13.000   Max.   :33058   Max.   :3001.0   Max.   :36.000   Max.   :15.000
+    ##      STATE           ACCIDENT          AADT1           AADT2       
+    ##  Min.   :0.0000   Min.   : 0.000   Min.   : 2367   Min.   :  15.0  
+    ##  1st Qu.:0.0000   1st Qu.: 0.000   1st Qu.: 7307   1st Qu.: 101.0  
+    ##  Median :0.0000   Median : 1.000   Median :12050   Median : 348.5  
+    ##  Mean   :0.2857   Mean   : 2.619   Mean   :12870   Mean   : 595.9  
+    ##  3rd Qu.:1.0000   3rd Qu.: 4.000   3rd Qu.:16659   3rd Qu.: 917.5  
+    ##  Max.   :1.0000   Max.   :13.000   Max.   :33058   Max.   :3001.0  
+    ##      MEDIAN           DRIVE       
+    ##  Min.   : 0.000   Min.   : 0.000  
+    ##  1st Qu.: 0.000   1st Qu.: 0.000  
+    ##  Median : 0.000   Median : 1.000  
+    ##  Mean   : 3.798   Mean   : 3.095  
+    ##  3rd Qu.: 6.000   3rd Qu.: 5.250  
+    ##  Max.   :36.000   Max.   :15.000
 
 ##### Preparing your data
 
@@ -116,7 +121,7 @@ skim(df)
 ```
 
 |                                                  |      |
-|:-------------------------------------------------|:-----|
+| :----------------------------------------------- | :--- |
 | Name                                             | df   |
 | Number of rows                                   | 84   |
 | Number of columns                                | 6    |
@@ -132,13 +137,13 @@ Data summary
 **Variable type: factor**
 
 | skim\_variable | n\_missing | complete\_rate | ordered | n\_unique | top\_counts      |
-|:---------------|-----------:|---------------:|:--------|----------:|:-----------------|
+| :------------- | ---------: | -------------: | :------ | --------: | :--------------- |
 | STATE          |          0 |              1 | FALSE   |         2 | Cal: 60, Mic: 24 |
 
 **Variable type: numeric**
 
 | skim\_variable | n\_missing | complete\_rate |     mean |      sd |   p0 |     p25 |     p50 |      p75 |  p100 | hist  |
-|:---------------|-----------:|---------------:|---------:|--------:|-----:|--------:|--------:|---------:|------:|:------|
+| :------------- | ---------: | -------------: | -------: | ------: | ---: | ------: | ------: | -------: | ----: | :---- |
 | ACCIDENT       |          0 |              1 |     2.62 |    3.36 |    0 |    0.00 |     1.0 |     4.00 |    13 | ▇▂▁▁▁ |
 | AADT1          |          0 |              1 | 12869.71 | 6797.85 | 2367 | 7307.25 | 12050.0 | 16658.50 | 33058 | ▇▇▅▂▁ |
 | AADT2          |          0 |              1 |   595.86 |  679.27 |   15 |  101.00 |   348.5 |   917.50 |  3001 | ▇▂▁▁▁ |
@@ -195,12 +200,12 @@ var(df$ACCIDENT)/mean(df$ACCIDENT) #coefficient of variance
 
     ## [1] 4.314129
 
-> **Note**: If the coefficient of variance &gt; 1, you have
+> **Note**: If the coefficient of variance \> 1, you have
 > overdispersion.
 
 ##### Goodness of fit
 
-Estimate goodness of fit parameter for the PDF of ACCIDENT.
+Estimate goodness of fit parameters for the PDF of ACCIDENT.
 
 ``` r
 gf<-goodfit(df$ACCIDENT,  type= "poisson", method= "ML") #Maximum Likelihood method
@@ -214,7 +219,7 @@ summary(gf)
     ## Likelihood Ratio 155.7106 11 1.012305e-27
 
 > **Note**: The null hypothesis is that it is a Poisson distribution.
-> Therefore, for it to be a Poisson distribution, the pvalue &gt; 0.05.
+> Therefore, for it to be a Poisson distribution, the pvalue \> 0.05.
 
 ### Different models
 
@@ -222,20 +227,20 @@ There are many families and links that can be used, depending on the
 characteristics of your data.
 
 | family           | link                   |
-|:-----------------|:-----------------------|
+| :--------------- | :--------------------- |
 | Gaussian         | identity               |
 | Binomial         | logit, probit, cloglog |
 | Poisson          | log, identity, sqrt    |
 | Gamma            | inverse, identity, log |
 | inverse.gaussian | 1/mu^2                 |
 
-Now let us try two possible models to fit this data:
+Now let us try three possible models to fit this data:
 
 1.  Poisson Model
 2.  Overdispersed Poisson Model
 3.  Negative Binomial distribution
 
-### 1. Poisson model
+### 1\. Poisson model
 
 We start by declaring what type of modelling we are performing. `gml()`
 stands for Generalized Linear Models.  
@@ -290,9 +295,9 @@ summary(model1)
 
 What can we say about the **residuals** and **degrees of freedom**?
 
--   residuals &gt; degrees of freedom -&gt; **overdispersion**
--   residuals &lt; degrees of freedom -&gt; **underdispersion**
--   residuals = degrees of freedom -&gt; **mean = variance**
+  - residuals \> degrees of freedom -\> **overdispersion**
+  - residuals \< degrees of freedom -\> **underdispersion**
+  - residuals = degrees of freedom -\> **mean = variance**
 
 > **Note:** In overdispersion, the estimates are reliable but the
 > standard errors tend to be smaller.
@@ -332,12 +337,12 @@ nagelkerke(model1)
     ## [1] "None"
 
 The likelihood ratio test (Omnibus test) compares the fitted model
-(“Model”) with the only-intercept model (“Null”). This test verifies if
-the explained variance is higher than the the unexplained variance.
+(“Model”) with the only-intercept model (“Null”). This test verifies
+if the explained variance is higher than the the unexplained variance.
 
-> **Note**: *h*<sub>0</sub> There is no overdispersion in the model.
-> Therefore, if pvalue &lt; 0.05, there is overdispersion, and we should
-> choose to use a Negative Binomial model.
+> **Note**: \(h_0\) There is no overdispersion in the model. Therefore,
+> if pvalue \< 0.05, there is overdispersion, and we should choose to
+> use a Negative Binomial model.
 
 ##### Wald test
 
@@ -361,10 +366,10 @@ Anova(model1, type = "III", test = "Wald")
 
 Type III tests examine the significance of each partial effect. Thus, it
 considers the significance of an effect with all the other effects in
-the model. The *χ*<sup>2</sup> (Chisq) tests the significance of the
-effect added to the model by having all of the other effects.
+the model. The \(\chi^2\) (Chisq) tests the significance of the effect
+added to the model by having all of the other effects.
 
-### 2. Overdispersed Poisson Model
+### 2\. Overdispersed Poisson Model
 
 Let us correct the standard errors with an overdispersed poisson model.
 
@@ -408,7 +413,7 @@ summary(model2)
 > **Note**: The estimates are the same, but the standard errors have
 > increased because they are adjusted by the scale parameter.
 
-### 3. Negative Binomial distribution
+### 3\. Negative Binomial distribution
 
 We use `glm.nb()` for this one.
 
@@ -514,7 +519,7 @@ Akaike’s Information Criteria (AIC) and Bayesian Information Criteria
 AIC and BIC consider the maximum likelihood and the number of parameters
 in assessing the quality of the models. Nonetheless, the difference
 between both methods is that the BIC takes into account the number of
-observations of dataset.  
+observations of the dataset.  
 Calculate the AIC and the BIC.
 
 ``` r
@@ -523,30 +528,40 @@ bic <- data.frame(model1 = BIC(model1), model3 = BIC(model3))
 ```
 
 <table class="kable_wrapper">
+
 <caption>
+
 AIC and BIC
+
 </caption>
+
 <tbody>
+
 <tr>
+
 <td>
 
 |   model1 |   model3 |
-|---------:|---------:|
+| -------: | -------: |
 | 339.2905 | 313.7189 |
 
 </td>
+
 <td>
 
 |   model1 |   model3 |
-|---------:|---------:|
+| -------: | -------: |
 | 351.4446 | 328.3038 |
 
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
 
-> **Note**: The smaller the values of AIC and BIC, the better the model
+> **Note**: The smaller the values of AIC and BIC, the better the model.
 
 ### Elasticities
 
@@ -563,12 +578,12 @@ elasticity <- data.frame(variable = c("AADT1", "AADT2", "MEDIAN", "DRIVE"),
                          elasticity = c(el1, el2, el3, el4))
 ```
 
-| variable | elasticity |
-|:---------|:-----------|
-| AADT1    | NA         |
-| AADT2    | 0.1292241  |
-| MEDIAN   | -0.0918089 |
-| DRIVE    | 0.0706501  |
+| variable | elasticity  |
+| :------- | :---------- |
+| AADT1    | NA          |
+| AADT2    | 0.1292241   |
+| MEDIAN   | \-0.0918089 |
+| DRIVE    | 0.0706501   |
 
 > **Note:** `AADT1` does not have a value because it is the offset of
 > the model. **Note:** `STATE` is a categorical variable. We would need

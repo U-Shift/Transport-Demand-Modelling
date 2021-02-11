@@ -104,7 +104,7 @@ var(df$ACCIDENT)/mean(df$ACCIDENT) #coefficient of variance
 
 
 ##### Goodness of fit
-Estimate goodness of fit parameter for the PDF of ACCIDENT.
+Estimate goodness of fit parameters for the PDF of ACCIDENT.
 ```{r}
 gf<-goodfit(df$ACCIDENT,  type= "poisson", method= "ML") #Maximum Likelihood method
 summary(gf)
@@ -121,7 +121,7 @@ table <- data.frame(family,link)
 knitr::kable(table, align = "l")
 ```
 
-Now let us try two possible models to fit this data:
+Now let us try three possible models to fit this data:
 
 1. Poisson Model
 2. Overdispersed Poisson Model
@@ -208,7 +208,7 @@ nagelkerke(model3)
  
 ##### AIC and BIC  
 Akaike’s Information Criteria (AIC) and Bayesian Information Criteria (BIC) evaluates the quality of a finite set of models.  
-AIC and BIC consider the maximum likelihood and the number of parameters in assessing the quality of the models. Nonetheless, the difference between both methods is that the BIC takes into account the number of observations of dataset.  
+AIC and BIC consider the maximum likelihood and the number of parameters in assessing the quality of the models. Nonetheless, the difference between both methods is that the BIC takes into account the number of observations of the dataset.  
 Calculate the AIC and the BIC.
 ```{r}
 aic <- data.frame(model1 = AIC(model1), model3 = AIC(model3))
@@ -218,7 +218,7 @@ bic <- data.frame(model1 = BIC(model1), model3 = BIC(model3))
 knitr::kable(list(aic, bic),caption = 'AIC and BIC',booktabs = F, valign = 't')
 ```
 
-> **Note**: The smaller the values of AIC and BIC, the better the model 
+> **Note**: The smaller the values of AIC and BIC, the better the model. 
 
 ### Elasticities
 Calculate the elasticities of the negative binomial model. You can also try to calculate for the other models. 

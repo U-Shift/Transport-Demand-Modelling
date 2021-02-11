@@ -16,20 +16,20 @@ Journal of Statistical Software, 27(2).
 
 #### Variables:
 
--   `invest`: Gross investment, defined as additions to plant and
+  - `invest`: Gross investment, defined as additions to plant and
     equipment plus maintenance and repairs in millions of dollars
     deflated by the implicit price deflator of producers’ durable
     equipment (base 1947);  
--   `value`: Market value of the firm, defined as the price of common
+  - `value`: Market value of the firm, defined as the price of common
     shares at December 31 (base 1947);
--   `capital`: Stock of plant and equipment, defined as the accumulated
+  - `capital`: Stock of plant and equipment, defined as the accumulated
     sum of net additions to plant and equipment deflated by the implicit
     price deflator for producers’ durable equipment (base 1947);
--   `firm`: American manufacturing firms;
--   `year`: Year of data;
--   `firmcod`: Numeric code that identifies each firm.
+  - `firm`: American manufacturing firms;
+  - `year`: Year of data;
+  - `firmcod`: Numeric code that identifies each firm.
 
-## Startup
+## Let’s begin\!
 
 #### Import libraries
 
@@ -50,7 +50,7 @@ df <- data.frame(data)
 ##### Take a first look at your data
 
 | invest |  value | capital | firm           | year | firmcod |
-|-------:|-------:|--------:|:---------------|-----:|--------:|
+| -----: | -----: | ------: | :------------- | ---: | ------: |
 |  317.6 | 3078.5 |     2.8 | General Motors | 1935 |       6 |
 |  391.8 | 4661.7 |    52.6 | General Motors | 1936 |       6 |
 |  410.6 | 5387.1 |   156.9 | General Motors | 1937 |       6 |
@@ -64,7 +64,7 @@ df <- data.frame(data)
 
 #### Prepare your data
 
-##### Take out the “firmcod” variale from the dataset
+##### Take out the “firmcod” variable from the dataset
 
 ``` r
 df$firmcod = NULL #another way or removing a variable
@@ -73,7 +73,7 @@ df$firmcod = NULL #another way or removing a variable
 ##### Factor categorical variables
 
 `firm` is a categorical nominal variable, and should be treated as so in
-the modeling processes. And for this example `year` should also be
+the modelling process. And for this example `year` should also be
 considered as a categorical ordinal variable, instead of a continuous
 one.
 
@@ -82,21 +82,29 @@ df$firm = factor(df$firm)
 df$year = factor(df$year, ordered = T)
 ```
 
-Take a look at the summary of your data. See the differences regarding
-the categorical ones?
+Take a look at the summary of your data. Do you see the differences
+regarding the categorical ones?
 
 ``` r
 summary(df)
 ```
 
-    ##      invest            value            capital                      firm          year    
-    ##  Min.   :   0.93   Min.   :  30.28   Min.   :   0.8   American Steel   : 20   1935   : 11  
-    ##  1st Qu.:  27.38   1st Qu.: 160.32   1st Qu.:  67.1   Atlantic Refining: 20   1936   : 11  
-    ##  Median :  52.37   Median : 404.65   Median : 180.1   Chrysler         : 20   1937   : 11  
-    ##  Mean   : 133.31   Mean   : 988.58   Mean   : 257.1   Diamond Match    : 20   1938   : 11  
-    ##  3rd Qu.:  99.78   3rd Qu.:1605.92   3rd Qu.: 344.5   General Electric : 20   1939   : 11  
-    ##  Max.   :1486.70   Max.   :6241.70   Max.   :2226.3   General Motors   : 20   1940   : 11  
-    ##                                                       (Other)          :100   (Other):154
+    ##      invest            value            capital                      firm    
+    ##  Min.   :   0.93   Min.   :  30.28   Min.   :   0.8   American Steel   : 20  
+    ##  1st Qu.:  27.38   1st Qu.: 160.32   1st Qu.:  67.1   Atlantic Refining: 20  
+    ##  Median :  52.37   Median : 404.65   Median : 180.1   Chrysler         : 20  
+    ##  Mean   : 133.31   Mean   : 988.58   Mean   : 257.1   Diamond Match    : 20  
+    ##  3rd Qu.:  99.78   3rd Qu.:1605.92   3rd Qu.: 344.5   General Electric : 20  
+    ##  Max.   :1486.70   Max.   :6241.70   Max.   :2226.3   General Motors   : 20  
+    ##                                                       (Other)          :100  
+    ##       year    
+    ##  1935   : 11  
+    ##  1936   : 11  
+    ##  1937   : 11  
+    ##  1938   : 11  
+    ##  1939   : 11  
+    ##  1940   : 11  
+    ##  (Other):154
 
 ## Ordinary least square model
 
@@ -134,25 +142,25 @@ Panel data models use **one way** and **two way** component models to
 overcome heterogeneity, correlation in the disturbance terms, and
 heteroscedasticity.
 
--   **One way error component model:** variable-intercept models across
+  - **One way error component model:** variable-intercept models across
     individuals **or** time;
--   **Two way error component model:** variable-intercept models across
+  - **Two way error component model:** variable-intercept models across
     individuals **and** time.
 
 Modelling Specifications:
 
--   **With fixed-effects:** effects that are in the sample.
+  - **With fixed-effects:** effects that are in the sample.
     Fixed-effects explore the causes of change within a person or entity
     (In this example the entity is the *firms*);
 
--   **With random-effects:** effect randomly drawn from a population.
+  - **With random-effects:** effect randomly drawn from a population.
     The random effects model is an appropriate specification if we are
     drawing *n* individuals randomly from a large population.
 
 You can also try other types of model estimation:
 
 | model                 | argument |
-|:----------------------|:---------|
+| :-------------------- | :------- |
 | Fixed effects         | within   |
 | Random effects        | random   |
 | Pooling model         | pooling  |
@@ -374,6 +382,6 @@ plmtest(random_tw)
     ## alternative hypothesis: significant effects
 
 > **Note:** Large values of H indicate that the fixed effects model is
-> prefered over the random effects model. While, A large value of the LM
+> prefered over the random effects model. While, a large value of the LM
 > statistic in the presence of a small H statistic indicate that the
 > random effects model is more suitable.

@@ -27,7 +27,7 @@ This code was based on the paper: Croissant, Y., Milo, G.(2008). [_Panel Data Ec
 * `year`: Year of data; 
 * `firmcod`: Numeric code that identifies each firm.
 
-## Startup
+## Let's begin!
 #### Import libraries
 ```{r message=FALSE, warning=FALSE}
 library(readxl) #read excel files
@@ -47,18 +47,18 @@ df <- data.frame(data)
 knitr::kable(head(df,10))
 ```
 #### Prepare your data
-##### Take out the "firmcod" variale from the dataset
+##### Take out the "firmcod" variable from the dataset
 ```{r}
 df$firmcod = NULL #another way or removing a variable
 ```
 
 ##### Factor categorical variables  
-`firm` is a categorical nominal variable, and should be treated as so in the modeling processes. And for this example `year` should also be considered as a categorical ordinal variable, instead of a continuous one.
+`firm` is a categorical nominal variable, and should be treated as so in the modelling process. And for this example `year` should also be considered as a categorical ordinal variable, instead of a continuous one.
 ```{r}
 df$firm = factor(df$firm)
 df$year = factor(df$year, ordered = T)
 ```
-Take a look at the summary of your data. See the differences regarding the categorical ones?
+Take a look at the summary of your data. Do you see the differences regarding the categorical ones?
 ```{r}
 summary(df)
 ```
@@ -167,7 +167,7 @@ Large values of the Lagrange Multiplier indicate that effects model is more suit
 plmtest(random_tw)
 ```
 
->**Note:** Large values of H indicate that the fixed effects model is prefered over the random effects model. While, A large value of the LM statistic in the presence of a small H statistic indicate that the random effects model is more suitable.
+>**Note:** Large values of H indicate that the fixed effects model is prefered over the random effects model. While, a large value of the LM statistic in the presence of a small H statistic indicate that the random effects model is more suitable.
 
 
 ```{r knit, eval=FALSE, include=FALSE}

@@ -12,7 +12,7 @@ characteristics.
 (2010). Assessment of residential location satisfaction in the Lisbon
 metropolitan area, TRB (No. 10-1161).
 
-**Your task:** Analyse the data and create meaningful latent factors.
+**Your task:** Analyze the data and create meaningful latent factors.
 
 ## Data
 
@@ -171,7 +171,7 @@ min &lt; med &lt; max:<br />
 773001005 &lt; 780248283 &lt; 808234671<br />
 IQR (CV) : 16634785 (0)</td>
 <td>470 distinct values</td>
-<td><img src="tmp/ds0033.png" /></td>
+<td><img src="tmp/ds0001.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -190,7 +190,7 @@ IQR (CV) : 2 (0.2)</td>
 5 : 130 (27.7%)<br />
 6 : 162 (34.5%)<br />
 7 : 53 (11.3%)</td>
-<td><img src="tmp/ds0034.png" /></td>
+<td><img src="tmp/ds0002.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -208,7 +208,7 @@ IQR (CV) : 2000 (0.7)</td>
 4750 : 106 (22.6%)<br />
 7500 : 75 (16.0%)<br />
 12500 : 31 ( 6.6%)</td>
-<td><img src="tmp/ds0035.png" /></td>
+<td><img src="tmp/ds0003.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -225,7 +225,7 @@ IQR (CV) : 0 (2)</td>
 2 : 41 ( 8.7%)<br />
 3 : 13 ( 2.8%)<br />
 4 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds0036.png" /></td>
+<td><img src="tmp/ds0004.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -244,7 +244,7 @@ IQR (CV) : 0.8 (0.4)</td>
 4 : 35 ( 7.4%)<br />
 5 : 3 ( 0.6%)<br />
 6 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds0037.png" /></td>
+<td><img src="tmp/ds0005.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -262,7 +262,7 @@ IQR (CV) : 1 (0.5)</td>
 3 : 21 ( 4.5%)<br />
 4 : 1 ( 0.2%)<br />
 5 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds0038.png" /></td>
+<td><img src="tmp/ds0006.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -281,7 +281,7 @@ IQR (CV) : 2 (0.5)</td>
 5 : 20 ( 4.3%)<br />
 6 : 5 ( 1.1%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds0039.png" /></td>
+<td><img src="tmp/ds0007.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -294,7 +294,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 36 &lt; 78<br />
 IQR (CV) : 12.7 (0.3)</td>
 <td>126 distinct values</td>
-<td><img src="tmp/ds0040.png" /></td>
+<td><img src="tmp/ds0008.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -307,7 +307,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 34 &lt; 78<br />
 IQR (CV) : 15 (0.3)</td>
 <td>53 distinct values</td>
-<td><img src="tmp/ds0041.png" /></td>
+<td><img src="tmp/ds0009.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -320,7 +320,7 @@ Mean : 0.5<br />
 Max : 1</td>
 <td>0 : 214 (45.5%)<br />
 1 : 256 (54.5%)</td>
-<td><img src="tmp/ds0042.png" /></td>
+<td><img src="tmp/ds0010.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -338,7 +338,7 @@ IQR (CV) : 1 (0.5)</td>
 3 : 56 (11.9%)<br />
 4 : 13 ( 2.8%)<br />
 5 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds0043.png" /></td>
+<td><img src="tmp/ds0011.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -351,7 +351,7 @@ min &lt; med &lt; max:<br />
 30 &lt; 110 &lt; 2250<br />
 IQR (CV) : 60 (0.9)</td>
 <td>76 distinct values</td>
-<td><img src="tmp/ds0044.png" /></td>
+<td><img src="tmp/ds0012.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -371,7 +371,7 @@ IQR (CV) : 1 (0.4)</td>
 5 : 26 ( 5.5%)<br />
 6 : 7 ( 1.5%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds0045.png" /></td>
+<td><img src="tmp/ds0013.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -388,7 +388,7 @@ IQR (CV) : 1 (1.2)</td>
 2 : 84 (17.9%)<br />
 3 : 18 ( 3.8%)<br />
 4 : 8 ( 1.7%)</td>
-<td><img src="tmp/ds0046.png" /></td>
+<td><img src="tmp/ds0014.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -401,7 +401,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 1 &lt; 5<br />
 IQR (CV) : 0.7 (0.6)</td>
 <td>22 distinct values</td>
-<td><img src="tmp/ds0047.png" /></td>
+<td><img src="tmp/ds0015.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -414,7 +414,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 3<br />
 IQR (CV) : 1 (1.2)</td>
 <td>13 distinct values</td>
-<td><img src="tmp/ds0048.png" /></td>
+<td><img src="tmp/ds0016.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -427,7 +427,7 @@ Mean : 0.2<br />
 Max : 1</td>
 <td>0 : 356 (75.7%)<br />
 1 : 114 (24.3%)</td>
-<td><img src="tmp/ds0049.png" /></td>
+<td><img src="tmp/ds0017.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -440,7 +440,7 @@ min &lt; med &lt; max:<br />
 0.8 &lt; 23.8 &lt; 73.3<br />
 IQR (CV) : 25.7 (0.7)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0050.png" /></td>
+<td><img src="tmp/ds0018.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -453,7 +453,7 @@ min &lt; med &lt; max:<br />
 49 &lt; 719 &lt; 17732.7<br />
 IQR (CV) : 1125 (1.3)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0051.png" /></td>
+<td><img src="tmp/ds0019.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -466,7 +466,7 @@ min &lt; med &lt; max:<br />
 0.3 &lt; 9.9 &lt; 67.8<br />
 IQR (CV) : 20 (1)</td>
 <td>439 distinct values</td>
-<td><img src="tmp/ds0052.png" /></td>
+<td><img src="tmp/ds0020.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -479,7 +479,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 22.2 &lt; 80.7<br />
 IQR (CV) : 23.6 (0.7)</td>
 <td>414 distinct values</td>
-<td><img src="tmp/ds0053.png" /></td>
+<td><img src="tmp/ds0021.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -492,7 +492,7 @@ Mean : 0.9<br />
 Max : 1</td>
 <td>0 : 64 (13.6%)<br />
 1 : 406 (86.4%)</td>
-<td><img src="tmp/ds0054.png" /></td>
+<td><img src="tmp/ds0022.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -505,7 +505,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 83.2 &lt; 255.6<br />
 IQR (CV) : 89.2 (0.6)</td>
 <td>431 distinct values</td>
-<td><img src="tmp/ds0055.png" /></td>
+<td><img src="tmp/ds0023.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -518,7 +518,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 0.7<br />
 IQR (CV) : 0.2 (0.6)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0056.png" /></td>
+<td><img src="tmp/ds0024.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -531,7 +531,7 @@ min &lt; med &lt; max:<br />
 0.1 &lt; 0.3 &lt; 0.4<br />
 IQR (CV) : 0.1 (0.2)</td>
 <td>433 distinct values</td>
-<td><img src="tmp/ds0057.png" /></td>
+<td><img src="tmp/ds0025.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -544,7 +544,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.3 &lt; 0.4<br />
 IQR (CV) : 0.1 (0.2)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0058.png" /></td>
+<td><img src="tmp/ds0026.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -557,7 +557,7 @@ min &lt; med &lt; max:<br />
 0.5 &lt; 1.1 &lt; 2.9<br />
 IQR (CV) : 0.2 (0.3)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0059.png" /></td>
+<td><img src="tmp/ds0027.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -570,7 +570,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 22 &lt; 84<br />
 IQR (CV) : 16 (0.6)</td>
 <td>59 distinct values</td>
-<td><img src="tmp/ds0060.png" /></td>
+<td><img src="tmp/ds0028.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -583,7 +583,7 @@ min &lt; med &lt; max:<br />
 74.7 &lt; 1338.7 &lt; 16590.1<br />
 IQR (CV) : 1820.5 (0.9)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0061.png" /></td>
+<td><img src="tmp/ds0029.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -596,7 +596,7 @@ min &lt; med &lt; max:<br />
 0.3 &lt; 0.4 &lt; 0.6<br />
 IQR (CV) : 0.1 (0.2)</td>
 <td>144 distinct values</td>
-<td><img src="tmp/ds0062.png" /></td>
+<td><img src="tmp/ds0030.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -609,7 +609,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 2.5 &lt; 63.2<br />
 IQR (CV) : 3.5 (1.5)</td>
 <td>144 distinct values</td>
-<td><img src="tmp/ds0063.png" /></td>
+<td><img src="tmp/ds0031.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -622,7 +622,7 @@ min &lt; med &lt; max:<br />
 148.9 &lt; 5542.3 &lt; 44004.6<br />
 IQR (CV) : 9777.9 (0.9)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0064.png" /></td>
+<td><img src="tmp/ds0032.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -639,24 +639,30 @@ IQR (CV) : 9777.9 (0.9)</td>
 head(df,5)
 ```
 
-    ##   RespondentID DWELCLAS INCOME CHILD13 H18 HEMPLOY HSIZE AVADUAGE IAGE ISEX NCARS AREA BEDROOM PARK   BEDSIZE PARKSIZE
-    ## 1    799161661        5   7500       1   2       2     3 32.00000   32    1     2  100       2    1 0.6666667      0.5
-    ## 2    798399409        6   4750       0   1       1     1 31.00000   31    1     1   90       2    1 2.0000000      1.0
-    ## 3    798374392        6   4750       2   2       2     4 41.50000   42    0     2  220       4    2 1.0000000      1.0
-    ## 4    798275277        5   7500       0   3       2     4 44.66667   52    1     3  120       3    0 0.7500000      0.0
-    ## 5    798264250        6   2750       1   1       1     2 33.00000   33    0     1   90       2    0 1.0000000      0.0
-    ##   RAGE10      TCBD   DISTHTC     TWCBD    TDWWK HEADH   POPDENS   EDUINDEX   GRAVCPC   GRAVCPT  GRAVPCPT NSTRTC
-    ## 1      1 36.791237  629.1120 10.003945 31.14282     1  85.70155 0.06406279 0.2492962 0.2492607 1.0001423     38
-    ## 2      0 15.472989  550.5769 15.502989  0.00000     1 146.43494 0.26723192 0.3293831 0.3102800 1.0615674     34
-    ## 3      1 24.098125  547.8633 12.709374 20.38427     1 106.60810 0.09996816 0.2396229 0.2899865 0.8263245     33
-    ## 4      0 28.724796 2350.5782  3.168599 32.94246     1  36.78380 0.08671065 0.2734539 0.2487830 1.0991661      6
-    ## 5      0  7.283384  698.3000  5.364160 13.04013     1 181.62720 0.13091674 0.2854017 0.2913676 0.9795244     31
-    ##      DISTHW    DIVIDX    ACTDENS   DISTCBD
-    ## 1 2036.4661 0.3225354  0.6722406  9776.142
-    ## 2  747.7683 0.3484588  2.4860345  3523.994
-    ## 3 2279.0577 0.3237884  1.6249059 11036.407
-    ## 4 1196.4665 0.3272149  1.7664923  6257.262
-    ## 5 3507.2402 0.3545181 11.3249309  1265.239
+    ##   RespondentID DWELCLAS INCOME CHILD13 H18 HEMPLOY HSIZE AVADUAGE IAGE ISEX
+    ## 1    799161661        5   7500       1   2       2     3 32.00000   32    1
+    ## 2    798399409        6   4750       0   1       1     1 31.00000   31    1
+    ## 3    798374392        6   4750       2   2       2     4 41.50000   42    0
+    ## 4    798275277        5   7500       0   3       2     4 44.66667   52    1
+    ## 5    798264250        6   2750       1   1       1     2 33.00000   33    0
+    ##   NCARS AREA BEDROOM PARK   BEDSIZE PARKSIZE RAGE10      TCBD   DISTHTC
+    ## 1     2  100       2    1 0.6666667      0.5      1 36.791237  629.1120
+    ## 2     1   90       2    1 2.0000000      1.0      0 15.472989  550.5769
+    ## 3     2  220       4    2 1.0000000      1.0      1 24.098125  547.8633
+    ## 4     3  120       3    0 0.7500000      0.0      0 28.724796 2350.5782
+    ## 5     1   90       2    0 1.0000000      0.0      0  7.283384  698.3000
+    ##       TWCBD    TDWWK HEADH   POPDENS   EDUINDEX   GRAVCPC   GRAVCPT  GRAVPCPT
+    ## 1 10.003945 31.14282     1  85.70155 0.06406279 0.2492962 0.2492607 1.0001423
+    ## 2 15.502989  0.00000     1 146.43494 0.26723192 0.3293831 0.3102800 1.0615674
+    ## 3 12.709374 20.38427     1 106.60810 0.09996816 0.2396229 0.2899865 0.8263245
+    ## 4  3.168599 32.94246     1  36.78380 0.08671065 0.2734539 0.2487830 1.0991661
+    ## 5  5.364160 13.04013     1 181.62720 0.13091674 0.2854017 0.2913676 0.9795244
+    ##   NSTRTC    DISTHW    DIVIDX    ACTDENS   DISTCBD
+    ## 1     38 2036.4661 0.3225354  0.6722406  9776.142
+    ## 2     34  747.7683 0.3484588  2.4860345  3523.994
+    ## 3     33 2279.0577 0.3237884  1.6249059 11036.407
+    ## 4      6 1196.4665 0.3272149  1.7664923  6257.262
+    ## 5     31 3507.2402 0.3545181 11.3249309  1265.239
 
 ##### Make ID as row names or case number
 
@@ -739,12 +745,14 @@ KMO(corr_matrix)
     ## Call: KMO(r = corr_matrix)
     ## Overall MSA =  0.68
     ## MSA for each item = 
-    ## DWELCLAS   INCOME  CHILD13      H18  HEMPLOY    HSIZE AVADUAGE     IAGE     ISEX    NCARS     AREA  BEDROOM     PARK 
-    ##     0.70     0.85     0.33     0.58     0.88     0.59     0.38     0.40     0.71     0.74     0.60     0.53     0.62 
-    ##  BEDSIZE PARKSIZE   RAGE10     TCBD  DISTHTC    TWCBD    TDWWK    HEADH  POPDENS EDUINDEX  GRAVCPC  GRAVCPT GRAVPCPT 
-    ##     0.58     0.57     0.84     0.88     0.88     0.82     0.89     0.47     0.82     0.85     0.76     0.71     0.31 
-    ##   NSTRTC   DISTHW   DIVIDX  ACTDENS  DISTCBD 
-    ##     0.83     0.76     0.63     0.70     0.86
+    ## DWELCLAS   INCOME  CHILD13      H18  HEMPLOY    HSIZE AVADUAGE     IAGE 
+    ##     0.70     0.85     0.33     0.58     0.88     0.59     0.38     0.40 
+    ##     ISEX    NCARS     AREA  BEDROOM     PARK  BEDSIZE PARKSIZE   RAGE10 
+    ##     0.71     0.74     0.60     0.53     0.62     0.58     0.57     0.84 
+    ##     TCBD  DISTHTC    TWCBD    TDWWK    HEADH  POPDENS EDUINDEX  GRAVCPC 
+    ##     0.88     0.88     0.82     0.89     0.47     0.82     0.85     0.76 
+    ##  GRAVCPT GRAVPCPT   NSTRTC   DISTHW   DIVIDX  ACTDENS  DISTCBD 
+    ##     0.71     0.31     0.83     0.76     0.63     0.70     0.86
 
 > **Note:** We want at least 0.7 of the overall Mean Sample Adequacy
 > (MSA). If, 0.6 &lt; MSA &lt; 0.7, it is not a good value, but
@@ -795,22 +803,34 @@ summary(df_pca)
 ```
 
     ## Importance of components:
-    ##                          Comp.1    Comp.2     Comp.3     Comp.4     Comp.5     Comp.6     Comp.7     Comp.8    Comp.9
-    ## Standard deviation     2.450253 1.9587909 1.61305418 1.43367870 1.27628545 1.26612033 1.22242045 1.11550534 1.0304937
-    ## Proportion of Variance 0.193669 0.1237697 0.08393367 0.06630434 0.05254531 0.05171164 0.04820361 0.04014039 0.0342554
-    ## Cumulative Proportion  0.193669 0.3174388 0.40137245 0.46767679 0.52022210 0.57193374 0.62013734 0.66027774 0.6945331
-    ##                           Comp.10    Comp.11    Comp.12   Comp.13    Comp.14    Comp.15   Comp.16    Comp.17    Comp.18
-    ## Standard deviation     0.99888665 0.97639701 0.92221635 0.9042314 0.85909928 0.80853555 0.7877571 0.74436225 0.72574751
-    ## Proportion of Variance 0.03218628 0.03075326 0.02743494 0.0263753 0.02380812 0.02108806 0.0200181 0.01787339 0.01699063
-    ## Cumulative Proportion  0.72671941 0.75747267 0.78490761 0.8112829 0.83509102 0.85617908 0.8761972 0.89407058 0.91106120
-    ##                           Comp.19    Comp.20    Comp.21    Comp.22    Comp.23     Comp.24     Comp.25     Comp.26
-    ## Standard deviation     0.69380677 0.67269732 0.63466979 0.61328635 0.55192724 0.397467153 0.384354087 0.364232811
-    ## Proportion of Variance 0.01552799 0.01459747 0.01299373 0.01213291 0.00982657 0.005096133 0.004765421 0.004279534
-    ## Cumulative Proportion  0.92658920 0.94118667 0.95418041 0.96631331 0.97613988 0.981236017 0.986001438 0.990280972
-    ##                            Comp.27     Comp.28     Comp.29      Comp.30      Comp.31
-    ## Standard deviation     0.322026864 0.276201256 0.262018088 0.1712372644 0.1527277294
-    ## Proportion of Variance 0.003345203 0.002460875 0.002214628 0.0009458774 0.0007524438
-    ## Cumulative Proportion  0.993626175 0.996087050 0.998301679 0.9992475562 1.0000000000
+    ##                          Comp.1    Comp.2     Comp.3     Comp.4     Comp.5
+    ## Standard deviation     2.450253 1.9587909 1.61305418 1.43367870 1.27628545
+    ## Proportion of Variance 0.193669 0.1237697 0.08393367 0.06630434 0.05254531
+    ## Cumulative Proportion  0.193669 0.3174388 0.40137245 0.46767679 0.52022210
+    ##                            Comp.6     Comp.7     Comp.8    Comp.9    Comp.10
+    ## Standard deviation     1.26612033 1.22242045 1.11550534 1.0304937 0.99888665
+    ## Proportion of Variance 0.05171164 0.04820361 0.04014039 0.0342554 0.03218628
+    ## Cumulative Proportion  0.57193374 0.62013734 0.66027774 0.6945331 0.72671941
+    ##                           Comp.11    Comp.12   Comp.13    Comp.14    Comp.15
+    ## Standard deviation     0.97639701 0.92221635 0.9042314 0.85909928 0.80853555
+    ## Proportion of Variance 0.03075326 0.02743494 0.0263753 0.02380812 0.02108806
+    ## Cumulative Proportion  0.75747267 0.78490761 0.8112829 0.83509102 0.85617908
+    ##                          Comp.16    Comp.17    Comp.18    Comp.19    Comp.20
+    ## Standard deviation     0.7877571 0.74436225 0.72574751 0.69380677 0.67269732
+    ## Proportion of Variance 0.0200181 0.01787339 0.01699063 0.01552799 0.01459747
+    ## Cumulative Proportion  0.8761972 0.89407058 0.91106120 0.92658920 0.94118667
+    ##                           Comp.21    Comp.22    Comp.23     Comp.24     Comp.25
+    ## Standard deviation     0.63466979 0.61328635 0.55192724 0.397467153 0.384354087
+    ## Proportion of Variance 0.01299373 0.01213291 0.00982657 0.005096133 0.004765421
+    ## Cumulative Proportion  0.95418041 0.96631331 0.97613988 0.981236017 0.986001438
+    ##                            Comp.26     Comp.27     Comp.28     Comp.29
+    ## Standard deviation     0.364232811 0.322026864 0.276201256 0.262018088
+    ## Proportion of Variance 0.004279534 0.003345203 0.002460875 0.002214628
+    ## Cumulative Proportion  0.990280972 0.993626175 0.996087050 0.998301679
+    ##                             Comp.30      Comp.31
+    ## Standard deviation     0.1712372644 0.1527277294
+    ## Proportion of Variance 0.0009458774 0.0007524438
+    ## Cumulative Proportion  0.9992475562 1.0000000000
 
 -   Scree Plot
 
@@ -857,12 +877,14 @@ print(df_factor, digits=2, cutoff=0.3, sort=TRUE) #cutoff of 0.3 due to the samp
     ## factanal(x = df, factors = 4, scores = c("regression"), rotation = "none",     fm = "ml")
     ## 
     ## Uniquenesses:
-    ## DWELCLAS   INCOME  CHILD13      H18  HEMPLOY    HSIZE AVADUAGE     IAGE     ISEX    NCARS     AREA  BEDROOM     PARK 
-    ##     0.98     0.82     0.09     0.01     0.73     0.01     0.98     0.99     0.98     0.64     0.93     0.79     0.89 
-    ##  BEDSIZE PARKSIZE   RAGE10     TCBD  DISTHTC    TWCBD    TDWWK    HEADH  POPDENS EDUINDEX  GRAVCPC  GRAVCPT GRAVPCPT 
-    ##     0.62     0.92     0.91     0.14     0.54     0.80     0.74     0.67     0.78     0.71     0.04     0.05     0.01 
-    ##   NSTRTC   DISTHW   DIVIDX  ACTDENS  DISTCBD 
-    ##     0.85     0.66     0.84     0.80     0.31 
+    ## DWELCLAS   INCOME  CHILD13      H18  HEMPLOY    HSIZE AVADUAGE     IAGE 
+    ##     0.98     0.82     0.09     0.01     0.73     0.01     0.98     0.99 
+    ##     ISEX    NCARS     AREA  BEDROOM     PARK  BEDSIZE PARKSIZE   RAGE10 
+    ##     0.98     0.64     0.93     0.79     0.89     0.62     0.92     0.91 
+    ##     TCBD  DISTHTC    TWCBD    TDWWK    HEADH  POPDENS EDUINDEX  GRAVCPC 
+    ##     0.14     0.54     0.80     0.74     0.67     0.78     0.71     0.04 
+    ##  GRAVCPT GRAVPCPT   NSTRTC   DISTHW   DIVIDX  ACTDENS  DISTCBD 
+    ##     0.05     0.01     0.85     0.66     0.84     0.80     0.31 
     ## 
     ## Loadings:
     ##          Factor1 Factor2 Factor3 Factor4
@@ -987,7 +1009,7 @@ text(
 
 ![](RmdFiles/3-FactorAnalysis/unnamed-chunk-22-1.png)<!-- -->
 
-When you have more than two factors it is difficult to analyse the
+When you have more than two factors it is difficult to analyze the
 factors by the plots. Variables that have low explaining variance in the
 two factors analyzed, could be highly explained by the other factors not
 present in the graph. However, try comparing the plots with the factor

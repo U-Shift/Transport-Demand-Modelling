@@ -3,7 +3,7 @@ Exploratory Data Analysis
 
 #### Example exercise: Trip production of 57 Traffic Assignment Zones of Chicago in the 1960’s.
 
-**Your task**: Explore and analyse the dataset before going to the
+**Your task**: Explore and analyze the dataset before going to the
 Multiple linear regression chapter.
 
 #### Variables:

@@ -38,7 +38,7 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 * `GDP corrected`: Corrected value of the Gross Domestic Product;  
 * `Cargoton`: Cargo ton. The total number of cargo transported in a certain period multiplied by the number o flights.
 
-## Startup
+## Let's begin!
 ##### Import Libraries
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 library(readxl) # Reading excel files
@@ -218,7 +218,7 @@ This algorithm will detect how many clusters from 1 to 10 explains more variance
   
 > **Note**: Try printing the k value and take a look at the ratio `between_SS` / `total_SS`. Evaluate how it varies when you add clusters. 
 
-Now, lets  plot `between_SS` / `total_SS` into a scree plot
+Now, let's  plot `between_SS` / `total_SS` into a scree plot
 
 ```{r}
 betSS_totSS <- list()
@@ -229,7 +229,7 @@ plot(1:10, betSS_totSS, type = "b", ylab = "Between SS / Total SS", xlab = "Numb
 ```
 
 
-Let take out the outliers and see the difference in the k-means clustering:
+Let's take out the outliers and see the difference in the k-means clustering:
  
 * **Examine the boxplots**
   
@@ -264,8 +264,8 @@ km_no_outliers <- kmeans(df_no_outliers, 3)
 km_no_outliers
 ```
 
-#### Ploting the clusters
-Finally, plotting the clusters results to check if they make sense.  
+#### Plotting the clusters
+Finally, plot the clusters results to check if they make sense.  
 Let us go back to first example and take a look. 
 
 * **K-means with outliers**

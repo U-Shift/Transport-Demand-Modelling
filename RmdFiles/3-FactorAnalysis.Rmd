@@ -16,7 +16,7 @@ The aim of this study was to examine the perception of households towards their 
 
 _Reference:_ Martinez, L. G., de Abreu e Silva, J., & Viegas, J. M. (2010). Assessment of residential location satisfaction in the Lisbon metropolitan area, TRB (No. 10-1161).
 
-**Your task:** Analyse the data and create meaningful latent factors.  
+**Your task:** Analyze the data and create meaningful latent factors.  
 
 ## Data
 #### Variables: 
@@ -293,7 +293,7 @@ text(
 )
 ```
 
-When you have more than two factors it is difficult to analyse the factors by the plots. Variables that have low explaining variance in the two factors analyzed, could be highly explained by the other factors not present in the graph. However, try comparing the plots with the factor loadings and plot the other graphs to get more familiar with exploratory factor analysis.  
+When you have more than two factors it is difficult to analyze the factors by the plots. Variables that have low explaining variance in the two factors analyzed, could be highly explained by the other factors not present in the graph. However, try comparing the plots with the factor loadings and plot the other graphs to get more familiar with exploratory factor analysis.  
 
 
 ```{r knit, eval=FALSE, include=FALSE}

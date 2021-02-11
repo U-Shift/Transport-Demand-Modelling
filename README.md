@@ -1,7 +1,7 @@
 Transport Demand Modelling Course
 ================
 
-This repository intends to gather, and make available, the supporting materials for the [Transport Demand Modeling course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/materiais-de-apoio), lectured by [Prof. Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).  
+This repository intends to gather, and make available, the supporting materials for the [Transport Demand Modelling course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/materiais-de-apoio), lectured by [Prof. Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/).  
 This material is also an open source tutorial for applying R programming (chapters 1-7 and 9) and Python Biogeme (chapter 8) in transport demand modelling.
 
 ![](RmdFiles/CERIS_PT.jpg)

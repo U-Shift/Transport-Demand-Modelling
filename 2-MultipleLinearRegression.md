@@ -8,39 +8,40 @@ per occupied dwelling unit.
 
 #### Variables:
 
--   `TODU`: Motorized Trips (private car or Public Transportation) per
+  - `TODU`: Motorized Trips (private car or Public Transportation) per
     occupied dwelling unit;
 
--   `ACO`: Average car ownership (cars per dwelling);
+  - `ACO`: Average car ownership (cars per dwelling);
 
--   `AHS`: Average household size;
+  - `AHS`: Average household size;
 
--   `SRI`: Social Rank Index:  
-    1. proportion of blue-collar workers (e.g., construction, mining);  
-    2. proportion of people with age higher than 25 years that have
+  - `SRI`: Social Rank Index:  
+    1\. proportion of blue-collar workers (e.g., construction,
+    mining);  
+    2\. proportion of people with age higher than 25 years that have
     completed at least 8 year of education; (***Note:** The SRI has its
     maximum value when there are no blue-collar workers and all adults
     have education of at least 8 years*)
 
--   `UI`: Urbanization Index:  
-    1. fertility rate, defined as the ratio of children under 5 years of
-    age to the female population of childbearing age;  
-    2. female labor force participation rate, meaning the % of women who
-    are in the labor force;  
-    3. % of single family units to total dwelling units.
-
+  - `UI`: Urbanization Index:  
+    1\. fertility rate, defined as the ratio of children under 5 years
+    of age to the female population of childbearing age;  
+    2\. female labor force participation rate, meaning the % of women
+    who are in the labor force;  
+    3\. % of single family units to total dwelling units.
+    
     The degree of urbanization index would be increased by a) lower
-    fertility rate, b) higher female labor force participation rate,
-    and c) higher proportion of single dwelling units. (***Note:** High
+    fertility rate, b) higher female labor force participation rate, and
+    c) higher proportion of single dwelling units. (***Note:** High
     values for this index imply less attachment to the home*)
 
--   `SI`:Segregation Index It measures the proportion of an area to
+  - `SI`:Segregation Index It measures the proportion of an area to
     which minority groups (e.g: non-whites, foreign-born, Eastern
     Europeans) live in isolation. (***Note:** High values for this index
     imply that those communities are less prone to leaving their living
     areas and as such to having lower levels of mobility*)
 
-## Let’s begin!
+## Let’s begin\!
 
 ##### Import Libraries
 
@@ -76,7 +77,7 @@ skim(df)
 ```
 
 |                                                  |      |
-|:-------------------------------------------------|:-----|
+| :----------------------------------------------- | :--- |
 | Name                                             | df   |
 | Number of rows                                   | 57   |
 | Number of columns                                | 6    |
@@ -91,7 +92,7 @@ Data summary
 **Variable type: numeric**
 
 | skim\_variable | n\_missing | complete\_rate |  mean |    sd |    p0 |   p25 |   p50 |   p75 |  p100 | hist  |
-|:---------------|-----------:|---------------:|------:|------:|------:|------:|------:|------:|------:|:------|
+| :------------- | ---------: | -------------: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | :---- |
 | TODU           |          0 |              1 |  5.37 |  1.33 |  3.02 |  4.54 |  5.10 |  6.13 |  9.14 | ▃▇▅▃▁ |
 | ACO            |          0 |              1 |  0.81 |  0.18 |  0.50 |  0.67 |  0.79 |  0.92 |  1.32 | ▆▇▇▃▁ |
 | AHS            |          0 |              1 |  3.19 |  0.39 |  1.83 |  3.00 |  3.19 |  3.37 |  4.50 | ▁▂▇▂▁ |
@@ -103,19 +104,26 @@ Data summary
 summary(df)
 ```
 
-    ##       TODU            ACO              AHS              SI             SRI              UI       
-    ##  Min.   :3.020   Min.   :0.5000   Min.   :1.830   Min.   : 2.17   Min.   :20.89   Min.   :24.08  
-    ##  1st Qu.:4.540   1st Qu.:0.6700   1st Qu.:3.000   1st Qu.: 6.82   1st Qu.:38.14   1st Qu.:44.80  
-    ##  Median :5.100   Median :0.7900   Median :3.190   Median : 9.86   Median :49.37   Median :55.51  
-    ##  Mean   :5.373   Mean   :0.8118   Mean   :3.185   Mean   :13.07   Mean   :49.56   Mean   :52.62  
-    ##  3rd Qu.:6.130   3rd Qu.:0.9200   3rd Qu.:3.370   3rd Qu.:15.08   3rd Qu.:60.85   3rd Qu.:61.09  
-    ##  Max.   :9.140   Max.   :1.3200   Max.   :4.500   Max.   :62.53   Max.   :87.38   Max.   :83.66
+    ##       TODU            ACO              AHS              SI       
+    ##  Min.   :3.020   Min.   :0.5000   Min.   :1.830   Min.   : 2.17  
+    ##  1st Qu.:4.540   1st Qu.:0.6700   1st Qu.:3.000   1st Qu.: 6.82  
+    ##  Median :5.100   Median :0.7900   Median :3.190   Median : 9.86  
+    ##  Mean   :5.373   Mean   :0.8118   Mean   :3.185   Mean   :13.07  
+    ##  3rd Qu.:6.130   3rd Qu.:0.9200   3rd Qu.:3.370   3rd Qu.:15.08  
+    ##  Max.   :9.140   Max.   :1.3200   Max.   :4.500   Max.   :62.53  
+    ##       SRI              UI       
+    ##  Min.   :20.89   Min.   :24.08  
+    ##  1st Qu.:38.14   1st Qu.:44.80  
+    ##  Median :49.37   Median :55.51  
+    ##  Mean   :49.56   Mean   :52.62  
+    ##  3rd Qu.:60.85   3rd Qu.:61.09  
+    ##  Max.   :87.38   Max.   :83.66
 
 ## Multiple Linear Regression
 
 Equation with `TODU` as the dependent variable:
 
-*Y*<sub>TODU</sub> = *β*<sub>0</sub> + *β*<sub>1</sub>ACO + *β*<sub>2</sub>AHS + *β*<sub>3</sub>SI + *β*<sub>4</sub>SRI + *β*<sub>5</sub>UI + *ε*
+\[Y_{\text{TODU}} = \beta_{0} + \beta_{1}{\text{ACO}} + \beta_{2}{\text{AHS}} + \beta_{3}{\text{SI}} + \beta_{4}{\text{SRI}} +\beta_{5}{\text{UI}} + \varepsilon\]
 
 #### Checking assumptions
 
@@ -170,8 +178,8 @@ If not, use the Kolmogorov-Smirnov test
 ks.test(df$TODU, "pnorm", mean=mean(df$TODU), sd = sd(df$TODU))
 ```
 
-    ## Warning in ks.test(df$TODU, "pnorm", mean = mean(df$TODU), sd = sd(df$TODU)): ties should not be present for the
-    ## Kolmogorov-Smirnov test
+    ## Warning in ks.test(df$TODU, "pnorm", mean = mean(df$TODU), sd = sd(df$TODU)):
+    ## ties should not be present for the Kolmogorov-Smirnov test
 
     ## 
     ##  One-sample Kolmogorov-Smirnov test
@@ -191,8 +199,8 @@ considers `TODU` as a categorical variable. Therefore, this is another
 evidence, that for small samples it is more appropriate to use the
 Shapiro-Wilk Test.  
 The null hypothesis of both tests is that the distribution is normal.
-Therefore, for the distribution to be normal, the pvalue &gt; 0.05 and
-you should not reject the null hypothesis.
+Therefore, for the distribution to be normal, the pvalue \> 0.05 and you
+should not reject the null hypothesis.
 
 ### Multiple linear regression model
 
@@ -228,8 +236,8 @@ summary(model)
 
 1.  First check the **pvalue** and the **F statistics** of the model to
     see if there is any statistical relation between the dependent
-    variable and the independent variables. If pvalue &lt; 0.05 and the
-    F statistics &gt; Fcritical = 2,39, then the model is statistically
+    variable and the independent variables. If pvalue \< 0.05 and the F
+    statistics \> Fcritical = 2,39, then the model is statistically
     acceptable.  
 2.  The **R-square** and **Adjusted R-square** evaluate the amount of
     variance that is explained by the model. The difference between one
@@ -238,14 +246,14 @@ summary(model)
     R-square will tend to increase which can lead to overfitting. On the
     other hand, the Adjusted R-square adjusts to the number of
     independent variables.  
-3.  Take a look at the **t-value** and the Pr(&gt;\|t\|). If the
-    t-value &gt; 1,96 or Pr(&gt;\|t\|) &lt; 0,05, then the IV is
-    statistically significant to the model.  
+3.  Take a look at the **t-value** and the Pr(\>|t|). If the t-value \>
+    1,96 or Pr(\>|t|) \< 0,05, then the IV is statistically significant
+    to the model.  
 4.  To analyze the **estimates** of the variables, you should first
     check the **signal** and evaluate if the independent variable has a
     direct or inverse relationship with the dependent variable. It is
     only possible to evaluate the **magnitude** of the estimate if all
-    variables are continuous and standarzized or by calculating the
+    variables are continuous and standardized or by calculating the
     elasticities. The elasticities are explained and demonstrated in
     chapter 5.
 
@@ -253,14 +261,14 @@ summary(model)
 
 Let’s see how do the residuals behave by plotting them.
 
--   **Residuals vs Fitted:** This plot is used to detect non-linearity,
+  - **Residuals vs Fitted:** This plot is used to detect non-linearity,
     heteroscedasticity, and outliers.
--   **Normal Q-Q:** The quantile-quantile (Q-Q) plot is used to check if
+  - **Normal Q-Q:** The quantile-quantile (Q-Q) plot is used to check if
     the dependent variable follows a normal distribution.
--   **Scale-Location:** This plot is used to verify if the residuals are
+  - **Scale-Location:** This plot is used to verify if the residuals are
     spread equally (homoscedasticity) or not (heteroscedasticity)
     through the sample.
--   **Residuals vs Leverage:** This plot is used to detect the impact of
+  - **Residuals vs Leverage:** This plot is used to detect the impact of
     the outliers in the model. If the outliers are outside the
     Cook-distance, this may lead to serious problems in the model.
 
@@ -283,7 +291,7 @@ durbinWatsonTest(model)
 ```
 
     ##  lag Autocorrelation D-W Statistic p-value
-    ##    1       0.1416308      1.597747   0.076
+    ##    1       0.1416308      1.597747   0.056
     ##  Alternative hypothesis: rho != 0
 
 > **Note:** In the Durbin-Watson test, values of the D-W Statistic vary
@@ -305,7 +313,7 @@ ols_vif_tol(model)
     ## 4       SRI 0.5236950 1.909508
     ## 5        UI 0.3165801 3.158758
 
-> **Note:** Values of VIF &gt; 5, indicate multicollinearity problems.
+> **Note:** Values of VIF \> 5, indicate multicollinearity problems.
 
 Calculate the Condition Index to test for multicollinearity
 
@@ -313,16 +321,23 @@ Calculate the Condition Index to test for multicollinearity
 ols_eigen_cindex(model)
 ```
 
-    ##    Eigenvalue Condition Index    intercept          ACO          AHS          SI         SRI           UI
-    ## 1 5.386537577        1.000000 6.994331e-05 0.0005136938 0.0001916512 0.007888051 0.001515333 6.216297e-04
-    ## 2 0.444466338        3.481252 6.484243e-05 0.0026682253 0.0001278701 0.693175876 0.006641788 7.488285e-07
-    ## 3 0.084386209        7.989491 5.829055e-05 0.0478676279 0.0091615336 0.051400736 0.055585833 1.128114e-01
-    ## 4 0.073784878        8.544195 1.355679e-03 0.0031699136 0.0100934045 0.152292605 0.382488929 4.801705e-02
-    ## 5 0.009322827       24.037043 5.414145e-03 0.7943557055 0.2105218176 0.090809203 0.374832118 1.851308e-01
-    ## 6 0.001502171       59.881840 9.930371e-01 0.1514248340 0.7699037229 0.004433528 0.178935999 6.534183e-01
+    ##    Eigenvalue Condition Index    intercept          ACO          AHS
+    ## 1 5.386537577        1.000000 6.994331e-05 0.0005136938 0.0001916512
+    ## 2 0.444466338        3.481252 6.484243e-05 0.0026682253 0.0001278701
+    ## 3 0.084386209        7.989491 5.829055e-05 0.0478676279 0.0091615336
+    ## 4 0.073784878        8.544195 1.355679e-03 0.0031699136 0.0100934045
+    ## 5 0.009322827       24.037043 5.414145e-03 0.7943557055 0.2105218176
+    ## 6 0.001502171       59.881840 9.930371e-01 0.1514248340 0.7699037229
+    ##            SI         SRI           UI
+    ## 1 0.007888051 0.001515333 6.216297e-04
+    ## 2 0.693175876 0.006641788 7.488285e-07
+    ## 3 0.051400736 0.055585833 1.128114e-01
+    ## 4 0.152292605 0.382488929 4.801705e-02
+    ## 5 0.090809203 0.374832118 1.851308e-01
+    ## 6 0.004433528 0.178935999 6.534183e-01
 
-> **Note:** Condition index values &gt; 15 indicate multicollinearity
-> problems, and values &gt; 30 indicate serious problems of
+> **Note:** Condition index values \> 15 indicate multicollinearity
+> problems, and values \> 30 indicate serious problems of
 > multicollinearity.
 
 To test both simultaneously, you can run the code below:

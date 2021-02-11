@@ -56,6 +56,6 @@ This material is also an open source tutorial for applying R programming (chapte
 
 If you use this material, please cite as:
 
-> Filipe Moura, João Abreu e Silva, Anabela Ribeiro, Carlos Roque, Gabriel Valença, Miguel Costa, & Rosa Félix. (2020, December). Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon (Version 2020.1). GitHub. doi:10.5281/zenodo.4527618
+> Filipe Moura, João Abreu e Silva, Anabela Ribeiro, Carlos Roque, Gabriel Valença, Miguel Costa, & Rosa Félix. (2021, February). U-Shift/Transport-Demand-Modelling: 2020 - 1st semester. Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon. (Version 2020.2). GitHub. http://doi.org/10.5281/zenodo.4536298 ([BibTeX](https://github.com/U-Shift/Transport-Demand-Modelling/blob/master/refs.bib)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4527618.svg)](https://doi.org/10.5281/zenodo.4527617)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4536299.svg)](https://doi.org/10.5281/zenodo.4536298)

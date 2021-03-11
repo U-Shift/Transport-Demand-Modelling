@@ -49,15 +49,15 @@ You can find all the slides of the lectures at the [course page](https://fenix.t
 
 * [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/): preparation of code of Chapters 1-5, 7.
 * [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/): preparation of code of Chapter 6, "How to install R", "Tips for RMarkdown", revision of code of Chapters 1-7, 9.
-* [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/): preparation of code of Chapter 8, home assignment 4, "How to install Python".
-* [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/): preparation of code and slides of Chapter 9.
-* [Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/): preparation of slides of Chapters 1-5 and 8, home assignments 1 and 2, and supervision.
+* [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/): preparation of code of Chapter 8, and "How to install Python".
+* [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/): preparation of code of Chapter 9.
+* [Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/): supervision.
 
 
 ## Reference
 
 If you use this material, please [cite as](https://github.com/U-Shift/Transport-Demand-Modelling/blob/master/refs.bib):
 
-> Filipe Moura, Gabriel Valença, Miguel Costa, Carlos Roque, & Rosa Félix. (2021, February). U-Shift/Transport-Demand-Modelling: 2020 - 1st semester. Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon. (Version 2020.3). GitHub. http://doi.org/10.5281/zenodo.4536298 
+> Filipe Moura, Gabriel Valença, Miguel Costa, Carlos Roque, & Rosa Félix. (2021, March). U-Shift/Transport-Demand-Modelling: 2020 - 1st semester. Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon. (Version 2021.0). GitHub. http://doi.org/10.5281/zenodo.4536298 
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4536299.svg)](https://doi.org/10.5281/zenodo.4536298)

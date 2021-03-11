@@ -32,11 +32,11 @@ This material is also an open source tutorial for applying R programming (chapte
 
 ### Files
 
-  - In [Data](Data/) folder you may find all the files to use for the exercises.  
-  - The [Code](Code/) folder contains scripts to use with each topic.
+  - In the [Data](Data/) folder you may find all the files for the exercises.  
+  - The [Code](Code/) folder contains scripts for each topic.
   
 #### Slides
-You can find all the slides of the lectures at the [course page](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/lectures).
+You may find all lectures slides in the [course page](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/lectures).
 
   
 ### R and Python stuff

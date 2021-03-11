@@ -58,6 +58,6 @@ You may find all lectures slides in the [course page](https://fenix.tecnico.ulis
 
 If you use this material, please [cite as](https://github.com/U-Shift/Transport-Demand-Modelling/blob/master/refs.bib):
 
-> Filipe Moura, Gabriel Valença, Miguel Costa, Carlos Roque, & Rosa Félix. (2021, March). U-Shift/Transport-Demand-Modelling: 2020 - 1st semester. Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon. (Version 2021.0). GitHub. http://doi.org/10.5281/zenodo.4536298 
+> Filipe Moura, Gabriel Valença, Miguel Costa, Carlos Roque, & Rosa Félix. (2021, March). U-Shift/Transport-Demand-Modelling: Supporting materials to Transportation Demand Modelling classes at Instituto Superior Técnico - University of Lisbon. (Version 2021.0). GitHub. http://doi.org/10.5281/zenodo.4599525
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4536299.svg)](https://doi.org/10.5281/zenodo.4536298)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4599525.svg)](https://doi.org/10.5281/zenodo.4536298)

@@ -90,6 +90,7 @@ head(df_reduced)
 
 ##### Standardize variables
 Z-score standardization:  $(x_{i} - x_{\text{mean}}) / {\sigma}$
+
 ```{r}
 mean <- apply(df_reduced, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
 sd <- apply(df_reduced, 2, sd)

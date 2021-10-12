@@ -36,6 +36,17 @@ install.packages("rmarkdown")
 ### Make your outputs live
 To make your outputs online at your IST server.
 
+#### VPN check
+
+First, you have to make sure that your computer is trusted to be connected to IST servers.  
+Please [follow the insctructions](https://si.tecnico.ulisboa.pt/en/servicos/redes-e-conetividade/vpn/), by choosing your Operating System.
+
+You only need to do this once per computer.
+
+
+#### Using SFTP
+
+SFTP is a Secure FTP connection.  
 Donwload FileZilla at: https://filezilla-project.org/download.php?type=client
 
 * CTRL + S (site manager)
@@ -46,7 +57,7 @@ Donwload FileZilla at: https://filezilla-project.org/download.php?type=client
 * user: ist1XXXXX
 * Connect, save password, always trust this key
 
-Upload your outputs under web / tdm
+Upload your outputs under **web** / tdm
 
 
 

@@ -3,7 +3,7 @@
 #' 
 #' #### Example exercise: Trip production of 57 Traffic Assignment Zones of Chicago in 1960's.
 #' 
-#' **Your task**: Explore and analyse the dataset before going to the Multiple linear regression chapter.  
+#' **Your task**: Explore and analyze the dataset before going to the Multiple linear regression chapter.  
 #' 
 #' #### Variables:
 #' 
@@ -30,6 +30,18 @@
 #'      (_**Note:** High values for this index imply that those communities are less prone to leaving their living areas and as such to having lower levels of mobility_)
 #' 
 #' ## Let's begin with R!
+#' 
+#' Working directory
+#  Step by step:
+  
+#  click on “Session”;
+#  Click on “Set working directory”;
+#  Click on “Choose directory” and select the folder that contains the dataset.
+#  Or you could just run
+
+setwd("G:/O meu disco/TDM - Lecture R/TDM github/Transport-Demand-Modelling") #for instance
+
+#' 
 #' 
 #' ##### Import Libraries
 #' For the first time, you will need to install some of the packages. 
@@ -86,6 +98,9 @@ df <- data.frame(dataset)
 #' 
 str(dataset)
 str(df)
+
+class(dataset)
+class(df)
 
 #' 
 #' > **Note:** The dataframe function transforms columns into variables and rows into observations. 
@@ -171,7 +186,7 @@ boxplot(df_no_outliers)
 
 #' 
 #' * Compare results of the dataset with and without the outliers  
-#' *+mean**
+#' *mean**
 mean(df$SI)
 mean(df_no_outliers$SI)
 

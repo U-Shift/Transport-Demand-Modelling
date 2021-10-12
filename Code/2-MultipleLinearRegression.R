@@ -57,8 +57,6 @@ summary(df)
 #' ## Multiple Linear Regression
 #' Equation with `TODU` as the dependent variable:  
 #' 
-#' $$Y_{\text{TODU}} = \beta_{0} + \beta_{1}{\text{ACO}} + \beta_{2}{\text{AHS}} + \beta_{3}{\text{SI}} + \beta_{4}{\text{SRI}} +\beta_{5}{\text{UI}} + \varepsilon$$
-#' 
 #' #### Checking assumptions
 #' Before running the model, you need to check if the assumptions are met.
 #' 

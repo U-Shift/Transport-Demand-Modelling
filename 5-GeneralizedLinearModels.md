@@ -208,7 +208,7 @@ var(df$ACCIDENT)/mean(df$ACCIDENT) #coefficient of variance
 
 ##### Goodness of fit
 
-Estimate goodness of fit parameters for the PDF of ACCIDENT. This test analyses the equality between the mean and the variance through Poisson Regression Standard against the alternative of the variance exceeding the mean (Negative Binomial)
+Estimate goodness of fit parameters for the PDF of ACCIDENT. This test analyses the equality between the mean and the variance through Poisson Regression Standard against the alternative of the variance exceeding the mean (Negative Binomial).
 
 ``` r
 gf<-goodfit(df$ACCIDENT,  type= "poisson", method= "ML") #Maximum Likelihood method

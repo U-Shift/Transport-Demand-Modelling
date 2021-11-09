@@ -654,7 +654,7 @@ table(df$STATE)</code></pre>
 </div>
 <div id="goodness-of-fit" class="section level5">
 <h5>Goodness of fit</h5>
-<p>Estimate goodness of fit parameters for the PDF of ACCIDENT. This test analyses the equality between the mean and the variance through Poisson Regression Standard against the alternative of the variance exceeding the mean (Negative Binomial)</p>
+<p>Estimate goodness of fit parameters for the PDF of ACCIDENT. This test analyses the equality between the mean and the variance through Poisson Regression Standard against the alternative of the variance exceeding the mean (Negative Binomial).</p>
 <pre class="r"><code>gf&lt;-goodfit(df$ACCIDENT,  type= &quot;poisson&quot;, method= &quot;ML&quot;) #Maximum Likelihood method
 summary(gf)</code></pre>
 <pre><code>## 

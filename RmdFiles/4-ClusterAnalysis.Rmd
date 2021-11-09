@@ -197,7 +197,7 @@ plot(silhouette(member_cen, distance))
 ```
 
 
-## Non-Hirarchical Clustering 
+## Non-Hierarchical Clustering 
 
 ##### K-means clustering
 * k-means with n=3 clusters

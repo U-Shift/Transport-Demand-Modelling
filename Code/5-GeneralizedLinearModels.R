@@ -51,7 +51,10 @@ str(df)
 summary(df)
 
 #' ##### Preparing your data
-#' Have a look at the variable `STATE`. This is a **binary variable**, 0: California and 1: Michigan. It does not mean that Michigan is somehow higher or better than California, just because it is coded as 1. We then should prepare the data, letting R know that this should not be treated as a numeric variable, but as a categorical nominal one.  
+#' Have a look at the variable `STATE`. This is a **binary variable**, 0: California and 1: Michigan. It does not mean that Michigan 
+#' is somehow higher or better than California, just because it is coded as 1. 
+#' We then should prepare the data, letting R know that this should not be treated as a numeric variable, 
+#' but as a categorical nominal one.  
 #' We use the `factor` function to do so, and we can also say which values mean what, so it gets easier to read plots or model results.  
 
 df$STATE <- factor(df$STATE, labels = c("California", "Michigan"))
@@ -73,7 +76,8 @@ plot_histogram(df, ncol = 3) #with 3 columns
 plot(density(df$ACCIDENT), main="Density estimate of ACCIDENTS")
 
 #' 
-#' As the dependent variable is "count data", and has discrete values (it is not continuous), then a Poisson distribution should be more adequate. 
+#' As the dependent variable is "count data", and has discrete values (it is not continuous), 
+#' then a Poisson distribution should be more adequate. 
 #' 
 #' ##### Poisson assumption
 #' Take a look at the mean and the variance of the dependent variable. Check if they are equal to each other. 

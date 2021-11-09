@@ -3,6 +3,9 @@ Generalized Linear Models
 
 #### Example exercise: Accident data from California (1993 to 1998) and Michigan (1993 to 1997)
 
+**Reference:** Washington, Simon P., Karlaftis, Mathew G. e Mannering (2003) Statistical 
+and econometric Methods for Transportation Data Analysis, CRC
+
 **Your task**: Analyze the number o accidents.
 
 #### Variables:

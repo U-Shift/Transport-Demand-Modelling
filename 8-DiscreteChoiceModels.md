@@ -17,7 +17,7 @@ This chapter explores how to estimate and analyze Discrete Choice Models, their 
 
 ## Summary
 
-#### [8.1. Multinomial Logit and Probit Models](8.1-MultinomialLogitAndProbitModels)
+#### [8.1. Multinomial Logit and Probit Models](Code/8.1-MultinomialLogitAndProbitModels)
 
 |File   | Topic  | Description  |
 |---|---|---|
@@ -29,7 +29,7 @@ This chapter explores how to estimate and analyze Discrete Choice Models, their 
 
 
 
-#### [8.2. Nested Logit Models](8.2-NestedLogitModels)
+#### [8.2. Nested Logit Models](Code/8.2-NestedLogitModels)
 
 |File   | Topic  | Description  |
 |---|---|---|
@@ -40,7 +40,7 @@ This chapter explores how to estimate and analyze Discrete Choice Models, their 
 |[05-logit-nested-WTP.ipynb](Code/8.2-NestedLogitModels/05-logit-nested-WTP.ipynb)| Willingness To Pay (WTP)  | How to compute willingness to pay indicators.  |
 
 
-#### [8.3. Ordered Logit Models](8.3-OrderedLogitModels)
+#### [8.3. Ordered Logit Models](Code/8.3-OrderedLogitModels)
 
 |File   | Topic  | Description  |
 |---|---|---|

@@ -8,6 +8,7 @@ This chapter explores how to estimate and analyze Discrete Choice Models, their 
 * Be able to create discrete choice models
 * Learn some tools that can be used to create more complicated models in the future
 * Learn some handy tricks/tools/packages
+* We add a R code to model ordered discrete choice models and corresponding marginal effects 
 
 #### Biogeme Overview
 > Biogeme is a open source Python package designed for the maximum likelihood estimation of parametric models in general, with a special emphasis on discrete choice models.

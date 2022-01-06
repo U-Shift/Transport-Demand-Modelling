@@ -44,7 +44,8 @@ This chapter explores how to estimate and analyze Discrete Choice Models, their 
 
 |File   | Topic  | Description  |
 |---|---|---|
-|[01-biogeme-ordered.ipynb](Code/8.3-OrderedLogitModels/01-biogeme-ordered.ipynb)   |Ordered Logit Basics   | How to estimate a simple ordered logit model.  |
+|[01-biogeme-ordered.ipynb](Code/8.3-OrderedLogitModels/01-biogeme-ordered.ipynb)   |Ordered Logit Basics w/ Biogeme  | How to estimate a simple ordered logit model.  |
+|[02 - r - ordered.R](Code/8.3-OrderedLogitModels/02 - r - ordered.R)   |Ordered Logit Basics  w/ R package | How to estimate a simple ordered logit model and marginal effects.  |
 
 
 ## Datasets

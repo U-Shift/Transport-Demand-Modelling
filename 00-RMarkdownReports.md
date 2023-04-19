@@ -58,7 +58,7 @@ Donwload FileZilla at:
 -   SFTP
 -   server: sigma.ist.utl.pt
 -   port: *leave blank*
--   user: ist1XXXXX
+-   user: ist1XXXXX  *[or without the 1 if you are younger than me...*]
 -   Connect, save password, always trust this key
 
 Upload your outputs under **web** / tdm

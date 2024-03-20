@@ -1,0 +1,32 @@
+name: Execute Jupyter Notebooks
+
+on:
+  push:
+    paths: ['Code/**.ipynb']
+  pull_request:
+    paths: ['Code/**.ipynb']
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 1 * *'  # Runs at 06:00 UTC 1st day of the month
+
+jobs:
+  run-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install nbclient ipykernel
+        pip install numpy matplotlib biogeme pandas seaborn sklearn
+        # Add any other dependencies your notebooks require
+    - name: Find and Execute Jupyter Notebooks
+      run: |
+        find Code -name "*.ipynb" -print0 | while IFS= read -r -d $'\0' notebook; do
+          if python -m nbclient.execute "$notebook"; then
+            echo -e "\u2705 Passed: $notebook"
+          else
+            echo -e "\u274C Failed: $notebook"
+          fi
+        done

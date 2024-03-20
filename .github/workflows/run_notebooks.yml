@@ -19,7 +19,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install nbclient ipykernel
-        pip install numpy matplotlib biogeme pandas seaborn sklearn
+        pip install numpy matplotlib biogeme pandas seaborn scikit-learn
         # Add any other dependencies your notebooks require
     - name: Find and Execute Jupyter Notebooks
       run: |

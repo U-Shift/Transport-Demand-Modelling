@@ -17,14 +17,14 @@ jobs:
     - uses: actions/setup-python@v5
     - name: Install Dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install nbclient ipykernel
-        pip install numpy matplotlib biogeme pandas seaborn scikit-learn
+        pip install uv
+        uv pip install nbclient ipykernel
+        uv pip install numpy matplotlib biogeme pandas seaborn scikit-learn
         # Add any other dependencies your notebooks require
     - name: Find and Execute Jupyter Notebooks
       run: |
         find Code -name "*.ipynb" -print0 | while IFS= read -r -d $'\0' notebook; do
-          if python -m nbclient "$notebook" --execute; then
+          if jupyter nbconvert --to notebook --execute "$notebook" --output "$notebook"; then
             echo -e "\u2705 Passed: $notebook"
           else
             echo -e "\u274C Failed: $notebook"

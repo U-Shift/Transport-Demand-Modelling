@@ -2,9 +2,9 @@ name: Execute Jupyter Notebooks
 
 on:
   push:
-    paths: ['Code/**.ipynb']
+    paths: ['Code/**.ipynb', '**/run_notebooks.yml']
   pull_request:
-    paths: ['Code/**.ipynb']
+    paths: ['Code/**.ipynb', '**/run_notebooks.yml']
   workflow_dispatch:
   schedule:
     - cron: '0 6 1 * *'  # Runs at 06:00 UTC 1st day of the month

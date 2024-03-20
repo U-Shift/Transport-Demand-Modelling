@@ -1,0 +1,39 @@
+name: Execute Jupyter Notebooks
+
+on:
+  push:
+    paths: ['Code/**.ipynb', '**/run_notebooks.yml']
+  pull_request:
+    paths: ['Code/**.ipynb', '**/run_notebooks.yml']
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 1 * *'  # Runs at 06:00 UTC 1st day of the month
+
+jobs:
+  run-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+    - name: Install Dependencies
+      run: |
+        pip install nbconvert ipykernel
+        pip install numpy matplotlib biogeme pandas seaborn scikit-learn
+    - name: Find and Execute Jupyter Notebooks
+      run: |
+        find Code -name "*.ipynb" -print0 | while IFS= read -r -d $'\0' notebook; do
+          # Save the current directory
+          current_dir=$(pwd)
+          # Extract the directory path of the notebook
+          notebook_dir=$(dirname "$notebook")
+          # Change to the notebook directory
+          cd "$notebook_dir"
+          # Execute the notebook
+          if jupyter nbconvert --to notebook --execute "$(basename "$notebook")" --output "$(basename "$notebook")"; then
+            echo -e "\u2705 Passed: $notebook"
+          else
+            echo -e "\u274C Failed: $notebook"
+          fi
+          # Change back to the original directory
+          cd "$current_dir"
+        done

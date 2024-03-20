@@ -17,10 +17,8 @@ jobs:
     - uses: actions/setup-python@v5
     - name: Install Dependencies
       run: |
-        pip install uv
-        uv pip install nbclient ipykernel
-        uv pip install numpy matplotlib biogeme pandas seaborn scikit-learn
-        # Add any other dependencies your notebooks require
+        pip install nbclient ipykernel
+        pip install numpy matplotlib biogeme pandas seaborn scikit-learn
     - name: Find and Execute Jupyter Notebooks
       run: |
         find Code -name "*.ipynb" -print0 | while IFS= read -r -d $'\0' notebook; do

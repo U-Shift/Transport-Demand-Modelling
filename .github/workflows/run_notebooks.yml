@@ -22,9 +22,18 @@ jobs:
     - name: Find and Execute Jupyter Notebooks
       run: |
         find Code -name "*.ipynb" -print0 | while IFS= read -r -d $'\0' notebook; do
-          if jupyter nbconvert --to notebook --execute "$notebook" --output "$notebook"; then
+          # Save the current directory
+          current_dir=$(pwd)
+          # Extract the directory path of the notebook
+          notebook_dir=$(dirname "$notebook")
+          # Change to the notebook directory
+          cd "$notebook_dir"
+          # Execute the notebook
+          if jupyter nbconvert --to notebook --execute "$(basename "$notebook")" --output "$(basename "$notebook")"; then
             echo -e "\u2705 Passed: $notebook"
           else
             echo -e "\u274C Failed: $notebook"
           fi
+          # Change back to the original directory
+          cd "$current_dir"
         done

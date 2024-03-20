@@ -24,7 +24,7 @@ jobs:
     - name: Find and Execute Jupyter Notebooks
       run: |
         find Code -name "*.ipynb" -print0 | while IFS= read -r -d $'\0' notebook; do
-          if python -m nbclient.execute "$notebook"; then
+          if python -m nbclient "$notebook" --execute; then
             echo -e "\u2705 Passed: $notebook"
           else
             echo -e "\u274C Failed: $notebook"

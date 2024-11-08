@@ -195,12 +195,12 @@ trips_walk2 = table_trips[ ,-c(3,5:9)]
 
 # Save data in .csv and .Rds
 
-write.csv(table_trips, 'data/dataset.csv') # , row.names = FALSE
-saveRDS(table_trips, 'data/dataset.Rds') #Choose a different file. 
+# write.csv(table_trips, 'Data/dataset_basic.csv') # , row.names = FALSE
+# saveRDS(table_trips, 'Data/dataset_basic_2.Rds') #Choose a different file. 
 
 
 ### Import data
 
-csv_file = read.csv("data/dataset.csv")
-rds_file = readRDS("data/dataset.Rds")
+# csv_file = read.csv("Data/dataset_basic.csv")
+# rds_file = readRDS("Data/dataset_basic_2.Rds")
 

@@ -8,6 +8,8 @@ This material is also an open source tutorial for applying R programming (chapte
 
 ## Summary
 
+0.  [Introduction to R](0-R_basics.md)
+
 1.  [Exploratory Data Analysis](1-ExploratoryDataAnalysis.md)
 
 2.  [Multiple Linear Regression models](2-MultipleLinearRegression.md)
@@ -47,8 +49,8 @@ You may find all lectures slides in the [course page](https://fenix.tecnico.ulis
   
 ## Acknowledgements:
 
-* [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/): preparation of code of Chapters 1-5, 7.
-* [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/): preparation of code of Chapter 6, "How to install R", "Tips for RMarkdown", revision of code of Chapters 1-7, 9.
+* [Gabriel Valença](https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/): preparation of code of Chapters 0-5, 7.
+* [Rosa Félix](https://ushift.tecnico.ulisboa.pt/team-rosa-felix/): preparation of code of Chapter 0 and 6, "How to install R", "Tips for RMarkdown", revision of code of Chapters 1-7, 9.
 * [Miguel Costa](https://ushift.tecnico.ulisboa.pt/team-miguel-costa/): preparation of code of Chapter 8, and "How to install Python".
 * [Carlos Roque](https://ushift.tecnico.ulisboa.pt/team-carlos-roque/): preparation of code of Chapter 9 and R code of chapter 8 for ordered models.
 * [Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/): supervision.

@@ -1,0 +1,238 @@
+---
+title: "R basics"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this chapter we will introduce to the R basics and some exercises to get familiar to how R works.
+
+## Math operations
+
+### Sum
+
+```{r}
+1+1
+```
+
+### Subtraction
+
+```{r}
+5-2
+```
+
+### Multiplication
+
+```{r}
+2*2
+```
+
+### Division
+
+```{r}
+8/2
+```
+
+### Round the number
+
+```{r}
+round(3.14)
+round(3.14, 1) # The "1" indicates to round it up to 1 decimal digit.
+```
+
+You can use help `?round` in the console to see the description of the function, and the default arguments.
+
+## Basic shortpaths
+
+### Perform Combinations
+
+```{r}
+c(1, 2, 3)
+c(1:3) # The ":" indicates a range between the first and second numbers. 
+```
+
+### Create a comment with `ctrl + shift + m`
+
+```{r}
+# Comments help you organize your code. The software will not run the comment. 
+```
+
+### Create a table
+
+A simple table with the number of trips by car, PT, walking, and cycling in a hypothetical street segment at a certain period.
+
+**Define variables**
+
+```{r}
+modes <- c("car", "PT", "walking", "cycling") # you can use "=" or "<-"
+Trips = c(200, 50, 300, 150) # uppercase letters modify
+
+```
+
+**Join the variables to create a table**
+
+```{r}
+table_example = data.frame(modes, Trips)
+```
+
+**Take a look at the table**
+
+Visualize the table by clicking on the "Data" in the "Environment" page or use :
+
+```{r}
+View(table_example)
+```
+
+**Look at the first row**
+
+```{r}
+table_example[1,] #rows and columns start from 1 in R, differently from Python which starts from 0.
+```
+
+**Look at first row and column**
+
+```{r}
+table_example[1,1]
+```
+
+## Practical exercise
+
+**Dataset:** the number of trips between all municipalities in the Lisbon Metropolitan Area, Portugal [@IMOB].
+
+### Import dataset
+
+You can click directly in the file under the "Files" pan, or:
+
+```{r}
+data = readRDS("Data/TRIPSmode.Rds")
+```
+
+After you type `"` you can use `tab` to navigate between folders and files and `enter` to autocomplete.
+
+### Take a first look at the data
+
+**Summary statistics**
+
+```{r}
+summary(data)
+```
+
+**Check the structure of the data**
+
+```{r}
+str(data)
+```
+
+**Check the first values of each variable**
+
+```{r}
+#| eval: false
+data
+```
+
+```{r}
+head(data, 3) # first 3 values
+```
+
+**Check the number of rows (observations) and columns (variables)**
+
+```{r}
+nrow(data)
+ncol(data)
+```
+
+**Open the dataset**
+
+```{r}
+View(data)
+```
+
+### Explore the data
+
+**Check the total number of trips**
+
+Use `$` to select a variable of the data
+
+```{r}
+sum(data$Total)
+```
+
+**Percentage of car trips related to the total**
+
+```{r}
+sum(data$Car)/sum(data$Total) * 100
+```
+
+**Percentage of active trips related to the total**
+
+```{r}
+(sum(data$Walk) + sum(data$Bike)) / sum(data$Total) * 100
+```
+
+### Modify original data
+
+**Create a column with the sum of the number of trips for active modes**
+
+```{r}
+data$Active = data$Walk + data$Bike
+```
+
+**Filter by condition (create new tables)**
+
+Filter trips only with origin from Lisbon
+
+```{r}
+data_Lisbon = data[data$Origin == "Lisboa",]
+```
+
+Filter trips with origin **different** from Lisbon
+
+```{r}
+data_out_Lisbon = data[data$Origin != "Lisboa",]
+```
+
+Filter trips with origin **and** destination in Lisbon
+
+```{r}
+data_in_Out_Lisbon = data[data$Origin == "Lisboa" & data$Destination == "Lisboa",]
+```
+
+**Remove the first column**
+
+```{r}
+data = data[ ,-1] #first column
+```
+
+**Create a table only with origin, destination and walking trips**
+
+There are many ways to do the same operation.
+
+```{r}
+names(data)
+```
+
+```{r}
+data_walk2 = data[ ,c(1,2,4)]
+```
+
+```{r}
+data_walk3 = data[ ,-c(3,5:9)]
+```
+
+### Export data
+
+Save data in **.csv** and **.Rds**
+
+```{r}
+# write.csv(data, 'Data/dataset_basic.csv', row.names = FALSE)
+# saveRDS(data, 'Data/dataset_basic_2.Rds') #Choose a different file. 
+```
+
+### Import data
+
+```{r}
+# csv_file = read.csv("data/dataset_basic.csv")
+# rds_file = readRDS("data/dataset_basic_2.Rds")
+```

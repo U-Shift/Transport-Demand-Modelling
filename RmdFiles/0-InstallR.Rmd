@@ -19,6 +19,10 @@ You should install R before installing RStudio.
 3. Select "base" (_if you want to install R for the first time_)
 4. Download and run
 
+> **If you use Windows: You will also need to install** [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html), which is a collection of tools necessary to build R packages in Windows.
+
+After this installation, you don't need to open R base. Please proceed to install RStudio.
+
 ### Install RStudio
 This is a wrapper for a friendly usage of R.
 

@@ -38,7 +38,7 @@ This material is also an open source tutorial for applying R programming (chapte
   - The [Code](Code/) folder contains scripts for each topic.
   
 #### Slides
-You may find all lectures slides in the [course page](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2020-2021/1-semestre/lectures).
+You may find all lectures slides in the [course page](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2024-2025/1-semestre/aulas).
 
   
 ### R and Python stuff

@@ -45,7 +45,7 @@ metropolitan area, TRB (No. 10-1161).
 #### Rules of thumb:
 
 -   At least 10 variables
--   n &lt; 50 (Unacceptable); n &gt; 200 (recommended)
+-   n &lt; 50 (Unacceptable); n &gt; 200 (recommended); 1:10 or higher
 -   It is recommended to use continuous variables. If your data contains
     categorical variables, you should transform them to dummy variables.
 
@@ -53,7 +53,6 @@ metropolitan area, TRB (No. 10-1161).
 
 -   Normality;
 -   linearity;
--   Homogeneity;
 -   Homoscedasticity (some multicollinearity is desirable);
 -   Correlations between variables &lt; 0.3 (not appropriate to use
     Factor Analysis)
@@ -69,6 +68,8 @@ library(tidyverse) # Library used in data science to perform exploratory data an
 library(summarytools) # Library used for checking the summary of the dataset
 library(psych) # Library used for factor analysis
 library(GPArotation) # Library used for factor analysis
+library(corrplot) # Library used for correlation analysis
+library(car) #For linear regression and VIF calculation (testing multicollinearity)
 ```
 
 ### Get to know your dataset
@@ -670,16 +671,16 @@ head(df,5)
 df<-data.frame(df, row.names = 1)
 ```
 
-### Evaluating the assumptions for factoral analysis
-
-Let’s run a random regression model in order to evaluate some
-assumptions
+### Evaluating the assumptions for factorial analysis
+### **Adequate Sample Size** #Ideally, you should have at least 5–10  observations per variable for reliable factor analysis results. More is generally better.
 
 ``` r
-random = rchisq(nrow(df), 32)
-fake = lm(random ~ ., data = df)
-standardized = rstudent(fake)
-fitted = scale(fake$fitted.values)
+n_obs <- nrow(df)
+n_vars <- ncol(df)
+ratio=n_obs/n_vars
+print(n_obs)
+print(n_vars)
+print(ratio)
 ```
 
 -   **Normality**

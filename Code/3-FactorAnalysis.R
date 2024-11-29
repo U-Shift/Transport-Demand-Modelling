@@ -36,7 +36,7 @@
 #' 
 #' #### Rules of thumb: 
 #' * At least 10 variables
-#' * n < 50 (Unacceptable); n > 200 (recommended)
+#' * n < 50 (Unacceptable); n > 200 (recommended); 1:10 or higher
 #' * It is recommended to use continuous variables. If your data contains categorical variables, you should transform them to dummy variables. 
 #' 
 #' #### Assumptions: 

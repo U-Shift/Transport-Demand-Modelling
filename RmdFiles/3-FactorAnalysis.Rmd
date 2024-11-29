@@ -313,6 +313,7 @@ fa_result$loadings
 * **Model 1**: No rotation
 * **Model 2**: Rotation Varimax
 * **Model 3**: Rotation Oblimin
+
 ```{r}
 # No rotation
 df_factor <- factanal(new_df, factors = 4, rotation = "none", scores=c("regression"), fm = "ml")

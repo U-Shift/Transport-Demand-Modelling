@@ -743,7 +743,7 @@ hist(df$H18)
 pairs(df[,1:10], pch = 19, lower.panel = NULL)  # Pairwise scatter plots for the first 10 variables. Check the others!
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-17-1.png)<!-- -->
+![](RmdFiles/RmdFiles/3-FactorAnalysis/unnamed-chunk-17-1.png)<!-- -->
 
 > **Note:** Most relationships are non-linear.
 

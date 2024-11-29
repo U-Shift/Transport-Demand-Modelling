@@ -79,7 +79,7 @@ df <- read.spss("Data/example_fact.sav", to.data.frame = T) #transforms a list i
 ##### Select a dataset with the first variables explained above
 
 ```{r}
-df = df [,1:24]
+df = df[,1:24]
 ```
 
 
@@ -202,12 +202,8 @@ but for Maximum Likelihood (ML) extraction, normality is preferable.
 * **Linearity Between Variables**
 
 ```{r}
-pairs(df)  # Pairwise scatter plots for all variables
-plot(df$BEDROOM, df$H18, 
-     main = "Scatterplot of Variable1 vs Variable2", 
-     xlab = "Variable1", 
-     ylab = "Variable2")
-abline(a = 0, b = 1, col = "red", lty = 2)
+pairs(df[,1:10], pch = 19, lower.panel = NULL)  # Pairwise scatter plots for the first 10 variables. Check the others!
+
 ```
 
 > **Note:** Most relationships are non-linear.

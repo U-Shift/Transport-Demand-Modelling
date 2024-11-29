@@ -118,16 +118,18 @@ head(df,5)
 df<-data.frame(df, row.names = 1)
 ```
 
-### Evaluating the assumptions for factorial analysis
+### Evaluating the assumptions for factorial analysis  
+
 **Adequate Sample Size:** Ideally, you should have at least 5–10  observations per variable for reliable factor analysis results. More is generally better.
 
 ```{r}
 n_obs <- nrow(df)
 n_vars <- ncol(df)
 ratio=n_obs/n_vars
-print(n_obs)
-print(n_vars)
-print(ratio)
+
+n_obs
+n_vars
+ratio
 ```
 
 * **Normality**

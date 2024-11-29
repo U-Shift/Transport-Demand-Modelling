@@ -167,7 +167,7 @@ min &lt; med &lt; max:<br />
 773001005 &lt; 780248283 &lt; 808234671<br />
 IQR (CV) : 16634785 (0)</td>
 <td>470 distinct values</td>
-<td><img src="tmp/ds0473.png" /></td>
+<td><img src="tmp/ds0617.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -186,7 +186,7 @@ IQR (CV) : 2 (0.2)</td>
 5 : 130 (27.7%)<br />
 6 : 162 (34.5%)<br />
 7 : 53 (11.3%)</td>
-<td><img src="tmp/ds0474.png" /></td>
+<td><img src="tmp/ds0618.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -204,7 +204,7 @@ IQR (CV) : 2000 (0.7)</td>
 4750 : 106 (22.6%)<br />
 7500 : 75 (16.0%)<br />
 12500 : 31 ( 6.6%)</td>
-<td><img src="tmp/ds0475.png" /></td>
+<td><img src="tmp/ds0619.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -221,7 +221,7 @@ IQR (CV) : 0 (2)</td>
 2 : 41 ( 8.7%)<br />
 3 : 13 ( 2.8%)<br />
 4 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds0476.png" /></td>
+<td><img src="tmp/ds0620.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -240,7 +240,7 @@ IQR (CV) : 0.8 (0.4)</td>
 4 : 35 ( 7.4%)<br />
 5 : 3 ( 0.6%)<br />
 6 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds0477.png" /></td>
+<td><img src="tmp/ds0621.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -258,7 +258,7 @@ IQR (CV) : 1 (0.5)</td>
 3 : 21 ( 4.5%)<br />
 4 : 1 ( 0.2%)<br />
 5 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds0478.png" /></td>
+<td><img src="tmp/ds0622.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -277,7 +277,7 @@ IQR (CV) : 2 (0.5)</td>
 5 : 20 ( 4.3%)<br />
 6 : 5 ( 1.1%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds0479.png" /></td>
+<td><img src="tmp/ds0623.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -290,7 +290,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 36 &lt; 78<br />
 IQR (CV) : 12.7 (0.3)</td>
 <td>126 distinct values</td>
-<td><img src="tmp/ds0480.png" /></td>
+<td><img src="tmp/ds0624.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -303,7 +303,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 34 &lt; 78<br />
 IQR (CV) : 15 (0.3)</td>
 <td>53 distinct values</td>
-<td><img src="tmp/ds0481.png" /></td>
+<td><img src="tmp/ds0625.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -316,7 +316,7 @@ Mean : 0.5<br />
 Max : 1</td>
 <td>0 : 214 (45.5%)<br />
 1 : 256 (54.5%)</td>
-<td><img src="tmp/ds0482.png" /></td>
+<td><img src="tmp/ds0626.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -334,7 +334,7 @@ IQR (CV) : 1 (0.5)</td>
 3 : 56 (11.9%)<br />
 4 : 13 ( 2.8%)<br />
 5 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds0483.png" /></td>
+<td><img src="tmp/ds0627.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -347,7 +347,7 @@ min &lt; med &lt; max:<br />
 30 &lt; 110 &lt; 2250<br />
 IQR (CV) : 60 (0.9)</td>
 <td>76 distinct values</td>
-<td><img src="tmp/ds0484.png" /></td>
+<td><img src="tmp/ds0628.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -367,7 +367,7 @@ IQR (CV) : 1 (0.4)</td>
 5 : 26 ( 5.5%)<br />
 6 : 7 ( 1.5%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds0485.png" /></td>
+<td><img src="tmp/ds0629.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -384,7 +384,7 @@ IQR (CV) : 1 (1.2)</td>
 2 : 84 (17.9%)<br />
 3 : 18 ( 3.8%)<br />
 4 : 8 ( 1.7%)</td>
-<td><img src="tmp/ds0486.png" /></td>
+<td><img src="tmp/ds0630.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -397,7 +397,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 1 &lt; 5<br />
 IQR (CV) : 0.7 (0.6)</td>
 <td>22 distinct values</td>
-<td><img src="tmp/ds0487.png" /></td>
+<td><img src="tmp/ds0631.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -410,7 +410,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 3<br />
 IQR (CV) : 1 (1.2)</td>
 <td>13 distinct values</td>
-<td><img src="tmp/ds0488.png" /></td>
+<td><img src="tmp/ds0632.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -423,7 +423,7 @@ Mean : 0.2<br />
 Max : 1</td>
 <td>0 : 356 (75.7%)<br />
 1 : 114 (24.3%)</td>
-<td><img src="tmp/ds0489.png" /></td>
+<td><img src="tmp/ds0633.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -436,7 +436,7 @@ min &lt; med &lt; max:<br />
 0.8 &lt; 23.8 &lt; 73.3<br />
 IQR (CV) : 25.7 (0.7)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0490.png" /></td>
+<td><img src="tmp/ds0634.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -449,7 +449,7 @@ min &lt; med &lt; max:<br />
 49 &lt; 719 &lt; 17732.7<br />
 IQR (CV) : 1125 (1.3)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0491.png" /></td>
+<td><img src="tmp/ds0635.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -462,7 +462,7 @@ min &lt; med &lt; max:<br />
 0.3 &lt; 9.9 &lt; 67.8<br />
 IQR (CV) : 20 (1)</td>
 <td>439 distinct values</td>
-<td><img src="tmp/ds0492.png" /></td>
+<td><img src="tmp/ds0636.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -475,7 +475,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 22.2 &lt; 80.7<br />
 IQR (CV) : 23.6 (0.7)</td>
 <td>414 distinct values</td>
-<td><img src="tmp/ds0493.png" /></td>
+<td><img src="tmp/ds0637.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -488,7 +488,7 @@ Mean : 0.9<br />
 Max : 1</td>
 <td>0 : 64 (13.6%)<br />
 1 : 406 (86.4%)</td>
-<td><img src="tmp/ds0494.png" /></td>
+<td><img src="tmp/ds0638.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -501,7 +501,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 83.2 &lt; 255.6<br />
 IQR (CV) : 89.2 (0.6)</td>
 <td>431 distinct values</td>
-<td><img src="tmp/ds0495.png" /></td>
+<td><img src="tmp/ds0639.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -514,7 +514,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 0.7<br />
 IQR (CV) : 0.2 (0.6)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0496.png" /></td>
+<td><img src="tmp/ds0640.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -743,7 +743,7 @@ hist(df$H18)
 pairs(df[,1:10], pch = 19, lower.panel = NULL)  # Pairwise scatter plots for the first 10 variables. Check the others!
 ```
 
-![](RmdFiles/RmdFiles/3-FactorAnalysis/unnamed-chunk-17-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-17-1.png)<!-- -->
 
 > **Note:** Most relationships are non-linear.
 
@@ -900,39 +900,55 @@ You can also consider factors with eigenvalue \> 0.7, since some of the
 literature indicate that this value does not overestimate the number of
 factors as much as considering an eigenvalue = 1.
 
-**3. Cumulative Percent of total variance explained**
+**3. Principal Component Analysis (PCA)**
 
-Run a Factorial Analysis without rotation
+- Print variance that explains the components
 
 ``` r
-fa_result <- fa(new_df, fm = "ml", rotate = "none")
-fa_result$loadings
+df_pca <- princomp(df, cor=TRUE) #cor = TRUE, standardizes your dataset before running a PCA
+summary(df_pca)  
 ```
 
-    ## 
-    ## Loadings:
-    ##          ML1   
-    ## DWELCLAS       
-    ## INCOME    0.456
-    ## H18       0.833
-    ## HEMPLOY   0.584
-    ## HSIZE     0.864
-    ## ISEX           
-    ## NCARS     0.658
-    ## PARK      0.241
-    ## BEDSIZE  -0.643
-    ## PARKSIZE       
-    ## RAGE10         
-    ## TCBD      0.112
-    ## DISTHTC        
-    ## TWCBD          
-    ## TDWWK     0.144
-    ## POPDENS  -0.105
-    ## EDUINDEX       
-    ## 
-    ##                  ML1
-    ## SS loadings    2.963
-    ## Proportion Var 0.174
+    ## Importance of components:
+    ##                           Comp.1    Comp.2     Comp.3     Comp.4     Comp.5
+    ## Standard deviation     2.0220473 1.7114659 1.50144626 1.39633266 1.25603762
+    ## Proportion of Variance 0.1777685 0.1273528 0.09801482 0.08477152 0.06859263
+    ## Cumulative Proportion  0.1777685 0.3051213 0.40313616 0.48790767 0.55650030
+    ##                            Comp.6     Comp.7     Comp.8     Comp.9   Comp.10
+    ## Standard deviation     1.12491157 1.04006396 1.01214466 0.99241476 0.8660719
+    ## Proportion of Variance 0.05501852 0.04703187 0.04454073 0.04282118 0.0326122
+    ## Cumulative Proportion  0.61151883 0.65855070 0.70309143 0.74591261 0.7785248
+    ##                           Comp.11   Comp.12    Comp.13    Comp.14    Comp.15
+    ## Standard deviation     0.85931542 0.8397418 0.80126214 0.73815903 0.71407898
+    ## Proportion of Variance 0.03210535 0.0306594 0.02791396 0.02369038 0.02216995
+    ## Cumulative Proportion  0.81063015 0.8412896 0.86920351 0.89289389 0.91506384
+    ##                           Comp.16    Comp.17    Comp.18    Comp.19     Comp.20
+    ## Standard deviation     0.67805399 0.67377789 0.63350680 0.54337661 0.370525177
+    ## Proportion of Variance 0.01998944 0.01973811 0.01744917 0.01283731 0.005969083
+    ## Cumulative Proportion  0.93505328 0.95479140 0.97224056 0.98507787 0.991046957
+    ##                            Comp.21     Comp.22     Comp.23
+    ## Standard deviation     0.324540038 0.277619790 0.153365585
+    ## Proportion of Variance 0.004579402 0.003350989 0.001022652
+    ## Cumulative Proportion  0.995626359 0.998977348 1.000000000
+
+- Scree Plot
+
+``` r
+plot(df_pca,type="lines", npcs = 31) 
+```
+
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-27-1.png)<!-- -->
+
+> **Note:** Check the cummulative variance of the first components and
+> the scree plot, and see if the PCA is a good approach to detect the
+> number of factors in this case.
+
+**PCA is not the same thing as Factor Analysis!** PCA only considers the
+common information (variance) of the variables, while factor analysis
+takes into account also the unique variance of the variable. Both
+approaches are often mixed up. In this example we use PCA as only a
+first criteria for choosing the number of factors. PCA is very used in
+image recognition and data reduction of big data.
 
 ## Exploratory Factor Analysis
 
@@ -1026,7 +1042,7 @@ text(
 )
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-29-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-30-1.png)<!-- -->
 
 - **Varimax rotation**
 
@@ -1050,7 +1066,7 @@ text(
 )
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-30-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-31-1.png)<!-- -->
 
 - **Oblimin Rotation**
 
@@ -1074,7 +1090,7 @@ text(
 )
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-31-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-32-1.png)<!-- -->
 
 When you have more than two factors it is difficult to analyze the
 factors by the plots. Variables that have low explaining variance in the

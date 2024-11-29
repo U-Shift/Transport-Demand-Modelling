@@ -295,14 +295,25 @@ sum(num_factors$fa.values > 1) #Determines the number of factors with eigenvalue
 
 You can also consider factors with eigenvalue > 0.7, since some of the literature indicate that this value does not overestimate the number of factors as much as considering an eigenvalue = 1. 
 
-**3. Cumulative Percent of total variance explained**
+**3. Principal Component Analysis (PCA)**
 
-Run a Factorial Analysis without rotation
+* Print variance that explains the components
 
 ```{r}
-fa_result <- fa(new_df, fm = "ml", rotate = "none")
-fa_result$loadings
+df_pca <- princomp(df, cor=TRUE) #cor = TRUE, standardizes your dataset before running a PCA
+summary(df_pca)  
 ```
+
+* Scree Plot
+
+```{r}
+plot(df_pca,type="lines", npcs = 31) 
+```
+
+> **Note:** Check the cummulative variance of the first components and the scree plot, and see if the PCA is a good approach to detect the number of factors in this case. 
+ 
+**PCA is not the same thing as Factor Analysis!** PCA only considers the common information (variance) of the variables, while factor analysis takes into account also the unique variance of the variable. Both approaches are often mixed up. In this example we use PCA as only a first criteria for choosing the number of factors. PCA is very used in image recognition and data reduction of big data. 
+
 
 ## Exploratory Factor Analysis
 

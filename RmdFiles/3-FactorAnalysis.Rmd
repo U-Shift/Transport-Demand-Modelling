@@ -300,14 +300,14 @@ You can also consider factors with eigenvalue > 0.7, since some of the literatur
 * Print variance that explains the components
 
 ```{r}
-df_pca <- princomp(df, cor=TRUE) #cor = TRUE, standardizes your dataset before running a PCA
+df_pca <- princomp(new_df, cor=TRUE) #cor = TRUE, standardizes your dataset before running a PCA
 summary(df_pca)  
 ```
 
 * Scree Plot
 
 ```{r}
-plot(df_pca,type="lines", npcs = 31) 
+plot(df_pca,type="lines", npcs = 17, las = 2) 
 ```
 
 > **Note:** Check the cummulative variance of the first components and the scree plot, and see if the PCA is a good approach to detect the number of factors in this case. 

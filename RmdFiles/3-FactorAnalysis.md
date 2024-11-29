@@ -167,7 +167,7 @@ min &lt; med &lt; max:<br />
 773001005 &lt; 780248283 &lt; 808234671<br />
 IQR (CV) : 16634785 (0)</td>
 <td>470 distinct values</td>
-<td><img src="tmp/ds0617.png" /></td>
+<td><img src="tmp/ds0713.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -186,7 +186,7 @@ IQR (CV) : 2 (0.2)</td>
 5 : 130 (27.7%)<br />
 6 : 162 (34.5%)<br />
 7 : 53 (11.3%)</td>
-<td><img src="tmp/ds0618.png" /></td>
+<td><img src="tmp/ds0714.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -204,7 +204,7 @@ IQR (CV) : 2000 (0.7)</td>
 4750 : 106 (22.6%)<br />
 7500 : 75 (16.0%)<br />
 12500 : 31 ( 6.6%)</td>
-<td><img src="tmp/ds0619.png" /></td>
+<td><img src="tmp/ds0715.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -221,7 +221,7 @@ IQR (CV) : 0 (2)</td>
 2 : 41 ( 8.7%)<br />
 3 : 13 ( 2.8%)<br />
 4 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds0620.png" /></td>
+<td><img src="tmp/ds0716.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -240,7 +240,7 @@ IQR (CV) : 0.8 (0.4)</td>
 4 : 35 ( 7.4%)<br />
 5 : 3 ( 0.6%)<br />
 6 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds0621.png" /></td>
+<td><img src="tmp/ds0717.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -258,7 +258,7 @@ IQR (CV) : 1 (0.5)</td>
 3 : 21 ( 4.5%)<br />
 4 : 1 ( 0.2%)<br />
 5 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds0622.png" /></td>
+<td><img src="tmp/ds0718.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -277,7 +277,7 @@ IQR (CV) : 2 (0.5)</td>
 5 : 20 ( 4.3%)<br />
 6 : 5 ( 1.1%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds0623.png" /></td>
+<td><img src="tmp/ds0719.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -290,7 +290,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 36 &lt; 78<br />
 IQR (CV) : 12.7 (0.3)</td>
 <td>126 distinct values</td>
-<td><img src="tmp/ds0624.png" /></td>
+<td><img src="tmp/ds0720.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -303,7 +303,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 34 &lt; 78<br />
 IQR (CV) : 15 (0.3)</td>
 <td>53 distinct values</td>
-<td><img src="tmp/ds0625.png" /></td>
+<td><img src="tmp/ds0721.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -316,7 +316,7 @@ Mean : 0.5<br />
 Max : 1</td>
 <td>0 : 214 (45.5%)<br />
 1 : 256 (54.5%)</td>
-<td><img src="tmp/ds0626.png" /></td>
+<td><img src="tmp/ds0722.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -334,7 +334,7 @@ IQR (CV) : 1 (0.5)</td>
 3 : 56 (11.9%)<br />
 4 : 13 ( 2.8%)<br />
 5 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds0627.png" /></td>
+<td><img src="tmp/ds0723.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -347,7 +347,7 @@ min &lt; med &lt; max:<br />
 30 &lt; 110 &lt; 2250<br />
 IQR (CV) : 60 (0.9)</td>
 <td>76 distinct values</td>
-<td><img src="tmp/ds0628.png" /></td>
+<td><img src="tmp/ds0724.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -367,7 +367,7 @@ IQR (CV) : 1 (0.4)</td>
 5 : 26 ( 5.5%)<br />
 6 : 7 ( 1.5%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds0629.png" /></td>
+<td><img src="tmp/ds0725.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -384,7 +384,7 @@ IQR (CV) : 1 (1.2)</td>
 2 : 84 (17.9%)<br />
 3 : 18 ( 3.8%)<br />
 4 : 8 ( 1.7%)</td>
-<td><img src="tmp/ds0630.png" /></td>
+<td><img src="tmp/ds0726.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -397,7 +397,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 1 &lt; 5<br />
 IQR (CV) : 0.7 (0.6)</td>
 <td>22 distinct values</td>
-<td><img src="tmp/ds0631.png" /></td>
+<td><img src="tmp/ds0727.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -410,7 +410,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 3<br />
 IQR (CV) : 1 (1.2)</td>
 <td>13 distinct values</td>
-<td><img src="tmp/ds0632.png" /></td>
+<td><img src="tmp/ds0728.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -423,7 +423,7 @@ Mean : 0.2<br />
 Max : 1</td>
 <td>0 : 356 (75.7%)<br />
 1 : 114 (24.3%)</td>
-<td><img src="tmp/ds0633.png" /></td>
+<td><img src="tmp/ds0729.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -436,7 +436,7 @@ min &lt; med &lt; max:<br />
 0.8 &lt; 23.8 &lt; 73.3<br />
 IQR (CV) : 25.7 (0.7)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0634.png" /></td>
+<td><img src="tmp/ds0730.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -449,7 +449,7 @@ min &lt; med &lt; max:<br />
 49 &lt; 719 &lt; 17732.7<br />
 IQR (CV) : 1125 (1.3)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0635.png" /></td>
+<td><img src="tmp/ds0731.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -462,7 +462,7 @@ min &lt; med &lt; max:<br />
 0.3 &lt; 9.9 &lt; 67.8<br />
 IQR (CV) : 20 (1)</td>
 <td>439 distinct values</td>
-<td><img src="tmp/ds0636.png" /></td>
+<td><img src="tmp/ds0732.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -475,7 +475,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 22.2 &lt; 80.7<br />
 IQR (CV) : 23.6 (0.7)</td>
 <td>414 distinct values</td>
-<td><img src="tmp/ds0637.png" /></td>
+<td><img src="tmp/ds0733.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -488,7 +488,7 @@ Mean : 0.9<br />
 Max : 1</td>
 <td>0 : 64 (13.6%)<br />
 1 : 406 (86.4%)</td>
-<td><img src="tmp/ds0638.png" /></td>
+<td><img src="tmp/ds0734.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -501,7 +501,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 83.2 &lt; 255.6<br />
 IQR (CV) : 89.2 (0.6)</td>
 <td>431 distinct values</td>
-<td><img src="tmp/ds0639.png" /></td>
+<td><img src="tmp/ds0735.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -514,7 +514,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 0.7<br />
 IQR (CV) : 0.2 (0.6)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0640.png" /></td>
+<td><img src="tmp/ds0736.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -905,36 +905,32 @@ factors as much as considering an eigenvalue = 1.
 - Print variance that explains the components
 
 ``` r
-df_pca <- princomp(df, cor=TRUE) #cor = TRUE, standardizes your dataset before running a PCA
+df_pca <- princomp(new_df, cor=TRUE) #cor = TRUE, standardizes your dataset before running a PCA
 summary(df_pca)  
 ```
 
     ## Importance of components:
-    ##                           Comp.1    Comp.2     Comp.3     Comp.4     Comp.5
-    ## Standard deviation     2.0220473 1.7114659 1.50144626 1.39633266 1.25603762
-    ## Proportion of Variance 0.1777685 0.1273528 0.09801482 0.08477152 0.06859263
-    ## Cumulative Proportion  0.1777685 0.3051213 0.40313616 0.48790767 0.55650030
-    ##                            Comp.6     Comp.7     Comp.8     Comp.9   Comp.10
-    ## Standard deviation     1.12491157 1.04006396 1.01214466 0.99241476 0.8660719
-    ## Proportion of Variance 0.05501852 0.04703187 0.04454073 0.04282118 0.0326122
-    ## Cumulative Proportion  0.61151883 0.65855070 0.70309143 0.74591261 0.7785248
-    ##                           Comp.11   Comp.12    Comp.13    Comp.14    Comp.15
-    ## Standard deviation     0.85931542 0.8397418 0.80126214 0.73815903 0.71407898
-    ## Proportion of Variance 0.03210535 0.0306594 0.02791396 0.02369038 0.02216995
-    ## Cumulative Proportion  0.81063015 0.8412896 0.86920351 0.89289389 0.91506384
-    ##                           Comp.16    Comp.17    Comp.18    Comp.19     Comp.20
-    ## Standard deviation     0.67805399 0.67377789 0.63350680 0.54337661 0.370525177
-    ## Proportion of Variance 0.01998944 0.01973811 0.01744917 0.01283731 0.005969083
-    ## Cumulative Proportion  0.93505328 0.95479140 0.97224056 0.98507787 0.991046957
-    ##                            Comp.21     Comp.22     Comp.23
-    ## Standard deviation     0.324540038 0.277619790 0.153365585
-    ## Proportion of Variance 0.004579402 0.003350989 0.001022652
-    ## Cumulative Proportion  0.995626359 0.998977348 1.000000000
+    ##                           Comp.1    Comp.2    Comp.3     Comp.4     Comp.5
+    ## Standard deviation     1.8997952 1.6781639 1.4295978 1.06695332 1.02159849
+    ## Proportion of Variance 0.2123072 0.1656608 0.1202206 0.06696408 0.06139197
+    ## Cumulative Proportion  0.2123072 0.3779680 0.4981886 0.56515264 0.62654461
+    ##                            Comp.6     Comp.7     Comp.8     Comp.9    Comp.10
+    ## Standard deviation     0.98493655 0.92520466 0.86831066 0.82978037 0.77129420
+    ## Proportion of Variance 0.05706471 0.05035316 0.04435079 0.04050209 0.03499381
+    ## Cumulative Proportion  0.68360932 0.73396247 0.77831326 0.81881535 0.85380916
+    ##                           Comp.11    Comp.12    Comp.13    Comp.14    Comp.15
+    ## Standard deviation     0.72374146 0.69716735 0.67944566 0.60012054 0.54798812
+    ## Proportion of Variance 0.03081186 0.02859072 0.02715567 0.02118498 0.01766418
+    ## Cumulative Proportion  0.88462102 0.91321175 0.94036742 0.96155240 0.97921657
+    ##                          Comp.16     Comp.17
+    ## Standard deviation     0.4722460 0.360973692
+    ## Proportion of Variance 0.0131186 0.007664824
+    ## Cumulative Proportion  0.9923352 1.000000000
 
 - Scree Plot
 
 ``` r
-plot(df_pca,type="lines", npcs = 31) 
+plot(df_pca,type="lines", npcs = 17, las = 2) 
 ```
 
 ![](RmdFiles/3-FactorAnalysis/unnamed-chunk-27-1.png)<!-- -->

@@ -218,11 +218,15 @@ sum(num_factors$fa.values > 1) #Determines the number of factors with eigenvalue
 
 #' You can also consider factors with eigenvalue > 0.7, since some of the literature indicate that this value does not overestimate the number of factors as much as considering an eigenvalue = 1. 
 
-#' **3. Cumulative Percent of total variance explained**
+#'  **3. Principal Component Analysis (PCA)**
+#' 
+#' * Print variance that explains the components
+df_pca <- princomp(new_df, cor=TRUE) #cor = TRUE, standardizes your dataset before running a PCA
+summary(df_pca)  
 
-#'Run a Factorial Analysis without rotation
-fa_result <- fa(new_df, nfactors = 23, fm = "ml", rotate = "none")
-print(fa_result$loadings)
+#' 
+#' * Scree Plot
+plot(df_pca,type="lines", npcs = 17, las = 2) 
 
 
 #' ## Exploratory Factor Analysis

@@ -70,6 +70,11 @@ str(df)
 
 #' ##### Select a dataset with the first variables explained above
 df = df[,1:24]
+
+#' ##### Make ID as row names or case number
+#' 
+df<-data.frame(df, row.names = 1)
+
 #' 
 #' ##### Check summary statistics of variables
 descriptive_stats <- dfSummary(df)
@@ -80,16 +85,17 @@ str(df)
 # Remove categorical variables or transform them into dummy (factor)
 df = select(df,c(-DWELCLAS, -ISEX, -RAGE10, -HEADH))
 
+#Standardize variables (Zscore = xi - xmean)/sd
+
+mean <- apply(df, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
+sd <- apply(df, 2, sd)
+df <- data.frame(scale(df, mean, sd))
+
 #' > **Note:** I used a different library of the MLR chapter for performing the summary statistics. "R" allows you to do the same or similar tasks with different packages. 
 #' 
 #' ##### Take a look at the first values of the dataset
 #' 
 head(df,5)
-
-#' 
-#' ##### Make ID as row names or case number
-#' 
-df<-data.frame(df, row.names = 1)
 
 #' 
 #' ### Evaluating the assumptions for factorial analysis
@@ -104,6 +110,9 @@ ratio
 #' 
 #' * **Normality**
 shapiro.test(df$CHILD13)  # Test normality of each variable
+
+#The null hypothesis of both tests is that the distribution is normal. 
+#Therefore, for the distribution to be normal, the pvalue > 0.05 and you should not reject the null hypothesis.
 
 # Make normality tests to all variables
 normality_tests <- sapply(df, function(x) {
@@ -160,7 +169,13 @@ abline(a = 0, b = 1, col = "red", lty = 2)
 #' Correlation matrix
 corr_matrix <- cor(df, method = "pearson")
 
-corrplot(corr_matrix, method = "square")
+corrplot(corr_matrix, method = "circle", type = "upper")
+
+# Check if the correlation is statistically significant
+cor.test(df$H18,df$HSIZE)
+
+#The null hypothesis is that the correlation is zero. 
+#This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05).
 
 #' The **Bartlett sphericity test** 
 #' This test checks if the correlation matrix is significantly different from an identity matrix (where variables are uncorrelated). 
@@ -169,7 +184,8 @@ corrplot(corr_matrix, method = "square")
 #' meaning that FA is appropriate.
 cortest.bartlett(corr_matrix, n = nrow(df))
 
-#' **Note:** The null hypothesis is that there is no correlation between variables. Therefore, in factor analysis you want to reject the null hypothesis.
+#' **Note:** The null hypothesis is that there is no correlation between variables. 
+#' Therefore, in factor analysis you want to reject the null hypothesis (pvalue < 0.05).
 #' 
 #' **Check for sampling adequacy - KMO test** 
 #' It assesses whether the correlations 
@@ -184,7 +200,7 @@ KMO(corr_matrix)
 #' indicating how well each variable fits with the others in terms of common variance.
 #'Here are some important interpretations:
 #'  - Good MSA values (≥ 0.70): Variables such as INCOME (0.86), HEMPLOY (0.87) are well-suited for factor analysis and share sufficient common variance with the other variables.
-#'  - Mediocre MSA values (0.50 ≤ MSA < 0.70): Variables like HSIZE (0.57), and PARK (0.55) are marginal for factor analysis.
+#'  - Mediocre/Bad MSA values (0.50 ≤ MSA < 0.70): Variables like HSIZE (0.57), and PARK (0.55) are marginal for factor analysis.
 #'      These variables have some shared variance with the other variables but are not as strong contributors.
 #'  - Low MSA values (< 0.50): Variables like CHILD13 (0.30), and PARKSIZE (0.48) have very low MSA scores. 
 #'      These variables do not share enough common variance with the others and might be poorly suited for factor analysis.
@@ -197,7 +213,7 @@ KMO(corr_matrix)
 
 #' **Check for multicollinearity**. Multicollinearity happens when variables are very highly correlated 
 #' (e.g., correlations above 0.9), which can distort factor analysis results.
-vif(lm(df$INCOME ~ ., data = new_df))  # Replace Variable1 with a dependent variable
+vif(lm(df$INCOME ~ ., data = new_df))  # Replace Variable1 with any other variable
 
 
 #'Note: If the VIF of any variable is greater than 10, multicollinearity may be an issue. 
@@ -245,13 +261,13 @@ plot(df_pca,type="lines", npcs = 17, las = 2)
 
 # No rotation
 df_factor <- factanal(new_df, factors = 4, rotation = "none", scores=c("regression"), fm = "ml")
-# Rotation Varimax
+# Rotation Varimax (Ortogonal)
 df_factor_var <- factanal(new_df, factors = 4, rotation = "varimax", scores=c("regression"), fm = "ml")
 # Rotiation Oblimin
 df_factor_obl <- factanal(new_df, factors = 4, rotation = "oblimin", scores=c("regression"), fm = "ml")
 
 #' 
-#' Let's print out the results of `df_factor_var`, and have a look. 
+#' Let's print out the results, and have a look. 
 
 print(df_factor, digits=2, cutoff=0.3, sort=TRUE)
 print(df_factor_var, digits=2, cutoff=0.3, sort=TRUE) #cutoff of 0.3 due to the sample size is higher than 350 observations.
@@ -259,7 +275,8 @@ print(df_factor_obl, digits=2, cutoff=0.3, sort=TRUE)
 
 #' 
 #' > **Note:** 
-#' The variability contained in the factors = Communality + Uniqueness.  
+#' The variability contained in the factors = Communality + Uniqueness. 
+#' You want uniquenesses below 0.3 (communality above 0.7).  
 #' Varimax assigns orthogonal rotation, and oblimin assigns oblique rotation.
 #' 
 #' 
@@ -326,5 +343,6 @@ text(
 )
 
 #' 
-#' When you have more than two factors it is difficult to analyse the factors by the plots. Variables that have low explaining variance in the two factors analyzed, could be highly explained by the other factors not present in the graph. However, try comparing the plots with the factor loadings and plot the other graphs to get more familiar with exploratory factor analysis.  
+#' When you have more than two factors it is difficult to analyse the factors by the plots. 
+#' Variables that have low explaining variance in the two factors analyzed, could be highly explained by the other factors not present in the graph. However, try comparing the plots with the factor loadings and plot the other graphs to get more familiar with exploratory factor analysis.  
 #' 

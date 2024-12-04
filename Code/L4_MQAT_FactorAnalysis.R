@@ -89,19 +89,23 @@ df = select(df,c(-DWELCLAS, -ISEX, -RAGE10, -HEADH))
 
 mean <- apply(df, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
 sd <- apply(df, 2, sd)
-df <- data.frame(scale(df, mean, sd))
+df_scaled <- data.frame(scale(df, mean, sd))
 
-#' > **Note:** I used a different library of the MLR chapter for performing the summary statistics. "R" allows you to do the same or similar tasks with different packages. 
-#' 
+
 #' ##### Take a look at the first values of the dataset
 #' 
-head(df,5)
+head(df_scaled,5)
 
-#' 
+##### Compare the boxplots of the original dataset and standardized one
+
+boxplot(df)
+boxplot(df_scaled)
+ 
 #' ### Evaluating the assumptions for factorial analysis
-#' * **Adequate Sample Size** #Ideally, you should have at least 5–10 observations per variable for reliable factor analysis results. More is generally better.
-n_obs <- nrow(df)
-n_vars <- ncol(df)
+#' * **Adequate Sample Size** #Ideally, you should have at least 10 observations per variable for reliable factor analysis results. More is generally better.
+
+n_obs <- nrow(df_scaled)
+n_vars <- ncol(df_scaled)
 ratio=n_obs/n_vars
 
 n_obs
@@ -109,13 +113,13 @@ n_vars
 ratio
 #' 
 #' * **Normality**
-shapiro.test(df$CHILD13)  # Test normality of each variable
+shapiro.test(df_scaled$CHILD13)  # Test normality of each variable
 
 #The null hypothesis of both tests is that the distribution is normal. 
 #Therefore, for the distribution to be normal, the pvalue > 0.05 and you should not reject the null hypothesis.
 
 # Make normality tests to all variables
-normality_tests <- sapply(df, function(x) {
+normality_tests <- sapply(df_scaled, function(x) {
   if (is.numeric(x)) {
     shapiro.test(x)
   } else {
@@ -126,7 +130,7 @@ normality_tests <- sapply(df, function(x) {
 normality_tests
 
 # Or Extract p-values from the normality test results ONLY
-normality_pvalues <- sapply(df, function(x) {
+normality_pvalues <- sapply(df_scaled, function(x) {
   if (is.numeric(x)) {
     shapiro.test(x)$p.value
   } else {
@@ -146,7 +150,7 @@ normal_vars <- names(normality_pvalues[normality_pvalues >= 0.05])
 normal_vars
 
 #Example of histogram
-hist(df$INCOME)
+hist(df_scaled$INCOME)
 
 #NOTE: 
 #There are no normally distributed variables in the dataset.
@@ -154,35 +158,37 @@ hist(df$INCOME)
 #but for Maximum Likelihood (ML) extraction, normality is preferable.
 
 #' * **Linearity Between Variables**
-pairs(df[,1:10], lower.panel = NULL)  # Pairwise scatter plots for all variables
+pairs(df_scaled[,1:10], lower.panel = NULL)  # Pairwise scatter plots for the first 10 variables. Check the others!
 
 
-plot(df$BEDROOM, df$H18, 
-     main = "Scatterplot of Variable1 vs Variable2", 
-     xlab = "Variable1", 
-     ylab = "Variable2")
+plot(df_scaled$BEDROOM, df_scaled$H18, 
+     main = "Scatterplot", 
+     xlab = "BEDROOM", 
+     ylab = "H18")
 abline(a = 0, b = 1, col = "red", lty = 2)
 
 #Note: Most relationships are non-linear
  
 #' * **Correlations between variables** 
+
 #' Correlation matrix
-corr_matrix <- cor(df, method = "pearson")
+corr_matrix <- cor(df_scaled, method = "pearson")
 
 corrplot(corr_matrix, method = "circle", type = "upper")
 
 # Check if the correlation is statistically significant
-cor.test(df$H18,df$HSIZE)
+cor.test(df_scaled$H18,df_scaled$HSIZE)
 
-#The null hypothesis is that the correlation is zero. 
-#This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05).
+# The null hypothesis is that the correlation is zero. 
+# This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05).
 
 #' The **Bartlett sphericity test** 
 #' This test checks if the correlation matrix is significantly different from an identity matrix (where variables are uncorrelated). 
 #' If significant, the data is suitable for factor analysis. If the p-value is small (p < 0.05), 
 #' you can reject the null hypothesis (which states that the variables are uncorrelated), 
 #' meaning that FA is appropriate.
-cortest.bartlett(corr_matrix, n = nrow(df))
+
+cortest.bartlett(corr_matrix, n = nrow(df_scaled))
 
 #' **Note:** The null hypothesis is that there is no correlation between variables. 
 #' Therefore, in factor analysis you want to reject the null hypothesis (pvalue < 0.05).
@@ -191,6 +197,7 @@ cortest.bartlett(corr_matrix, n = nrow(df))
 #' It assesses whether the correlations 
 #' between variables are high enough to justify a factor analysis. 
 #' It looks at the proportion of variance that could be common among variables.
+
 KMO(corr_matrix)
 
 #' Note1: We want at least 0.7 of the overall Mean Sample Adequacy (MSA). 
@@ -206,14 +213,14 @@ KMO(corr_matrix)
 #'      These variables do not share enough common variance with the others and might be poorly suited for factor analysis.
 
 #'Note2: You exclude the low MSA value variables: Code: 
-new_df <- df %>% select(-CHILD13, -PARKSIZE)
+new_df <- df_scaled |> select(-CHILD13, -PARKSIZE)
 
 corr_matrix <- cor(new_df, method = "pearson")
 KMO(corr_matrix)
 
 #' **Check for multicollinearity**. Multicollinearity happens when variables are very highly correlated 
 #' (e.g., correlations above 0.9), which can distort factor analysis results.
-vif(lm(df$INCOME ~ ., data = new_df))  # Replace Variable1 with any other variable
+vif(lm(df_scaled$INCOME ~ ., data = new_df))  # Replace Variable1 with any other variable
 
 
 #'Note: If the VIF of any variable is greater than 10, multicollinearity may be an issue. 
@@ -245,13 +252,22 @@ sum(num_factors$fa.values > 1) #Determines the number of factors with eigenvalue
 #'  **3. Principal Component Analysis (PCA)**
 #' 
 #' * Print variance that explains the components
-df_pca <- princomp(new_df, cor=TRUE) #cor = TRUE, standardizes your dataset before running a PCA
+df_pca <- princomp(new_df, cor=FALSE) #cor = TRUE, standardizes your dataset before running a PCA
 summary(df_pca)  
 
 #' 
 #' * Scree Plot
 plot(df_pca,type="lines", npcs = 17, las = 2) 
 
+#' Check the cummulative variance of the first components and the scree plot, 
+#' and see if the PCA is a good approach to detect the number of factors in this case. 
+#' 
+#' PCA is not the same thing as Factor Analysis! 
+#' PCA only considers the common information (variance) of the variables, 
+#' while factor analysis takes into account also the unique variance of the variable. 
+#' Both approaches are often mixed up. 
+#' In this example we use PCA as only a first criteria for choosing the number of factors. 
+#' PCA is very used in image recognition and data reduction of big data. 
 
 #' ## Exploratory Factor Analysis
 #' 
@@ -278,7 +294,6 @@ print(df_factor_obl, digits=2, cutoff=0.3, sort=TRUE)
 #' The variability contained in the factors = Communality + Uniqueness. 
 #' You want uniquenesses below 0.3 (communality above 0.7).  
 #' Varimax assigns orthogonal rotation, and oblimin assigns oblique rotation.
-#' 
 #' 
 #' Plot factor 3 against factor 4, and compare the results of different rotations
 #' 

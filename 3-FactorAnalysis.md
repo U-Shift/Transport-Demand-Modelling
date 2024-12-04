@@ -45,7 +45,8 @@ metropolitan area, TRB (No. 10-1161).
 #### Rules of thumb:
 
 - At least 10 variables
-- n \< 50 (Unacceptable); n \> 200 (recommended); 1:10 or higher
+- n \< 50 (Unacceptable); n \> 200 (recommended); 10 observations per
+  variable or higher
 - It is recommended to use continuous variables. If your data contains
   categorical variables, you should transform them to dummy variables.
 
@@ -86,43 +87,11 @@ df <- read.spss("Data/example_fact.sav", to.data.frame = T) #transforms a list i
 df = df[,1:24]
 ```
 
-##### Take a look at the main characteristics of the dataset
+##### Make ID as row names or case number
 
 ``` r
-class(df) #type of data
+df<-data.frame(df, row.names = 1)
 ```
-
-    ## [1] "data.frame"
-
-``` r
-str(df)
-```
-
-    ## 'data.frame':    470 obs. of  24 variables:
-    ##  $ RespondentID: num  7.99e+08 7.98e+08 7.98e+08 7.98e+08 7.98e+08 ...
-    ##  $ DWELCLAS    : num  5 6 6 5 6 6 4 2 6 5 ...
-    ##  $ INCOME      : num  7500 4750 4750 7500 2750 1500 12500 1500 1500 1500 ...
-    ##  $ CHILD13     : num  1 0 2 0 1 0 0 0 0 0 ...
-    ##  $ H18         : num  2 1 2 3 1 3 3 4 1 1 ...
-    ##  $ HEMPLOY     : num  2 1 2 2 1 2 0 2 1 1 ...
-    ##  $ HSIZE       : num  3 1 4 4 2 3 3 4 1 1 ...
-    ##  $ AVADUAGE    : num  32 31 41.5 44.7 33 ...
-    ##  $ IAGE        : num  32 31 42 52 33 47 62 21 34 25 ...
-    ##  $ ISEX        : num  1 1 0 1 0 1 1 0 0 0 ...
-    ##  $ NCARS       : num  2 1 2 3 1 1 2 3 1 1 ...
-    ##  $ AREA        : num  100 90 220 120 90 100 178 180 80 50 ...
-    ##  $ BEDROOM     : num  2 2 4 3 2 2 5 3 2 1 ...
-    ##  $ PARK        : num  1 1 2 0 0 0 2 0 0 1 ...
-    ##  $ BEDSIZE     : num  0.667 2 1 0.75 1 ...
-    ##  $ PARKSIZE    : num  0.5 1 1 0 0 0 1 0 0 1 ...
-    ##  $ RAGE10      : num  1 0 1 0 0 0 0 0 1 1 ...
-    ##  $ TCBD        : num  36.79 15.47 24.1 28.72 7.28 ...
-    ##  $ DISTHTC     : num  629 551 548 2351 698 ...
-    ##  $ TWCBD       : num  10 15.5 12.71 3.17 5.36 ...
-    ##  $ TDWWK       : num  31.1 0 20.4 32.9 13 ...
-    ##  $ HEADH       : num  1 1 1 1 1 1 1 0 1 1 ...
-    ##  $ POPDENS     : num  85.7 146.4 106.6 36.8 181.6 ...
-    ##  $ EDUINDEX    : num  0.0641 0.2672 0.1 0.0867 0.1309 ...
 
 ##### Check summary statistics of variables
 
@@ -135,17 +104,17 @@ view(descriptive_stats)
 
 #### df
 
-**Dimensions:** 470 x 24  
+**Dimensions:** 470 x 23  
 **Duplicates:** 0
 
-<table style="width:97%;">
+<table style="width:96%;">
 <colgroup>
 <col style="width: 4%" />
-<col style="width: 13%" />
-<col style="width: 31%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 8%" />
+<col style="width: 11%" />
+<col style="width: 29%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 9%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -160,19 +129,6 @@ view(descriptive_stats)
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>RespondentID<br />
-[numeric]</td>
-<td>Mean (sd) : 784082878 (8627501)<br />
-min &lt; med &lt; max:<br />
-773001005 &lt; 780248283 &lt; 808234671<br />
-IQR (CV) : 16634785 (0)</td>
-<td>470 distinct values</td>
-<td><img src="tmp/ds0737.png" /></td>
-<td>0<br />
-(0.0%)</td>
-</tr>
-<tr class="even">
-<td>2</td>
 <td>DWELCLAS<br />
 [numeric]</td>
 <td>Mean (sd) : 5.1 (1.3)<br />
@@ -186,12 +142,12 @@ IQR (CV) : 2 (0.2)</td>
 5 : 130 (27.7%)<br />
 6 : 162 (34.5%)<br />
 7 : 53 (11.3%)</td>
-<td><img src="tmp/ds0738.png" /></td>
+<td><img src="tmp/ds0855.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>3</td>
+<tr class="even">
+<td>2</td>
 <td>INCOME<br />
 [numeric]</td>
 <td>Mean (sd) : 4259.6 (3001.8)<br />
@@ -204,12 +160,12 @@ IQR (CV) : 2000 (0.7)</td>
 4750 : 106 (22.6%)<br />
 7500 : 75 (16.0%)<br />
 12500 : 31 ( 6.6%)</td>
-<td><img src="tmp/ds0739.png" /></td>
+<td><img src="tmp/ds0856.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>4</td>
+<tr class="odd">
+<td>3</td>
 <td>CHILD13<br />
 [numeric]</td>
 <td>Mean (sd) : 0.4 (0.8)<br />
@@ -221,12 +177,12 @@ IQR (CV) : 0 (2)</td>
 2 : 41 ( 8.7%)<br />
 3 : 13 ( 2.8%)<br />
 4 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds0740.png" /></td>
+<td><img src="tmp/ds0857.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>5</td>
+<tr class="even">
+<td>4</td>
 <td>H18<br />
 [numeric]</td>
 <td>Mean (sd) : 2.1 (0.9)<br />
@@ -240,12 +196,12 @@ IQR (CV) : 0.8 (0.4)</td>
 4 : 35 ( 7.4%)<br />
 5 : 3 ( 0.6%)<br />
 6 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds0741.png" /></td>
+<td><img src="tmp/ds0858.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>6</td>
+<tr class="odd">
+<td>5</td>
 <td>HEMPLOY<br />
 [numeric]</td>
 <td>Mean (sd) : 1.5 (0.7)<br />
@@ -258,12 +214,12 @@ IQR (CV) : 1 (0.5)</td>
 3 : 21 ( 4.5%)<br />
 4 : 1 ( 0.2%)<br />
 5 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds0742.png" /></td>
+<td><img src="tmp/ds0859.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>7</td>
+<tr class="even">
+<td>6</td>
 <td>HSIZE<br />
 [numeric]</td>
 <td>Mean (sd) : 2.6 (1.3)<br />
@@ -277,12 +233,12 @@ IQR (CV) : 2 (0.5)</td>
 5 : 20 ( 4.3%)<br />
 6 : 5 ( 1.1%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds0743.png" /></td>
+<td><img src="tmp/ds0860.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>8</td>
+<tr class="odd">
+<td>7</td>
 <td>AVADUAGE<br />
 [numeric]</td>
 <td>Mean (sd) : 37.8 (9.9)<br />
@@ -290,12 +246,12 @@ min &lt; med &lt; max:<br />
 0 &lt; 36 &lt; 78<br />
 IQR (CV) : 12.7 (0.3)</td>
 <td>126 distinct values</td>
-<td><img src="tmp/ds0744.png" /></td>
+<td><img src="tmp/ds0861.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>9</td>
+<tr class="even">
+<td>8</td>
 <td>IAGE<br />
 [numeric]</td>
 <td>Mean (sd) : 36.9 (11.6)<br />
@@ -303,12 +259,12 @@ min &lt; med &lt; max:<br />
 0 &lt; 34 &lt; 78<br />
 IQR (CV) : 15 (0.3)</td>
 <td>53 distinct values</td>
-<td><img src="tmp/ds0745.png" /></td>
+<td><img src="tmp/ds0862.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>10</td>
+<tr class="odd">
+<td>9</td>
 <td>ISEX<br />
 [numeric]</td>
 <td>Min : 0<br />
@@ -316,12 +272,12 @@ Mean : 0.5<br />
 Max : 1</td>
 <td>0 : 214 (45.5%)<br />
 1 : 256 (54.5%)</td>
-<td><img src="tmp/ds0746.png" /></td>
+<td><img src="tmp/ds0863.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>11</td>
+<tr class="even">
+<td>10</td>
 <td>NCARS<br />
 [numeric]</td>
 <td>Mean (sd) : 1.7 (0.9)<br />
@@ -334,12 +290,12 @@ IQR (CV) : 1 (0.5)</td>
 3 : 56 (11.9%)<br />
 4 : 13 ( 2.8%)<br />
 5 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds0747.png" /></td>
+<td><img src="tmp/ds0864.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>12</td>
+<tr class="odd">
+<td>11</td>
 <td>AREA<br />
 [numeric]</td>
 <td>Mean (sd) : 133 (121.5)<br />
@@ -347,12 +303,12 @@ min &lt; med &lt; max:<br />
 30 &lt; 110 &lt; 2250<br />
 IQR (CV) : 60 (0.9)</td>
 <td>76 distinct values</td>
-<td><img src="tmp/ds0748.png" /></td>
+<td><img src="tmp/ds0865.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>13</td>
+<tr class="even">
+<td>12</td>
 <td>BEDROOM<br />
 [numeric]</td>
 <td>Mean (sd) : 2.9 (1.1)<br />
@@ -367,12 +323,12 @@ IQR (CV) : 1 (0.4)</td>
 5 : 26 ( 5.5%)<br />
 6 : 7 ( 1.5%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds0749.png" /></td>
+<td><img src="tmp/ds0866.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>14</td>
+<tr class="odd">
+<td>13</td>
 <td>PARK<br />
 [numeric]</td>
 <td>Mean (sd) : 0.8 (1)<br />
@@ -384,12 +340,12 @@ IQR (CV) : 1 (1.2)</td>
 2 : 84 (17.9%)<br />
 3 : 18 ( 3.8%)<br />
 4 : 8 ( 1.7%)</td>
-<td><img src="tmp/ds0750.png" /></td>
+<td><img src="tmp/ds0867.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>15</td>
+<tr class="even">
+<td>14</td>
 <td>BEDSIZE<br />
 [numeric]</td>
 <td>Mean (sd) : 1.4 (0.8)<br />
@@ -397,12 +353,12 @@ min &lt; med &lt; max:<br />
 0 &lt; 1 &lt; 5<br />
 IQR (CV) : 0.7 (0.6)</td>
 <td>22 distinct values</td>
-<td><img src="tmp/ds0751.png" /></td>
+<td><img src="tmp/ds0868.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>16</td>
+<tr class="odd">
+<td>15</td>
 <td>PARKSIZE<br />
 [numeric]</td>
 <td>Mean (sd) : 0.5 (0.6)<br />
@@ -410,12 +366,12 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 3<br />
 IQR (CV) : 1 (1.2)</td>
 <td>13 distinct values</td>
-<td><img src="tmp/ds0752.png" /></td>
+<td><img src="tmp/ds0869.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>17</td>
+<tr class="even">
+<td>16</td>
 <td>RAGE10<br />
 [numeric]</td>
 <td>Min : 0<br />
@@ -423,12 +379,12 @@ Mean : 0.2<br />
 Max : 1</td>
 <td>0 : 356 (75.7%)<br />
 1 : 114 (24.3%)</td>
-<td><img src="tmp/ds0753.png" /></td>
+<td><img src="tmp/ds0870.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>18</td>
+<tr class="odd">
+<td>17</td>
 <td>TCBD<br />
 [numeric]</td>
 <td>Mean (sd) : 24.7 (16.2)<br />
@@ -436,12 +392,12 @@ min &lt; med &lt; max:<br />
 0.8 &lt; 23.8 &lt; 73.3<br />
 IQR (CV) : 25.7 (0.7)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0754.png" /></td>
+<td><img src="tmp/ds0871.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>19</td>
+<tr class="even">
+<td>18</td>
 <td>DISTHTC<br />
 [numeric]</td>
 <td>Mean (sd) : 1347 (1815.8)<br />
@@ -449,12 +405,12 @@ min &lt; med &lt; max:<br />
 49 &lt; 719 &lt; 17732.7<br />
 IQR (CV) : 1125 (1.3)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0755.png" /></td>
+<td><img src="tmp/ds0872.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>20</td>
+<tr class="odd">
+<td>19</td>
 <td>TWCBD<br />
 [numeric]</td>
 <td>Mean (sd) : 17 (16.2)<br />
@@ -462,12 +418,12 @@ min &lt; med &lt; max:<br />
 0.3 &lt; 9.9 &lt; 67.8<br />
 IQR (CV) : 20 (1)</td>
 <td>439 distinct values</td>
-<td><img src="tmp/ds0756.png" /></td>
+<td><img src="tmp/ds0873.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>21</td>
+<tr class="even">
+<td>20</td>
 <td>TDWWK<br />
 [numeric]</td>
 <td>Mean (sd) : 23.5 (17.1)<br />
@@ -475,12 +431,12 @@ min &lt; med &lt; max:<br />
 0 &lt; 22.2 &lt; 80.7<br />
 IQR (CV) : 23.6 (0.7)</td>
 <td>414 distinct values</td>
-<td><img src="tmp/ds0757.png" /></td>
+<td><img src="tmp/ds0874.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>22</td>
+<tr class="odd">
+<td>21</td>
 <td>HEADH<br />
 [numeric]</td>
 <td>Min : 0<br />
@@ -488,12 +444,12 @@ Mean : 0.9<br />
 Max : 1</td>
 <td>0 : 64 (13.6%)<br />
 1 : 406 (86.4%)</td>
-<td><img src="tmp/ds0758.png" /></td>
+<td><img src="tmp/ds0875.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="odd">
-<td>23</td>
+<tr class="even">
+<td>22</td>
 <td>POPDENS<br />
 [numeric]</td>
 <td>Mean (sd) : 92 (58.2)<br />
@@ -501,12 +457,12 @@ min &lt; med &lt; max:<br />
 0 &lt; 83.2 &lt; 255.6<br />
 IQR (CV) : 89.2 (0.6)</td>
 <td>431 distinct values</td>
-<td><img src="tmp/ds0759.png" /></td>
+<td><img src="tmp/ds0876.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
-<tr class="even">
-<td>24</td>
+<tr class="odd">
+<td>23</td>
 <td>EDUINDEX<br />
 [numeric]</td>
 <td>Mean (sd) : 0.2 (0.1)<br />
@@ -514,7 +470,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 0.7<br />
 IQR (CV) : 0.2 (0.6)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds0760.png" /></td>
+<td><img src="tmp/ds0877.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -525,46 +481,115 @@ IQR (CV) : 0.2 (0.6)</td>
 > the summary statistics. “R” allows you to do the same or similar tasks
 > with different packages.
 
+##### Take a look at the main characteristics of the dataset
+
+``` r
+class(df) #type of data
+```
+
+    ## [1] "data.frame"
+
+``` r
+str(df)
+```
+
+    ## 'data.frame':    470 obs. of  23 variables:
+    ##  $ DWELCLAS: num  5 6 6 5 6 6 4 2 6 5 ...
+    ##  $ INCOME  : num  7500 4750 4750 7500 2750 1500 12500 1500 1500 1500 ...
+    ##  $ CHILD13 : num  1 0 2 0 1 0 0 0 0 0 ...
+    ##  $ H18     : num  2 1 2 3 1 3 3 4 1 1 ...
+    ##  $ HEMPLOY : num  2 1 2 2 1 2 0 2 1 1 ...
+    ##  $ HSIZE   : num  3 1 4 4 2 3 3 4 1 1 ...
+    ##  $ AVADUAGE: num  32 31 41.5 44.7 33 ...
+    ##  $ IAGE    : num  32 31 42 52 33 47 62 21 34 25 ...
+    ##  $ ISEX    : num  1 1 0 1 0 1 1 0 0 0 ...
+    ##  $ NCARS   : num  2 1 2 3 1 1 2 3 1 1 ...
+    ##  $ AREA    : num  100 90 220 120 90 100 178 180 80 50 ...
+    ##  $ BEDROOM : num  2 2 4 3 2 2 5 3 2 1 ...
+    ##  $ PARK    : num  1 1 2 0 0 0 2 0 0 1 ...
+    ##  $ BEDSIZE : num  0.667 2 1 0.75 1 ...
+    ##  $ PARKSIZE: num  0.5 1 1 0 0 0 1 0 0 1 ...
+    ##  $ RAGE10  : num  1 0 1 0 0 0 0 0 1 1 ...
+    ##  $ TCBD    : num  36.79 15.47 24.1 28.72 7.28 ...
+    ##  $ DISTHTC : num  629 551 548 2351 698 ...
+    ##  $ TWCBD   : num  10 15.5 12.71 3.17 5.36 ...
+    ##  $ TDWWK   : num  31.1 0 20.4 32.9 13 ...
+    ##  $ HEADH   : num  1 1 1 1 1 1 1 0 1 1 ...
+    ##  $ POPDENS : num  85.7 146.4 106.6 36.8 181.6 ...
+    ##  $ EDUINDEX: num  0.0641 0.2672 0.1 0.0867 0.1309 ...
+
+> **Note:** When importing the dataset to R, some categorical variables
+> were assigned as continuous variables, which is wrong. You should
+> either assign them as categories, ou remove the variables.
+
+##### Remove categorical variables or transform them into dummy (factor)
+
+``` r
+df = select(df,c(-DWELCLAS, -ISEX, -RAGE10, -HEADH))
+```
+
+\#Standardize variables (Zscore = xi - xmean)/sd
+
+``` r
+mean <- apply(df, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
+sd <- apply(df, 2, sd)
+df_scaled <- data.frame(scale(df, mean, sd))
+```
+
 ##### Take a look at the first values of the dataset
 
 ``` r
-head(df,5)
+head(df_scaled,5)
 ```
 
-    ##   RespondentID DWELCLAS INCOME CHILD13 H18 HEMPLOY HSIZE AVADUAGE IAGE ISEX
-    ## 1    799161661        5   7500       1   2       2     3 32.00000   32    1
-    ## 2    798399409        6   4750       0   1       1     1 31.00000   31    1
-    ## 3    798374392        6   4750       2   2       2     4 41.50000   42    0
-    ## 4    798275277        5   7500       0   3       2     4 44.66667   52    1
-    ## 5    798264250        6   2750       1   1       1     2 33.00000   33    0
-    ##   NCARS AREA BEDROOM PARK   BEDSIZE PARKSIZE RAGE10      TCBD   DISTHTC
-    ## 1     2  100       2    1 0.6666667      0.5      1 36.791237  629.1120
-    ## 2     1   90       2    1 2.0000000      1.0      0 15.472989  550.5769
-    ## 3     2  220       4    2 1.0000000      1.0      1 24.098125  547.8633
-    ## 4     3  120       3    0 0.7500000      0.0      0 28.724796 2350.5782
-    ## 5     1   90       2    0 1.0000000      0.0      0  7.283384  698.3000
-    ##       TWCBD    TDWWK HEADH   POPDENS   EDUINDEX
-    ## 1 10.003945 31.14282     1  85.70155 0.06406279
-    ## 2 15.502989  0.00000     1 146.43494 0.26723192
-    ## 3 12.709374 20.38427     1 106.60810 0.09996816
-    ## 4  3.168599 32.94246     1  36.78380 0.08671065
-    ## 5  5.364160 13.04013     1 181.62720 0.13091674
+    ##               INCOME    CHILD13        H18    HEMPLOY      HSIZE   AVADUAGE
+    ## 799161661  1.0794858  0.7729638 -0.1241308  0.6432185  0.3332871 -0.5822216
+    ## 798399409  0.1633759 -0.5107570 -1.2045288 -0.7124438 -1.2651308 -0.6828538
+    ## 798374392  0.1633759  2.0566847 -0.1241308  0.6432185  1.1324961  0.3737844
+    ## 798275277  1.0794858 -0.5107570  0.9562671  0.6432185  1.1324961  0.6924531
+    ## 798264250 -0.5028859  0.7729638 -1.2045288 -0.7124438 -0.4659218 -0.4815894
+    ##                 IAGE      NCARS       AREA    BEDROOM       PARK    BEDSIZE
+    ## 799161661 -0.4215659  0.3285921 -0.2711861 -0.8178146  0.1760564 -0.8541923
+    ## 798399409 -0.5078245 -0.7986947 -0.3534645 -0.8178146  0.1760564  0.8118945
+    ## 798374392  0.4410200  0.3285921  0.7161546  1.0480730  1.2103874 -0.4376706
+    ## 798275277  1.3036059  1.4558789 -0.1066293  0.1151292 -0.8582747 -0.7500619
+    ## 798264250 -0.3353073 -0.7986947 -0.3534645 -0.8178146 -0.8582747 -0.4376706
+    ##              PARKSIZE        TCBD    DISTHTC       TWCBD      TDWWK    POPDENS
+    ## 799161661  0.05980121  0.74438167 -0.3953480 -0.43070769  0.4455778 -0.1082622
+    ## 798399409  0.94365558 -0.56854349 -0.4385995 -0.09209531 -1.3766218  0.9352160
+    ## 798374392  0.94365558 -0.03734795 -0.4400940 -0.26411662 -0.1839164  0.2509393
+    ## 798275277 -0.82405316  0.24759440  0.5527119 -0.85160498  0.5508766 -0.9487325
+    ## 798264250 -0.82405316 -1.07291599 -0.3572443 -0.71640988 -0.6136298  1.5398646
+    ##             EDUINDEX
+    ## 799161661 -1.0852110
+    ## 798399409  0.5511548
+    ## 798374392 -0.7960217
+    ## 798275277 -0.9028004
+    ## 798264250 -0.5467555
 
-##### Make ID as row names or case number
+##### Compare the boxplots of the original dataset and standardized one
 
 ``` r
-df<-data.frame(df, row.names = 1)
+boxplot(df)
 ```
+
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-10-1.png)<!-- -->
+
+``` r
+boxplot(df_scaled)
+```
+
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-10-2.png)<!-- -->
 
 ### Evaluating the assumptions for factorial analysis
 
-**Adequate Sample Size:** Ideally, you should have at least 5–10
+**Adequate Sample Size:** Ideally, you should have at least 10
 observations per variable for reliable factor analysis results. More is
 generally better.
 
 ``` r
-n_obs <- nrow(df)
-n_vars <- ncol(df)
+n_obs <- nrow(df_scaled)
+n_vars <- ncol(df_scaled)
 ratio=n_obs/n_vars
 
 n_obs
@@ -576,30 +601,30 @@ n_obs
 n_vars
 ```
 
-    ## [1] 23
+    ## [1] 19
 
 ``` r
 ratio
 ```
 
-    ## [1] 20.43478
+    ## [1] 24.73684
 
 - **Normality**
 
 ``` r
-shapiro.test(df$DWELCLAS)  # Test normality of each variable
+shapiro.test(df_scaled$CHILD13)  # Test normality of each variable
 ```
 
     ## 
     ##  Shapiro-Wilk normality test
     ## 
-    ## data:  df$DWELCLAS
-    ## W = 0.90203, p-value < 2.2e-16
+    ## data:  df_scaled$CHILD13
+    ## W = 0.57099, p-value < 2.2e-16
 
 Make normality tests to all variables
 
 ``` r
-normality_tests <- sapply(df, function(x) {
+normality_tests <- sapply(df_scaled, function(x) {
   if (is.numeric(x)) {
     shapiro.test(x)
   } else {
@@ -614,29 +639,24 @@ Print the p-values for each variable
 normality_tests
 ```
 
-    ##           DWELCLAS                      INCOME                       
-    ## statistic 0.9020336                     0.8261471                    
-    ## p.value   8.272063e-17                  3.299416e-22                 
+    ##           INCOME                        CHILD13                      
+    ## statistic 0.8261471                     0.5709899                    
+    ## p.value   3.299416e-22                  2.331789e-32                 
     ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
     ## data.name "x"                           "x"                          
-    ##           CHILD13                       H18                          
-    ## statistic 0.5709899                     0.8375837                    
-    ## p.value   2.331789e-32                  1.590027e-21                 
+    ##           H18                           HEMPLOY                      
+    ## statistic 0.8375837                     0.8244585                    
+    ## p.value   1.590027e-21                  2.633268e-22                 
     ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
     ## data.name "x"                           "x"                          
-    ##           HEMPLOY                       HSIZE                        
-    ## statistic 0.8244585                     0.8994548                    
-    ## p.value   2.633268e-22                  4.904234e-17                 
+    ##           HSIZE                         AVADUAGE                     
+    ## statistic 0.8994548                     0.932016                     
+    ## p.value   4.904234e-17                  8.595638e-14                 
     ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
     ## data.name "x"                           "x"                          
-    ##           AVADUAGE                      IAGE                         
-    ## statistic 0.932016                      0.9353388                    
-    ## p.value   8.595638e-14                  2.101209e-13                 
-    ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
-    ## data.name "x"                           "x"                          
-    ##           ISEX                          NCARS                        
-    ## statistic 0.6336266                     0.8671536                    
-    ## p.value   1.936176e-30                  1.41819e-19                  
+    ##           IAGE                          NCARS                        
+    ## statistic 0.9353388                     0.8671536                    
+    ## p.value   2.101209e-13                  1.41819e-19                  
     ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
     ## data.name "x"                           "x"                          
     ##           AREA                          BEDROOM                      
@@ -649,24 +669,19 @@ normality_tests
     ## p.value   3.957969e-24                  2.373473e-23                 
     ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
     ## data.name "x"                           "x"                          
-    ##           PARKSIZE                      RAGE10                       
-    ## statistic 0.7774897                     0.5319634                    
-    ## p.value   8.826135e-25                  1.916486e-33                 
+    ##           PARKSIZE                      TCBD                         
+    ## statistic 0.7774897                     0.9378631                    
+    ## p.value   8.826135e-25                  4.232035e-13                 
     ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
     ## data.name "x"                           "x"                          
-    ##           TCBD                          DISTHTC                      
-    ## statistic 0.9378631                     0.6022255                    
-    ## p.value   4.232035e-13                  1.970889e-31                 
+    ##           DISTHTC                       TWCBD                        
+    ## statistic 0.6022255                     0.8209078                    
+    ## p.value   1.970889e-31                  1.647601e-22                 
     ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
     ## data.name "x"                           "x"                          
-    ##           TWCBD                         TDWWK                        
-    ## statistic 0.8209078                     0.9527661                    
-    ## p.value   1.647601e-22                  4.122546e-11                 
-    ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
-    ## data.name "x"                           "x"                          
-    ##           HEADH                         POPDENS                      
-    ## statistic 0.405341                      0.9670161                    
-    ## p.value   1.58934e-36                   8.739157e-09                 
+    ##           TDWWK                         POPDENS                      
+    ## statistic 0.9527661                     0.9670161                    
+    ## p.value   4.122546e-11                  8.739157e-09                 
     ## method    "Shapiro-Wilk normality test" "Shapiro-Wilk normality test"
     ## data.name "x"                           "x"                          
     ##           EDUINDEX                     
@@ -678,7 +693,7 @@ normality_tests
 Or Extract p-values from the normality test results ONLY
 
 ``` r
-normality_pvalues <- sapply(df, function(x) {
+normality_pvalues <- sapply(df_scaled, function(x) {
   if (is.numeric(x)) {
     shapiro.test(x)$p.value
   } else {
@@ -693,14 +708,14 @@ normality_pvalues <- sapply(df, function(x) {
 normality_pvalues
 ```
 
-    ##     DWELCLAS       INCOME      CHILD13          H18      HEMPLOY        HSIZE 
-    ## 8.272063e-17 3.299416e-22 2.331789e-32 1.590027e-21 2.633268e-22 4.904234e-17 
-    ##     AVADUAGE         IAGE         ISEX        NCARS         AREA      BEDROOM 
-    ## 8.595638e-14 2.101209e-13 1.936176e-30 1.418190e-19 4.702747e-37 4.225014e-17 
-    ##         PARK      BEDSIZE     PARKSIZE       RAGE10         TCBD      DISTHTC 
-    ## 3.957969e-24 2.373473e-23 8.826135e-25 1.916486e-33 4.232035e-13 1.970889e-31 
-    ##        TWCBD        TDWWK        HEADH      POPDENS     EDUINDEX 
-    ## 1.647601e-22 4.122546e-11 1.589340e-36 8.739157e-09 6.337856e-13
+    ##       INCOME      CHILD13          H18      HEMPLOY        HSIZE     AVADUAGE 
+    ## 3.299416e-22 2.331789e-32 1.590027e-21 2.633268e-22 4.904234e-17 8.595638e-14 
+    ##         IAGE        NCARS         AREA      BEDROOM         PARK      BEDSIZE 
+    ## 2.101209e-13 1.418190e-19 4.702747e-37 4.225014e-17 3.957969e-24 2.373473e-23 
+    ##     PARKSIZE         TCBD      DISTHTC        TWCBD        TDWWK      POPDENS 
+    ## 8.826135e-25 4.232035e-13 1.970889e-31 1.647601e-22 4.122546e-11 8.739157e-09 
+    ##     EDUINDEX 
+    ## 6.337856e-13
 
 If you want to focus on which variables do not follow normality, you can
 filter the output:
@@ -710,10 +725,10 @@ non_normal_vars <- names(normality_pvalues[normality_pvalues < 0.05])
 non_normal_vars
 ```
 
-    ##  [1] "DWELCLAS" "INCOME"   "CHILD13"  "H18"      "HEMPLOY"  "HSIZE"   
-    ##  [7] "AVADUAGE" "IAGE"     "ISEX"     "NCARS"    "AREA"     "BEDROOM" 
-    ## [13] "PARK"     "BEDSIZE"  "PARKSIZE" "RAGE10"   "TCBD"     "DISTHTC" 
-    ## [19] "TWCBD"    "TDWWK"    "HEADH"    "POPDENS"  "EDUINDEX"
+    ##  [1] "INCOME"   "CHILD13"  "H18"      "HEMPLOY"  "HSIZE"    "AVADUAGE"
+    ##  [7] "IAGE"     "NCARS"    "AREA"     "BEDROOM"  "PARK"     "BEDSIZE" 
+    ## [13] "PARKSIZE" "TCBD"     "DISTHTC"  "TWCBD"    "TDWWK"    "POPDENS" 
+    ## [19] "EDUINDEX"
 
 If you want to focus on which variables follow normality, you can filter
 the output:
@@ -731,7 +746,7 @@ Example of histogram:
 hist(df$H18)
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-16-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-19-1.png)<!-- -->
 
 > **Note:** There are no normally distributed variables in the dataset.
 > Factor analysis can still work with non-normally distributed data, but
@@ -740,10 +755,26 @@ hist(df$H18)
 - **Linearity Between Variables**
 
 ``` r
-pairs(df[,1:10], pch = 19, lower.panel = NULL)  # Pairwise scatter plots for the first 10 variables. Check the others!
+pairs(df_scaled[,1:10], pch = 19, lower.panel = NULL)  
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-17-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-20-1.png)<!-- -->
+
+``` r
+# Pairwise scatter plots for the first 10 variables. Check the others!
+```
+
+You can also create an individual scatterplot between two variables:
+
+``` r
+plot(df_scaled$BEDROOM, df_scaled$H18, 
+     main = "Scatterplot", 
+     xlab = "BEDROOM", 
+     ylab = "H18")
+abline(a = 0, b = 1, col = "red", lty = 2)
+```
+
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-21-1.png)<!-- -->
 
 > **Note:** Most relationships are non-linear.
 
@@ -751,11 +782,33 @@ pairs(df[,1:10], pch = 19, lower.panel = NULL)  # Pairwise scatter plots for the
 
 ``` r
 #' Correlation matrix
-corr_matrix <- cor(df, method = "pearson")
-corrplot(corr_matrix, method = "square")
+corr_matrix <- cor(df_scaled, method = "pearson")
+corrplot(corr_matrix, method = "square", type = "upper")
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-18-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-22-1.png)<!-- -->
+
+Check if the correlation is statistically significant.
+
+``` r
+cor.test(df_scaled$H18,df_scaled$HSIZE)
+```
+
+    ## 
+    ##  Pearson's product-moment correlation
+    ## 
+    ## data:  df_scaled$H18 and df_scaled$HSIZE
+    ## t = 23.616, df = 468, p-value < 2.2e-16
+    ## alternative hypothesis: true correlation is not equal to 0
+    ## 95 percent confidence interval:
+    ##  0.6931681 0.7760734
+    ## sample estimates:
+    ##       cor 
+    ## 0.7373854
+
+The null hypothesis is that the correlation is zero. This means that the
+correlations are only significant when you reject the null hypothesis
+(pvalue \< 0.05).
 
 **The Bartlett sphericity test**
 
@@ -766,17 +819,17 @@ small (p \< 0.05), you can reject the null hypothesis (which states that
 the variables are uncorrelated), meaning that FA is appropriate.
 
 ``` r
-cortest.bartlett(corr_matrix, n = nrow(df))
+cortest.bartlett(corr_matrix, n = nrow(df_scaled))
 ```
 
     ## $chisq
-    ## [1] 5604.544
+    ## [1] 4794.639
     ## 
     ## $p.value
     ## [1] 0
     ## 
     ## $df
-    ## [1] 253
+    ## [1] 171
 
 > **Note:** The null hypothesis is that there is no correlation between
 > variables. Therefore, in factor analysis you want to reject the null
@@ -796,12 +849,12 @@ KMO(corr_matrix)
     ## Call: KMO(r = corr_matrix)
     ## Overall MSA =  0.59
     ## MSA for each item = 
-    ## DWELCLAS   INCOME  CHILD13      H18  HEMPLOY    HSIZE AVADUAGE     IAGE 
-    ##     0.73     0.86     0.32     0.58     0.89     0.59     0.37     0.40 
-    ##     ISEX    NCARS     AREA  BEDROOM     PARK  BEDSIZE PARKSIZE   RAGE10 
-    ##     0.69     0.74     0.57     0.53     0.59     0.58     0.54     0.80 
-    ##     TCBD  DISTHTC    TWCBD    TDWWK    HEADH  POPDENS EDUINDEX 
-    ##     0.69     0.79     0.52     0.70     0.46     0.80     0.69
+    ##   INCOME  CHILD13      H18  HEMPLOY    HSIZE AVADUAGE     IAGE    NCARS 
+    ##     0.86     0.30     0.53     0.87     0.57     0.56     0.53     0.73 
+    ##     AREA  BEDROOM     PARK  BEDSIZE PARKSIZE     TCBD  DISTHTC    TWCBD 
+    ##     0.55     0.53     0.55     0.59     0.48     0.69     0.77     0.52 
+    ##    TDWWK  POPDENS EDUINDEX 
+    ##     0.70     0.79     0.75
 
 > **Note:** We want at least 0.7 of the overall Mean Sample Adequacy
 > (MSA). If, 0.6 \< MSA \< 0.7, it is not a good value, but acceptable
@@ -811,27 +864,24 @@ MSA for each item (variable-specific KMO scores): The KMO test also
 provides an MSA (Measure of Sampling Adequacy) for each variable,
 indicating how well each variable fits with the others in terms of
 common variance. Here are some important interpretations: \* Good MSA
-values (≥ 0.70): Variables such as INCOME (0.86), HEMPLOY (0.89), and
-RAGE10 (0.80) are well-suited for factor analysis and share sufficient
-common variance with the other variables.
+values (≥ 0.70): Variables such as INCOME (0.86), HEMPLOY (0.87) are
+well-suited for factor analysis and share sufficient common variance
+with the other variables.
 
-- Mediocre MSA values (0.50 ≤ MSA \< 0.70): Variables like DWELCLAS
-  (0.73), HSIZE (0.59), and PARK (0.59) are marginal for factor
+- Mediocre/bad MSA values (0.50 ≤ MSA \< 0.70): Variables like HSIZE
+  (0.57), and PARK (0.55) are marginal for factor analysis. These
+  variables have some shared variance with the other variables but are
+  not as strong contributors.
+
+- Low MSA values (\< 0.50): Variables like CHILD13 (0.30), and PARKSIZE
+  (0.48) have very low MSA scores. These variables do not share enough
+  common variance with the others and might be poorly suited for factor
   analysis.
-
-- These variables have some shared variance with the other variables but
-  are not as strong contributors.
-
-- Low MSA values (\< 0.50): Variables like CHILD13 (0.32), AVADUAGE
-  (0.37), IAGE (0.40), and HEADH (0.46) have very low MSA scores
-
-- These variables do not share enough common variance with the others
-  and might be poorly suited for factor analysis.
 
 You exclude the low MSA value variables:
 
 ``` r
-new_df <- df %>% select(-CHILD13, -AVADUAGE, -IAGE, -HEADH, -BEDROOM, -AREA)
+new_df <- df_scaled |> select(-CHILD13, -PARKSIZE)
 ```
 
 **Correlation matrix**
@@ -843,27 +893,32 @@ KMO(corr_matrix)
 
     ## Kaiser-Meyer-Olkin factor adequacy
     ## Call: KMO(r = corr_matrix)
-    ## Overall MSA =  0.73
+    ## Overall MSA =  0.67
     ## MSA for each item = 
-    ## DWELCLAS   INCOME      H18  HEMPLOY    HSIZE     ISEX    NCARS     PARK 
-    ##     0.70     0.85     0.79     0.89     0.78     0.51     0.79     0.62 
-    ##  BEDSIZE PARKSIZE   RAGE10     TCBD  DISTHTC    TWCBD    TDWWK  POPDENS 
-    ##     0.81     0.57     0.75     0.68     0.78     0.52     0.68     0.80 
+    ##   INCOME      H18  HEMPLOY    HSIZE AVADUAGE     IAGE    NCARS     AREA 
+    ##     0.85     0.85     0.88     0.64     0.56     0.55     0.81     0.74 
+    ##  BEDROOM     PARK  BEDSIZE     TCBD  DISTHTC    TWCBD    TDWWK  POPDENS 
+    ##     0.41     0.76     0.46     0.68     0.77     0.52     0.69     0.74 
     ## EDUINDEX 
-    ##     0.70
+    ##     0.76
 
 - **Check for multicollinearity**. Multicollinearity happens when
   variables are very highly correlated (e.g., correlations above 0.9),
   which can distort factor analysis results.
 
 ``` r
-vif(lm(df$DWELCLAS ~ ., data = new_df))  # Replace Variable1 with a dependent variable
+vif(lm(df_scaled$INCOME ~ ., data = new_df))  # Replace INCOME with other variables
 ```
 
-    ##   INCOME      H18  HEMPLOY    HSIZE     ISEX    NCARS     PARK  BEDSIZE 
-    ## 1.415497 2.734940 1.530409 2.902787 1.061340 1.997574 4.129505 1.744990 
-    ## PARKSIZE   RAGE10     TCBD  DISTHTC    TWCBD    TDWWK  POPDENS EDUINDEX 
-    ## 4.023440 1.439405 2.304019 1.629772 1.391409 1.477552 1.525314 1.408794
+    ##      H18  HEMPLOY    HSIZE AVADUAGE     IAGE    NCARS     AREA  BEDROOM 
+    ## 2.855273 1.605823 5.841001 1.761272 1.788480 1.828819 1.420604 4.418189 
+    ##     PARK  BEDSIZE     TCBD  DISTHTC    TWCBD    TDWWK  POPDENS EDUINDEX 
+    ## 1.348317 5.185469 2.332047 1.603804 1.376212 1.485086 1.484629 1.346856
+
+> **Note:** If the VIF of any variable is greater than 10,
+> multicollinearity may be an issue. Consider removing or combining
+> highly correlated variables. May be the problem here is that VIF are
+> too low!?
 
 ### Determine the number of factors to extract
 
@@ -873,7 +928,7 @@ vif(lm(df$DWELCLAS ~ ., data = new_df))  # Replace Variable1 with a dependent va
 num_factors = fa.parallel(new_df, fm = "ml", fa = "fa")
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-24-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-29-1.png)<!-- -->
 
     ## Parallel analysis suggests that the number of factors =  5  and the number of components =  NA
 
@@ -905,27 +960,27 @@ factors as much as considering an eigenvalue = 1.
 - Print variance that explains the components
 
 ``` r
-df_pca <- princomp(new_df, cor=TRUE) #cor = TRUE, standardizes your dataset before running a PCA
+df_pca <- princomp(new_df, cor=FALSE) #cor = TRUE, standardizes your dataset before running a PCA
 summary(df_pca)  
 ```
 
     ## Importance of components:
     ##                           Comp.1    Comp.2    Comp.3     Comp.4     Comp.5
-    ## Standard deviation     1.8997952 1.6781639 1.4295978 1.06695332 1.02159849
-    ## Proportion of Variance 0.2123072 0.1656608 0.1202206 0.06696408 0.06139197
-    ## Cumulative Proportion  0.2123072 0.3779680 0.4981886 0.56515264 0.62654461
+    ## Standard deviation     1.9370196 1.5918203 1.3929124 1.24631263 1.07780840
+    ## Proportion of Variance 0.2211791 0.1493703 0.1143730 0.09156512 0.06847929
+    ## Cumulative Proportion  0.2211791 0.3705494 0.4849224 0.57648757 0.64496685
     ##                            Comp.6     Comp.7     Comp.8     Comp.9    Comp.10
-    ## Standard deviation     0.98493655 0.92520466 0.86831066 0.82978037 0.77129420
-    ## Proportion of Variance 0.05706471 0.05035316 0.04435079 0.04050209 0.03499381
-    ## Cumulative Proportion  0.68360932 0.73396247 0.77831326 0.81881535 0.85380916
+    ## Standard deviation     0.98383064 0.89742365 0.83885597 0.77390307 0.73480693
+    ## Proportion of Variance 0.05705803 0.04747567 0.04148116 0.03530606 0.03182897
+    ## Cumulative Proportion  0.70202488 0.74950056 0.79098172 0.82628777 0.85811674
     ##                           Comp.11    Comp.12    Comp.13    Comp.14    Comp.15
-    ## Standard deviation     0.72374146 0.69716735 0.67944566 0.60012054 0.54798812
-    ## Proportion of Variance 0.03081186 0.02859072 0.02715567 0.02118498 0.01766418
-    ## Cumulative Proportion  0.88462102 0.91321175 0.94036742 0.96155240 0.97921657
-    ##                          Comp.16     Comp.17
-    ## Standard deviation     0.4722460 0.360973692
-    ## Proportion of Variance 0.0131186 0.007664824
-    ## Cumulative Proportion  0.9923352 1.000000000
+    ## Standard deviation     0.72482791 0.69586966 0.67614397 0.56328154 0.54655748
+    ## Proportion of Variance 0.03097034 0.02854512 0.02694973 0.01870368 0.01760953
+    ## Cumulative Proportion  0.88908708 0.91763220 0.94458193 0.96328562 0.98089515
+    ##                           Comp.16     Comp.17
+    ## Standard deviation     0.49692369 0.277773884
+    ## Proportion of Variance 0.01455645 0.004548403
+    ## Cumulative Proportion  0.99545160 1.000000000
 
 - Scree Plot
 
@@ -933,7 +988,7 @@ summary(df_pca)
 plot(df_pca,type="lines", npcs = 17, las = 2) 
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-27-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-32-1.png)<!-- -->
 
 > **Note:** Check the cummulative variance of the first components and
 > the scree plot, and see if the PCA is a good approach to detect the
@@ -961,10 +1016,55 @@ df_factor_var <- factanal(new_df, factors = 4, rotation = "varimax", scores=c("r
 df_factor_obl <- factanal(new_df, factors = 4, rotation = "oblimin", scores=c("regression"), fm = "ml")
 ```
 
-Let’s print out the results of `df_factor_var`, and have a look.
+Let’s print out the results, and have a look.
 
 ``` r
-print(df_factor_var, digits=2, cutoff=0.3, sort=TRUE) #cutoff of 0.3 due to the sample size is higher than 350 observations.
+print(df_factor, digits=2, cutoff=0.3, sort=TRUE) #cutoff of 0.3 due to the sample size is higher than 350 observations.
+```
+
+    ## 
+    ## Call:
+    ## factanal(x = new_df, factors = 4, scores = c("regression"), rotation = "none",     fm = "ml")
+    ## 
+    ## Uniquenesses:
+    ##   INCOME      H18  HEMPLOY    HSIZE AVADUAGE     IAGE    NCARS     AREA 
+    ##     0.78     0.37     0.64     0.11     0.48     0.23     0.66     0.77 
+    ##  BEDROOM     PARK  BEDSIZE     TCBD  DISTHTC    TWCBD    TDWWK  POPDENS 
+    ##     0.00     0.89     0.12     0.13     0.66     0.81     0.73     0.81 
+    ## EDUINDEX 
+    ##     0.78 
+    ## 
+    ## Loadings:
+    ##          Factor1 Factor2 Factor3 Factor4
+    ## H18       0.70            0.38          
+    ## HEMPLOY   0.52                          
+    ## HSIZE     0.81            0.47          
+    ## NCARS     0.53                          
+    ## BEDSIZE  -0.89                          
+    ## TCBD              0.92                  
+    ## DISTHTC           0.58                  
+    ## BEDROOM                   1.00          
+    ## AVADUAGE                          0.70  
+    ## IAGE                              0.85  
+    ## INCOME    0.32                          
+    ## AREA                      0.45          
+    ## PARK                                    
+    ## TWCBD             0.42                  
+    ## TDWWK             0.47                  
+    ## POPDENS          -0.42                  
+    ## EDUINDEX         -0.46                  
+    ## 
+    ##                Factor1 Factor2 Factor3 Factor4
+    ## SS loadings       2.70    2.07    1.92    1.35
+    ## Proportion Var    0.16    0.12    0.11    0.08
+    ## Cumulative Var    0.16    0.28    0.39    0.47
+    ## 
+    ## Test of the hypothesis that 4 factors are sufficient.
+    ## The chi square statistic is 418.72 on 74 degrees of freedom.
+    ## The p-value is 1.38e-49
+
+``` r
+print(df_factor_var, digits=2, cutoff=0.3, sort=TRUE) 
 ```
 
     ## 
@@ -972,64 +1072,116 @@ print(df_factor_var, digits=2, cutoff=0.3, sort=TRUE) #cutoff of 0.3 due to the 
     ## factanal(x = new_df, factors = 4, scores = c("regression"), rotation = "varimax",     fm = "ml")
     ## 
     ## Uniquenesses:
-    ## DWELCLAS   INCOME      H18  HEMPLOY    HSIZE     ISEX    NCARS     PARK 
-    ##     0.88     0.63     0.29     0.66     0.22     0.98     0.38     0.23 
-    ##  BEDSIZE PARKSIZE   RAGE10     TCBD  DISTHTC    TWCBD    TDWWK  POPDENS 
-    ##     0.54     0.01     0.76     0.24     0.60     0.82     0.74     0.65 
+    ##   INCOME      H18  HEMPLOY    HSIZE AVADUAGE     IAGE    NCARS     AREA 
+    ##     0.78     0.37     0.64     0.11     0.48     0.23     0.66     0.77 
+    ##  BEDROOM     PARK  BEDSIZE     TCBD  DISTHTC    TWCBD    TDWWK  POPDENS 
+    ##     0.00     0.89     0.12     0.13     0.66     0.81     0.73     0.81 
     ## EDUINDEX 
-    ##     0.66 
+    ##     0.78 
     ## 
     ## Loadings:
     ##          Factor1 Factor2 Factor3 Factor4
-    ## H18       0.83                          
+    ## H18       0.76                          
     ## HEMPLOY   0.56                          
-    ## HSIZE     0.88                          
-    ## NCARS     0.62                    0.46  
-    ## BEDSIZE  -0.66                          
-    ## TCBD              0.87                  
-    ## DISTHTC           0.62                  
-    ## EDUINDEX         -0.51                  
-    ## PARK                      0.83          
-    ## PARKSIZE                  1.00          
-    ## DWELCLAS                                
-    ## INCOME    0.43                    0.40  
-    ## ISEX                                    
-    ## RAGE10                    0.42          
-    ## TWCBD             0.42                  
+    ## HSIZE     0.89                          
+    ## NCARS     0.56                          
+    ## BEDSIZE  -0.82            0.46          
+    ## TCBD              0.92                  
+    ## DISTHTC           0.58                  
+    ## BEDROOM                   0.97          
+    ## AVADUAGE                          0.72  
+    ## IAGE                              0.88  
+    ## INCOME    0.37                          
+    ## AREA                      0.44          
+    ## PARK                                    
+    ## TWCBD             0.43                  
     ## TDWWK             0.48                  
-    ## POPDENS          -0.43                  
+    ## POPDENS          -0.42                  
+    ## EDUINDEX         -0.46                  
     ## 
     ##                Factor1 Factor2 Factor3 Factor4
-    ## SS loadings       2.87    2.12    2.05    0.68
-    ## Proportion Var    0.17    0.12    0.12    0.04
-    ## Cumulative Var    0.17    0.29    0.41    0.45
+    ## SS loadings       2.91    2.09    1.59    1.44
+    ## Proportion Var    0.17    0.12    0.09    0.08
+    ## Cumulative Var    0.17    0.29    0.39    0.47
     ## 
     ## Test of the hypothesis that 4 factors are sufficient.
-    ## The chi square statistic is 259.3 on 74 degrees of freedom.
-    ## The p-value is 2.1e-22
+    ## The chi square statistic is 418.72 on 74 degrees of freedom.
+    ## The p-value is 1.38e-49
+
+``` r
+print(df_factor_obl, digits=2, cutoff=0.3, sort=TRUE)
+```
+
+    ## 
+    ## Call:
+    ## factanal(x = new_df, factors = 4, scores = c("regression"), rotation = "oblimin",     fm = "ml")
+    ## 
+    ## Uniquenesses:
+    ##   INCOME      H18  HEMPLOY    HSIZE AVADUAGE     IAGE    NCARS     AREA 
+    ##     0.78     0.37     0.64     0.11     0.48     0.23     0.66     0.77 
+    ##  BEDROOM     PARK  BEDSIZE     TCBD  DISTHTC    TWCBD    TDWWK  POPDENS 
+    ##     0.00     0.89     0.12     0.13     0.66     0.81     0.73     0.81 
+    ## EDUINDEX 
+    ##     0.78 
+    ## 
+    ## Loadings:
+    ##          Factor1 Factor2 Factor3 Factor4
+    ## H18       0.73                          
+    ## HEMPLOY   0.54                          
+    ## HSIZE     0.85            0.31          
+    ## NCARS     0.54                          
+    ## BEDSIZE  -0.88            0.45          
+    ## TCBD              0.93                  
+    ## DISTHTC           0.59                  
+    ## BEDROOM                   0.98          
+    ## AVADUAGE                          0.72  
+    ## IAGE                              0.88  
+    ## INCOME    0.35                          
+    ## AREA                      0.44          
+    ## PARK                                    
+    ## TWCBD             0.43                  
+    ## TDWWK             0.48                  
+    ## POPDENS          -0.43                  
+    ## EDUINDEX         -0.46                  
+    ## 
+    ##                Factor1 Factor2 Factor3 Factor4
+    ## SS loadings       2.78    2.11    1.62    1.41
+    ## Proportion Var    0.16    0.12    0.10    0.08
+    ## Cumulative Var    0.16    0.29    0.38    0.47
+    ## 
+    ## Factor Correlations:
+    ##         Factor1 Factor2 Factor3 Factor4
+    ## Factor1   1.000   0.112  -0.061   0.145
+    ## Factor2   0.112   1.000  -0.079   0.052
+    ## Factor3  -0.061  -0.079   1.000   0.022
+    ## Factor4   0.145   0.052   0.022   1.000
+    ## 
+    ## Test of the hypothesis that 4 factors are sufficient.
+    ## The chi square statistic is 418.72 on 74 degrees of freedom.
+    ## The p-value is 1.38e-49
 
 > **Note:** The variability contained in the factors = Communality +
-> Uniqueness.  
+> Uniqueness. You want uniquenesses below 0.3 (communality above 0.7).  
 > Varimax assigns orthogonal rotation, and oblimin assigns oblique
 > rotation.
 
-Plot factor 1 against factor 2, and compare the results of different
+Plot factor 3 against factor 4, and compare the results of different
 rotations
 
 - **No Rotation**
 
 ``` r
 plot(
-  df_factor$loadings[, 1],
-  df_factor$loadings[, 2],
-  xlab = "Factor 1",
-  ylab = "Factor 2",
+  df_factor$loadings[, 3],
+  df_factor$loadings[, 4],
+  xlab = "Factor 3",
+  ylab = "Factor 4",
   ylim = c(-1, 1),
   xlim = c(-1, 1),
   main = "No rotation"
 )
 abline(h = 0, v = 0)
-load <- df_factor$loadings[, 1:2]
+load <- df_factor$loadings[, 3:4]
 text(
   load,
   names(df),
@@ -1038,22 +1190,22 @@ text(
 )
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-30-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-35-1.png)<!-- -->
 
 - **Varimax rotation**
 
 ``` r
 plot(
-  df_factor_var$loadings[, 1],
-  df_factor_var$loadings[, 2],
-  xlab = "Factor 1",
-  ylab = "Factor 2",
+  df_factor_var$loadings[, 3],
+  df_factor_var$loadings[, 4],
+  xlab = "Factor 3",
+  ylab = "Factor 4",
   ylim = c(-1, 1),
   xlim = c(-1, 1),
   main = "Varimax rotation"
 )
 abline(h = 0, v = 0)
-load <- df_factor_var$loadings[, 1:2]
+load <- df_factor_var$loadings[, 3:4]
 text(
   load,
   labels = names(df),
@@ -1062,22 +1214,22 @@ text(
 )
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-31-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-36-1.png)<!-- -->
 
 - **Oblimin Rotation**
 
 ``` r
 plot(
-  df_factor_obl$loadings[, 1],
-  df_factor_obl$loadings[, 2],
-  xlab = "Factor 1",
-  ylab = "Factor 2",
+  df_factor_obl$loadings[, 3],
+  df_factor_obl$loadings[, 4],
+  xlab = "Factor 3",
+  ylab = "Factor 4",
   ylim = c(-1, 1),
   xlim = c(-1, 1),
   main = "Oblimin rotation"
 )
 abline(h = 0, v = 0)
-load <- df_factor_obl$loadings[, 1:2]
+load <- df_factor_obl$loadings[, 3:4]
 text(
   load,
   labels = names(df),
@@ -1086,7 +1238,7 @@ text(
 )
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-32-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/unnamed-chunk-37-1.png)<!-- -->
 
 When you have more than two factors it is difficult to analyze the
 factors by the plots. Variables that have low explaining variance in the

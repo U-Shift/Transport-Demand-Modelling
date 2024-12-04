@@ -141,15 +141,15 @@ normality_pvalues <- sapply(df_scaled, function(x) {
 # Print the p-values for each variable
 normality_pvalues
 
-#If you want to focus on which variables do not follow normality, you can filter the output:
+# If you want to focus on which variables do not follow normality, you can filter the output:
 non_normal_vars <- names(normality_pvalues[normality_pvalues < 0.05])
 non_normal_vars
 
-#If you want to focus on which variables follow normality, you can filter the output:
+# If you want to focus on which variables follow normality, you can filter the output:
 normal_vars <- names(normality_pvalues[normality_pvalues >= 0.05])
 normal_vars
 
-#Example of histogram
+# Check histograms to confirm non-normality. Example of histogram
 hist(df_scaled$INCOME)
 
 #NOTE: 

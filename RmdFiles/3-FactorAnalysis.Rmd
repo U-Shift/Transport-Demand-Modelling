@@ -119,7 +119,7 @@ str(df)
 df = select(df,c(-DWELCLAS, -ISEX, -RAGE10, -HEADH))
 ```
 
-#Standardize variables (Zscore = xi - xmean)/sd
+##### Standardize variables (Zscore = xi - xmean)/sd
 
 ```{r}
 mean <- apply(df, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
@@ -191,7 +191,7 @@ normality_pvalues <- sapply(df_scaled, function(x) {
 })
 ```
 
-# Print the p-values for each variable
+Print the p-values for each variable
 
 ```{r}
 normality_pvalues
@@ -211,10 +211,10 @@ normal_vars <- names(normality_pvalues[normality_pvalues >= 0.05])
 normal_vars
 ```
 
-Example of histogram:
+Check histograms to confirm non-normality. Example of histogram:
 
 ```{r}
-hist(df$H18)
+hist(df_scaled$H18)
 ```
 
 > **Note:** There are no normally distributed variables in the dataset. Factor analysis can still work with non-normally distributed data, but for Maximum Likelihood (ML) extraction, normality is preferable.
@@ -252,8 +252,7 @@ Check if the correlation is statistically significant.
 cor.test(df_scaled$H18,df_scaled$HSIZE)
 ```
 
-The null hypothesis is that the correlation is zero. 
-This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05).
+> **Note:** The null hypothesis is that the correlation is zero. This means that the correlations are only significant when you reject the null hypothesis (pvalue < 0.05).
 
 **The Bartlett sphericity test** 
 
@@ -279,7 +278,8 @@ If, 0.6 < MSA < 0.7, it is not a good value, but acceptable in some cases.
 
 MSA for each item (variable-specific KMO scores):
 The KMO test also provides an MSA (Measure of Sampling Adequacy) for each variable, indicating how well each variable fits with the others in terms of common variance.
-Here are some important interpretations:
+Here are some important interpretations:  
+
 * Good MSA values (≥ 0.70): Variables such as INCOME (0.86), HEMPLOY (0.87) are well-suited for factor analysis and share sufficient common variance with the other variables.  
 
 * Mediocre/bad MSA values (0.50 ≤ MSA < 0.70): Variables like HSIZE (0.57), and PARK (0.55) are marginal for factor analysis. These variables have some shared variance with the other variables but are not as strong contributors.  

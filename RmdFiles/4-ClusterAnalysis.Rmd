@@ -63,7 +63,7 @@ skim(df)
 ##### Sneak the plot
 Now let us plot an example and take a look
 ```{r}
-plot(Numberofairlines ~ Destinations, df) #plot
+plot(Numberofairlines ~ Destinations, df, xlim = c(min(df$Destinations), 1.3*max(df$Destinations)), ylim = c(min(df$Numberofairlines), 1.2*max(df$Numberofairlines))) #plot
 text(Numberofairlines ~ Destinations, df, label = Airport, pos = 4, cex = 0.6) #labels over the previous plot
 ```
 
@@ -272,14 +272,14 @@ Let us go back to first example and take a look.
 * **K-means with outliers**
 
 ```{r}
-plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
+plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster, xlim = c(1.1*min(df$Destinations), 1.3*max(df$Destinations)), ylim = c(1.5*min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 
 * **K-means without outliers**
 
 ```{r}
-plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster)
+plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster, xlim = c(min(df$Destinations), 1.3*max(df$Destinations)), ylim = c(1.5*min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 

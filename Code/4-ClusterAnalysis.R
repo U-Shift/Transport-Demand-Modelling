@@ -48,7 +48,7 @@ skim(df)
 
 #' ##### Sneak the plot
 #' Now let us plot an example and take a look
-plot(Numberofairlines ~ Destinations, df) #plot
+plot(Numberofairlines ~ Destinations, df, xlim = c(min(df$Destinations), 1.4*max(df$Destinations)), ylim = c(min(df$Numberofairlines), 1.2*max(df$Numberofairlines))) #plot
 text(Numberofairlines ~ Destinations, df, label = Airport, pos = 4, cex = 0.6) #labels over the previous plot
 
 #' 
@@ -71,7 +71,7 @@ head(df_reduced)
 
 #' 
 #' ##### Standardize variables
-#' Z-score standardization:  $(x_{i} - x_{\text{mean}}) / {\sigma}$
+#' Z-score standardization:  xi - xmean / sd
 mean <- apply(df_reduced, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
 sd <- apply(df_reduced, 2, sd)
 df_scaled <- scale(df_reduced, mean, sd)
@@ -120,7 +120,7 @@ rect.hclust(modelc, 4, border = "blue")
 #' The average linkage considers the distance between clusters to be the average of the distances between observations in one cluster to all the members in the other cluster. 
 modela <- hclust(distance, "average")
 plot(modela, labels = df$Airport, xlab = "Distance - Average linkage", cex=0.6, hang = -1)
-rect.hclust(modelc, 4, border = "red")
+rect.hclust(modela, 4, border = "red")
 
 #' 
 #' **4. Ward`s method**
@@ -234,12 +234,12 @@ km_no_outliers
 #' 
 #' * **K-means with outliers**
 #' 
-plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
+plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster, xlim = c(1.1*min(df$Destinations), 1.4*max(df$Destinations)), ylim = c(1.2*min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 
 #' 
 #' * **K-means without outliers**
 #'
-plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster)
+plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster, xlim = c(1.1*min(df$Destinations), 1.4*max(df$Destinations)), ylim = c(1.2*min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 

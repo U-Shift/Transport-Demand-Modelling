@@ -239,6 +239,6 @@ with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0
 #' 
 #' * **K-means without outliers**
 #'
-plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster, xlim = c(1.1*min(df$Destinations), 1.4*max(df$Destinations)), ylim = c(1.2*min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
+plot(Numberofairlines ~ Destinations, df, col = km_big_outlier$cluster, xlim = c(1.1*min(df$Destinations), 1.4*max(df$Destinations)), ylim = c(1.2*min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 

@@ -7,36 +7,35 @@ Cluster Analysis
 
 #### Variables:
 
--   `Code`: Code of the airport;  
--   `Airport`: Name of the airport;  
--   `Ordem`: ID of the observations;  
--   `Passengers`: Number of passengers;  
--   `Movements`: Number of flights;  
--   `Numberofairlines`: Number of airlines in each airport;  
--   `Mainairlineflightspercentage`: Percentage of flights of the main
-    airline of each airport;  
--   `Maximumpercentageoftrafficpercountry`: Maximum percentage of
-    flights per country;  
--   `NumberofLCCflightsweekly`: Number of weekly low cost flights\`;  
--   `NumberofLowCostAirlines`: Number of low cost airlines of each
-    airport;  
--   `LowCostAirlinespercentage`: Percentage of the number of low cost
-    airlines in each airport;  
--   `Destinations`: Number of flights arriving at each airport;  
--   `Average_route_Distance`: Average route distance in km;  
--   `DistancetoclosestAirport`: Distance to closest airport in km
--   `DistancetoclosestSimilarAirport`: Distance to closest similar
-    airport in km;  
--   `AirportRegionalRelevance`: Relevance of the airport in a regional
-    scale (0 - 1);  
--   `Distancetocitykm`: Distance between the airport and the city in
-    km;  
--   `Inhabitantscorrected`: Population of the city;  
--   `numberofvisitorscorrected`: Number of vistors that arrived in the
-    airport;  
--   `GDP corrected`: Corrected value of the Gross Domestic Product;  
--   `Cargoton`: Cargo ton. The total number of cargo transported in a
-    certain period multiplied by the number o flights.
+- `Code`: Code of the airport;  
+- `Airport`: Name of the airport;  
+- `Ordem`: ID of the observations;  
+- `Passengers`: Number of passengers;  
+- `Movements`: Number of flights;  
+- `Numberofairlines`: Number of airlines in each airport;  
+- `Mainairlineflightspercentage`: Percentage of flights of the main
+  airline of each airport;  
+- `Maximumpercentageoftrafficpercountry`: Maximum percentage of flights
+  per country;  
+- `NumberofLCCflightsweekly`: Number of weekly low cost flights\`;  
+- `NumberofLowCostAirlines`: Number of low cost airlines of each
+  airport;  
+- `LowCostAirlinespercentage`: Percentage of the number of low cost
+  airlines in each airport;  
+- `Destinations`: Number of flights arriving at each airport;  
+- `Average_route_Distance`: Average route distance in km;  
+- `DistancetoclosestAirport`: Distance to closest airport in km
+- `DistancetoclosestSimilarAirport`: Distance to closest similar airport
+  in km;  
+- `AirportRegionalRelevance`: Relevance of the airport in a regional
+  scale (0 - 1);  
+- `Distancetocitykm`: Distance between the airport and the city in km;  
+- `Inhabitantscorrected`: Population of the city;  
+- `numberofvisitorscorrected`: Number of vistors that arrived in the
+  airport;  
+- `GDP corrected`: Corrected value of the Gross Domestic Product;  
+- `Cargoton`: Cargo ton. The total number of cargo transported in a
+  certain period multiplied by the number o flights.
 
 ## Let’s begin!
 
@@ -82,41 +81,41 @@ Data summary
 
 **Variable type: character**
 
-| skim\_variable | n\_missing | complete\_rate | min | max | empty | n\_unique | whitespace |
-|:---------------|-----------:|---------------:|----:|----:|------:|----------:|-----------:|
-| Code           |          0 |              1 |   3 |   3 |     0 |        32 |          0 |
-| Airport        |          0 |              1 |   4 |  35 |     0 |        32 |          0 |
+| skim_variable | n_missing | complete_rate | min | max | empty | n_unique | whitespace |
+|:--------------|----------:|--------------:|----:|----:|------:|---------:|-----------:|
+| Code          |         0 |             1 |   3 |   3 |     0 |       32 |          0 |
+| Airport       |         0 |             1 |   4 |  35 |     0 |       32 |          0 |
 
 **Variable type: numeric**
 
-| skim\_variable                       | n\_missing | complete\_rate |        mean |          sd |        p0 |        p25 |         p50 |         p75 |        p100 | hist  |
-|:-------------------------------------|-----------:|---------------:|------------:|------------:|----------:|-----------:|------------:|------------:|------------:|:------|
-| Ordem                                |          0 |              1 |       16.50 |        9.38 |      1.00 |       8.75 |       16.50 |       24.25 |       32.00 | ▇▇▇▇▇ |
-| Passengers                           |          0 |              1 | 20750710.88 | 17601931.34 | 456698.00 | 8927021.50 | 17275317.50 | 28666511.50 | 67054745.00 | ▇▅▂▂▁ |
-| Movements                            |          0 |              1 |   205111.16 |   143564.45 |   5698.00 |   82765.75 |   191742.50 |   258654.50 |   518018.00 | ▇▅▇▂▃ |
-| Numberofairlines                     |          0 |              1 |       57.81 |       40.42 |      1.00 |      22.50 |       55.50 |       90.25 |      136.00 | ▇▆▅▆▃ |
-| Mainairlineflightspercentage         |          0 |              1 |       33.78 |       22.08 |     12.00 |      22.00 |       28.50 |       33.00 |       95.00 | ▇▆▁▁▂ |
-| Maximumpercentageoftrafficpercountry |          0 |              1 |       17.47 |        7.31 |      9.00 |      12.00 |       15.00 |       22.25 |       35.00 | ▇▂▃▂▂ |
-| NumberofLCCflightsweekly             |          0 |              1 |      397.59 |      221.56 |     37.00 |     226.25 |      366.50 |      546.75 |      776.00 | ▅▇▅▅▆ |
-| NumberofLowCostAirlines              |          0 |              1 |       11.59 |        5.60 |      1.00 |       7.75 |       12.00 |       16.00 |       23.00 | ▃▇▇▆▃ |
-| LowCostAirlinespercentage            |          0 |              1 |       36.44 |       30.10 |      6.25 |      16.29 |       19.59 |       50.36 |      100.00 | ▇▂▁▁▂ |
-| Destinations                         |          0 |              1 |      167.62 |       80.13 |     20.00 |     109.25 |      168.50 |      222.50 |      301.00 | ▃▇▆▇▆ |
-| Average\_Route\_Distance             |          0 |              1 |     2275.19 |      930.28 |   1225.00 |    1599.50 |     2152.00 |     2765.00 |     5635.00 | ▇▆▂▁▁ |
-| DistancetoclosestAirport             |          0 |              1 |       90.19 |       64.56 |     13.84 |      45.83 |       66.50 |      111.61 |      244.50 | ▇▇▃▁▂ |
-| DistancetoclosestSimilarAirport      |          0 |              1 |      248.64 |      183.60 |     38.16 |      97.74 |      206.12 |      376.15 |      635.05 | ▇▅▃▁▃ |
-| AirportRegionalrelevance             |          0 |              1 |        0.73 |        0.23 |      0.19 |       0.58 |        0.80 |        0.91 |        0.99 | ▁▃▁▆▇ |
-| Distancetocitykm                     |          0 |              1 |       25.81 |       25.44 |      3.00 |       9.75 |       14.50 |       35.00 |      100.00 | ▇▂▁▁▁ |
-| Inhanbitantscorrected                |          0 |              1 |  4528561.95 |  2590542.88 | 329240.50 | 2856960.30 |  4532760.00 |  6733158.88 |  9870818.00 | ▆▆▇▇▁ |
-| numberofvisitorscorrected            |          0 |              1 |  2766002.58 |  2549773.72 |  80232.50 | 1018390.89 |  1896295.60 |  3450491.78 |  9732062.00 | ▇▃▁▂▁ |
-| GDPcorrected                         |          0 |              1 |    30160.75 |    10510.93 |   8500.00 |   25000.00 |    31150.00 |    35550.00 |    56600.00 | ▃▅▇▃▁ |
-| Cargoton                             |          0 |              1 |   236531.76 |   478310.12 |      0.00 |   10325.00 |    72749.85 |   153372.85 |  1819000.00 | ▇▁▁▁▁ |
+| skim_variable                        | n_missing | complete_rate |        mean |          sd |        p0 |        p25 |         p50 |         p75 |        p100 | hist  |
+|:-------------------------------------|----------:|--------------:|------------:|------------:|----------:|-----------:|------------:|------------:|------------:|:------|
+| Ordem                                |         0 |             1 |       16.50 |        9.38 |      1.00 |       8.75 |       16.50 |       24.25 |       32.00 | ▇▇▇▇▇ |
+| Passengers                           |         0 |             1 | 20750710.88 | 17601931.34 | 456698.00 | 8927021.50 | 17275317.50 | 28666511.50 | 67054745.00 | ▇▅▂▂▁ |
+| Movements                            |         0 |             1 |   205111.16 |   143564.45 |   5698.00 |   82765.75 |   191742.50 |   258654.50 |   518018.00 | ▇▅▇▂▃ |
+| Numberofairlines                     |         0 |             1 |       57.81 |       40.42 |      1.00 |      22.50 |       55.50 |       90.25 |      136.00 | ▇▆▅▆▃ |
+| Mainairlineflightspercentage         |         0 |             1 |       33.78 |       22.08 |     12.00 |      22.00 |       28.50 |       33.00 |       95.00 | ▇▆▁▁▂ |
+| Maximumpercentageoftrafficpercountry |         0 |             1 |       17.47 |        7.31 |      9.00 |      12.00 |       15.00 |       22.25 |       35.00 | ▇▂▃▂▂ |
+| NumberofLCCflightsweekly             |         0 |             1 |      397.59 |      221.56 |     37.00 |     226.25 |      366.50 |      546.75 |      776.00 | ▅▇▅▅▆ |
+| NumberofLowCostAirlines              |         0 |             1 |       11.59 |        5.60 |      1.00 |       7.75 |       12.00 |       16.00 |       23.00 | ▃▇▇▆▃ |
+| LowCostAirlinespercentage            |         0 |             1 |       36.44 |       30.10 |      6.25 |      16.29 |       19.59 |       50.36 |      100.00 | ▇▂▁▁▂ |
+| Destinations                         |         0 |             1 |      167.62 |       80.13 |     20.00 |     109.25 |      168.50 |      222.50 |      301.00 | ▃▇▆▇▆ |
+| Average_Route_Distance               |         0 |             1 |     2275.19 |      930.28 |   1225.00 |    1599.50 |     2152.00 |     2765.00 |     5635.00 | ▇▆▂▁▁ |
+| DistancetoclosestAirport             |         0 |             1 |       90.19 |       64.56 |     13.84 |      45.83 |       66.50 |      111.61 |      244.50 | ▇▇▃▁▂ |
+| DistancetoclosestSimilarAirport      |         0 |             1 |      248.64 |      183.60 |     38.16 |      97.74 |      206.12 |      376.15 |      635.05 | ▇▅▃▁▃ |
+| AirportRegionalrelevance             |         0 |             1 |        0.73 |        0.23 |      0.19 |       0.58 |        0.80 |        0.91 |        0.99 | ▁▃▁▆▇ |
+| Distancetocitykm                     |         0 |             1 |       25.81 |       25.44 |      3.00 |       9.75 |       14.50 |       35.00 |      100.00 | ▇▂▁▁▁ |
+| Inhanbitantscorrected                |         0 |             1 |  4528561.95 |  2590542.88 | 329240.50 | 2856960.30 |  4532760.00 |  6733158.88 |  9870818.00 | ▆▆▇▇▁ |
+| numberofvisitorscorrected            |         0 |             1 |  2766002.58 |  2549773.72 |  80232.50 | 1018390.89 |  1896295.60 |  3450491.78 |  9732062.00 | ▇▃▁▂▁ |
+| GDPcorrected                         |         0 |             1 |    30160.75 |    10510.93 |   8500.00 |   25000.00 |    31150.00 |    35550.00 |    56600.00 | ▃▅▇▃▁ |
+| Cargoton                             |         0 |             1 |   236531.76 |   478310.12 |      0.00 |   10325.00 |    72749.85 |   153372.85 |  1819000.00 | ▇▁▁▁▁ |
 
 ##### Sneak the plot
 
 Now let us plot an example and take a look
 
 ``` r
-plot(Numberofairlines ~ Destinations, df) #plot
+plot(Numberofairlines ~ Destinations, df, xlim = c(min(df$Destinations), 1.3*max(df$Destinations)), ylim = c(min(df$Numberofairlines), 1.2*max(df$Numberofairlines))) #plot
 text(Numberofairlines ~ Destinations, df, label = Airport, pos = 4, cex = 0.6) #labels over the previous plot
 ```
 
@@ -202,7 +201,7 @@ head(df_reduced)
 
 ##### Standardize variables
 
-Z-score standardization: (*x*<sub>*i*</sub> − *x*<sub>mean</sub>)/*σ*
+Z-score standardization: $(x_{i} - x_{\text{mean}}) / {\sigma}$
 
 ``` r
 mean <- apply(df_reduced, 2, mean) # The "2" in the function is used to select the columns. MARGIN: c(1,2)
@@ -369,61 +368,61 @@ plot(silhouette(member_cen, distance))
 
 ![](RmdFiles/4-ClusterAnalysis/unnamed-chunk-18-5.png)<!-- -->
 
-## Non-Hirarchical Clustering
+## Non-Hierarchical Clustering
 
 ##### K-means clustering
 
--   k-means with n=3 clusters
+- k-means with n=3 clusters
 
 ``` r
 km_clust <- kmeans(df_scaled, 3)
 km_clust #print the results
 ```
 
-    ## K-means clustering with 3 clusters of sizes 7, 18, 7
+    ## K-means clustering with 3 clusters of sizes 12, 3, 17
     ## 
     ## Cluster means:
     ##   Passengers  Movements Numberofairlines Mainairlineflightspercentage
-    ## 1 -0.9456035 -1.0500969     -1.239468064                    1.4006677
-    ## 2 -0.2469314 -0.2011272     -0.004982515                   -0.3699491
-    ## 3  1.5805700  1.5672811      1.252280245                   -0.4493699
+    ## 1 -0.7916194 -0.9174079       -1.0056089                    0.7193019
+    ## 2  2.2082860  1.9174235        1.5633070                   -0.2919658
+    ## 3  0.1690927  0.3092132        0.4339639                   -0.4562191
     ##   Maximumpercentageoftrafficpercountry NumberofLCCflightsweekly
-    ## 1                            0.9913460              -1.21033588
-    ## 2                           -0.1629508               0.04370786
-    ## 3                           -0.5723298               1.09794424
+    ## 1                            0.7681965               -0.8816639
+    ## 2                           -0.7482433                1.5198394
+    ## 3                           -0.4102134                0.3541440
     ##   NumberofLowCostAirlines LowCostAirlinespercentage Destinations
-    ## 1              -1.2287547                 1.4725164  -1.31999250
-    ## 2               0.3305562                -0.2689855   0.07609389
-    ## 3               0.3787531                -0.7808392   1.12432250
+    ## 1              -0.4483905                 1.0784388   -0.7805257
+    ## 2              -0.2251255                -0.9329811    1.1819686
+    ## 3               0.3562389                -0.5966072    0.3423766
     ##   Average_Route_Distance DistancetoclosestAirport
-    ## 1             -0.8907198               0.20629602
-    ## 2             -0.1062034               0.06631895
-    ## 3              1.1638144              -0.37683045
+    ## 1            -0.61471392               0.19611608
+    ## 2             2.17370314              -0.23116516
+    ## 3             0.05032104              -0.09764103
     ##   DistancetoclosestSimilarAirport AirportRegionalrelevance Distancetocitykm
-    ## 1                     -0.67596963               -0.9617675        1.0125397
-    ## 2                     -0.07737412                0.1407640       -0.3136475
-    ## 3                      0.87493166                0.5998030       -0.2060176
+    ## 1                      -0.6618591               -0.6295906        0.4757942
+    ## 2                       0.1667423                0.1904030       -0.2415823
+    ## 3                       0.4377695                0.4108164       -0.2932226
     ##   Inhanbitantscorrected numberofvisitorscorrected GDPcorrected   Cargoton
-    ## 1           -0.92990235                -0.7382133   -0.5168124 -0.4251367
-    ## 2           -0.06258292                -0.2290652   -0.1117858 -0.3186842
-    ## 3            1.09082987                 1.3272381    0.8042615  1.2446104
+    ## 1            -0.8667815                -0.6718495   -0.5211163 -0.4429756
+    ## 2             0.9414886                 1.6718238    1.5164455  2.9391006
+    ## 3             0.4457007                 0.1792189    0.1002388 -0.2059762
     ## 
     ## Clustering vector:
     ##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
-    ##  2  2  2  2  1  2  2  1  2  2  2  2  2  2  2  2  2  3  3  3  3  3  3  3  2  2 
+    ##  3  1  1  1  1  3  1  1  1  3  3  3  3  3  3  3  3  2  2  2  3  3  3  3  3  3 
     ## 27 28 29 30 31 32 
-    ##  1  1  2  1  1  1 
+    ##  1  1  3  1  1  1 
     ## 
     ## Within cluster sum of squares by cluster:
-    ## [1]  67.16167 150.32291  70.90186
-    ##  (between_SS / total_SS =  48.3 %)
+    ## [1] 130.09823  20.38512 149.66738
+    ##  (between_SS / total_SS =  46.2 %)
     ## 
     ## Available components:
     ## 
     ## [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
     ## [6] "betweenss"    "size"         "iter"         "ifault"
 
--   Other ways of setting the number of clusters
+- Other ways of setting the number of clusters
 
 This algorithm will detect how many clusters from 1 to 10 explains more
 variance
@@ -454,7 +453,7 @@ plot(1:10, betSS_totSS, type = "b", ylab = "Between SS / Total SS", xlab = "Numb
 Let’s take out the outliers and see the difference in the k-means
 clustering:
 
--   **Examine the boxplots**
+- **Examine the boxplots**
 
 ``` r
 par(cex.axis=0.6, mar=c(11,2,1,1))# Make labels fit in the boxplot
@@ -463,7 +462,7 @@ boxplot(df_scaled, las = 2) #labels rotated to vertical
 
 ![](RmdFiles/4-ClusterAnalysis/fig.height==6-1.png)<!-- -->
 
--   **Detect the outliers**
+- **Detect the outliers**
 
 ``` r
 outliers <- boxplot.stats(df_scaled)$out
@@ -473,7 +472,7 @@ outliers
     ##  [1] 2.630622 2.772024 2.772024 3.611626 2.916185 2.523102 2.732030 2.515406
     ##  [9] 3.308457 3.285459
 
--   **Remove rows with outliers**
+- **Remove the biggest outlier**
 
 ``` r
 nrow(df_scaled) #32
@@ -483,8 +482,8 @@ nrow(df_scaled) #32
 
 ``` r
 out_ind <- which(df_scaled %in% c(outliers)) #the row.names that contain outliers
-df_no_outliers = df_scaled[-c(out_ind),] #remove those rows from the df_scaled
-nrow(df_no_outliers) #31
+df_big_outlier = df_scaled[-c(out_ind),] #remove those rows from the df_scaled
+nrow(df_big_outlier) #31
 ```
 
     ## [1] 31
@@ -498,47 +497,47 @@ Execute a k-means clustering with the dataset without the outliers and
 see the difference.
 
 ``` r
-km_no_outliers <- kmeans(df_no_outliers, 3)
-km_no_outliers
+km_big_outlier <- kmeans(df_big_outlier, 3)
+km_big_outlier
 ```
 
-    ## K-means clustering with 3 clusters of sizes 5, 9, 17
+    ## K-means clustering with 3 clusters of sizes 15, 11, 5
     ## 
     ## Cluster means:
     ##   Passengers  Movements Numberofairlines Mainairlineflightspercentage
-    ## 1 -0.9520429 -1.0882984       -1.3214660                    1.9931973
-    ## 2  1.0324987  1.1325696        1.1976935                   -0.5384938
-    ## 3 -0.4213469 -0.3839557       -0.3053483                   -0.2964051
+    ## 1  0.5890127  0.7260264        0.8111878                   -0.5183690
+    ## 2 -0.6095999 -0.6567742       -0.5981361                   -0.1917995
+    ## 3 -0.9520429 -1.0882984       -1.3214660                    1.9931973
     ##   Maximumpercentageoftrafficpercountry NumberofLCCflightsweekly
-    ## 1                           0.64733736               -1.2772631
-    ## 2                          -0.53540967                0.8212658
-    ## 3                           0.08878316               -0.1595867
+    ## 1                           -0.6296646                0.7116404
+    ## 2                            0.5577814               -0.5451081
+    ## 3                            0.6473374               -1.2772631
     ##   NumberofLowCostAirlines LowCostAirlinespercentage Destinations
-    ## 1             -1.39205703                 1.9302799   -1.4105623
-    ## 2              0.74731744                -0.7009284    0.9906072
-    ## 3              0.06205453                -0.1392452   -0.1303986
+    ## 1              0.46550744                -0.6675400    0.7801097
+    ## 2              0.07256111                 0.1215978   -0.4548142
+    ## 3             -1.39205703                 1.9302799   -1.4105623
     ##   Average_Route_Distance DistancetoclosestAirport
-    ## 1             -0.9635706                0.2765206
-    ## 2              0.4884224               -0.3177118
-    ## 3             -0.1876220                0.1279239
+    ## 1              0.4294196               -0.4088129
+    ## 2             -0.4759152                0.4952267
+    ## 3             -0.9635706                0.2765206
     ##   DistancetoclosestSimilarAirport AirportRegionalrelevance Distancetocitykm
-    ## 1                     -0.71705981               -1.2364486       1.69762721
-    ## 2                      0.62904380                0.4413958      -0.06251112
-    ## 3                     -0.05722116                0.1511388      -0.45739254
+    ## 1                      0.27904593                0.2668308       -0.2520645
+    ## 2                      0.04572232                0.2308600       -0.4143005
+    ## 3                     -0.71705981               -1.2364486        1.6976272
     ##   Inhanbitantscorrected numberofvisitorscorrected GDPcorrected   Cargoton
-    ## 1            -0.9802943                -0.7587213   -0.3558915 -0.4142745
-    ## 2             1.0350785                 0.9158328    0.3663198  0.6945365
-    ## 3            -0.3212664                -0.3974202   -0.2372251 -0.3766378
+    ## 1             0.6091294                 0.4709562    0.4324943  0.3093463
+    ## 2            -0.4802512                -0.5070902   -0.6566693 -0.4356553
+    ## 3            -0.9802943                -0.7587213   -0.3558915 -0.4142745
     ## 
     ## Clustering vector:
     ##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 19 20 21 22 23 24 25 26 27 
-    ##  3  3  3  3  1  3  3  3  3  3  3  3  3  3  2  3  3  2  2  2  2  2  2  2  2  1 
+    ##  2  2  2  2  3  2  2  2  2  1  1  1  2  1  1  1  2  1  1  1  1  1  1  1  1  3 
     ## 28 29 30 31 32 
-    ##  1  3  3  1  1 
+    ##  3  1  2  3  3 
     ## 
     ## Within cluster sum of squares by cluster:
-    ## [1]  41.82151  83.73019 140.39960
-    ##  (between_SS / total_SS =  47.7 %)
+    ## [1] 135.98599  81.96037  41.82151
+    ##  (between_SS / total_SS =  48.9 %)
     ## 
     ## Available components:
     ## 
@@ -550,19 +549,19 @@ km_no_outliers
 Finally, plot the clusters results to check if they make sense.  
 Let us go back to first example and take a look.
 
--   **K-means with outliers**
+- **K-means with outliers**
 
 ``` r
-plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster)
+plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster, xlim = c(1.1*min(df$Destinations), 1.3*max(df$Destinations)), ylim = c(1.5*min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 
 ![](RmdFiles/4-ClusterAnalysis/unnamed-chunk-25-1.png)<!-- -->
 
--   **K-means without outliers**
+- **K-means without the highest outlier**
 
 ``` r
-plot(Numberofairlines ~ Destinations, df, col = km_no_outliers$cluster)
+plot(Numberofairlines ~ Destinations, df, col = km_big_outlier$cluster, xlim = c(min(df$Destinations), 1.3*max(df$Destinations)), ylim = c(1.5*min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
 with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
 ```
 

@@ -211,21 +211,20 @@ outliers <- boxplot.stats(df_scaled)$out
 outliers
 
 #' 
-#' * **Remove rows with outliers** 
+#' * **Remove the biggest outlier** 
 #' 
 nrow(df_scaled) #32
 out_ind <- which(df_scaled %in% c(outliers)) #the row.names that contain outliers
-df_no_outliers = df_scaled[-c(out_ind),] #remove those rows from the df_scaled
-nrow(df_no_outliers) #31
+df_big_outlier = df_scaled[-c(out_ind),] #remove those rows from the df_scaled
+nrow(df_big_outlier) #31
 
-#' 
 #' > **Note:** There are many methods to treat outliers. This is just one of them. Note that it is not very appropriate, since it removes many observations that are relevant for the analysis. Try using other methods and evaluate the difference.  
 #' 
 #' 
 #' Execute a k-means clustering with the dataset without the outliers and see the difference. 
 #' 
-km_no_outliers <- kmeans(df_no_outliers, 3)
-km_no_outliers
+km_big_outlier <- kmeans(df_big_outlier, 3)
+km_big_outlier
 
 #' 
 #' #### Ploting the clusters
@@ -234,8 +233,8 @@ km_no_outliers
 #' 
 #' * **K-means with outliers**
 #' 
-plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster, xlim = c(1.1*min(df$Destinations), 1.4*max(df$Destinations)), ylim = c(1.2*min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
-with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.6))
+plot(Numberofairlines ~ Destinations, df, col = km_clust$cluster, xlim = c(1.1*min(df$Destinations), 1.2*max(df$Destinations)), ylim = c(min(df$Numberofairlines), 1.2*max(df$Numberofairlines)))
+with(df, text(Numberofairlines ~ Destinations, label = Airport, pos = 1, cex = 0.4))
 
 #' 
 #' * **K-means without outliers**

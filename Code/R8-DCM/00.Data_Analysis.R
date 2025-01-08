@@ -200,7 +200,7 @@ rm(list = ls())
 # apollo_initialise()
 
 ### Set core controls
-apollo_control_N = list(
+apollo_control = list(
   modelName       = "NL_SimpleModel",
   modelDescr      = "Simple NL model",
   indivID         = "ID", 
@@ -222,9 +222,8 @@ apollo_beta=c(asc_car   = 0,
               b_income = 0,
               lambda_PT = 1)
 
-# DEFINE MODEL AND LIKELIHOOD FUNCTION
-# ============================================================================ #
-apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimate"){
+# Define model and likelihood function
+apollo_probabilities = function(apollo_beta, apollo_inputs, functionality="estimate"){
   
   # Attach inputs and detach after function exit
   apollo_attach(apollo_beta, apollo_inputs)
@@ -237,13 +236,13 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
   V = list()
   V = list()
   V[["car"]]  = asc_car  + b_tt_car  * time_car  + b_cost_car * cost_car
-  V[["bus"]]  = asc_bus  + b_tt_bus  * time_bus  + b_cost_bus * cost_bus 
-  V[["air"]]  = asc_air  + b_tt_air  * time_air  + b_cost_air * cost_air   
-  V[["rail"]] = asc_rail + b_tt_rail * time_rail + b_cost_rail * cost_rail
+  V[["bus"]]  = asc_bus  + b_tt_bus  * time_bus  + b_cost_bus * cost_bus + b_income * income
+  V[["air"]]  = asc_air  + b_tt_air  * time_air  + b_cost_air * cost_air + b_income * income  
+  V[["rail"]] = asc_rail + b_tt_rail * time_rail + b_cost_rail * cost_rail + b_income * income
   
   ### Specify nests for NL model
-  nlNests      = list(root=1, 
-                      PT=lambda_PT)
+  nlNests = list(root = 1, 
+                   PT = lambda_PT)
   
   # Specify tree structure for NL model
   nlStructure= list()
@@ -271,18 +270,15 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
   return(P)
 }
 
-# ============================================================================ #
-# ESTIMATE THE MODEL
-# ============================================================================ #
+# Estimate the model
+
 model = apollo_estimate(apollo_beta,
                         apollo_fixed, 
                         apollo_probabilities, 
                         apollo_inputs)
 
-# ============================================================================ #
-# OUTPUTS
-# ============================================================================ #
-# To the screen
+
+# Print outputs
 apollo_modelOutput(model, modelOutput_settings = list(printDataReport =T,
                                                       printFixed =T,
                                                       printPVal =1) )

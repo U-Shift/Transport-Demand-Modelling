@@ -66,7 +66,7 @@ counts <- table(database$choice)
 barplot(counts, 
         main="Revealed preferences of mode choices",
         xlab="Mode choice",
-        ylab="Nº respondents",
+        ylab="Nº choices",
         names.arg = c("car", "bus", "air", "rail"),
         col = rainbow(4),
         ylim = c(0,350),
@@ -179,12 +179,46 @@ model = apollo_estimate(apollo_beta,
                         apollo_probabilities, 
                         apollo_inputs)
 
+# "it" refers to the number of the iteration.
+
+# "nf" refers to number of function evaluations, indicating the number of times the likelihood function has
+# been evaluated so far. Helps evaluate the computational cost and efficiency.
+
+# "F" refers to the value of the objective function being maximized or minimized. 
+# Usually the objective function is the log-likelihood of the model.
+
+# "RELDF" refers to the relative change in the function, that is the relative difference in the value 
+# of the objective function between consecutive interations. 
+
+# "PRELDF" refers to the predicted relative change in the value of the objective function.
+
+# "RELDX" measures the relative change in parameters estimates between iterations.
+
+# "MODEL" demonstrates the information about the model or its status during optimization. 
+
+# "stppar" is the value of the stopping criterion for terminating the optimization. 
+
+# "BHHH" refers to the Berndt-Hall-Hall-Hausman algorithm, which is the optimization technique used for
+# the Maximum Likelihood Estimation, used for hypothesis testing. 
+
+# "BHHH se" is the standard error of the estimates calculated using the BHHH method. 
+
+# "BHHH t-ratio (0)" is the statistical measure to test hypothesis (e.g., t > 1.96 for 95% Confidence Interval)
 
 # Print Outputs
 # To the screen
 apollo_modelOutput(model, modelOutput_settings = list(printDataReport =T,
                                                       printFixed =T,
                                                       printPVal =1) )
+
+# Obs: Estimation method = bgw (Bayesian Gibbs-within-Metropolis-Hastings). 
+# Instead of estimating fixed parameters (as in Maximum Likelihood Estimation), 
+# bgw estimates the distributions of parameters, such as their means and standard deviations.
+
+# Obs: The t-ratio is the Estimate/Standard Error, and assumes homoscedasticity of the error terms
+# and the likelihood function represents well the data. 
+# The robust t-ratio does not rely on these assumptions, adjusting to the data failing to comply with these assumptions.
+
 
 # To a file
 apollo_saveOutput(model)

@@ -228,10 +228,12 @@ apollo_saveOutput(model)
 # NESTED LOGIT MODEL
 
 ### Clear memory
-rm(list = ls())
+# rm(list = ls())
 
 ### Initialise code
 # apollo_initialise()
+
+
 
 ### Set core controls
 apollo_control = list(
@@ -255,6 +257,16 @@ apollo_beta=c(asc_car   = 0,
               b_cost_rail = 0,
               b_income = 0,
               lambda_PT = 1)
+
+#lambda_PT = 1 means no correlation between alternatives within the PT nest, 
+# and the model behaves like a multinomial logit for those alternatives.
+
+# Vector with names (in quotes) of parameters to be kept fixed at their starting 
+#value in apollo_beta, use apollo_beta_fixed = c() if none
+apollo_fixed = c("asc_car")
+
+#Group and validate inputs
+apollo_inputs = apollo_validateInputs()
 
 # Define model and likelihood function
 apollo_probabilities = function(apollo_beta, apollo_inputs, functionality="estimate"){
@@ -311,6 +323,9 @@ model = apollo_estimate(apollo_beta,
                         apollo_probabilities, 
                         apollo_inputs)
 
+# If Lambda =  1: The alternatives in the nest are independent (i.e., no correlation in unobserved factors)
+# If 0 < Lambda < 1: some correlation between alternatives. 
+# The lower the value of the lambda, the higher the correlation between alternatives. 
 
 # Print outputs
 apollo_modelOutput(model, modelOutput_settings = list(printDataReport =T,

@@ -1,0 +1,307 @@
+Model run by gabri using Apollo 0.3.4 on R 4.4.1 for Windows.
+Please acknowledge the use of Apollo by citing Hess & Palma (2019)
+  DOI 10.1016/j.jocm.2019.100170
+  www.ApolloChoiceModelling.com
+
+Model name                                  : MNL_SimpleExample
+Model description                           : Multinomial Logit Model
+Model run at                                : 2025-01-10 16:10:16.176042
+Estimation method                           : bgw
+Model diagnosis                             : Relative function convergence
+Optimisation diagnosis                      : Maximum found
+     hessian properties                     : Negative definite
+     maximum eigenvalue                     : -0.201006
+     reciprocal of condition number         : 4.91757e-13
+Number of individuals                       : 500
+Number of rows in database                  : 1000
+Number of modelled outcomes                 : 1000
+
+Number of cores used                        :  1 
+Model without mixing
+
+LL(start)                                   : -1170.86
+LL at equal shares, LL(0)                   : -1170.86
+LL at observed shares, LL(C)                : -1085.14
+LL(final)                                   : -1026.25
+Rho-squared vs equal shares                  :  0.1235 
+Adj.Rho-squared vs equal shares              :  0.1133 
+Rho-squared vs observed shares               :  0.0543 
+Adj.Rho-squared vs observed shares           :  0.046 
+AIC                                         :  2076.49 
+BIC                                         :  2135.39 
+
+Estimated parameters                        : 12
+Time taken (hh:mm:ss)                       :  00:00:2.2 
+     pre-estimation                         :  00:00:0.36 
+     estimation                             :  00:00:0.98 
+     post-estimation                        :  00:00:0.86 
+Iterations                                  :  9  
+
+Unconstrained optimisation.
+
+Estimates:
+               Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
+asc_car        0.000000          NA          NA          NA            NA
+asc_bus        2.137277    1.771935      1.2062    1.685554        1.2680
+asc_air        1.596973    1.298779      1.2296    1.305448        1.2233
+asc_rail       2.542902    1.560711      1.6293    1.570818        1.6188
+b_tt_car      -0.002524    0.001939     -1.3018    0.001964       -1.2851
+b_tt_bus      -0.010335    0.003186     -3.2433    0.003049       -3.3896
+b_tt_air      -0.015807    0.006516     -2.4260    0.006540       -2.4170
+b_tt_rail     -0.015039    0.005035     -2.9867    0.005171       -2.9081
+b_cost_car    -0.019390    0.013825     -1.4025    0.013721       -1.4132
+b_cost_bus    -0.044940    0.017219     -2.6099    0.018001       -2.4966
+b_cost_air    -0.031744    0.004480     -7.0852    0.004400       -7.2140
+b_cost_rail   -0.037883    0.006131     -6.1791    0.006108       -6.2020
+b_income     -1.866e-06   4.403e-06     -0.4237   4.551e-06       -0.4100
+
+
+Overview of choices for MNL model component :
+                                    car    bus    air   rail
+Times available                  778.00 902.00 752.00 874.00
+Times chosen                     332.00 126.00 215.00 327.00
+Percentage chosen overall         33.20  12.60  21.50  32.70
+Percentage chosen when available  42.67  13.97  28.59  37.41
+
+
+
+Classical covariance matrix:
+                asc_bus     asc_air    asc_rail    b_tt_car    b_tt_bus    b_tt_air   b_tt_rail  b_cost_car
+asc_bus        3.139755    1.118361    1.235549    0.001607   -0.004394 -3.3867e-04 -8.2914e-04     0.01341
+asc_air        1.118361    1.686828    1.356374    0.001954  1.4689e-04   -0.004368 -9.7464e-04     0.01333
+asc_rail       1.235549    1.356374    2.435819    0.002170  1.9644e-04  -3.523e-05   -0.005705     0.01565
+b_tt_car       0.001607    0.001954    0.002170   3.758e-06   4.899e-07  -1.297e-06  -1.937e-06   1.639e-05
+b_tt_bus      -0.004394  1.4689e-04  1.9644e-04   4.899e-07   1.015e-05  -7.733e-07  -7.944e-07  -1.644e-06
+b_tt_air    -3.3867e-04   -0.004368  -3.523e-05  -1.297e-06  -7.733e-07   4.245e-05  -2.856e-06  -5.166e-06
+b_tt_rail   -8.2914e-04 -9.7464e-04   -0.005705  -1.937e-06  -7.944e-07  -2.856e-06   2.535e-05  -1.617e-05
+b_cost_car     0.013410    0.013330    0.015646   1.639e-05  -1.644e-06  -5.166e-06  -1.617e-05  1.9114e-04
+b_cost_bus    -0.018545  3.6847e-04    0.001320   1.654e-06   3.189e-05   6.535e-07  -5.232e-06  -5.371e-06
+b_cost_air  -2.4306e-04   -0.002561 -1.9331e-04  -4.483e-07  -6.736e-08   1.045e-05  -9.291e-07  -4.128e-06
+b_cost_rail -6.9342e-04 -5.9772e-04   -0.005045  -1.109e-06   5.390e-08  -3.047e-06   1.534e-05  -1.195e-05
+b_income     -1.028e-06  -1.017e-06  -1.006e-06  -4.125e-10   7.709e-11   2.064e-10   2.367e-10   3.900e-10
+             b_cost_bus  b_cost_air b_cost_rail    b_income
+asc_bus       -0.018545 -2.4306e-04 -6.9342e-04  -1.028e-06
+asc_air      3.6847e-04   -0.002561 -5.9772e-04  -1.017e-06
+asc_rail       0.001320 -1.9331e-04   -0.005045  -1.006e-06
+b_tt_car      1.654e-06  -4.483e-07  -1.109e-06  -4.125e-10
+b_tt_bus      3.189e-05  -6.736e-08   5.390e-08   7.709e-11
+b_tt_air      6.535e-07   1.045e-05  -3.047e-06   2.064e-10
+b_tt_rail    -5.232e-06  -9.291e-07   1.534e-05   2.367e-10
+b_cost_car   -5.371e-06  -4.128e-06  -1.195e-05   3.900e-10
+b_cost_bus   2.9650e-04  -1.308e-06  -4.925e-06   6.932e-10
+b_cost_air   -1.308e-06   2.007e-05   1.440e-07   3.341e-10
+b_cost_rail  -4.925e-06   1.440e-07   3.759e-05  -1.233e-10
+b_income      6.932e-10   3.341e-10  -1.233e-10   1.939e-11
+
+Robust covariance matrix:
+                asc_bus     asc_air    asc_rail    b_tt_car    b_tt_bus    b_tt_air   b_tt_rail  b_cost_car
+asc_bus        2.841094    1.089226    1.114417    0.001466   -0.003818 -8.6097e-04 -6.4484e-04     0.01215
+asc_air        1.089226    1.704193    1.303522    0.001955  2.2473e-04   -0.004586 -5.4360e-04     0.01355
+asc_rail       1.114417    1.303522    2.467470    0.002154  5.0866e-04  3.2563e-04   -0.005801     0.01561
+b_tt_car       0.001466    0.001955    0.002154   3.857e-06   9.378e-07  -1.198e-06  -1.467e-06   1.688e-05
+b_tt_bus      -0.003818  2.2473e-04  5.0866e-04   9.378e-07   9.296e-06   3.516e-07  -1.080e-06   9.502e-07
+b_tt_air    -8.6097e-04   -0.004586  3.2563e-04  -1.198e-06   3.516e-07   4.277e-05  -5.457e-06  -9.221e-06
+b_tt_rail   -6.4484e-04 -5.4360e-04   -0.005801  -1.467e-06  -1.080e-06  -5.457e-06   2.674e-05  -1.558e-05
+b_cost_car     0.012151    0.013549    0.015606   1.688e-05   9.502e-07  -9.221e-06  -1.558e-05  1.8826e-04
+b_cost_bus    -0.018116  7.9253e-04    0.001908   2.554e-06   2.991e-05  -3.010e-07  -3.754e-06   4.253e-06
+b_cost_air  -5.1724e-04   -0.002469  2.1201e-04  -1.406e-07   7.639e-07   1.087e-05  -2.680e-06  -3.877e-06
+b_cost_rail -5.6804e-04 -5.6203e-04   -0.005355  -1.394e-06  -7.685e-07  -5.991e-06   1.567e-05  -1.422e-05
+b_income     -1.232e-06  -1.007e-06  -1.103e-06  -9.394e-11   4.264e-10   6.968e-10   8.910e-10   2.098e-09
+             b_cost_bus  b_cost_air b_cost_rail    b_income
+asc_bus       -0.018116 -5.1724e-04 -5.6804e-04  -1.232e-06
+asc_air      7.9253e-04   -0.002469 -5.6203e-04  -1.007e-06
+asc_rail       0.001908  2.1201e-04   -0.005355  -1.103e-06
+b_tt_car      2.554e-06  -1.406e-07  -1.394e-06  -9.394e-11
+b_tt_bus      2.991e-05   7.639e-07  -7.685e-07   4.264e-10
+b_tt_air     -3.010e-07   1.087e-05  -5.991e-06   6.968e-10
+b_tt_rail    -3.754e-06  -2.680e-06   1.567e-05   8.910e-10
+b_cost_car    4.253e-06  -3.877e-06  -1.422e-05   2.098e-09
+b_cost_bus   3.2402e-04   6.651e-07  -1.093e-05   6.788e-09
+b_cost_air    6.651e-07   1.936e-05  -1.676e-06   1.101e-09
+b_cost_rail  -1.093e-05  -1.676e-06   3.731e-05   1.698e-09
+b_income      6.788e-09   1.101e-09   1.698e-09   2.071e-11
+
+Classical correlation matrix:
+                asc_bus     asc_air    asc_rail    b_tt_car    b_tt_bus    b_tt_air   b_tt_rail  b_cost_car
+asc_bus         1.00000     0.48596    0.446776     0.46788   -0.778160   -0.029335    -0.09293    0.547388
+asc_air         0.48596     1.00000    0.669147     0.77598    0.035493   -0.516139    -0.14903    0.742380
+asc_rail        0.44678     0.66915    1.000000     0.71719    0.039501   -0.003465    -0.72599    0.725131
+b_tt_car        0.46788     0.77598    0.717191     1.00000    0.079305   -0.102712    -0.19839    0.611677
+b_tt_bus       -0.77816     0.03549    0.039501     0.07930    1.000000   -0.037246    -0.04951   -0.037328
+b_tt_air       -0.02933    -0.51614   -0.003465    -0.10271   -0.037246    1.000000    -0.08706   -0.057346
+b_tt_rail      -0.09293    -0.14903   -0.725994    -0.19839   -0.049512   -0.087057     1.00000   -0.232338
+b_cost_car      0.54739     0.74238    0.725131     0.61168   -0.037328   -0.057346    -0.23234    1.000000
+b_cost_bus     -0.60782     0.01648    0.049106     0.04954    0.581152    0.005825    -0.06034   -0.022561
+b_cost_air     -0.03062    -0.44003   -0.027646    -0.05161   -0.004719    0.358029    -0.04118   -0.066637
+b_cost_rail    -0.06383    -0.07507   -0.527285    -0.09332    0.002759   -0.076281     0.49706   -0.140991
+b_income       -0.13181    -0.17793   -0.146439    -0.04832    0.005495    0.007196     0.01068    0.006406
+             b_cost_bus  b_cost_air b_cost_rail    b_income
+asc_bus       -0.607819   -0.030616   -0.063831   -0.131810
+asc_air        0.016476   -0.440028   -0.075066   -0.177929
+asc_rail       0.049106   -0.027646   -0.527285   -0.146439
+b_tt_car       0.049543   -0.051609   -0.093324   -0.048321
+b_tt_bus       0.581152   -0.004719    0.002759    0.005495
+b_tt_air       0.005825    0.358029   -0.076281    0.007196
+b_tt_rail     -0.060339   -0.041182    0.497057    0.010676
+b_cost_car    -0.022561   -0.066637   -0.140991    0.006406
+b_cost_bus     1.000000   -0.016953   -0.046650    0.009143
+b_cost_air    -0.016953    1.000000    0.005241    0.016936
+b_cost_rail   -0.046650    0.005241    1.000000   -0.004568
+b_income       0.009143    0.016936   -0.004568    1.000000
+
+Robust correlation matrix:
+                asc_bus     asc_air    asc_rail    b_tt_car    b_tt_bus    b_tt_air   b_tt_rail  b_cost_car
+asc_bus         1.00000     0.49501     0.42090     0.44285    -0.74288   -0.078106    -0.07398     0.52539
+asc_air         0.49501     1.00000     0.63567     0.76268     0.05646   -0.537187    -0.08052     0.75646
+asc_rail        0.42090     0.63567     1.00000     0.69827     0.10621    0.031699    -0.71409     0.72407
+b_tt_car        0.44285     0.76268     0.69827     1.00000     0.15662   -0.093266    -0.14441     0.62650
+b_tt_bus       -0.74288     0.05646     0.10621     0.15662     1.00000    0.017636    -0.06852     0.02271
+b_tt_air       -0.07811    -0.53719     0.03170    -0.09327     0.01764    1.000000    -0.16135    -0.10276
+b_tt_rail      -0.07398    -0.08052    -0.71409    -0.14441    -0.06852   -0.161352     1.00000    -0.21952
+b_cost_car      0.52539     0.75646     0.72407     0.62650     0.02271   -0.102763    -0.21952     1.00000
+b_cost_bus     -0.59707     0.03373     0.06748     0.07225     0.54494   -0.002557    -0.04033     0.01722
+b_cost_air     -0.06974    -0.42984     0.03067    -0.01627     0.05694    0.377691    -0.11779    -0.06421
+b_cost_rail    -0.05517    -0.07048    -0.55812    -0.11619    -0.04127   -0.149966     0.49608    -0.16967
+b_income       -0.16060    -0.16956    -0.15429    -0.01051     0.03073    0.023415     0.03786     0.03359
+             b_cost_bus  b_cost_air b_cost_rail    b_income
+asc_bus       -0.597072   -0.069737    -0.05517    -0.16060
+asc_air        0.033726   -0.429844    -0.07048    -0.16956
+asc_rail       0.067475    0.030671    -0.55812    -0.15429
+b_tt_car       0.072249   -0.016265    -0.11619    -0.01051
+b_tt_bus       0.544936    0.056938    -0.04127     0.03073
+b_tt_air      -0.002557    0.377691    -0.14997     0.02341
+b_tt_rail     -0.040332   -0.117791     0.49608     0.03786
+b_cost_car     0.017220   -0.064211    -0.16967     0.03359
+b_cost_bus     1.000000    0.008397    -0.09939     0.08286
+b_cost_air     0.008397    1.000000    -0.06236     0.05498
+b_cost_rail   -0.099393   -0.062363     1.00000     0.06108
+b_income       0.082861    0.054979     0.06108     1.00000
+
+ 20 most extreme outliers in terms of lowest average per choice prediction:
+  ID Avg prob per choice
+ 227          0.08728168
+ 166          0.10890268
+ 253          0.12110256
+ 112          0.12546877
+   2          0.12773132
+ 462          0.13382943
+ 317          0.13764268
+ 267          0.14441960
+  86          0.15294703
+ 381          0.15296336
+ 453          0.15557984
+ 300          0.15679119
+ 231          0.15679416
+  43          0.15961020
+  35          0.16141564
+ 480          0.16357388
+ 417          0.16545777
+  76          0.16741175
+ 413          0.16880502
+ 180          0.16943839
+
+Changes in parameter estimates from starting values:
+                Initial    Estimate  Difference
+asc_car           0.000    0.000000    0.000000
+asc_bus           0.000    2.137277    2.137277
+asc_air           0.000    1.596973    1.596973
+asc_rail          0.000    2.542902    2.542902
+b_tt_car          0.000   -0.002524   -0.002524
+b_tt_bus          0.000   -0.010335   -0.010335
+b_tt_air          0.000   -0.015807   -0.015807
+b_tt_rail         0.000   -0.015039   -0.015039
+b_cost_car        0.000   -0.019390   -0.019390
+b_cost_bus        0.000   -0.044940   -0.044940
+b_cost_air        0.000   -0.031744   -0.031744
+b_cost_rail       0.000   -0.037883   -0.037883
+b_income          0.000  -1.866e-06  -1.866e-06
+
+Settings and functions used in model definition:
+
+apollo_control
+--------------
+                       Value                    
+modelName              "MNL_SimpleExample"      
+modelDescr             "Multinomial Logit Model"
+indivID                "ID"                     
+outputDirectory        "output/"                
+debug                  "FALSE"                  
+nCores                 "1"                      
+workInLogs             "FALSE"                  
+seed                   "13"                     
+mixing                 "FALSE"                  
+HB                     "FALSE"                  
+noValidation           "FALSE"                  
+noDiagnostics          "FALSE"                  
+calculateLLC           "TRUE"                   
+analyticHessian        "FALSE"                  
+memorySaver            "FALSE"                  
+panelData              "TRUE"                   
+analyticGrad           "TRUE"                   
+analyticGrad_manualSet "FALSE"                  
+overridePanel          "FALSE"                  
+preventOverridePanel   "FALSE"                  
+noModification         "FALSE"                  
+
+Hessian routines attempted
+--------------------------
+numerical jacobian of LL analytical gradient
+
+Scaling used in computing Hessian
+---------------------------------
+                   Value
+asc_bus     2.137277e+00
+asc_air     1.596973e+00
+asc_rail    2.542902e+00
+b_tt_car    2.523815e-03
+b_tt_bus    1.033462e-02
+b_tt_air    1.580654e-02
+b_tt_rail   1.503874e-02
+b_cost_car  1.939049e-02
+b_cost_bus  4.494036e-02
+b_cost_air  3.174429e-02
+b_cost_rail 3.788292e-02
+b_income    1.865644e-06
+
+
+apollo_probabilities
+----------------------
+function(apollo_beta, apollo_inputs, functionality="estimate"){
+
+# obs:  While the other functions we have encountered are part of the package, 
+# "apollo_probabilities" needs to be defined by the user as
+# it is specific to the model to be estimated. 
+    
+  # Attach inputs and detach after function exit
+  apollo_attach(apollo_beta, apollo_inputs)   # call individual elements by name (e.g. using female instead of database$female)
+  on.exit(apollo_detach(apollo_beta, apollo_inputs))
+  
+  # Create list of probabilities P
+  P = list()
+  
+  # List of utilities: these must use the same names as in mnl_settings, order is irrelevant
+  V = list()
+  V[["car"]]  = asc_car  + b_tt_car  * time_car + b_cost_car * cost_car
+  V[["bus"]]  = asc_bus  + b_tt_bus  * time_bus + b_cost_bus * cost_bus + b_income * income
+  V[["air"]]  = asc_air  + b_tt_air  * time_air + b_cost_air * cost_air + b_income * income 
+  V[["rail"]] = asc_rail + b_tt_rail * time_rail + b_cost_rail * cost_rail + b_income * income
+  
+  # Define settings for MNL model component
+  mnl_settings = list(
+    alternatives  = c(car=1, bus=2, air=3, rail=4), 
+    avail         = list(car=av_car, bus=av_bus, air=av_air, rail=av_rail), #Availability of alternative for every observation
+    choiceVar     = choice,
+    utilities     = V
+  )
+  
+  # Compute probabilities using MNL model
+  P[["model"]] = apollo_mnl(mnl_settings, functionality)
+  
+  #  Multiplies the probabilities across individual choice observations for the same individual
+  
+  P = apollo_panelProd(P, apollo_inputs, functionality)
+  
+  # Prepare and return outputs of function
+  P = apollo_prepareProb(P, apollo_inputs, functionality)
+  return(P)
+}

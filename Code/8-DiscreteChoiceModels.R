@@ -4,7 +4,8 @@
 # We are going to use the example dataset from Apollo. 
 # The dataset is to be used for discrete choice modelling. 
 # Data comes from 500 individuals, each with two revealed preferences (RP) observation, 
-# and 14 stated stated (SC) observations. There are 8,000 choices in total. Data is simulated. 
+# and 14 stated stated (SC) observations. 
+# A simulated dataset containing 8,000 mode choices among four alternatives (bus, car, rail, air).
 # Each observation contains attributes for the alternatives, 
 # availability of alternatives, and characteristics of the individuals.
 
@@ -228,12 +229,14 @@ apollo_saveOutput(model)
 # NESTED LOGIT MODEL
 
 ### Clear memory
-# rm(list = ls())
+ rm(list = ls())
 
 ### Initialise code
-# apollo_initialise()
+ apollo_initialise()
 
-
+# Loading data from package
+ database = apollo_modeChoiceData
+# for data dictionary, use ?apollo_modeChoiceData
 
 ### Set core controls
 apollo_control = list(

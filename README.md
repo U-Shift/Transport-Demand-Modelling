@@ -4,7 +4,7 @@ Transport Demand Modelling Course
 This repository intends to gather, and make available, the supporting materials for the [Transport Demand Modelling course](https://fenix.tecnico.ulisboa.pt/disciplinas/MPTra/2025-2026/1-semestre), lectured by [Prof. Filipe Moura](https://ushift.tecnico.ulisboa.pt/team-filipe-moura/) and [Prof. Gabriel Valença](https://fenix.tecnico.ulisboa.pt/homepage/ist194281).  
 This material is also an open source tutorial for applying R programming (chapters 1-7 and 9) and Python Biogeme (chapter 8) in transport demand modelling.
 
-![](RmdFiles/DeCivil.png){width=30%}
+![](RmdFiles/DeCivil.png){width=300px}
 
 ## Summary
 

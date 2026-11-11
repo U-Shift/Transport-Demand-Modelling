@@ -263,7 +263,7 @@ Let’s see how do the residuals behave by plotting them.
 -   **Residuals vs Fitted:** This plot is used to detect non-linearity,
     heteroscedasticity, and outliers.
 -   **Normal Q-Q:** The quantile-quantile (Q-Q) plot is used to check if
-    the dependent variable follows a normal distribution.
+    the residuals follow a normal distribution.
 -   **Scale-Location:** This plot is used to verify if the residuals are
     spread equally (homoscedasticity) or not (heteroscedasticity)
     through the sample.

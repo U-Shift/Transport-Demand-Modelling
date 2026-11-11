@@ -152,6 +152,8 @@ df_missingPairwise = df_missing[!is.na(df_missing$ACO),] #removes all rows with 
 #' 
 #' * **Replace missing value with mean or median**
 #' 
+#' The mean is more sensitive to outliers, while the median is more robust.
+#' 
 df_missing$ACO[is.na(df_missing$ACO)] <- mean(df_missing$ACO, na.rm = TRUE)
 df_missing$ACO[is.na(df_missing$ACO)] <- median(df_missing$ACO, na.rm = TRUE)
 

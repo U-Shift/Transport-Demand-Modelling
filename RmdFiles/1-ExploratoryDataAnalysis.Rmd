@@ -178,7 +178,7 @@ df_no_outliers <- df
 boxplot(df_no_outliers)
 ```
 
-* Take out the outliers from the variable SI
+* **Winsorization**: Replace outliers from SI with with less extreme values from a specified percentile range rather than removing them.
 
 ```{r}
 outlier <- function(x){

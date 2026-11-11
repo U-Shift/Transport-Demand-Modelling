@@ -308,7 +308,8 @@ boxplot(df_no_outliers)
 
 ![](RmdFiles/1-ExploratoryDataAnalysis/unnamed-chunk-17-1.png)<!-- -->
 
-- Take out the outliers from the variable SI
+- **Winsorization**: Replace outliers from SI with with less extreme
+  values from a specified percentile range rather than removing them.
 
 ``` r
 outlier <- function(x){

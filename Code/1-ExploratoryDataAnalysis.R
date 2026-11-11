@@ -168,7 +168,7 @@ df_no_outliers <- df
 boxplot(df_no_outliers)
 
 #' 
-#' * Take the out the outliers from the variable SI
+#' * Winsorization: Replace outliers from SI with with less extreme values from a specified percentile range rather than removing them.
 #' 
 outlier <- function(x){
   quant <- quantile(x, probs=c(0.25, 0.75))

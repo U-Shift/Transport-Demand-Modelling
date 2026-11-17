@@ -136,8 +136,8 @@ head(df_scaled,5)
 ##### Compare the boxplots of the original dataset and standardized one
 
 ```{r}
-boxplot(df)
-boxplot(df_scaled)
+boxplot(df, las = 2)
+boxplot(df_scaled, las = 2)
 ```
 
 

@@ -570,13 +570,13 @@ head(df_scaled,5)
 ##### Compare the boxplots of the original dataset and standardized one
 
 ``` r
-boxplot(df)
+boxplot(df, las = 2)
 ```
 
 ![](RmdFiles/3-FactorAnalysis/unnamed-chunk-10-1.png)<!-- -->
 
 ``` r
-boxplot(df_scaled)
+boxplot(df_scaled, las = 2)
 ```
 
 ![](RmdFiles/3-FactorAnalysis/unnamed-chunk-10-2.png)<!-- -->

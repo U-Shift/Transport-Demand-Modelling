@@ -98,8 +98,8 @@ head(df_scaled,5)
 
 ##### Compare the boxplots of the original dataset and standardized one
 
-boxplot(df)
-boxplot(df_scaled)
+boxplot(df, las = 2)
+boxplot(df_scaled, las = 2)
  
 #' ### Evaluating the assumptions for factorial analysis
 #' * **Adequate Sample Size** #Ideally, you should have at least 10 observations per variable for reliable factor analysis results. More is generally better.

@@ -168,9 +168,8 @@ abline(a = 0, b = 1, col = "red", lty = 2)
 
 #' Correlation matrix
 
-res <- cor.mtest(df_scaled, conf.level = .95) #store the results so you can call the p-value at the corrplot
-
-corrplot(cor(df_scaled), p.mat = res$p, method = "circle", type = "upper", order="hclust", sig.level = 0.05)
+corr_matrix <- cor(df_scaled, method = "pearson")
+corrplot(corr_matrix, method = "square", type = "upper", sig.level = 0.05)
 
 # Check if the correlation is statistically significant
 cor.test(df_scaled$H18,df_scaled$HSIZE)

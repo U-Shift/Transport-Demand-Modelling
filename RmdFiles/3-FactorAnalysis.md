@@ -142,7 +142,7 @@ IQR (CV) : 2 (0.2)</td>
 5 : 130 (27.7%)<br />
 6 : 162 (34.5%)<br />
 7 : 53 (11.3%)</td>
-<td><img src="tmp/ds1016.png" /></td>
+<td><img src="tmp/ds1085.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -160,7 +160,7 @@ IQR (CV) : 2000 (0.7)</td>
 4750 : 106 (22.6%)<br />
 7500 : 75 (16.0%)<br />
 12500 : 31 ( 6.6%)</td>
-<td><img src="tmp/ds1017.png" /></td>
+<td><img src="tmp/ds1086.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -177,7 +177,7 @@ IQR (CV) : 0 (2)</td>
 2 : 41 ( 8.7%)<br />
 3 : 13 ( 2.8%)<br />
 4 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds1018.png" /></td>
+<td><img src="tmp/ds1087.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -196,7 +196,7 @@ IQR (CV) : 0.8 (0.4)</td>
 4 : 35 ( 7.4%)<br />
 5 : 3 ( 0.6%)<br />
 6 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds1019.png" /></td>
+<td><img src="tmp/ds1088.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -214,7 +214,7 @@ IQR (CV) : 1 (0.5)</td>
 3 : 21 ( 4.5%)<br />
 4 : 1 ( 0.2%)<br />
 5 : 1 ( 0.2%)</td>
-<td><img src="tmp/ds1020.png" /></td>
+<td><img src="tmp/ds1089.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -233,7 +233,7 @@ IQR (CV) : 2 (0.5)</td>
 5 : 20 ( 4.3%)<br />
 6 : 5 ( 1.1%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds1021.png" /></td>
+<td><img src="tmp/ds1090.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -246,7 +246,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 36 &lt; 78<br />
 IQR (CV) : 12.7 (0.3)</td>
 <td>126 distinct values</td>
-<td><img src="tmp/ds1022.png" /></td>
+<td><img src="tmp/ds1091.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -259,7 +259,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 34 &lt; 78<br />
 IQR (CV) : 15 (0.3)</td>
 <td>53 distinct values</td>
-<td><img src="tmp/ds1023.png" /></td>
+<td><img src="tmp/ds1092.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -272,7 +272,7 @@ Mean : 0.5<br />
 Max : 1</td>
 <td>0 : 214 (45.5%)<br />
 1 : 256 (54.5%)</td>
-<td><img src="tmp/ds1024.png" /></td>
+<td><img src="tmp/ds1093.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -290,7 +290,7 @@ IQR (CV) : 1 (0.5)</td>
 3 : 56 (11.9%)<br />
 4 : 13 ( 2.8%)<br />
 5 : 3 ( 0.6%)</td>
-<td><img src="tmp/ds1025.png" /></td>
+<td><img src="tmp/ds1094.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -303,7 +303,7 @@ min &lt; med &lt; max:<br />
 30 &lt; 110 &lt; 2250<br />
 IQR (CV) : 60 (0.9)</td>
 <td>76 distinct values</td>
-<td><img src="tmp/ds1026.png" /></td>
+<td><img src="tmp/ds1095.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -323,7 +323,7 @@ IQR (CV) : 1 (0.4)</td>
 5 : 26 ( 5.5%)<br />
 6 : 7 ( 1.5%)<br />
 7 : 2 ( 0.4%)</td>
-<td><img src="tmp/ds1027.png" /></td>
+<td><img src="tmp/ds1096.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -340,7 +340,7 @@ IQR (CV) : 1 (1.2)</td>
 2 : 84 (17.9%)<br />
 3 : 18 ( 3.8%)<br />
 4 : 8 ( 1.7%)</td>
-<td><img src="tmp/ds1028.png" /></td>
+<td><img src="tmp/ds1097.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -353,7 +353,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 1 &lt; 5<br />
 IQR (CV) : 0.7 (0.6)</td>
 <td>22 distinct values</td>
-<td><img src="tmp/ds1029.png" /></td>
+<td><img src="tmp/ds1098.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -366,7 +366,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 3<br />
 IQR (CV) : 1 (1.2)</td>
 <td>13 distinct values</td>
-<td><img src="tmp/ds1030.png" /></td>
+<td><img src="tmp/ds1099.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -379,7 +379,7 @@ Mean : 0.2<br />
 Max : 1</td>
 <td>0 : 356 (75.7%)<br />
 1 : 114 (24.3%)</td>
-<td><img src="tmp/ds1031.png" /></td>
+<td><img src="tmp/ds1100.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -392,7 +392,7 @@ min &lt; med &lt; max:<br />
 0.8 &lt; 23.8 &lt; 73.3<br />
 IQR (CV) : 25.7 (0.7)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds1032.png" /></td>
+<td><img src="tmp/ds1101.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -405,7 +405,7 @@ min &lt; med &lt; max:<br />
 49 &lt; 719 &lt; 17732.7<br />
 IQR (CV) : 1125 (1.3)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds1033.png" /></td>
+<td><img src="tmp/ds1102.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -418,7 +418,7 @@ min &lt; med &lt; max:<br />
 0.3 &lt; 9.9 &lt; 67.8<br />
 IQR (CV) : 20 (1)</td>
 <td>439 distinct values</td>
-<td><img src="tmp/ds1034.png" /></td>
+<td><img src="tmp/ds1103.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -431,7 +431,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 22.2 &lt; 80.7<br />
 IQR (CV) : 23.6 (0.7)</td>
 <td>414 distinct values</td>
-<td><img src="tmp/ds1035.png" /></td>
+<td><img src="tmp/ds1104.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -444,7 +444,7 @@ Mean : 0.9<br />
 Max : 1</td>
 <td>0 : 64 (13.6%)<br />
 1 : 406 (86.4%)</td>
-<td><img src="tmp/ds1036.png" /></td>
+<td><img src="tmp/ds1105.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -457,7 +457,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 83.2 &lt; 255.6<br />
 IQR (CV) : 89.2 (0.6)</td>
 <td>431 distinct values</td>
-<td><img src="tmp/ds1037.png" /></td>
+<td><img src="tmp/ds1106.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -470,7 +470,7 @@ min &lt; med &lt; max:<br />
 0 &lt; 0.2 &lt; 0.7<br />
 IQR (CV) : 0.2 (0.6)</td>
 <td>434 distinct values</td>
-<td><img src="tmp/ds1038.png" /></td>
+<td><img src="tmp/ds1107.png" /></td>
 <td>0<br />
 (0.0%)</td>
 </tr>
@@ -783,7 +783,7 @@ abline(a = 0, b = 1, col = "red", lty = 2)
 ``` r
 #' Correlation matrix
 corr_matrix <- cor(df_scaled, method = "pearson")
-corrplot(corr_matrix, method = "square", type = "upper")
+corrplot(corr_matrix, method = "square", type = "upper", sig.level = 0.05)
 ```
 
 ![](RmdFiles/3-FactorAnalysis/unnamed-chunk-22-1.png)<!-- -->

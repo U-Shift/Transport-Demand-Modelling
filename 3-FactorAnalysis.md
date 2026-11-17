@@ -748,10 +748,6 @@ hist(df_scaled$H18)
 
 ![](RmdFiles/3-FactorAnalysis/unnamed-chunk-19-1.png)<!-- -->
 
-> **Note:** There are no normally distributed variables in the dataset.
-> Factor analysis can still work with non-normally distributed data, but
-> for Maximum Likelihood (ML) extraction, normality is preferable.
-
 - **Linearity Between Variables**
 
 ``` r
@@ -782,8 +778,8 @@ abline(a = 0, b = 1, col = "red", lty = 2)
 
 ``` r
 #' Correlation matrix
-corr_matrix <- cor(df_scaled, method = "pearson")
-corrplot(corr_matrix, method = "square", type = "upper")
+res <- cor.mtest(df_scaled, conf.level = .95) #store the results so you can call the p-value at the corrplot
+corrplot(cor(df_scaled), p.mat = res$p, method = "circle", type = "upper", order="hclust", sig.level = 0.05)
 ```
 
 ![](RmdFiles/3-FactorAnalysis/unnamed-chunk-22-1.png)<!-- -->

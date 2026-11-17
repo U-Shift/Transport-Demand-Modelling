@@ -152,11 +152,6 @@ normal_vars
 # Check histograms to confirm non-normality. Example of histogram
 hist(df_scaled$INCOME)
 
-#NOTE: 
-#There are no normally distributed variables in the dataset.
-#Factor analysis can still work with non-normally distributed data, 
-#but for Maximum Likelihood (ML) extraction, normality is preferable.
-
 #' * **Linearity Between Variables**
 pairs(df_scaled[,1:10], lower.panel = NULL)  # Pairwise scatter plots for the first 10 variables. Check the others!
 
@@ -172,9 +167,10 @@ abline(a = 0, b = 1, col = "red", lty = 2)
 #' * **Correlations between variables** 
 
 #' Correlation matrix
-corr_matrix <- cor(df_scaled, method = "pearson")
 
-corrplot(corr_matrix, method = "circle", type = "upper")
+res <- cor.mtest(df_scaled, conf.level = .95) #store the results so you can call the p-value at the corrplot
+
+corrplot(cor(df_scaled), p.mat = res$p, method = "circle", type = "upper", order="hclust", sig.level = 0.05)
 
 # Check if the correlation is statistically significant
 cor.test(df_scaled$H18,df_scaled$HSIZE)

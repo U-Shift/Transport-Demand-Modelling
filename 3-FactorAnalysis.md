@@ -573,13 +573,13 @@ head(df_scaled,5)
 boxplot(df, las = 2)
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-10-1.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/Rplot.png)<!-- -->
 
 ``` r
 boxplot(df_scaled, las = 2)
 ```
 
-![](RmdFiles/3-FactorAnalysis/unnamed-chunk-10-2.png)<!-- -->
+![](RmdFiles/3-FactorAnalysis/Rplot01.png)<!-- -->
 
 ### Evaluating the assumptions for factorial analysis
 
@@ -747,10 +747,6 @@ hist(df_scaled$H18)
 ```
 
 ![](RmdFiles/3-FactorAnalysis/unnamed-chunk-19-1.png)<!-- -->
-
-> **Note:** There are no normally distributed variables in the dataset.
-> Factor analysis can still work with non-normally distributed data, but
-> for Maximum Likelihood (ML) extraction, normality is preferable.
 
 - **Linearity Between Variables**
 
